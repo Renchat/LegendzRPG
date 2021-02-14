@@ -1,0 +1,111 @@
+Miner_Helmet:
+  Id: golden_helmet
+  Data: 0
+  Display: '&6Miner Helmet'
+  Lore:
+  - '&6&lDefense 8.5'
+  - ''
+  - '&bLv 130+'
+  Attributes:
+    Head:
+      Armor: 8.5
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+Miner_Pickaxe:
+  Id: iron_pickaxe
+  data: 0
+  Display: '&6Miner Pickaxe'
+  Lore:
+  - '&c&lDamage 13.5'
+  - ''
+  - '&bLv 130+'
+  Attributes:
+    MainHand:
+      Damage: 12.5
+      AttackSpeed: 30
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+Miner_Chestplate:
+  Id: leather_chestplate
+  data: 0
+  Display: '&6Miner Chestplate'
+  Lore:
+  - '&6&lDefense 12'
+  - ''
+  - '&bLv 130+'
+  Attributes:
+    Chest:
+      Armor: 12
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+    Color: 192,192,192
+Miner_Legging:
+  Id: leather_leggings
+  data: 0
+  Display: '&6Miner Legging'
+  Lore:
+  - '&6&lDefense 9.5'
+  - ''
+  - '&bLv 130+'
+  Attributes:
+    Legs:
+      Armor: 9.5
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+    Color: 192,192,192
+Miner_Boots:
+  Id: leather_boots
+  data: 0
+  Display: '&6Miner boots'
+  Lore:
+  - '&6&lDefense 8.5'
+  - ''
+  - '&bLv 130+'
+  Attributes:
+    Feet:
+      Armor: 8.5
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+    Color: 192,192,192
+Silvery_Core:
+  Id: magma_cream
+  data: 0
+  Display: '&2Silvery Core'
+  Lore:
+  - '&e&l+7% Speed'
+  - '&c&l+3 Damage'
+  - '&a&l+3 Health'
+  - '&6Offhand Item'
+  - ''
+  - '&bLv 130+'
+  Attributes:
+    OffHand:
+      MovementSpeed: 0.07
+      Damage: 3
+      Health: 3
+  Hide:
+  - Attributes
+Arrow_HarmingI:
+  ItemStack:
+    ==: org.bukkit.inventory.ItemStack
+    v: 2586
+    type: TIPPED_ARROW
+    meta:
+      ==: ItemMeta
+      meta-type: POTION
+      potion-type: minecraft:harming

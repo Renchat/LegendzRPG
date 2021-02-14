@@ -1,0 +1,11 @@
+Lv7BossDrops:
+  Conditions:
+  - targetwithin 20
+  Drops:
+  - Coin 23 1
+  - SpoodaMan_Head 1 0.05
+  - Spider_Boots 1 0.05
+  - Venomous_Sword 1 0.05
+  - Spider_Legging 1 0.05
+  - Spider_Chestplate 1 0.05
+  - SpoodaMan_Core 1 0.02

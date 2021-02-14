@@ -1,0 +1,76 @@
+Lv6_InfernalPig:
+  Type: PIG_ZOMBIE
+  Display: '&6[6] &eInfernal Pig'
+  Health: 60
+  Damage: 10
+  Faction: Mobs
+  Equipment:
+   - gold_sword HAND
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 meleeattack
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.22
+    MaxCombatDistance: 999
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventRenaming: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    PreventSunburn: true
+  DamageModifiers:
+  - FALL 0
+  - SUFFOCATION 9999
+
+Lv6_Imp:
+  Type: vex
+  Display: '&6[7] &eImp'
+  Health: 30
+  Damage: 15
+  Faction: Mobs
+  Equipment:
+   - diamond_sword HAND
+   - shield OFFHAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    MaxCombatDistance: 999
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventRenaming: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    PreventSunburn: true
+
+Lv6_Boss:
+  Type: wither_skeleton
+  Display: '&6[8] &cDemon'
+  Health: 150
+  Damage: 15
+  Faction: Mobs
+  Equipment:
+  - Demonium_Broadsword HAND
+  - Demon_Head HEAD
+  - Sulfur_Chestplate CHEST
+  - Sulfur_Legging LEGS
+  - Sulfur_Boots FEET
+  DamageModifiers:
+  - FALL 0
+  - SUFFOCATION 9999
+  Skills:
+  - skill{s=Homer} @target ~onTimer:100
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.25
+    MaxCombatDistance: 999
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventRenaming: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    PreventSunburn: true

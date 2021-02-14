@@ -1,0 +1,10 @@
+MultiShot:
+  Skills:
+  - projectile{onTick=MultiShot-Tick;onHit=MultiShot-Hit;v=12;i=1;hR=2;vR=1;g=0.5;d=500;tyo=50}
+MultiShot-Tick:
+  Skills:
+  - effect:particles{p=reddust;color=#6699CC;amount=1;speed=0;hS=0.2;vS=0.2} @origin
+MultiShot-Hit:
+  Skills:
+  - damage{a=10}
+  - potion{type=SLOW;duration=100;lvl=2}

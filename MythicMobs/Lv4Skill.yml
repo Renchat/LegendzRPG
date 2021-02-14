@@ -1,0 +1,7 @@
+SkullBarrage:
+  Skills:
+  - shootskull{y=1;v=3;ps=true;tyo=5} @target
+  - delay 10
+  - shootskull{y=1;v=3;ps=true} @target
+  - delay 10
+  - shootskull{y=1;v=3;ps=true} @target

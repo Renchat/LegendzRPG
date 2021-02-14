@@ -1,0 +1,128 @@
+Lv5_MinerPillager:
+  Type: pillager
+  Display: '&6[5] &eMiner Pillager'
+  Health: 30
+  Faction: Mobs
+  Modules:
+    ThreatTable: true
+  Equipment:
+    - crossbow HAND
+    - Arrow_HarmingI OFFHAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    MaxCombatDistance: 200
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventRenaming: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    PreventSunburn: true
+  DamageModifiers:
+  - FALL 0
+  - SUFFOCATION 9999
+
+Lv5_MinerZombie:
+  Type: zombie
+  Display: '&6[6] &eMiner Zombie'
+  Health: 40
+  Damage: 6
+  Faction: Mobs
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    MaxCombatDistance: 200
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventRenaming: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    PreventSunburn: true
+
+Lv5_Boss:
+  Type: silverfish
+  Display: '&6[7] &cSilvery'
+  Health: 120
+  Damage: 8
+  Faction: Mobs
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  Equipment:
+  - Miner_Helmet HEAD
+  - Miner_Pickaxe HAND
+  - Miner_Chestplate CHEST
+  - Miner_Legging LEGS
+  - Miner_Boots FEET
+  Drops:
+  - Lv5BossDrops
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  - SUFFOCATION 9999
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.35
+    MaxCombatDistance: 200
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventRenaming: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    PreventSunburn: true
+
+Lv5_DungeonBoss:
+  Type: wither_skeleton
+  Display: '&6[&d&lDungeon&6] &5&lArsyg'
+  Health: 375
+  Damage: 17.5
+  Faction: Mobs
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  Equipment:
+  - Dragons_Head HEAD
+  - Dragon_Fang HAND
+  - Dragon_Scales_Chestplate CHEST
+  - Dragon_Scales_Legging LEGS
+  - Dragon_Scales_Boots FEET
+  Skills:
+  - skill{s=SkullBarrage} @target ~onAttack
+  - skill{s=SkullBarrage} @target ~onTimer:450
+  - teleport{spreadh=5;spreadv=0} @target ~onTimer:600
+  - skill{s=shockwave} ~onTimer:400
+  - skill{s=Sandbolt} ~onTimer:150 @target
+  - skill{s=MultiShot} @Ring{radius=10;points=32} ~onTimer:230 >0 1
+  Drops:
+  - Lv5DungeonBossDrops
+  BossBar:
+    Enabled: true
+    Title: '&5&lArsyg'
+    Range: 50
+    Color: PURPLE
+    Style: SOLID
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  - SUFFOCATION 9999
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.36
+    MaxCombatDistance: 300
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventRenaming: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    PreventSunburn: true

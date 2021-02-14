@@ -1,0 +1,109 @@
+SpoodaMan_Head:
+  Id: 397
+  Data: 3
+  Display: '&6SpoodaMan Head'
+  Lore:
+  - '&6&lDefense 11'
+  - ''
+  - '&bLv 190+'
+  Attributes:
+    Head:
+      Armor: 11
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Player: Spoodaman
+  
+Venomous_Blade:
+  Id: stone_sword
+  Data: 0
+  Display: '&5Venomous Blade'
+  Lore:
+  - '&7Viper I'
+  - '&c&lDamage 16'
+  - ''
+  - '&bLv 190+'
+  Attributes:
+    MainHand:
+      Damage: 15
+      AttackSpeed: 30
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+
+Spider_Chestplate:
+  Id: leather_chestplate
+  data: 0
+  Display: '&6Spider Chestplate'
+  Lore:
+  - '&6&lDefense 14'
+  - ''
+  - '&bLv 190+'
+  Attributes:
+    Chest:
+      Armor: 14
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+    Color: 255,0,0
+
+Spider_Legging:
+  Id: leather_leggings
+  data: 0
+  Display: '&6Spider Legging'
+  Lore:
+  - '&6&lDefense 12'
+  - ''
+  - '&bLv 190+'
+  Attributes:
+    Legs:
+      Armor: 12
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+    Color: 0,0,255
+
+Spider_Boots:
+  Id: leather_boots
+  data: 0
+  Display: '&6Spider boots'
+  Lore:
+  - '&6&lDefense 11'
+  - ''
+  - '&bLv 190+'
+  Attributes:
+    Feet:
+      Armor: 11
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+    Color: 255,0,0
+
+SpoodaMan_Core:
+  Id: magma_cream
+  data: 0
+  Display: '&2SpoodaMan Core' 
+  Lore:
+  - '&e&l+8% Speed'
+  - '&c&l+4 Damage'
+  - '&a&l+4 Health'
+  - '&6Offhand Item'
+  - ''
+  - '&bLv 190+'
+  Attributes:
+    OffHand:
+      MovementSpeed: 0.08
+      Damage: 4
+      Health: 4
+  Hide:
+  - Attributes
+

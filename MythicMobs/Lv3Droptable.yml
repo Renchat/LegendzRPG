@@ -1,0 +1,12 @@
+Lv3BossDrops:
+  Conditions:
+  - playerwithin 40
+  Drops:
+  - Coin 13 1
+  - Icy_Helmet 1 0.05
+  - Icy_Boots 1 0.05
+  - Icy_Sword 1 0.05
+  - Icy_Legging 1 0.05
+  - Icy_Chestplate 1 0.05
+  - Stray_Core 1 0.02
+  

@@ -1,0 +1,88 @@
+Lv4_Skeleton:
+  Type: Skeleton
+  Display: '&6[5] &eSkeleton'
+  Health: 35
+  Faction: Mobs
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  Modules:
+    ThreatTable: true
+  Equipment:
+    - Icy_Bow HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.23
+    MaxCombatDistance: 200
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventRenaming: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    PreventSunburn: true
+  DamageModifiers:
+  - FALL 0
+  - SUFFOCATION 9999
+
+Lv4_RhinoBeetle:
+  Type: Silverfish
+  Display: '&6[4] &eRhinoBeetle'
+  Health: 28
+  Damage: 4.5
+  Faction: Mobs
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.25
+    MaxCombatDistance: 200
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventRenaming: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    PreventSunburn: true
+  DamageModifiers:
+  - FALL 0
+  - SUFFOCATION 9999
+
+Lv4_Boss:
+  Type: wither_skeleton
+  Display: '&6[6] &cAncient Skeleton'
+  Health: 150
+  Damage: 8.5
+  Faction: Mobs
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  Equipment:
+  - Ancient_Skull HEAD
+  - Ancient_Long_Sword HAND
+  - Bone_Chestplate CHEST
+  - Bone_Legging LEGS
+  - Bone_Boots FEET
+  Drops:
+  - Lv4BossDrops
+  Skills:
+  - skill{s=SkullBarrage} @target ~onTimer:200
+  - teleport{spreadh=5;spreadv=0} @target ~onTimer:350
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  - SUFFOCATION 9999
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.25
+    MaxCombatDistance: 200
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventRenaming: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    PreventSunburn: true
+

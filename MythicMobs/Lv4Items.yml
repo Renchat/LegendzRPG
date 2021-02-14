@@ -1,0 +1,108 @@
+Ancient_Skull:
+  Id: 397
+  Data: 3
+  Display: '&6Ancient Skull'
+  Lore:
+  - '&6&lDefense 6.5'
+  - ''
+  - '&bLv 85+'
+  Attributes:
+    Head:
+      Armor: 6.5
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Player: 02Predator
+  
+Ancient_Long_Sword:
+  Id: stone_sword
+  data: 0
+  Display: '&6Ancient Long Sword'
+  Lore:
+  - '&c&lDamage 12'
+  - ''
+  - '&bLv 85+'
+  Attributes:
+    MainHand:
+      Damage: 11
+      AttackSpeed: 30
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+
+Bone_Chestplate:
+  Id: leather_chestplate
+  data: 0
+  Display: '&6Bone Chestplate'
+  Lore:
+  - '&6&lDefense 9'
+  - ''
+  - '&bLv 85+'
+  Attributes:
+    Chest:
+      Armor: 9
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+    Color: 255,255,255
+
+Bone_Legging:
+  Id: leather_leggings
+  data: 0
+  Display: '&6Bone Legging'
+  Lore:
+  - '&6&lDefense 7'
+  - ''
+  - '&bLv 85+'
+  Attributes:
+    Legs:
+      Armor: 7
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+    Color: 255,255,255
+
+Bone_Boots:
+  Id: leather_boots
+  data: 0
+  Display: '&6Bone boots'
+  Lore:
+  - '&6&lDefense 6.5'
+  - ''
+  - '&bLv 85+'
+  Attributes:
+    Feet:
+      Armor: 6.5
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+    Color: 255,255,255
+
+Skeleton_Core:
+  Id: magma_cream
+  data: 0
+  Display: '&2Skeleton Core' 
+  Lore:
+  - '&e&l+6% Speed'
+  - '&c&l+2.5 Damage'
+  - '&a&l+1 Health'
+  - '&6Offhand Item'
+  - ''
+  - '&bLv 85+'
+  Attributes:
+    OffHand:
+      MovementSpeed: 0.06
+      Damage: 2.5
+      Health: 1
+  Hide:
+  - Attributes
+

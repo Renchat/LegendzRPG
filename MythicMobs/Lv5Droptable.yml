@@ -1,0 +1,22 @@
+Lv5BossDrops:
+  Conditions:
+  - playerwithin 40
+  Drops:
+  - Coin 16 1
+  - Miner_Helmet 1 0.05
+  - Miner_Boots 1 0.05
+  - Miner_Pickaxe 1 0.05
+  - Miner_Legging 1 0.05
+  - Miner_Chestplate 1 0.05
+  - Silvery_Core 1 0.02
+
+Lv5DungeonBossDrops:
+  Conditions:
+  - playerwithin 40
+  Drops:
+  - Dragon_Core 1 0.0075
+  - Dragons_Head 1 0.03
+  - Dragon_Fang 1 0.03
+  - Dragon_Scales_Chestplate 1 0.03
+  - Dragon_Scales_Legging 1 0.03
+  - Dragon_Scales_Boots 0.03

@@ -1,0 +1,108 @@
+Demon_Head:
+  Id: 397
+  Data: 3
+  Display: '&6Demon Head'
+  Lore:
+  - '&6&lDefense 9.5'
+  - ''
+  - '&bLv 150+'
+  Attributes:
+    Head:
+      Armor: 9.5
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Player: DeamonV
+  
+Demonium_Broadsword:
+  Id: stone_sword
+  data: 0
+  Display: '&5Demonium Broadsword'
+  Lore:
+  - '&c&lDamage 15.5'
+  - ''
+  - '&bLv 150+'
+  Attributes:
+    MainHand:
+      Damage: 14.5
+      AttackSpeed: 30
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+
+Sulfur_Chestplate:
+  Id: leather_chestplate
+  data: 0
+  Display: '&6Sulfur Chestplate'
+  Lore:
+  - '&6&lDefense 13'
+  - ''
+  - '&bLv 150+'
+  Attributes:
+    Chest:
+      Armor: 13
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+    Color: 226,88,34
+
+Sulfur_Legging:
+  Id: leather_leggings
+  data: 0
+  Display: '&6Sulfur Legging'
+  Lore:
+  - '&6&lDefense 10.5'
+  - ''
+  - '&bLv 150+'
+  Attributes:
+    Legs:
+      Armor: 10.5
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+    Color: 226,88,34
+
+Sulfur_Boots:
+  Id: leather_boots
+  data: 0
+  Display: '&6Sulfur boots'
+  Lore:
+  - '&6&lDefense 9.5'
+  - ''
+  - '&bLv 150+'
+  Attributes:
+    Feet:
+      Armor: 9.5
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+    Color: 226,88,34
+
+Demon_Core:
+  Id: magma_cream
+  data: 0
+  Display: '&2Demon Core' 
+  Lore:
+  - '&e&l+7% Speed'
+  - '&c&l+4 Damage'
+  - '&a&l+3 Health'
+  - '&6Offhand Item'
+  - ''
+  - '&bLv 150+'
+  Attributes:
+    OffHand:
+      MovementSpeed: 0.07
+      Damage: 4
+      Health: 3
+  Hide:
+  - Attributes
+

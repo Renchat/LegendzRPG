@@ -1,0 +1,14 @@
+# Skills File
+Homer:
+  Skills:
+  - missile{ot=Homer_TICK;oh=Homer_HIT;v=7;i=1;hR=1;vR=1;in=0.75;md=80}
+
+Homer_TICK:
+  Skills:
+  - effect:particles{p=flame;a=10} @origin
+
+Homer_HIT:
+  Skills:
+  - effect:particles{p=lava;a=50;hS=1;vS=1}
+  - effect:sound{s=entity.generic.explode;v=1;p=0}
+  - damage{a=27;i=false}

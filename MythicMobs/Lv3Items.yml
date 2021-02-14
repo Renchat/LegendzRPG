@@ -1,0 +1,124 @@
+Icy_Sword:
+  Id: wooden_sword
+  data: 0
+  Model: 3
+  Display: '&6Icy Sword'
+  Lore:
+  - '&c&lDamage 10'
+  - ''
+  - '&bLv 55+'
+  Attributes:
+    MainHand:
+      Damage: 9
+      AttackSpeed: 30
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+
+Icy_Chestplate:
+  Id: leather_chestplate
+  data: 0
+  Display: '&6Icy Chestplate'
+  Lore:
+  - '&6&lDefense 7'
+  - ''
+  - '&bLv 55+'
+  Attributes:
+    Chest:
+      Armor: 7
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+    Color: 165,242,243
+
+Icy_Legging:
+  Id: leather_leggings
+  data: 0
+  Display: '&6Icy Legging'
+  Lore:
+  - '&6&lDefense 6'
+  - ''
+  - '&bLv 55+'
+  Attributes:
+    Legs:
+      Armor: 6
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+    Color: 165,242,243
+
+Icy_Boots:
+  Id: leather_boots
+  data: 0
+  Display: '&6Icy boots'
+  Lore:
+  - '&6&lDefense 5'
+  - ''
+  - '&bLv 55+'
+  Attributes:
+    Feet:
+      Armor: 5
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+    Color: 165,242,243
+
+Icy_Helmet:
+  Id: leather_helmet
+  data: 0
+  Display: '&6Icy Helmet'
+  Lore:
+  - '&6&lDefense 5'
+  - ''
+  - '&bLv 55+'
+  Attributes:
+    Head:
+      Armor: 5
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+    Color: 165,242,243
+
+Stray_Core:
+  Id: magma_cream
+  data: 0
+  Display: '&2Stray Core' 
+  Lore:
+  - '&e&l+6% Speed'
+  - '&c&l+2 Damage'
+  - '&6Offhand Item'
+  - ''
+  - '&bLv 55+'
+  Attributes:
+    OffHand:
+      MovementSpeed: 0.06
+      Damage: 2
+  Hide:
+  - Attributes
+
+Icy_Bow:
+  Id: bow
+  data: 0
+  Display: '&6Icy Bow'
+  Lore:
+  - '&e&lPower 1'
+  - ''
+  - '&bLv 55+'
+  Hide:
+  - Unbreakable
+  - Attributes
+  - Enchants
+  Enchantments:
+  - ARROW_DAMAGE:1
+  Options:
+    Unbreakable: true

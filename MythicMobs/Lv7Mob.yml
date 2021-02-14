@@ -1,0 +1,73 @@
+Lv7_Spider:
+  Type: spider
+  Display: '&6[7] &eSpider'
+  Health: 80
+  Damage: 15
+  Faction: Mobs
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    MaxCombatDistance: 200
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventRenaming: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    PreventSunburn: true
+  DamageModifiers:
+  - FALL 
+  - SUFFOCATION 9999
+Lv7_CaveSpider:
+  Type: cave_spider
+  Display: '&6[8] &eCave Spider'
+  Health: 40
+  Damage: 9
+  Faction: Mobs
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    MaxCombatDistance: 200
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventRenaming: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    PreventSunburn: true
+  DamageModifiers:
+  - FALL 0
+  - SUFFOCATION 9999
+Lv7_Boss:
+  Type: spider
+  Health: 170
+  Damage: 30
+  Faction: Mobs
+  Display: '&6[9] &cSpoodaman'
+  Disguise:
+    Type: player
+    Player: '&6[9] &cSpoodaman'
+    Skin: Spoodaman
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    MaxCombatDistance: 200
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventRenaming: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    PreventSunburn: true
+  DamageModifiers:
+  - FALL 0
+  - SUFFOCATION 9999
+  Drops:
+  - Lv7BossDrops
+  Skills:
+  - skill{s=Web} @target ~onTimer:150
+  - skill{s=HomingPull} @target ~onTimer:100
+  Equipment:
+  - Venomous_Broadsword HAND
+  - SpoodaMan_Head HEAD
+  - Spider_Chestplate CHEST
+  - Spider_Legging LEGS
+  - Spider_Boots FEET
+  

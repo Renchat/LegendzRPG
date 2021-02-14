@@ -1,0 +1,91 @@
+#legendzRPG Lv3 Mob
+
+Lv3_Wolf:
+  Type: Wolf
+  Display: '&6[3] &eWolf'
+  Health: 18
+  Damage: 3
+  Faction: Mobs
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  AIGoalSelectors:
+  - 0 clear
+  - 2 meleeattack
+  - 1 leapattarget
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.23
+    MaxCombatDistance: 200
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventRenaming: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    PreventSunburn: true
+  DamageModifiers:
+  - FALL 0
+  - SUFFOCATION 9999
+
+Lv3_PolarBear:
+  Type: Polar_Bear
+  Display: '&6[4] &ePolar Bear'
+  Health: 30
+  Damage: 5
+  Faction: Mobs
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.23
+    MaxCombatDistance: 200
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventRenaming: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    PreventSunburn: true
+  DamageModifiers:
+  - FALL 0
+  - SUFFOCATION 9999
+
+Lv3_Boss:
+  Type: Stray
+  Display: '&6[5] &cEnhanced Stray'
+  Health: 90
+  Faction: Mobs
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  Equipment:
+  - Icy_Helmet HEAD
+  - Icy_Bow HAND
+  - Icy_Chestplate CHEST
+  - Icy_Legging LEGS
+  - Icy_Boots FEET
+  Mount: Lv3_PolarBear
+  Drops:
+  - Lv3BossDrops
+  Skills:
+  - skill{s=MultiShot} @Ring{radius=10;points=32} ~onTimer:200 >0 1
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  - SUFFOCATION 9999
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    MaxCombatDistance: 200
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventRenaming: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    PreventSunburn: true
