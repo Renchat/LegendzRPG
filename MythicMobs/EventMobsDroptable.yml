@@ -1,0 +1,13 @@
+GemGolem:
+  Conditions:
+  - playerwithin 40
+  Drops:
+  - Gem 1 1
+  - Gem 2 0.25
+  - Gem 3 0.25
+  - Gem 4 0.25
+  - Gem 5 0.25
+  - Gem 4 0.25
+  - Gem 3 0.25
+  - Gem 2 0.25
+  - Gem 1 1

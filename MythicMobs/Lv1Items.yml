@@ -1,0 +1,142 @@
+Starter_Sword:
+  Id: wooden_sword
+  data: 0
+  Display: '&6Starter Sword'
+  Lore:
+  - '&c&lDamage 4'
+  - ''
+  - '&bLv 0+'
+  Attributes:
+    MainHand:
+      Damage: 3
+      AttackSpeed: 30
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+
+Starter_Chestplate:
+  Id: leather_chestplate
+  data: 0
+  Display: '&6Starter Chestplate'
+  Lore:
+  - '&6&lDefense 2'
+  - ''
+  - '&bLv 0+'
+  Attributes:
+    Chest:
+      Armor: 2
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+
+Skin_Legging:
+  Id: leather_leggings
+  data: 0
+  Display: '&6Skin Legging'
+  Lore:
+  - '&6&lDefense 2.5'
+  - ''
+  - '&bLv 15+'
+  Attributes:
+    Legs:
+      Armor: 2.5
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+
+Skin_Boots:
+  Id: leather_boots
+  data: 0
+  Display: '&6Skin boots'
+  Lore:
+  - '&6&lDefense 2'
+  - ''
+  - '&bLv 15+'
+  Attributes:
+    Boots:
+      Armor: 2
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+
+Skin_Cap:
+  Id: leather_helmet
+  data: 0
+  Display: '&6Skin Cap'
+  Lore:
+  - '&6&lDefense 2'
+  - ''
+  - '&bLv 15+'
+  Attributes:
+    Head:
+      Armor: 2
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+
+Rusty_Sword:
+  Id: wooden_sword
+  data: 0
+  Display: '&6Rusty Sword'
+  Model: 1
+  Lore:
+  - '&c&lDamage 6.5'
+  - ''
+  - '&bLv 15+'
+  Attributes:
+    MainHand:
+      Damage: 5.5
+      AttackSpeed: 30
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+
+Zombie_Core:
+  Id: magma_cream
+  data: 0
+  Display: '&2Zombie Core'
+  Lore:
+  - '&e&l+5% Speed'
+  - '&6Offhand Item'
+  - ''
+  - '&bLv 15+'
+  Attributes:
+    OffHand:
+      MovementSpeed: 0.05
+  Hide:
+  - Attributes
+
+Gods_Limb:
+  Id: bone
+  Data: 0
+  Display: "&eGod's &fLimb"
+  Lore:
+  - '&c&lDamage &khh'
+  - ''
+  - '&6Artifact'
+  Attributes:
+    MainHand:
+      Damage: 5000
+      AttackSpeed: 300
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+
+Event_Token:
+  Id: honeycomb
+  Data: 0
+  Display: '&6&lEvent Token'

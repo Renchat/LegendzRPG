@@ -1,0 +1,13 @@
+Lv1BossDrops:
+  Conditions:
+  - playerwithin 40
+  Drops:
+  - Coin 5 1
+  - Skin_Cap 1 0.05
+  - Skin_Boots 1 0.05
+  - Rusty_Sword 1 0.05
+  - cooked_beef 1 0.01
+  - Skin_Legging 1 0.05
+  - cooked_porkchop 1 0.01
+  - Zombie_Core 1 0.02
+  

@@ -1,0 +1,114 @@
+Sandstone_Sword:
+  Id: wooden_sword
+  data: 0
+  Display: '&6Sandstone Sword'
+  Model: 2
+  Lore:
+  - '&c&lDamage 7.5'
+  - ''
+  - '&bLv 35+'
+  Attributes:
+    MainHand:
+      Damage: 6.5
+      AttackSpeed: 30
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+
+Sandstone_Chestplate:
+  Id: leather_chestplate
+  data: 0
+  Display: '&6Sandstone Chestplate'
+  Lore:
+  - '&6&lDefense 5'
+  - ''
+  - '&bLv 35+'
+  Attributes:
+    Chest:
+      Armor: 5
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+
+Sandstone_Legging:
+  Id: leather_leggings
+  data: 0
+  Display: '&6Sandstone Legging'
+  Lore:
+  - '&6&lDefense 4.5'
+  - ''
+  - '&bLv 35+'
+  Attributes:
+    Legs:
+      Armor: 4.5
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+
+Sandstone_Boots:
+  Id: leather_boots
+  data: 0
+  Display: '&6Sandstone boots'
+  Lore:
+  - '&6&lDefense 3.5'
+  - ''
+  - '&bLv 35+'
+  Attributes:
+    Boots:
+      Armor: 3.5
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+
+Sandstone_Helmet:
+  Id: leather_helmet
+  data: 0
+  Display: '&6Sandstone Helmet'
+  Lore:
+  - '&6&lDefense 3.5'
+  - ''
+  - '&bLv 35+'
+  Attributes:
+    Head:
+      Armor: 3.5
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+
+Husk_Core:
+  Id: magma_cream
+  data: 0
+  Display: '&2Husk Core'
+  Lore:
+  - '&e&l+5% Speed'
+  - '&c&l+1.5 Damage'
+  - '&6Offhand Item'
+  - ''
+  - '&bLv 35+'
+  Attributes:
+    OffHand:
+      MovementSpeed: 0.05
+      Damage: 1.5
+  Hide:
+  - Attributes
+
+Sandstone_Bow:
+  Id: bow
+  data: 0
+  Display: '&6Sandstone Bow'
+  Lore:
+  - '&6N/A'
+  - ''
+  - '&bLv 35+'
+  Options:
+    Unbreakable: true

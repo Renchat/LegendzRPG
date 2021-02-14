@@ -1,0 +1,69 @@
+#legendzRPG Lv2 Mob
+
+Lv2_Stray:
+  Type: Stray
+  Display: '&6[3] &eStray'
+  Health: 7
+  Damage: 0.75
+  Faction: Mobs
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  Drops:
+  - Lv1ZombieDrops
+  Equipment:
+    - Bow HAND
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.22
+    MaxCombatDistance: 200
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventRenaming: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    PreventSunburn: true
+  DamageModifiers:
+  - FALL 0
+  - SUFFOCATION 9999
+
+Lv2_Boss:
+  Type: husk
+  Display: '&6[4] &cEnhanced Husk'
+  Health: 50
+  Damage: 3
+  Faction: Mobs
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 meleeattack
+  Equipment:
+  - Skin_Cap HEAD
+  - Starter_Sword HAND
+  - Starter_Chestplate CHEST
+  - Skin_Legging LEGS
+  - Skin_Boots FEET
+  Drops:
+  - Lv2BossDrops
+  Skills:
+  - skill{s=Sandbolt} ~onTimer:200 @target
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    MaxCombatDistance: 200
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventRenaming: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    PreventSunburn: true
+  DamageModifiers:
+  - FALL 0
+  - SUFFOCATION 9999

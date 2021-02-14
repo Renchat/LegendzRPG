@@ -1,0 +1,33 @@
+Gem_Golem:
+  Type: iron_golem
+  Display: '&a&lGem Golem'
+  Health: 250
+  Armor: 1
+  Faction: Mobs
+  Drops:
+  - GemGolem
+  BossBar:
+    Enabled: true
+    Title: '&a&lGem Golem'
+    Range: 50
+    Color: GREEN
+    Style: SOLID
+  DamageModifiers:
+  - FALL 0
+  - SUFFOCATION 9999
+  - ENTITY_ATTACK 0
+  - MAGIC 0
+  - PROJECTILE 0
+  Skills:
+  - damage{amount=1;ignoreArmor=true} @self ~onDamaged
+  Options:
+    Despawn: false
+    AlwaysShowName: true
+    MovementSpeed: 0
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventRenaming: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    PreventSunburn: true
+    NoAI: true

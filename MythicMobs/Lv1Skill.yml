@@ -1,0 +1,13 @@
+shockwave:
+  Cooldown: 10
+  Skills:
+  - effect:particlering{particle=reddust;radius=5;points=100;amount=2;hS=0;vS=1;d=100} @self
+  - delay 30
+  - effect:particlering{particle=reddust;radius=5;points=100;amount=2;hS=0;vS=1;d=100} @self
+  - delay 30
+  - effect:particlering{particle=reddust;radius=5;points=100;amount=2;hS=0;vS=1;d=100} @self
+  - jump{v=2} @self
+  - delay 50
+  - blockwave{duration=49;radius=5;radiusY=5;velocity=0.7;shape=sphere} @selflocation
+  - damage{a=12;pkb=true} @PIR{r=5}
+  - throw{velocity=15;velocityY=7} @PlayersInRadius{r=5}

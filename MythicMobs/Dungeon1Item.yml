@@ -1,0 +1,113 @@
+Dragons_Head:
+  Id: 397
+  Data: 3
+  Display: '&5Dragon Head'
+  Lore:
+  - '&6&lDefense 12'
+  - '&a&lHealth 4'
+  - ''
+  - '&bLv 150+'
+  Attributes:
+    Head:
+      Armor: 12
+      Health: 4
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Player: 4kDraco
+  
+Dragon_Fang:
+  Id: stone_sword
+  data: 0
+  Display: '&5Dragon Fang'
+  Lore:
+  - '&c&lDamage 20'
+  - ''
+  - '&bLv 150+'
+  Attributes:
+    MainHand:
+      Damage: 19
+      AttackSpeed: 30
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+
+Dragon_Scales_Chestplate:
+  Id: leather_chestplate
+  data: 0
+  Display: '&5Dragon Scales Chestplate'
+  Lore:
+  - '&6&lDefense 18'
+  - '&b&lKnockback -20%'
+  - ''
+  - '&bLv 150+'
+  Attributes:
+    Chest:
+      Armor: 18
+      KnockbackResistance: 20%
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+    Color: 148,0,211
+
+Dragon_Scales_Legging:
+  Id: chainmail_leggings
+  data: 0
+  Display: '&5Dragon Scales Legging'
+  Lore:
+  - '&6&lDefense 15.5'
+  - ''
+  - '&bLv 150+'
+  Attributes:
+    Legs:
+      Armor: 15.5
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+    Color: 148,0,211
+
+Dragon_Scales_Boots:
+  Id: leather_boots
+  data: 0
+  Display: '&5Dragon Scales boots'
+  Lore:
+  - '&6&lDefense 12'
+  - '&e&lSpeed +3%'
+  - ''
+  - '&bLv 150+'
+  Attributes:
+    Feet:
+      Armor: 12
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+    Color: 148,0,211
+
+Dragon_Core:
+  Id: magma_cream
+  data: 0
+  Display: '&5Dragon Core' 
+  Lore:
+  - '&e&l+10% Speed'
+  - '&c&l+5 Damage'
+  - '&a&l+8 Health'
+  - '&6Offhand Item'
+  - ''
+  - '&bLv 150+'
+  Attributes:
+    OffHand:
+      MovementSpeed: 0.10
+      Damage: 5
+      Health: 8
+  Hide:
+  - Attributes
+

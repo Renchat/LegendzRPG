@@ -1,0 +1,13 @@
+Sandbolt:
+  Skills:
+  - speak{m="&6Charging..."}
+  - delay 30
+  - speak{m="&6FIRE!"}
+  - projectile{onTick=Sandbolt-Tick;onHit=Sandbolt-Hit;v=8;i=1;hR=1;vR=1}
+Sandbolt-Tick:
+  Skills:
+  - effect:particles{p=crit;amount=20;speed=0;hS=0.2;vS=0.2} @origin
+Sandbolt-Hit:
+  Skills:
+  - damage{a=6;ia=true}
+  - potion{type=SLOW;duration=100;lvl=1}

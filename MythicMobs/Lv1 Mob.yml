@@ -1,0 +1,103 @@
+#legendzRPG Lv1 Mob
+
+Lv1_Zombie:
+  Type: zombie
+  Display: '&6[1] &eZombie'
+  Health: 12
+  Damage: 1
+  Faction: Mobs
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 meleeattack
+  Drops:
+  - Lv1ZombieDrops
+  DamageModifiers:
+  - FALL 0
+  - SUFFOCATION 9999
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.23
+    MaxCombatDistance: 200
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventRenaming: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    PreventSunburn: true
+
+
+Lv1_Husk:
+  Type: husk
+  Display: '&6[2] &eHusk'
+  Health: 15
+  Damage: 2
+  Faction: Mobs
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 meleeattack
+  Drops:
+  - Lv1HuskDrops
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  - SUFFOCATION 9999
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.23
+    MaxCombatDistance: 200
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventRenaming: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    PreventSunburn: true
+
+Lv1_Boss:
+  Type: zombie
+  Display: '&6[3] &cEnhanced Zombie'
+  Health: 50
+  Damage: 2
+  Faction: Mobs
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 meleeattack
+  Equipment:
+  - Skin_Cap HEAD
+  - Rusty_Sword HAND
+  - Starter_Chestplate CHEST
+  - Skin_Legging LEGS
+  - Skin_Boots FEET
+  Drops:
+  - Lv1BossDrops
+  Skills:
+  - skill{s=shockwave} <80%
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  - SUFFOCATION 9999
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    MaxCombatDistance: 200
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventRenaming: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    PreventSunburn: true
