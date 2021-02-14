@@ -1,0 +1,126 @@
+Heavenly_Helmet:
+  Id: leather_helmet
+  Data: 0
+  Display: '&6Heavenly Helmet'
+  Lore:
+  - '&6&lDefense 11.5'
+  - ''
+  - '&bLv 225+'
+  Attributes:
+    Head:
+      Armor: 11.5
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Color: 255,255,255
+    Unbreakable: true
+  
+Heavenly_Sword:
+  Id: iron_sword
+  Data: 0
+  Display: '&6Heavenly Sword'
+  Lore:
+  - '&c&lDamage 17'
+  - ''
+  - '&bLv 225+'
+  Attributes:
+    MainHand:
+      Damage: 16
+      AttackSpeed: 30
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+
+Heavenly_Bow:
+  Id: bow
+  Data: 0
+  Display: '&fHeavenly Bow'
+  Enchantments:
+  - ARROW_DAMAGE:8
+  Lore:
+  - '&e&lPower 8'
+  - ''
+  - '&bLv 225+'
+  Hide:
+  - Unbreakable
+  - Attributes
+  - Enchants
+  Options:
+    Unbreakable: true
+
+Heavenly_Chestplate:
+  Id: leather_chestplate
+  data: 0
+  Display: '&6Heavenly Chestplate'
+  Lore:
+  - '&6&lDefense 15'
+  - ''
+  - '&bLv 225+'
+  Attributes:
+    Chest:
+      Armor: 15
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+    Color: 255,255,255
+
+Heavenly_Legging:
+  Id: leather_leggings
+  data: 0
+  Display: '&6Heavenly Legging'
+  Lore:
+  - '&6&lDefense 13'
+  - ''
+  - '&bLv 225+'
+  Attributes:
+    Legs:
+      Armor: 13
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+    Color: 255,255,255
+
+Heavenly_Boots:
+  Id: leather_boots
+  data: 0
+  Display: '&6Heavenly boots'
+  Lore:
+  - '&6&lDefense 11.5'
+  - ''
+  - '&bLv 225+'
+  Attributes:
+    Feet:
+      Armor: 11.5
+  Hide:
+  - Unbreakable
+  - Attributes
+  Options:
+    Unbreakable: true
+    Color: 255,255,255
+
+Heavenly_Core:
+  Id: magma_cream
+  data: 0
+  Display: '&2Heavenly Core' 
+  Lore:
+  - '&e&l+9% Speed'
+  - '&c&l+4 Damage'
+  - '&a&l+5 Health'
+  - '&6Offhand Item'
+  - ''
+  - '&bLv 225+'
+  Attributes:
+    OffHand:
+      MovementSpeed: 0.09
+      Damage: 4
+      Health: 5
+  Hide:
+  - Attributes
+

@@ -1,0 +1,11 @@
+Lv8BossDrops:
+  Conditions:
+  - targetwithin 20
+  Drops:
+  - Coin 26 1
+  - Heavenly_Helmet 1 0.05
+  - Heavenly_Boots 1 0.05
+  - Heavenly_Sword 1 0.05
+  - Heavenly_Legging 1 0.05
+  - Heavenly_Chestplate 1 0.05
+  - Heavenly_Core 1 0.02

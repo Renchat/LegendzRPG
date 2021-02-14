@@ -1,0 +1,97 @@
+ShockwavePlaceHolder:
+  Type: ARMOR_STAND
+  Skills:
+  - skill{s=shockwavetest} ~onSpawn
+  Options:
+    NoAI: true
+    KnockbackResistance: 1
+    Invincible: true
+    Invisible: true
+    MovementSpeed: 0
+    Silent: true
+    PreventOtherDrops: true
+
+BoltPlaceHolder:
+  Type: ARMOR_STAND
+  Skills:
+  - skill{s=IceBolt} @PIR{r=20} ~onTimer:30
+  - remove @self ~onTimer:200
+  Options:
+    NoAI: true
+    KnockbackResistance: 1
+    Invincible: true
+    Invisible: true
+    MovementSpeed: 0
+    Silent: true
+    PreventOtherDrops: true
+
+MeteorPlaceHolder:
+  Type: ARMOR_STAND
+  Skills:
+  - skill{s=Meteor} @PIR{r=20} ~onTSpawn
+  - remove @self ~onTimer:200
+  Options:
+    NoAI: true
+    KnockbackResistance: 1
+    Invincible: true
+    Invisible: true
+    MovementSpeed: 0
+    Silent: true
+    PreventOtherDrops: true
+  
+Lv3PlaceHolder:
+  Type: ARMOR_STAND
+  Skills:
+  - skill{s=MultiShottest} @Ring{radius=10;points=20} ~onSpawn
+  - remove @self ~onTimer:200
+  Options:
+    NoAI: true
+    KnockbackResistance: 1
+    Invincible: true
+    Invisible: true
+    MovementSpeed: 0
+    Silent: true
+    PreventOtherDrops: true
+
+EventMob:
+  Type: Panda
+  Display: "&d&lEvent"
+  Health: 2048
+  BossBar:
+    Enabled: true
+    Title: '&d&lEvent'
+    Range: 20
+    Color: PURPLE
+    Style: SOLID
+  Equipment:
+  - VelkaryHelmet HEAD
+  - VelkaryWeapon HAND
+  - VelkaryChest CHEST
+  - VelkaryLegs LEGS
+  - VelkaryBoots FEET
+  Options:
+    NoAI: true
+    KnockbackResistance: 1
+    MovementSpeed: 0
+    AlwaysShowName: true
+    Silent: true
+    PreventOtherDrops: true
+    Despawn: false
+
+SpawnMob:
+  Type: phantom
+  Display: '&6&l[&4&lGuardian&6&l] &cMoknor'
+  Disguise: Ender_Dragon
+  AITargetSelectors:
+  - 0 clear
+  - 1 monsters
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  Options:
+    Silent: true
+    MovementSpeed: 0.5
+    PreventSunburn: true
+    Despawn: false
+    AlwatsShowName: true

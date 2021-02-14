@@ -1,0 +1,6 @@
+Hover:
+  Conditions:
+  - heightbelow 50
+  Skills:
+  - throw{vy=5;v=0} @self
+  - leap{velocity=10} @target

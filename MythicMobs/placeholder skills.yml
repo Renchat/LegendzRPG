@@ -1,0 +1,91 @@
+shockwavetest:
+  Cooldown: 7
+  Skills:
+  - effect:particlering{particle=reddust;radius=5;points=100;amount=2;hS=0;vS=1;d=100} @self
+  - delay 30
+  - effect:particlering{particle=reddust;radius=5;points=100;amount=2;hS=0;vS=1;d=100} @self
+  - delay 30
+  - effect:particlering{particle=reddust;radius=5;points=100;amount=2;hS=0;vS=1;d=100} @self
+  - jump{v=2} @self
+  - delay 50
+  - blockwave{duration=49;radius=5;radiusY=5;velocity=0.7;shape=sphere} @selflocation
+  - damage{a=12;pkb=true} @PIR{r=5}
+  - throw{velocity=15;velocityY=7} @PlayersInRadius{r=5}
+  - remove @self
+
+IceBolt:
+  Skills:
+  - speak{m="&6Charging..."}
+  - delay 30
+  - speak{m="&6FIRE!"}
+  - projectile{onTick=IceBolt-Tick;onHit=IceBolt-Hit;v=8;i=1;hR=1;vR=1}
+IceBolt-Tick:
+  Skills:
+  - effect:particles{p=crit;amount=20;speed=0;hS=0.2;vS=0.2} @origin
+IceBolt-Hit:
+  Skills:
+  - damage{a=10}
+  - potion{type=SLOW;duration=100;lvl=2}
+
+IceBolt:
+  Skills:
+  - effect:particleline{particle=reddust;color=#6699CC;amount=10;fromOrigin=true;y=0.5} @target
+  - damage{a=0.1;pkb=true}
+  - prison{m=ICE;d=20;}
+  
+
+Meteor:
+  Skills:
+  - message{msg="<mob.name>&e begins casting a spell."} @PIR{r=15}
+  - potion{type=SLOW;d=60;level=7;} @self
+  - delay 60
+  - message{m="&eA meteor slams into &f<target.name>."} @PIR{r=20}
+  - effect:particles{p=cloud;vs=1;hs=1;a=50;s=0.01;y=20;}
+  - effect:particles{p=reddust;vs=1;hs=1;a=100;s=0.01;y=20;}
+  - delay 1
+  - effect:particles{p=cloud;vs=1;hs=1;a=50;s=0.01;y=18;}
+  - effect:particles{p=reddust;vs=1;hs=1;a=100;s=0.01;y=18;}
+  - delay 1
+  - effect:particles{p=cloud;vs=1;hs=1;a=50;s=0.01;y=16;}
+  - effect:particles{p=reddust;vs=1;hs=1;a=100;s=0.01;y=16;}
+  - delay 1
+  - effect:particles{p=cloud;vs=1;hs=1;a=50;s=0.01;y=14;}
+  - effect:particles{p=reddust;vs=1;hs=1;a=100;s=0.01;y=14;}
+  - delay 1
+  - effect:particles{p=cloud;vs=1;hs=1;a=50;s=0.01;y=12;}
+  - effect:particles{p=reddust;vs=1;hs=1;a=100;s=0.01;y=12;}
+  - delay 1
+  - effect:particles{p=cloud;vs=1;hs=1;a=50;s=0.01;y=10;}
+  - effect:particles{p=reddust;vs=1;hs=1;a=100;s=0.01;y=10;}
+  - delay 1
+  - effect:particles{p=cloud;vs=1;hs=1;a=50;s=0.01;y=8;}
+  - effect:particles{p=reddust;vs=1;hs=1;a=100;s=0.01;y=8;}
+  - delay 1
+  - effect:particles{p=cloud;vs=1;hs=1;a=50;s=0.01;y=6;}
+  - effect:particles{p=reddust;vs=1;hs=1;a=100;s=0.01;y=6;}
+  - delay 1
+  - effect:particles{p=cloud;vs=1;hs=1;a=50;s=0.01;y=4;}
+  - effect:particles{p=reddust;vs=1;hs=1;a=100;s=0.01;y=4;}
+  - delay 1
+  - effect:particles{p=cloud;vs=1;hs=1;a=50;s=0.01;y=2;}
+  - effect:particles{p=reddust;vs=1;hs=1;a=100;s=0.01;y=2}
+  - delay 1
+  - effect:particles{p=flame;vs=1;hs=3;a=1000;s=0.01;}
+  - effect:particles{p=lava;vs=2;hs=1;a=100;s=1;}
+  - effect:particles{p=lava;vs=1;hs=1;a=100;s=1;}
+  - effect:particles{p=reddust;vs=1;hs=3;a=500;s=0.01;}
+  - effect:sound{s=entity.ghast.fireball;v=1;p=1;}
+  - throw{velocity=3;velocityY=3}
+  - potion{type=slow,duration=20;level=7;}
+  - damage{a=20;ignorearmor=true;}
+
+MultiShottest:
+  Skills:
+  - projectile{onTick=IceBolt-Tick;onHit=IceBolt-Hit;v=12;i=1;hR=2;vR=1;g=0.5;d=500;tyo=50}
+IceBolt-Tick:
+  Skills:
+  - effect:particles{p=reddust;color=#6699CC;amount=1;speed=0;hS=0.2;vS=0.2} @origin
+IceBolt-Hit:
+  Skills:
+  - damage{a=10}
+  - potion{type=SLOW;duration=100;lvl=2}
