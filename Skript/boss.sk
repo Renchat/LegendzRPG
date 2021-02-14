@@ -1,0 +1,51 @@
+function boss(v:entity, e:number, a:player, m:number, coin:number, loot:number, core:text, r1:text, c1:number, r2:text, c2:number, r3:text, c3:number, r4:text, c4:number, r5:text, c5:number, r6:text, c6:number, i:text):
+    death({_v})
+    wait 5 ticks
+    set {_uuid} to {_a}'s uuid
+    set {_bossuuid} to {_v}'s uuid
+    set {_exp} to {_e} * {booster::exp}
+    add {_exp} to {exp::%{_uuid}%}
+    levelup({_a})
+    send action bar "&6[&e%{level::%{_uuid}%}%&6] &aProgress: &e%{exp::%{_uuid}%}%/%{expforlvlup::%{_uuid}%}%" to {_a}
+    play sound "entity.experience_orb.pickup" at volume 0.3 to {mostdamage::entity::%{_bossuuid}%::HDP}
+    execute console command "/mm i give -s %{_a}% Coin %{_coin}%"
+    add {_m}*{booster::money} to {_a}'s balance
+    message "&a+$%{_m}*{booster::money}%" to {_a}
+    chance of (1.75+(0.05*{_loot}))%:
+        execute console command "/mm i give -s %{mostdamage::entity::%{_bossuuid}%::HDP}% %{_core}%"
+        message "&aReceived %{_core}% From Most Damaging Player Reward" to {_a}
+        set {_dropped} to 1
+    if {_dropped} is not 1:
+        chance of {_c1}%:
+            execute console command "/mm i give -s %{mostdamage::entity::%{_bossuuid}%::HDP}% %{_r1}%"
+            message "&aReceived %{_r1}% From Most Damaging Player Reward" to {_a}
+            set {_dropped} to 1
+    if {_dropped} is not 1:
+        chance of {_c2}%:
+            execute console command "/mm i give -s %{mostdamage::entity::%{_bossuuid}%::HDP}% %{_r2}%"
+            message "&aReceived %{_r2}% From Most Damaging Player Reward" to {_a}
+            set {_dropped} to 1
+    if {_dropped} is not 1:
+        chance of {_c3}%:
+            execute console command "/mm i give -s %{mostdamage::entity::%{_bossuuid}%::HDP}% %{_r3}%"
+            message "&aReceived %{_r3}% From Most Damaging Player Reward" to {_a}
+            set {_dropped} to 1
+    if {_dropped} is not 1:
+        chance of {_c4}%:
+            execute console command "/mm i give -s %{mostdamage::entity::%{_bossuuid}%::HDP}% %{_r4}%"
+            message "&aReceived %{_r4}% From Most Damaging Player Reward" to {_a}
+            set {_dropped} to 1
+    if {_dropped} is not 1:
+        chance of {_c5}%:
+            execute console command "/mm i give -s %{mostdamage::entity::%{_bossuuid}%::HDP}% %{_r5}%"
+            message "&aReceive %{_r5}% From Most Damaging Player Reward" to {_a}
+            set {_dropped} to 1
+    if {_dropped} is not 1:
+        chance of {_c6}%:
+            execute console command "/mm i give -s %{mostdamage::entity::%{_bossuuid}%::HDP}% %{_r6}%"
+            message "&aReceive %{_r6}% From Most Damaging Player Reward" to {_a}
+            set {_dropped} to 1
+    loop all players in radius 10 around {_v}:
+        message "&c&l%{mostdamage::entity::%{_bossuuid}%::HDP}% Got Most Damaging Player Reward" to loop-player
+    delete {mostdamage::entity::%{_bossuuid}%::HDP}
+    add 1 to {achievements::%{_uuid}%::%{_i}%}

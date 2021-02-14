@@ -1,0 +1,91 @@
+command /gemshop:
+    trigger:
+        open virtual chest with size 2 named "Gem Shop" to player
+        format gui slot 0 of player with paper named "&6&lLord &7(Right Click)" with lore "&a&l150 Gems" to run:
+            if {gem::%player's uuid%} >= 150:
+                subtract 150 from {gem::%player's uuid%}
+                give paper named "&6&lLord &7(Right Click)" to player
+                loop all players:
+                    if player has permission "essentials.op":
+                        message "&4[Staff] &a%player% &aPurchased Lord Rank" to loop-player
+            else:
+                message "&cNot enough Gem"
+        format gui slot 1 of player with paper named "&e&lKing &7(Right Click)" with lore "&a&l750 Gems" to run:
+            if {gem::%player's uuid%} >= 750:
+                subtract 750 from {gem::%player's uuid%}
+                give paper named "&e&lKing &7(Right Click)" to player
+                loop all players:
+                    if player has permission "essentials.op":
+                        message "&4[Staff] &a%player% &aPurchased King Rank" to loop-player
+            else:
+                message "&cNot enough Gem"
+        format gui slot 2 of player with paper named "&8&lD&7&le&8&lm&7&li&e&lG&f&lo&e&ld &7(Right Click)" with lore "&a&l10000 Gems" to run:
+            if {gem::%player's uuid%} >= 10000:
+                subtract 10000 from {gem::%player's uuid%}
+                give paper named "&8&lD&7&le&8&lm&7&li&e&lG&f&lo&e&ld &7(Right Click)" to player
+                loop all players:
+                    if player has permission "essentials.op":
+                        message "&4[Staff] &a%player% &aPurchased Demigod Rank" to loop-player
+            else:
+                message "&cNot enough Gem"
+        format gui slot 3 of player with end crystal named "&a&lLow Teir Pet" with lore "&a&l50 Gems" to run:
+            if {gem::%player's uuid%} >= 50:
+                subtract 50 from {gem::%player's uuid%}
+                give end crystal named "&a&lLow Teir Pet" with hidden enchantments to player
+                loop all players:
+                    if player has permission "essentials.op":
+                        message "&4[Staff] &a%player% &aPurchased Low Teir Pet" to loop-player
+            else:
+                message "&cNot enough Gem"
+        set {_s} to 9
+        loop {weekly::*}:
+            add 1 to {_n}
+            set {_value%{_n}%} to loop-value
+            format gui slot {_s} of player with loop-value to run:
+                set {_t} to {_value%{_n}%}
+                set {_l} to "%lore of {_t}%"
+                set {_item::*} to {_l} split by "||"
+                loop {_item::*}:
+                    if "%{_item::%loop-index-2%}%" contains "Gems":
+                        set {_slot} to loop-index-2
+                        set {_slot} to {_slot} parsed as number
+                        set {_price} to line {_slot} of lore of {_t}
+                        replace every "&a&l" and " Gems" in {_price} with ""
+                        set {_price} to {_price} parsed as number
+                        if {_price} < {gem::%player's uuid%}:
+                            subtract {_price} from {gem::%player's uuid%}
+                            give {_t} to player
+                            loop all players:
+                                if player has permission "essentials.op":
+                                    message "&4[Staff] &a%player% &aPurchased Low Teir Pet" to loop-player
+                        else:
+                            message "&c Not enough Gem"
+            add 1 to {_s}
+command /rerollweekly:
+    permission: purple.weekly
+    trigger:
+        clear {weekly::*}
+        loop {chest::*}:
+            add loop-value to {_reward::*}
+        remove all air from {_reward::*}
+        loop 9 times:
+            set {_d} to random element out of {_reward::*}
+            set {weekly::%loop-value%} to {_d}
+            remove {_d} from {_reward::*}
+command /editweekly [<number=1>]:
+    permission: purple.weekly
+    trigger:
+        open virtual chest inventory named "Editor" with size 3 to player
+        set {_slot} to 1
+        loop 26 times:
+            set slot {_slot} of current inventory of player to {chest::%{_slot}%}
+            add 1 to {_slot}
+        format gui slot 0 of player with anvil to execute player command "/savechest %arg 1%"
+command /savechest [<number=1>]:
+    permission: purple.weekly
+    trigger:
+        set {_slot} to 1
+        loop 26 times:
+            set {chest::%{_slot}%} to slot {_slot} of current inventory of player
+            add 1 to {_slot}
+        send "&aSaved chest" to player

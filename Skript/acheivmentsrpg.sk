@@ -1,0 +1,161 @@
+on rightclick holding item frame:
+	if name of player's held item is "&b&lMenu &7(Right Click)":
+		#START
+		open virtual chest with size 3 named "&bMenu" to player
+		format gui slot 0,1,2,3,4,5,6,7,8,9,11,13,15,17,18,19,20,21,22,23,24,25 and 26 of player with light blue stained glass pane named " "
+		format gui slot 10 of player with ender eye named "&d&lTeleportation" to run:
+			open virtual chest with size 3 named "&dTeleport" to player
+			format gui slot 0,1,2,3,4,5,6,7,8,9,17,18,19,20,21,22,23,24,25 and 26 of player with light blue stained glass pane named " "
+			format gui slot 10 of player with diamond sword named "&a&lLevels" to run:
+				open virtual chest with size 3 named "&aLevels" to player
+				loop 7 times:
+					if player has permission "essentials.warps.lv%loop-value%":
+						set {_n} to loop-value
+						format gui slot (loop-value - 1) of player with lime stained glass named "&a&lLevel %loop-value%" to run:
+							if player has permission "essentials.warps.lv%{_n}%":
+								if player doesn't have permission "essentials.warps.lv%{_n}+2%":
+									execute console command "/warp lv%{_n}% %player%"
+								else:
+									send "&cYour Level is too high for this level"
+									if player has permission "essentials.warps.lv%{_n}%":
+										execute console command "/manudelp %player% essentials.warps.Lv%{_n}%"
+									if player has permission "essentials.op":
+										execute console command "/warp lv%{_n}% %player%"
+					else:
+						format gui slot (loop-value - 1) of player with red stained glass named "&c&lLevel %loop-value%"
+			format gui slot 11 of player with spruce door named "&b&lCity" to run:
+				execute console command "/warp city %player%"
+			format gui slot 12 of player with diamond pickaxe named "&8&lMine" to run:
+				execute console command "/warp mine %player%"
+			format gui slot 13 of player with totem of undying named "&b&lAFK Chamber" to run:
+				execute console command "/warp afk %player%"
+			format gui slot 14 of player with eye of ender named "&c&lBoss Teleportation Room" to run:
+				open virtual chest with size 3 named "&cBoss Room" to player
+				format gui slot 1 of player with oak door named "&c&lRoom 1" to run:
+					execute console command "/warp Room1 %player%"
+				format gui slot 2 of player with oak door named "&c&lRoom 2" to run:
+					execute console command "/warp Room2 %player%"
+				format gui slot 3 of player with oak door named "&c&lRoom 3" to run:
+					execute console command "/warp Room3 %player%"
+				format gui slot 4 of player with oak door named "&c&lRoom 4" to run:
+					execute console command "/warp Room4 %player%"
+				format gui slot 5 of player with oak door named "&c&lRoom 5" to run:
+					execute console command "/warp Room5 %player%"
+				format gui slot 6 of player with oak door named "&c&lRoom 6" to run:
+					execute console command "/warp Room6 %player%"
+				format gui slot 7 of player with oak door named "&c&lRoom 7" to run:
+					execute console command "/warp Room7 %player%"
+				format gui slot 8 of player with oak door named "&c&lRoom 8" to run:
+					execute console command "/warp Room8 %player%"
+			format gui slot 15 of player with barrier named "&4&lComing Soon"
+			format gui slot 16 of player with pufferfish named "&d&lEvent" to run:
+				execute console command "/warp event %player%"
+		format gui slot 12 of player with player's skull named "&a&lProfile" to run:
+			open virtual chest with size 6 named "&aProfile" to player
+			format gui slot 16 of player with player's skull named "&a&lCurrency"
+			format gui slot 10 of player with player's skull named "&a&lStats"
+			format gui slot 25 of player with emerald named "&aGem: %{gem::%player's uuid%}%"
+			format gui slot 19 of player with diamond pickaxe named "&bMining Level: %{level::%player's uuid%}%"
+			format gui slot 34 of player with paper named "&e%player's balance%"
+			format gui slot 28 of player with experience bottle named "&bExp Level: %player's level%"
+			format gui slot 13 of player with book named "&a&lCurrent Skill Points: %{skillpoints::%player's uuid%}%"
+			format gui slot 31 of player with iron sword named "&c+1 Strength" with lore "&e&lCurrent amount of Strength: %{skillpoints::%player's uuid%::strength}%" to run:
+				execute console command "/skills add %player% strength"
+			format gui slot 32 of player with sugar named "&c+1 Speed" with lore "&e&lCurrent amount of Speed: %{skillpoints::%player's uuid%::speed}%" to run:
+				execute console command "/skills add %player% speed"
+			format gui slot 30 of player with iron chestplate named "&c+1 Defense" with lore "&e&lCurrent amount of Defense: %{skillpoints::%player's uuid%::defense}%" to run:
+				execute console command "/skills add %player% defense"
+		format gui slot 14 of player with Enchanted book named "&e&lAchievements" to run:
+			open virtual chest with size 6 named "&bAcheivments" to player
+			ma(player, "zombie", 0, 475, false, "f", "f", "f", "f")
+			ma(player, "husk", 2, 475, false, "f", "f", "f", "f")
+			ma(player, "stray", 3, 500, false, "f", "f", "f", "f")
+			ma(player, "wolf", 5, 600, false, "f", "f", "f", "f")
+			ma(player, "polarbear", 6, 650, false, "f", "f", "f", "f")
+			ma(player, "rhinobeetle", 8, 700, false, "f", "f", "f", "f")
+			ma(player, "skeleton", 9, 775, false, "f", "f", "f", "f")
+			ma(player, "minerpillager", 11, 830, false, "f", "f", "f", "f")
+			ma(player, "minerzombie", 12, 850, false, "f", "f", "f", "f")
+			ma(player, "infernalpig", 14, 900, false, "f", "f", "f", "f")
+			ma(player, "imp", 15, 1000, false, "f", "f", "f", "f")
+			ma(player, "spider", 17, 950, false, "f", "f", "f", "f")
+			ma(player, "cavespider", 18, 1000, false, "f", "f", "f", "f")
+			ma(player, "zombie", 1, 1000, true, "husk", "zombie", "1", "enhancedzombie")
+			ma(player, "husk", 4, 1500, true, "stray", "husk", "2", "enhancedhusk")
+			ma(player, "wolf", 7, 2250, true, "polarbear", "stray", "3", "enhancedstray")
+			ma(player, "rhinobeetle", 10, 2850, true, "skeleton", "rhinobeetle", "4", "ancientskeleton")
+			ma(player, "minerpillager", 13, 3000, true, "minerzombie", "minerpillager", "5", "silvery")
+			ma(player, "infernalpig", 16, 3750, true, "imp", "infernalpig", "6", "demon")
+			ma(player, "spider", 19, 4750, true, "cavespider", "spider", "7", "spoodaman")
+			miningAchievement(player, "lapisore", 50, 500)
+			miningAchievement(player, "lapisblock", 51, 750)
+			miningAchievement(player, "redstoneore", 52, 1000)
+			miningAchievement(player, "redstoneblock", 53, 2500)
+		format gui slot 16 of player with barrier named "&cComing Soon"
+function ma(p: player, t: text, s: number, m: number, b: boolean, d: text, v: text, g: text, boss: text):
+	set {_q} to {_p}'s uuid
+	if {achievements::%{_q}%::%{_t}%} is not set:
+		set {achievements::%{_q}%::%{_t}%} to 0
+	if {achievements::%{_q}%::%{_t}%slayer} is not set:
+		set {achievements::%{_q}%::%{_t}%slayer} to 0
+	if {_b} is false:
+		set {_o} to 250*2^{achievements::%{_q}%::%{_t}%slayer}
+		set {_h} to {_m}*2^{achievements::%{_q}%::%{_t}%slayer}
+		set {_u} to {achievements::%{_q}%::%{_t}%slayer}+1
+		if {achievements::%{_q}%::%{_t}%} >= {_o}:
+			format gui slot {_s} of {_p} with green stained glass pane named "&a&l%{_t}% Slayer [%{_u}%]" with lore "&6Kill %{_o}% %{_t}%s", "&e+%{_h}% Exp" and "&d&lClaimable" to run:
+				add {_h} to {exp::%{_q}%}
+				add 1 to {achievements::%{_q}%::%{_t}%slayer}
+				send "&a&lAchievement Complete!" to {_p}
+				send "&6Reward: &e%{_h}% Exp" to {_p}
+				ma({_p}, {_t}, {_s}, {_m}, {_b}, {_d}, {_v}, {_g}, {_boss})
+		else:
+			format gui slot {_s} of {_p} with red stained glass pane named "&c&l%{_t}% Slayer [%{_u}%]" with lore "&6Kill %{_o}% %{_t}%s", "&e+%{_h}% Exp" and "&d%{achievements::%{_q}%::%{_t}%}%/%{_o}%"
+	else:
+		if {achievements::%{_q}%::masterlv%{_g}%} is not set:
+			set {achievements::%{_q}%::masterlv%{_g}%} to 1
+		set {_h} to {_m}*2^{achievements::%{_q}%::masterlv%{_g}%}
+		set {_o} to 250*2^{achievements::%{_q}%::masterlv%{_g}%}
+		set {_o2} to 100*2^{achievements::%{_q}%::masterlv%{_g}%}
+		set {_o3} to 10*2^{achievements::%{_q}%::masterlv%{_g}%}
+		set {_u} to {achievements::%{_q}%::masterlv%{_g}%}+1
+		if {achievements::%{_q}%::%{_d}%} is not set:
+			set {achievements::%{_q}%::%{_d}%} to 0
+		if {achievements::%{_q}%::%{_v}%} is not set:
+			set {achievements::%{_q}%::%{_v}%} to 0
+		if {achievements::%{_q}%::%{_boss}%} is not set:
+			set {achievements::%{_q}%::%{_boss}%} to 0
+		if {achievements::%{_q}%::%{_t}%} >= {_o}:
+			if {achievements::%{_q}%::%{_d}%} >= {_o2}:
+				if {achievements::%{_q}%::%{_boss}%} >= {_o3}:
+					format gui slot {_s} of {_p} with green stained glass pane named "&a&lMaster Level %{_g}% [%{_u}%]" with lore "&6Kill %{_o}% %{_t}%, %{_o2}% %{_d}%, and %{_o3}% %{_boss}%", "&e+%{_h}% Exp" and "&d&lClaimable" to run:
+						add {_h} to {exp::%{_q}%}
+						add 1 to {achievements::%{_q}%::masterlv%{_g}%}
+						send "&a&lAchievement Complete!" to {_p}
+						send "&6Reward: &e%{_h}% Exp" to {_p}
+						ma({_p}, {_t}, {_s}, {_m}, {_b}, {_d}, {_v}, {_g}, {_boss})
+				else:
+					format gui slot {_s} of {_p} with red stained glass pane named "&c&lMaster Level %{_g}% [%{_u}%]" with lore "&6Kill %{_o}% %{_t}%, %{_o2}% %{_d}%, and %{_o3}% %{_boss}%", "&e+%{_h}% Exp", "&d%{achievements::%{_q}%::%{_t}%}%/%{_o}%", "&d%{achievements::%{_q}%::%{_d}%}%/%{_o2}%" and "&d%{achievements::%{_q}%::%{_boss}%}%/%{_o3}%"
+			else:
+				format gui slot {_s} of {_p} with red stained glass pane named "&c&lMaster Level %{_g}% [%{_u}%]" with lore "&6Kill %{_o}% %{_t}%, %{_o2}% %{_d}%, and %{_o3}% %{_boss}%", "&e+%{_h}% Exp", "&d%{achievements::%{_q}%::%{_t}%}%/%{_o}%", "&d%{achievements::%{_q}%::%{_d}%}%/%{_o2}%" and "&d%{achievements::%{_q}%::%{_boss}%}%/%{_o3}%"
+		else:
+			format gui slot {_s} of {_p} with red stained glass pane named "&c&lMaster Level %{_g}% [%{_u}%]" with lore "&6Kill %{_o}% %{_t}%, %{_o2}% %{_d}%, and %{_o3}% %{_boss}%", "&e+%{_h}% Exp", "&d%{achievements::%{_q}%::%{_t}%}%/%{_o}%", "&d%{achievements::%{_q}%::%{_d}%}%/%{_o2}%" and "&d%{achievements::%{_q}%::%{_boss}%}%/%{_o3}%"
+
+function miningAchievement(p: player, t: text, s: number, m: number):
+	set {_q} to {_p}'s uuid
+	if {achievements::%{_q}%::%{_t}%} is not set:
+		set {achievements::%{_q}%::%{_t}%} to 0
+	if {achievements::%{_q}%::%{_t}%miner} is not set:
+		set {achievements::%{_q}%::%{_t}%miner} to 0
+	set {_o} to 250*2^{achievements::%{_q}%::%{_t}%miner}
+	set {_h} to {_m}*2^{achievements::%{_q}%::%{_t}%miner}
+	set {_u} to {achievements::%{_q}%::%{_t}%miner}+1
+	if {achievements::%{_q}%::%{_t}%} >= {_o}:
+		format gui slot {_s} of {_p} with green stained glass pane named "&a&l%{_t}% Miner [%{_u}%]" with lore "&6Kill %{_o}% %{_t}%s", "&e+%{_h}% Exp" and "&d&lClaimable" to run:
+			add {_h} to {exp::%{_q}%}
+			add 1 to {achievements::%{_q}%::%{_t}%miner}
+			send "&a&lAchievement Complete!" to {_p}
+			send "&6Reward: &e%{_h}% Exp" to {_p}
+			miningAchievement({_p}, {_t}, {_s}, {_m})
+	else:
+		format gui slot {_s} of {_p} with red stained glass pane named "&c&l%{_t}% Miner [%{_u}%]" with lore "&6Kill %{_o}% %{_t}%s", "&e+%{_h}% Exp" and "&d%{achievements::%{_q}%::%{_t}%}%/%{_o}%"

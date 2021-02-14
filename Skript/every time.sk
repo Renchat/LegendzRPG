@@ -1,0 +1,85 @@
+every 2 minutes:
+    broadcast "&dNew Player can gain 0.05x Extra booster for everyone (/booster)"
+
+
+every 1 second:
+    if {Arsyg} is greater than 0:
+        subtract 1 from {Arsyg}
+    
+
+every 1 minutes:
+    if {booster::money::time} > 0:
+        subtract 1 from {booster::money::time}
+    if {booster::money::time} = 0:
+        set {booster::money} to 1
+    if {booster::money::time} = 10:
+        broadcast "&4&lLegendz&a&lRPG &e&L>> &6&lBooster Time: %{booster::money}%x Money Booster 10 Minutes Left"
+    if {booster::exp::time} > 0:
+        subtract 1 from {booster::exp::time}
+    if {booster::exp::time} = 0:
+        set {booster::exp} to 1
+    if {booster::exp::time} = 10:
+        broadcast "&4&lLegendz&a&lRPG &e&L>> &6&lBooster Time: %{booster::exp}%x EXP Booster 10 Minutes Left"
+    loop offline players:
+        if {cf::%loop-offline player's uuid%::time} is set:
+            subtract 1 from {cf::%loop-offline player's uuid%::time}
+        if {cf::%loop-offline player's uuid%::time} <= 0:
+            add 1 to {cf::%loop-offline player's uuid%}
+            set {cf::%loop-offline player's uuid%::time} to 60
+            if loop-offline player has permission "is.lord":
+                add 1 to {cf::%loop-offline player's uuid%}
+                if loop-offline player has permission "is.king":
+                    add 1 to {cf::%loop-offline player's uuid%}
+                    if loop-offline player has permission "is.demigod":
+                        add 2 to {cf::%loop-offline player's uuid%}
+
+command /leaderboardupdate:
+    trigger:
+        loop all players:
+            set {leveltop::%loop-player%} to {level::%loop-player's uuid%}
+            loop {leveltop::*}:
+                add 1 to {_size}
+                if {_low.to.high.list::%loop-value-2%} is not set:
+                    set {_low.to.high.list::%loop-value-2%} to loop-index
+                else:
+                    set {_n} to 0
+                    loop {_size} times:
+                        set {_n} to {_n}+1
+                        {_low.to.high.list::%loop-value-2%.%{_n}%} is not set
+                        set {_low.to.high.list::%loop-value-2%.%{_n}%} to loop-index
+                        stop loop
+            wait 1 tick
+            set {_n} to size of {_low.to.high.list::*}
+            loop {_low.to.high.list::*}:
+                set {_high.to.low.list::%{_n}%} to loop-value-2
+                set {_n} to {_n}-1
+            wait 1 tick
+            loop {_high.to.low.list::*}:
+                add 1 to {_result}
+                if {_result} = 1:
+                    execute console command "/hologram setline leaderboard %{_result}+1% &4&l%{_result}%. %loop-value-2% | %{leveltop::%loop-value-2%}% Levels"
+                if {_result} <= 4:
+                    if {_result} > 1:
+                        execute console command "/hologram setline leaderboard %{_result}+1% &c&l%{_result}%. %loop-value-2% | %{leveltop::%loop-value-2%}% Levels"
+                if {_result} <= 7:
+                    if {_result} > 4:
+                        execute console command "/hologram setline leaderboard %{_result}+1% &6&l%{_result}%. %loop-value-2% | %{leveltop::%loop-value-2%}% Levels"
+                if {_result} <= 10:
+                    if {_result} > 7:
+                        execute console command "/hologram setline leaderboard %{_result}+1% &e&l%{_result}%. %loop-value-2% | %{leveltop::%loop-value-2%}% Levels"
+                if {_result} is 10:
+                    stop
+
+every 15 minutes:
+    execute console command "/leaderboardupdate"
+
+every 10 second:
+  loop all players:
+    set title of loop-player's scoreboard to "&4&lLegendz&a&lRPG"
+    set line 8 of loop-player's scoreboard to "&7Bal: &b%loop-player's balance%"
+    set line 7 of loop-player's scoreboard to "&7Level: &6%{level::%loop-player's uuid%}% &7Gem: &a%{gem::%loop-player's uuid%}%"
+    set line 6 of loop-player's scoreboard to "&cStrength&7: &c%{skillpoints::%loop-player's uuid%::strength}% &bSpeed&7: &b%{skillpoints::%loop-player's uuid%::speed}%"
+    set line 5 of loop-player's scoreboard to "&6Defense&7: &6%{skillpoints::%loop-player's uuid%::defense}% &dMagic&7: &dN/A"
+    set line 4 of loop-player's scoreboard to "&5E&dX&5P&7: &d%{booster::exp}%x &c%{booster::exp::time}% Min"
+    set line 3 of loop-player's scoreboard to "&eMoney&7: &e%{booster::money}%x &c%{booster::money::time}% Min"
+    set line 2 of loop-player's scoreboard to "&eLegendzRPG.minehut.gg"

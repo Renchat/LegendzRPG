@@ -1,0 +1,181 @@
+on first join:
+    set {gem::%player's uuid%} to 0
+    set {level::%player's uuid%} to 0
+    set {skillpoints::%player's uuid%::strength} to 0
+    set {skillpoints::%player's uuid%::speed} to 0
+    set {skillpoints::%player's uuid%::defense} to 0
+    add 1 to {totalplayer}
+    broadcast "&b｡☆✼★━━★✼☆｡ &aWelcome &a%player% &c[&c%{totalplayer}%&c] &f｡&b☆✼★━━★✼☆｡"
+    wait 1 second
+    execute console command "/warp City %player%"
+    execute console command "/kit start %player%"
+    execute console command "/spawnpoint %player% -81,5,716"
+    wait 2 seconds
+    if {booster::exp} = 1:
+        set {booster::exp::time} to 60
+    if {booster::money} = 1:
+        set {booster::money::time} to 60
+    if {booster::exp} != 10:
+        add 0.05 to {booster::exp}
+    if {booster::money} != 10:
+        add 0.05 to {booster::money}
+    add 1 to {booster::money::time}
+    add 1 to {booster::exp::time}
+    if {booster::money} != 15:
+        if {booster::exp} != 15:
+            broadcast "&4&lLegendz&a&lRPG &e&L>> &aPlayer %player% &aadded to first time login chain booster +0.05x to both booster EXP: %{booster::exp}%x &aMoney: %{booster::money}%x"
+on join:
+    execute console command "/warp City %player%"
+    send title "" for 1 seconds
+    if player has permission "is.op":
+        execute player command "/gm 1 %player%"
+    while player is online:
+        wait 3 seconds
+        world is "RPG"
+        set {_a} to amount of end crystal in player's inventory
+        if {_a} = 1:
+            loop all items in player's inventory:
+                wait 1 tick
+                loop-item is end crystal
+                if name of loop-item is "&a&lLow Teir Pet":
+                    set {_n} to 3*level of efficiency of loop-item + 3
+                    add {_n} to player's balance
+                    if line 2 of lore of loop-item is not set:
+                        set line 2 of lore of loop-item to "&6&lHunger: 100%%"
+                    if line 2 of lore of loop-item is set:
+                        set {_hunger} to line 2 of lore of loop-item
+                        replace every "&6&lHunger: " and "%%" in {_hunger} with ""
+                        set {_hunger} to {_hunger} parsed as number
+                        subtract 0.01 from {_hunger}
+                        set line 2 of lore of loop-item to "&6&lHunger: %{_hunger}%%%"
+                        if {_hunger} is less than 0:
+                            delete loop-item
+                        if player has permission "is.lord":
+                            if {_hunger} is less than 1:
+                                if player's inventory contains 1 of nether star named "&6&lPet Food":
+                                    remove 1 of nether star named "&6&lPet Food" from player's inventory
+                                    set line 2 of lore of loop-item to "&6&lHunger: 100%%"
+                                    message "&a&lYour Pet's hunger has been replenished." to player
+                                else:
+                                    message "&a&lYour Pet's hunger is below 1%% FEED HIM QUICK" to player
+        else if {_a} > 1:
+            message "&c&lYou can only have 1 Pet in your inventory!" to player
+        wait 1 seconds
+        loop all blocks in radius 5 around the player:
+            loop-block is not air
+            if glass is loop-block:
+                if block under loop-block is diamond block:
+                    add 7.5*{booster::money} to player's balance
+                    send action bar "&6+ $%7.5*{booster::money}%" to player
+                    chance of 0.1%:
+                        add 1 to {gem::%player's uuid%}
+                        broadcast "&4&lLegendz&a&lRPG &e&l>> &c&l%player% &c&lHas Obtained a Gem From Tier 1 Generator!"
+            if white stained glass is loop-block:
+                if block under loop-block is diamond block:
+                    add 10*{booster::money} to player's balance
+                    send action bar "&6+ $%10*{booster::money}%" to player
+                    chance of 0.1%:
+                        add 1 to {gem::%player's uuid%}
+                        broadcast "&4&lLegendz&a&lRPG &e&l>> &c&l%player% &c&lHas Obtained a Gem From Tier 2 Generator!"
+            if bedrock is loop-block:
+                if block under loop-block is diamond block:
+                    add (0.5 + (0.03*{level::%player's uuid%})*{booster::money}) to player's balance
+                    send action bar "&6+ $%(0.5 + (0.0369*{level::%player's uuid%})*{booster::money})%" to player
+            if light blue stained glass is loop-block:
+                if block under loop-block is diamond block:
+                    add 12.5*{booster::money} to player's balance
+                    send action bar "&6+ $%12.5*{booster::money}%" to player
+                    chance of 0.1%:
+                        add 1 to {gem::%player's uuid%}
+                        broadcast "&4&lLegendz&a&lRPG &e&l>> &c&l%player% &c&lHas Obtained a Gem From Tier 3 Generator!"
+            if brown stained glass is loop-block:
+                if block under loop-block is diamond block:
+                    add 15*{booster::money} to player's balance
+                    send action bar "&6+ $%15*{booster::money}%" to player
+                    chance of 0.1%:
+                        add 1 to {gem::%player's uuid%}
+                        broadcast "&4&lLegendz&a&lRPG &e&l>> &c&l%player% &c&lHas Obtained a Gem From Tier 4 Generator!"
+            if red stained glass is loop-block:
+                if block under loop-block is redstone block:
+                    add 17.5*{booster::money} to player's balance
+                    send action bar "&6+ $%17.5*{booster::money}%" to player
+                    chance of 0.1%:
+                        add 1 to {gem::%player's uuid%}
+                        broadcast "&4&lLegendz&a&lRPG &e&l>> &c&l%player% &c&lHas Obtained a Gem From Tier 6 Generator!"
+            if gray stained glass is loop-block:
+                if block under loop-block is diamond block:
+                    add 20*{booster::money} to player's balance
+                    send action bar "&6+ $%20*{booster::money}%" to player
+                    chance of 0.1%:
+                        add 1 to {gem::%player's uuid%}
+        set {_h} to "%lore of player's helmet%"
+        set {_helmet::*} to {_h} split by "||"
+        set {_c} to "%lore of player's chestplate%"
+        set {_chestplate::*} to {_c} split by "||"
+        set {_l} to "%lore of player's legging%"
+        set {_legging::*} to {_l} split by "||"
+        set {_b} to "%lore of player's boots%"
+        set {_boots::*} to {_b} split by "||"
+        set {_o} to "%lore of player's offhand tool%"
+        set {_offhand::*} to {_o} split by "||"
+        loop {_helmet::*}:
+            if "%{_helmet::%loop-index%}%" contain "&bLv ":
+                set {_slot} to loop-index
+                set {_slot} to {_slot} parsed as number
+                set {_requirement} to line {_slot} of lore of player's helmet
+                replace every "&bLv " and "+" in {_requirement} with ""
+                set {_requirement} to {_requirement} parsed as number
+                if {_requirement} is greater than {level::%player's uuid%}:
+                    give player's helmet to player
+                    set player's helmet to air
+                    message "&cYour Level is too LOW" to player
+                    stop loop
+        loop {_chestplate::*}:
+            if "%{_chestplate::%loop-index%}%" contain "&bLv ":
+                set {_slot} to loop-index
+                set {_slot} to {_slot} parsed as number
+                set {_requirement} to line {_slot} of lore of player's chestplate
+                replace every "&bLv " and "+" in {_requirement} with ""
+                set {_requirement} to {_requirement} parsed as number
+                if {_requirement} is greater than {level::%player's uuid%}:
+                    give player's chestplate to player
+                    set player's chestplate to air
+                    message "&cYour Level is too LOW" to player
+                    stop loop
+        loop {_legging::*}:
+            if "%{_legging::%loop-index%}%" contain "&bLv ":
+                set {_slot} to loop-index
+                set {_slot} to {_slot} parsed as number
+                set {_requirement} to line {_slot} of lore of player's leggings
+                replace every "&bLv " and "+" in {_requirement} with ""
+                set {_requirement} to {_requirement} parsed as number
+                if {_requirement} is greater than {level::%player's uuid%}:
+                    give player's leggings to player
+                    set player's leggings to air
+                    message "&cYour Level is too LOW" to player
+                    stop loop
+        loop {_boots::*}:
+            if "%{_boots::%loop-index%}%" contain "&bLv ":
+                set {_slot} to loop-index
+                set {_slot} to {_slot} parsed as number
+                set {_requirement} to line {_slot} of lore of player's boots
+                replace every "&bLv " and "+" in {_requirement} with ""
+                set {_requirement} to {_requirement} parsed as number
+                if {_requirement} is greater than {level::%player's uuid%}:
+                    give player's boots to player
+                    set player's boots to air
+                    message "&cYour Level is too LOW" to player
+                    stop loop
+        loop {_offhand::*}:
+            if "%{_offhand::%loop-index%}%" contain "&bLv ":
+                set {_slot} to loop-index
+                set {_slot} to {_slot} parsed as number
+                set {_requirement} to line {_slot} of lore of player's offhand tool
+                replace every "&bLv " and "+" in {_requirement} with ""
+                set {_requirement} to {_requirement} parsed as number
+                if {_requirement} is greater than {level::%player's uuid%}:
+                    give player's offhand tool to player
+                    set player's offhand tool to air
+                    message "&cYour Level is too LOW" to player
+                    stop loop
+        set player's walk speed to (0.2 + ({skillpoints::%player's uuid%::speed}*0.004))

@@ -1,0 +1,76 @@
+options:
+	prefix : &3&lC&b&lF &e&l>>
+
+command /cf [<text>] [<number>] [<text>]:
+    trigger:
+        set {_a} to random integer between 0 and 100
+        if {_a} > 50:
+            set {_a} to "Heads"
+        if {_a} < 49:
+            set {_a} to "Tails"
+        if {_a} = 50:
+            set {_a} to "Try Again"
+        set {_arg-3} to arg-3
+        if arg-3 is "heads" or "head" or "Head":
+            set {_arg-3} to "Heads"
+        if arg-3 is "tails" or "tail" or "Tail":
+            set {_arg-3} to "Tails"
+        if {cf::%player's uuid%} is not set:
+            set {cf::%player's uuid%} to 5
+            set {cf::%player's uuid%::time} to 60
+        if {cf::%player's uuid%::time} > 60:
+            set {cf::%player's uuid%::time} to 60
+        if arg-1 and arg-2 and arg-3 is set:
+            if {cf::%player's uuid%} > 0:
+                if arg-3 is "Heads" or "Tails":
+                    if arg-1 is "gem":
+                        if {gem::%player's uuid%} >= number-arg:
+                            number-arg > 0
+                            if {_a} is {_arg-3}:
+                                add number-arg to {gem::%player's uuid%}
+                                subtract 1 from {cf::%player's uuid%}
+                                message "{@prefix} &a%{cf::%player's uuid%}% &acoinflip left."
+                                broadcast "{@prefix} &a%player% &aWon &a%number-arg% &a%arg-1%"
+                            else if {_a} is "Try Again":
+                                message "{@prefix} &6&lTry again"
+                            else:
+                                subtract number-arg from {gem::%player's uuid%}
+                                broadcast "{@prefix} &a%player% &4LOST &a%number-arg% &a%arg-1%"
+                                subtract 1 from {cf::%player's uuid%}
+                                message "{@prefix} &a%{cf::%player's uuid%}% &acoinflip left."
+                        else:
+                            message "{@prefix} &cNot Enough %arg-1%"
+                    if arg-1 is "money":
+                        if player's balance >= number-arg and number-arg > 0:
+                            if {_a} is {_arg-3}:
+                                add number-arg to player's balance
+                                subtract 1 from {cf::%player's uuid%}
+                                message "{@prefix} &a%{cf::%player's uuid%}% &acoinflip left."
+                                if number-arg > 2500:
+                                    broadcast "{@prefix} &a%player% &aWon $%number-arg%"
+                                else:
+                                    message "{@prefix} &a%player% &aWon $%number-arg%"
+                            else if {_a} is "Try Again":
+                                message "{@prefix} &6&lTry again"
+                            else:
+                                subtract number-arg from player's balance
+                                subtract 1 from {cf::%player's uuid%}
+                                message "{@prefix} &a%{cf::%player's uuid%}% &acoinflip left."
+                                if number-arg > 2500:
+                                    broadcast "{@prefix} &a%player% &4LOST $%number-arg%"
+                                else:
+                                    message "{@prefix} &a%player% &4LOST $%number-arg%"
+                        else:
+                            message "{@prefix} &cNot Enough %arg-1%"
+                else:
+                    message "{@prefix} &c&lEnter Heads or Tails Correctly."
+            else:
+                message "{@prefix} &cYou don't have any coinflip left."
+        else:
+            message "&e/cf gem <amount> <Heads/Tails>"
+            message "&e/cf money <amount> <Heads/Tails>"
+            message "{@prefix} &6%{cf::%player's uuid%::time}% &6Online Minutes left till Coinflip Refill"
+        if arg-1 is "refill":
+            player has permission "essentials.op"
+            add 999 to {cf::%player's uuid%} 
+            message "{@prefix} &6Refilled Coinflip"

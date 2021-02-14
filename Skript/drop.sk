@@ -1,0 +1,3 @@
+on drop:
+    if event-item is item frame named "&b&lMenu &7(Right Click)":
+        cancel event

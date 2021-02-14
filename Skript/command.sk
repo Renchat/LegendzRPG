@@ -1,0 +1,679 @@
+command /testdamage:
+    permission: essentials.help
+    trigger:
+        if {%player%::testdamage} is "1":
+            set {%player%::testdamage} to "0"
+            message "&aYou have turned &cOFF &aDamage indicator"
+            stop
+        if {%player%::testdamage} is "0":
+            set {%player%::testdamage} to "1"
+            message "&aYou have turned &cON &aDamage indicator"
+            stop
+        if {%player%::testdamage} is not set:
+            set {%player%::testdamage} to "1"
+            message "&aYou have turned &cON &aDamage indicator"
+            stop
+
+command /skills [<text>] [<player>] [<text>]:
+    trigger:
+        if {skillpoints::%player-arg's uuid%} is greater than 0:
+            if arg-3 is "strength":
+                add 1 to {skillpoints::%player-arg's uuid%::strength}
+                subtract 1 from {skillpoints::%player-arg's uuid%}
+                message "&cStrength &6Leveled Up!" to player-arg
+                make player-arg execute command "/refreshgui"
+                open gui "Skill" to player-arg
+            if arg-3 is "speed":
+                if {skillpoints::%player-arg's uuid%::speed} is not 50:
+                    add 1 to {skillpoints::%player-arg's uuid%::speed}
+                    subtract 1 from {skillpoints::%player-arg's uuid%}
+                    message "&bSpeed &6Leveled Up!" to player-arg
+                    make player-arg execute command "/refreshgui"
+                    open gui "Skill" to player-arg
+                else:
+                    message "&c&lMax Speed" to player-arg
+            if arg-3 is "defense":
+                add 1 to {skillpoints::%player-arg's uuid%::defense}
+                subtract 1 from {skillpoints::%player-arg's uuid%}
+                message "&eDefense &6Leveled Up!" to player-arg
+                make player-arg execute command "/refreshgui"
+                open gui "Skill" to player-arg
+
+        else:
+            message "You dont have enough Skill Points" to player-arg
+
+command /tag:
+    permission: essentials.help
+    trigger:
+        create a new gui with id "Tag" with virtual chest inventory with size 3 named "&dTag":
+            format gui slot 0 with nametag named "&8[&f&lMILK&7™&8]":
+                execute console command "/suffix %player% Milk"
+            format gui slot 1 with nametag named "&8[&6SPEED&8]":
+                execute console command "/suffix %player% Speed"
+            format gui slot 2 with nametag named "&8[&4&lA&c&lL&6&lPH&e&lA&8]":
+                execute console command "/suffix %player% Alpha"
+            format gui slot 3 with nametag named "&5&kx&5&l[&lMuffin]&kg":
+                execute console command "/suffix %player% Muffin"
+            format gui slot 4 with nametag named "&8[&4&lA&c&lL&6&lPH&e&lA &a&lT&2&lE&a&lS&2&lT&a&lE&2&lR&8]":
+                execute console command "/suffix %player% AlphaTester"
+            format gui slot 5 with nametag named "&8[&d&lG&e&le&d&ln&e&li&d&le&8]":
+                execute console command "/suffix %player% Genie"
+            format gui slot 6 with nametag named "&8[&4&lO&c&lv&4&le&c&lr&4&ll&c&lo&4&lr&c&ld&8]":
+                execute console command "/suffix %player% Overlord"
+            format gui slot 7 with nametag named "&8[&f&lF&b&lr&f&lo&b&ls&f&lt&b&ll&f&lo&b&lr&f&ld&8]":
+                execute console command "/suffix %player% Frostlord"
+            format gui slot 8 with nametag named "&8[&6&lW&7&la&6&lr&7&ll&6&lo&7&lr&6&ld&8]":
+                execute console command "/suffix %player% Warlord"
+            format gui slot 9 with nametag named "&8[&7&lS&c&la&7&lm&c&lu&7&lr&c&la&7&li&8]":
+                execute console command "/suffix %player% Samurai"
+            format gui slot 10 with nametag named "&8[&0&lE&5&ln&0&ld&5&ll&0&lo&5&lr&0&ld&8]":
+                execute console command "/suffix %player% Endlord"
+            format gui slot 11 with nametag named "&8[&4&lF&6&li&4&lr&6&le&4&ll&6&lo&4&lr&6&ld&8]":
+                execute console command "/suffix %player% Firelord"
+            format gui slot 12 with nametag named "&8[&6&lEventlord&8]":
+                execute console command "/suffix %player% Eventlord"
+            format gui slot 25 with nametag named "&aCustom Tag"
+        open gui "Tag" to player
+
+command /suffix <player> <text>:
+    trigger:
+        if arg-2 is "Milk":
+            if player-arg has permission "tag.milk":
+                set {_n} to "&8[&f&lMILK&7™&8]"
+                execute console command "/lp user %player-arg% meta removesuffix 1"
+                execute console command "/lp user %player-arg% meta addsuffix 1 "" &8[&f&lMILK&7™&8]"""
+                broadcast "&c%player-arg%&e's Tag has been set to &8[&f&lMILK&7™&8]"
+            else:
+                message "&c[CUCKED] &6u dont have this tag go buy it at /buy" to player-arg
+        if arg-2 is "Speed":
+            if player-arg has permission "tag.speed":
+                execute console command "/lp user %player-arg% meta removesuffix 1"
+                execute console command "/lp user %player-arg% meta addsuffix 1 "" &8[&6SPEED&8]"""
+                broadcast "&c%player-arg%&e's Tag has been set to &8[&6SPEED&8]"
+            else:
+                message "&c[CUCKED] &6u dont have this tag go buy it at /buy" to player-arg
+        if arg-2 is "Alpha":
+            if player-arg has permission "tag.alpha":
+                execute console command "/lp user %player-arg% meta removesuffix 1"
+                execute console command "/lp user %player-arg% meta addsuffix 1 "" &8[&4&lA&c&lL&6&lPH&e&lA&8]"""
+                broadcast "&c%player-arg%&e's Tag has been set to &8[&4&lA&c&lL&6&lPH&e&lA&8]"
+                stop
+            if player-arg's level is greater than 100:
+                message "&cYou have unlocked &8[&4&lA&c&lL&6&lPH&e&lA&8] &cTag for being Level 100!" to player-arg
+                execute console command "/lp user %player-arg% permission set tag.alpha"
+                stop
+            else:
+                message "&c[CUCKED] &6You need Lvl 100 for this Tag in Alpha Stage" to player-arg
+        if arg-2 is "Muffin":
+            if player-arg has permission "tag.muffin":
+                execute console command "/lp user %player-arg% meta removesuffix 1"
+                execute console command "/lp user %player-arg% meta addsuffix 1 "" &5&kx&5&l[&lMuffin]&kg"""
+                broadcast "&c%player-arg%&e's Tag has been set to &5&kx&5&l[&lMuffin]&kg"
+            else:
+                message "&c[CUCKED] &6u dont have this tag go buy it at /buy" to player-arg
+        if arg-2 is "AlphaTester":
+            if player-arg has permission "tag.alphatester":
+                execute console command "/lp user %player-arg% meta addsuffix "" &8[&4&lA&c&lL&6&lPH&e&lA &a&lT&2&lE&a&lS&2&lT&a&lE&2&lR&8]"""
+                broadcast "&c%player-arg%&e's Tag has been set to &8[&4&lA&c&lL&6&lPH&e&lA &a&lT&2&lE&a&lS&2&lT&a&lE&2&lR&8]"
+            else:
+                message "&c[CUCKED] &6u dont have this tag go buy it at /buy" to player-arg
+        if arg-2 is "Genie":
+            if player-arg has permission "tag.genie":
+                execute console command "/lp user %player-arg% meta addsuffix "" &8[&d&lG&e&le&d&ln&e&li&d&le&8]"""
+                broadcast "&c%player-arg%&e's Tag has been set to &8[&d&lG&e&le&d&ln&e&li&d&le&8]"
+            else:
+                message "&c[CUCKED] &6u dont have this tag go buy it at /buy" to player-arg
+        if arg-2 is "Overlord":
+            if player-arg has permission "tag.overlord":
+                execute console command "/lp user %player-arg% meta addsuffix "" &8[&4&lO&c&lv&4&le&c&lr&4&ll&c&lo&4&lr&c&ld&8]"""
+                broadcast "&c%player-arg%&e's Tag has been set to &8[&4&lO&c&lv&4&le&c&lr&4&ll&c&lo&4&lr&c&ld&8]"
+            else:
+                message "&c[CUCKED] &6u dont have this tag go buy it at /buy" to player-arg
+        if arg-2 is "Frostlord":
+            if player-arg has permission "tag.frostlord":
+                execute console command "/lp user %player-arg% meta addsuffix "" &8[&f&lF&b&lr&f&lo&b&ls&f&lt&b&ll&f&lo&b&lr&f&ld&8]"""
+                broadcast "&c%player-arg%&e's Tag has been set to &8[&f&lF&b&lr&f&lo&b&ls&f&lt&b&ll&f&lo&b&lr&f&ld&8]"
+            else:
+                message "&c[CUCKED] &6u dont have this tag go buy it at /buy" to player-arg
+        if arg-2 is "Warlord":
+            if player-arg has permission "tag.warlord":
+                execute console command "/lp user %player-arg% meta addsuffix "" &8[&6&lW&7&la&6&lr&7&ll&6&lo&7&lr&6&ld&8]"""
+                broadcast "&7%player-arg%&e's Tag has been set to &8[&6&lW&7&la&6&lr&7&ll&6&lo&7&lr&6&ld&8]"
+            else:
+                message "&c[CUCKED] &6u dont have this tag go buy it at /buy" to player-arg
+        if arg-2 is "Samurai":
+            if player-arg has permission "tag.samurai":
+                execute console command "/lp user %player-arg% meta addsuffix "" &8[&7&lS&c&la&7&lm&c&lu&7&lr&c&la&7&li&8]"""
+                broadcast "&7%player-arg%&e's Tag has been set to &8[&7&lS&c&la&7&lm&c&lu&7&lr&c&la&7&li&8]"
+            else:
+                message "&c[CUCKED] &6u dont have this tag go buy it at /buy" to player-arg
+        if arg-2 is "Endlord":
+            if player-arg has permission "tag.endlord":
+                execute console command "/lp user %player-arg% meta addsuffix 1 "" &8[&0&lE&5&ln&0&ld&5&ll&0&lo&5&lr&0&ld&8]"""
+                broadcast "&7%player-arg%&e's Tag has been set to &8[&0&lE&5&ln&0&ld&5&ll&0&lo&5&lr&0&ld&8]"
+            else:
+                message "&c[CUCKED] &6u dont have this tag go buy it at /buy" to player-arg
+        if arg-2 is "Firelord":
+            if player-arg has permission "tag.firelord":
+                execute console command "/lp user %player-arg% meta addsuffix ' &8[&4&lF&6&li&4&lr&6&le&4&ll&6&lo&4&lr&6&ld&8]'"
+                broadcast "&7%player-arg%&e's Tag has been set to &8[&4&lF&6&li&4&lr&6&le&4&ll&6&lo&4&lr&6&ld&8]"
+            else:
+                message "&c[CUCKED] &6u dont have this tag go buy it at /buy" to player-arg
+        if arg-2 is "Eventlord":
+            if player-arg has permission "tag.eventlord":
+                execute console command "/lp user %player-arg% meta addsuffix "" &8[&6&lEventlord&8]"""
+                broadcast "&7%player-arg%&e's Tag has been set to &8[&6&lEventlord&8]"
+            else:
+                message "&c[CUCKED] &6Obtainable by winning 3 Event (3 Event Token)" to player-arg
+
+command /stats [<offline player>]:
+    permission: essentials.help
+    trigger:
+        if arg-1 is set:
+            message "&6-&ePlayer %offline player-arg% &eInformation&6-"
+            message "&aSkillpoints&7: &6%{skillpoints::%offline player-arg's uuid%}% &aGem&7: &6%{gem::%offline player-arg's uuid%}% &eMoney&7: &6%offline player-arg's balance%"
+            message "&cStrength&7: &c%{skillpoints::%offline player-arg's uuid%::strength}% &bSpeed&7: &b%{skillpoints::%offline player-arg's uuid%::speed}% &6Defense&7: &6%{skillpoints::%offline player-arg's uuid%::defense}%"
+            message "&bLevel&7: &6%{level::%offline player-arg's uuid%}%"
+            message "&e/armor %offline player-arg% &eTo See Armor/Weapon"
+        else:
+            message "&6-&ePlayer %player% &eInformation&6-"
+            message "&aSkillpoints&7: &6%{skillpoints::%player's uuid%}% &aGem&7: &6%{gem::%player's uuid%}% &eMoney&7: &6%player's balance%"
+            message "&cStrength&7: &c%{skillpoints::%player's uuid%::strength}% &bSpeed&7: &b%{skillpoints::%player's uuid%::speed}% &6Defense&7: &6%{skillpoints::%player's uuid%::defense}%"
+            message "&bLevel&7: &6%{level::%player's uuid%}%"
+
+command /armor <offline player>:
+    permission: essentials.help
+    trigger:
+        create a new gui with id "Armor" with virtual chest inventory with size 1 named "&6Armor":
+            format gui slot 0 with offline player-arg's helmet
+            format gui slot 1 with offline player-arg's chestplate
+            format gui slot 2 with offline player-arg's legging
+            format gui slot 3 with offline player-arg's boots
+            format gui slot 4 with offline player-arg's held item
+            format gui slot 5 with offline player-arg's offhand tool
+        open gui "Armor" to player
+
+
+command /convert:
+    permission: is.lord
+    trigger:
+        create a new gui with id "Convert" with virtual chest inventory with size 3 named "&dConvert":
+            format gui slot 0 with iron nugget named "&664 Silver Coin >> 1 Gold Coin":
+                if player have 64 iron nugget named "&7Silver Coin":
+                    remove 64 iron nugget named "&7Silver Coin" from player's inventory
+                    give 1 gold nugget named "&eGold Coin" to player
+                else:
+                    message "&cYou need 64 &7Silver Coin&c."
+            format gui slot 1 with gold nugget named "&664 Gold Coin >> 1 Gold Bar":
+                if player have 64 gold nugget named "&eGold Coin":
+                    remove 64 gold nugget named "&eGold Coin" from player's inventory
+                    give 1 gold ingot named "&eGold Bar" to player
+                else:
+                    message "&cYou need 64 &eGold Coin&c."
+            format gui slot 2 with light blue stained glass pane named ""
+            format gui slot 3 with light blue stained glass pane named ""
+            format gui slot 4 with light blue stained glass pane named ""
+            format gui slot 5 with light blue stained glass pane named ""
+            format gui slot 6 with light blue stained glass pane named ""
+            format gui slot 7 with light blue stained glass pane named ""
+            format gui slot 8 with light blue stained glass pane named ""
+            format gui slot 9 with iron nugget named "&664 Silver Coin << 1 Gold Coin":
+                if player have 1 gold nugget named "&eGold Coin":
+                    remove 1 gold nugget named "&eGold Coin" from player's inventory
+                    give 64 iron nugget named "&7Silver Coin" to player
+                else:
+                    message "&cYou need 1 &eGold Coin&c."
+            format gui slot 10 with gold nugget named "&664 Gold Coin << 1 Gold Bar":
+                if player have 1 gold ingot named "&eGold Bar":
+                    remove 1 gold ingot named "&eGold Bar" from player's inventory
+                    give 64 gold nugget named "&eGold Coin" to player
+                else:
+                    message "&cYou need 1 &eGold Bar&c."
+            
+            format gui slot 18 with iron nugget named "&664 Silver Coin >> $100":
+                if player have 64 iron nugget named "&7Silver Coin":
+                    remove 64 iron nugget named "&7Silver Coin" from player's inventory
+                    add 100 to player's balance
+                else:
+                    message "&cYou need 64 &7Silver Coin&c."
+            format gui slot 19 with gold nugget named "&664 Gold Coin >> $6400":
+                if player have 64 gold nugget named "&eGold Coin":
+                    remove 64 gold Nugget named "&eGold Coin" from player's inventory
+                    add 6400 to player's balance
+                else:
+                    message "&cYou need 64 &eGold Coin&c."
+        open gui "Convert" to player
+
+command /discord:
+    description: shows our discord server
+    permission: essentials.help
+    trigger:
+        send "&6<link:https://discord.gg/F7XbqwN>&6Click Me!<reset>"
+
+command /buy:
+    description: shows our buycraft
+    permission: essentials.help
+    trigger:
+        send "&6<link:http://legendzrpg.tebex.io/>&6Click Me!<reset>"
+
+command /reset [<offline player>] [<text>]:
+    permission: essentials.op
+    trigger:
+        if arg-1 is not set:
+            send "&e/reset (Player) fixSkillpoints &6Fixes Skillpoint for player"
+            send "&e/reset (Player) skillpoints"
+            send "&e/reset (Player) gem"
+            send "&e/reset (Player) level"
+            send "&e/reset (Player) achievements"
+        if arg-2 is "fixSkillpoints":
+            set {_total} to {skillpoints::%offline player-arg's uuid%::strength} + {skillpoints::%offline player-arg's uuid%::speed} + {skillpoints::%offline player-arg's uuid%::defense} + {skillpoints::%offline player-arg's uuid%}
+            set {_receive} to {level::%offline player-arg's uuid%} 
+            set {_result} to {_receive} - {_total}
+            add {_result} to {skillpoints::%offline player-arg's uuid%}
+            send "&aSkillpoints Fixed" to offline player-arg
+        if arg-2 is "skillpoints":
+            set {skillpoints::%offline player-arg's uuid%::*} to 0
+            set {skillpoints::%offline player-arg's uuid%} to {level::%offline player-arg's uuid%}
+            message "&4&l%player% &6Has Reset ALL of your Skillpoints" to offline player-arg
+        if arg-2 is "gem":
+            set {gem::%offline player-arg's uuid%} to 0
+            message "&4&l%player% &6Has Reset ALL of your Gems" to offline player-arg
+        if arg-2 is "level":
+            set {level::%offline player-arg's uuid%} to 0
+            message "&4&l%player% &6Has Reset ALL of your Levels" to offline player-arg
+        if arg-2 is "achievements":
+            delete {achievements::%offline player-arg's uuid%::*}
+            message "&4&l%player% &6Has Reset ALL of your Achievements" to offline player-arg
+command /cmds [<text>]:
+    trigger:
+        if arg-1 is not set:
+            message "&d｡☆✼★━━━━━━━━━━━&7&lAdventurer &b&lRank Perms 1&d━━━━━━━━━━━★✼☆｡"
+            message "&e/discord &6Link to discord."
+            message "&e/buy &6Link to buycraft."
+            message "&e/stats <player> &6Shows Stats of that player."
+            message "&e/testdamage &6Turns On/Off Damage indicator."
+            message "&e/tag &6Gives Tag"
+            message "&e/armor <player> &6See Player's Held Item and Armor."
+            message "&e/leveltop &6See Top 10 Mining Level Players."
+            message "&e                                                               <command:/cmds 2> Next Page >><reset>"
+        if arg-1 is "2":
+            message "&d｡☆✼★━━━━━━━━━━━&7&lAdventurer &b&lRank Perms 2&d━━━━━━━━━━━★✼☆｡"
+            message "&e/boss &6See Boss Spawn Timer."
+            message "&e/gemshop &6Buy stuff from gem shop."
+            message "&e/cf &6Coinflip yourself to victory! or maybe go Bankrupted.."
+            message "&e/cmds lord &6Shows all Lord+ Rank Perms."
+            message "&e/cmds king &6Shows all King+ Rank Perms."
+            message "&e/cmds demigod &6Shows all DemiGod Rank Perms."
+            message "&e<command:/cmds><< Previous Page<reset>"
+        if arg-1 is "lord":
+            message "&d｡☆✼★━━━━━━━━━━━━━━━&6&lLord &b&lRank Perms&d━━━━━━━━━━━━━━━★✼☆｡"
+            message "&e/convert &6Converts lower currency to higher currency."
+            message "&e/trails &6Fancy Trails (without wing)."
+        if arg-1 is "king":
+            message "&d｡☆✼★━━━━━━━━━━━━━━━&e&lKing &b&lRank Perms&d━━━━━━━━━━━━━━━★✼☆｡"
+            message "&e/trails &6Fancy Trails and Wings!"
+            message "&e/stack &6Stacks Boss Drop."
+            message "&e/sellhand &6Sells Boss Drop In Your Hand, Used with /stack."
+        if arg-1 is "demigod":
+            message "&d｡☆✼★━━━━━━━━━━━━━━━&8&lD&7&le&8&lm&7&li&e&lG&f&lo&e&ld &b&lRank Perms&d━━━━━━━━━━━━━━━★✼☆｡"
+            message "&e/playerparticles &6Fully Customizable Player Particles!"
+            message "&e/feed &6Gods don't suffer from starvation!"
+command /buildmode:
+    permission: is.builder
+    trigger:
+        if player has permission "skript.blockbreak":
+            execute console command "/lp user %player% permission unset skript.blockbreak"
+            message "&aYou have turned &cOFF &aBuild Mode"
+            stop
+        if player doesn't have permission "skript.blockbreak":
+            execute console command "/lp user %player% permission set skript.blockbreak"
+            message "&aYou have turned &cON &aBuild Mode"
+            stop
+
+
+command /booster [<text>] [<number>] [<offline player>]:
+    trigger:
+        if arg-1 is not set:
+            send "%{booster::money}%x Money Booster is Activated %{booster::money::time}% min Left"
+            send "%{booster::exp}%x EXP Booster is Activated %{booster::exp::time}% min Left"
+        else:
+            if arg-1 is "money":
+                if {booster::money} is 1:
+                    add arg-2 to {booster::money}
+                    broadcast "&4&lLegendz&a&lRPG &e&L>> &a&lBooster Activated: %{booster::money}%x Money Booster by &d&l%offline player-arg%"
+                    set {booster::money::time} to 60
+                else if {booster::money} >= 1.1:
+                    add number-arg to {booster::money}
+                    broadcast "&4&lLegendz&a&lRPG &e&L>> &d&l%offline player-arg% &d&lStacking Booster: %number-arg% Money Booster Added! &6&lNow: &6&l%{booster::money}%x Money Booster"
+            else if arg-1 is "setmoney":
+                set {booster::money} to number-arg
+                broadcast "&4&lLegendz&a&lRPG &e&L>> &c&lBooster Set: &c&l%{booster::money}%&c&lx Money Booster by %player%."
+                set {booster::money::time} to 60
+                if number-arg is 1:
+                    set {booster::money::time} to 0
+            else if arg-1 is "exp":
+                if {booster::exp} is 1:
+                    add arg-2 to {booster::exp}
+                    broadcast "&4&lLegendz&a&lRPG &e&L>> &a&lBooster Activated: %{booster::exp}%x EXP Booster by &d&l%offline player-arg%"
+                    set {booster::exp::time} to 60
+                else if {booster::exp} >= 1.1:
+                    add number-arg to {booster::exp}
+                    broadcast "&4&lLegendz&a&lRPG &e&L>> &d&l%offline player-arg% &d&lStacking Booster: %number-arg% EXP Booster Added! &6&lNow: &6&l%{booster::exp}%x EXP Booster"
+            else if arg-1 is "setexp":
+                set {booster::exp} to number-arg
+                broadcast "&4&lLegendz&a&lRPG &e&L>> &c&lBooster Set: &c&l%{booster::exp}%&c&lx EXP Booster by %player%."
+                set {booster::exp::time} to 60
+                if number-arg is 1:
+                    set {booster::exp::time} to 0
+command /leveltop:
+    trigger:
+        loop all players:
+            set {leveltop::%loop-player%} to {level::%loop-player's uuid%}
+        loop {leveltop::*}:
+            add 1 to {_size}
+            if {_low.to.high.list::%loop-value%} is not set:
+                set {_low.to.high.list::%loop-value%} to loop-index
+            else:
+                set {_n} to 0
+                loop {_size} times:
+                    set {_n} to {_n}+1
+                    {_low.to.high.list::%loop-value-1%.%{_n}%} is not set
+                    set {_low.to.high.list::%loop-value-1%.%{_n}%} to loop-index
+                    stop loop
+        wait 1 tick
+        set {_n} to size of {_low.to.high.list::*}
+        loop {_low.to.high.list::*}:
+            set {_high.to.low.list::%{_n}%} to loop-value
+            set {_n} to {_n}-1
+        wait 1 tick
+        send "              &8[&bLevel &cTop&8]     "
+        send " "
+        loop {_high.to.low.list::*}:
+            add 1 to {_result}
+            send "&a%loop-value%&8: &e%{leveltop::%loop-value%}% Levels" to player
+            if {_result} is 10:
+                stop
+
+command /add [<text>] [<number>] [<offline player>]:
+    permission: essentials.op
+    trigger:
+        if arg-1 is not set:
+            send "&e/add gem (amount) <player>&6Gives gem to you"
+            send "&e/add skillpoints (amount) &6Gives Skillpoints to you"
+            send "&e/add buycraft (amount) <player name>"
+            send "&e/add level (amount)"
+        else if arg-1 is "gem":
+            if offline player-arg is not set:
+                set {_amount} to arg-2
+                add {_amount} to {gem::%player's uuid%}
+                loop all players:
+                    if loop-player has permission "essentials.op":
+                        message "&4&l[Staff] &6%player% &aAdded %{_amount}% &ato Player's %arg-1%&a." to loop-player
+            else:
+                set {_amount} to arg-2
+                add {_amount} to {gem::%offline player-arg's uuid%}
+                loop all players:
+                    if loop-player has permission "essentials.op":
+                        message "&4&l[Staff] &6%player% &aAdded %{_amount}% &ato %offline player-arg%'s %arg-1%&a." to loop-player
+        else if arg-1 is "skillpoints":
+            set {_amount} to arg-2
+            add {_amount} to {skillpoints::%player's uuid%}
+            loop all players:
+                if loop-player has permission "essentials.op":
+                    message "&4&l[Staff] &6%player% &aAdded %{_amount}% &ato Player's %arg-1%&a." to loop-player
+        else if arg-1 is "buycraft":
+            set {_amount} to arg-2
+            add {_amount} to {buycraft.%{clan.%offline player-arg%}%}
+            loop all players:
+                if loop-player has permission "essentials.op":
+                    message "&4&l[Staff] &6%player% &aAdded $%{_amount}% &ato %{clan.%offline player-arg%}%&a's %arg-1%&a." to loop-player
+        else if arg-1 is "level":
+            if offline player-arg is not set:
+                set {_amount} to arg-2
+                add {_amount} to {level::%player's uuid%}
+                loop all players:
+                    if loop-player has permission "essentials.op":
+                        message "&4&l[Staff] &6%player% &aAdded %{_amount}% &ato player&a's %arg-1%&a." to loop-player
+            else:
+                set {_amount} to arg-2
+                add {_amount} to {level::%offline player-arg's uuid%}
+                loop all players:
+                    if loop-player has permission "essentials.op":
+                        message "&4&l[Staff] &6%player% &aAdded %{_amount}% &ato %offline player-arg%&a's %arg-1%&a." to loop-player
+command /server [<text>]:
+    permission: essentials.op
+    trigger:
+        if arg-1 is "restart":
+            broadcast "&4&lLegendz&a&LRPG &e&L>> &4&LServer restart in 1 min"
+            wait 30 seconds
+            broadcast "&4&lLegendz&a&LRPG &e&L>> &4&LServer restart in 30 seconds"
+            wait 27 seconds
+            broadcast "&4&lLegendz&a&LRPG &e&L>> &4&LServer restart in 3 seconds"
+            wait 1 second
+            broadcast "&4&lLegendz&a&LRPG &e&L>> &4&LServer restart in 2 seconds"
+            wait 1 second
+            broadcast "&4&lLegendz&a&LRPG &e&L>> &4&LServer restart in 1 seconds"
+            wait 1 second
+            execute console command "/stop"
+        else if arg-1 is "clearvar":
+            broadcast "&4&lLegendz&a&LRPG &e&L>> &4&LServer will clear NOT NEEDED Variables in 1 min"
+            wait 30 seconds
+            broadcast "&4&lLegendz&a&LRPG &e&L>> &4&LServer will clear NOT NEEDED Variable in 30 seconds"
+            wait 27 seconds
+            broadcast "&4&lLegendz&a&LRPG &e&L>> &4&LServer will clear NOT NEEDED Variable in 3 seconds"
+            wait 1 second
+            broadcast "&4&lLegendz&a&LRPG &e&L>> &4&LServer will clear NOT NEEDED Variable in 2 seconds"
+            wait 1 second
+            broadcast "&4&lLegendz&a&LRPG &e&L>> &4&LServer will clear NOT NEEDED Variable in 1 seconds"
+            wait 1 second
+            broadcast "&4&lLegendz&a&LRPG &e&L>> &4&LCleared variables."
+            delete {mostdamage::entity::*}
+
+
+command /spawn:
+    trigger:
+        execute console command "/warp city %player%"
+
+command /set [<text>] [<offline player>] [<text>] [<number>]:
+    permission: essentials.op
+    trigger:
+        if arg-1 is not set:
+            send "&e/set clantag (player) [tag]"
+            send "&e/set achievements (player) (achievement) <number>"
+        if arg-1 is "clantag":
+            set {clan.tag.%{clan.%offline player-arg%}%} to arg-3
+            broadcast "&a&l%{clan.%offline player-arg%}% &a&lClan has set their clantag to %arg-3%"
+        if arg-1 is "achievements":
+            set {_p} to offline player-arg's uuid
+            set {achievements::%{_p}%::%arg-3%} to number-arg
+
+command /subtract [<text>] [<number>] [<offline player>]:
+    permission: essentials.op
+    trigger:
+        set {_amount} to number-arg
+        if arg-1 is "level":
+            subtract arg-2 from {level::%offline player-arg's uuid%}
+            loop all players:
+                if loop-player has permission "essentials.op":
+                    message "&4&l[Staff] &6%player% &aSubtracted %{_amount}% &ato %offline player-arg%'s %arg-1%&a." to loop-player
+        if arg-1 is "gem":
+            subtract arg-2 from {gem::%offline player-arg's uuid%}
+            loop all players:
+                if loop-player has permission "essentials.op":
+                    message "&4&l[Staff] &6%player% &aSubtracted %{_amount}% &ato %offline player-arg%'s %arg-1%&a." to loop-player
+
+command /promote [<offline player>] [<text>]:
+    permission: essentials.op
+    trigger:
+        execute console command "/lp user %offline player-arg% parent add %arg-2%"
+        broadcast "&e☆✼★━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━★✼☆｡","                 &d&n&l%offline player-arg% &d&n&lHas Been Promoted!" and "&e｡☆✼★━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━★✼☆｡"
+
+command /boss:
+    permission: essentials.help
+    trigger:
+        set {_prefix} to "&6[&d&lDungeon&6]"
+        send "&e☆✼★━━━━━━━━━━━━━━━━━━━Boss Spawn Timer━━━━━━━━━━━━━━━━━━━★✼☆｡"
+        send "%{_prefix}% &5&lArsyg &6%{Arsyg}% &6Seconds Left"
+
+command /customtag [<text>]:
+    permission: tag.custom
+    trigger:
+        execute console command "/lp user %player% meta addsuffix ' %arg-1%'"
+
+command /ultkill [<player>] [<text>]:
+    permission: essentials.op
+    trigger:
+        kill player-arg
+        broadcast "%player% killed %player-arg% by %arg-2%"
+
+command /sethat:
+    permission: essentials.op
+    trigger:
+        set player's helmet to player's held item
+command /stack:
+    permission: is.king
+    trigger:
+        set {_item} to player's held item
+        if player's held item is any sword or any boots or any leggings or any chestplate or iron pickaxe or any helmet or any potion:
+            if player's held item is any potion:
+                player has permission "is.demigod"
+                loop all items in player's inventory:
+                    if item amount of player's tool < 64:
+                        if loop-item is {_item}:
+                            if loop-item is not player's current hotbar slot:
+                                delete loop-item
+                                add 1 to item amount of player's tool
+                    else:
+                        message "&cMax stack is 64!"
+            else:
+                loop all items in player's inventory:
+                    if item amount of player's tool < 64:
+                        if loop-item is {_item}:
+                            if loop-item is not player's current hotbar slot:
+                                delete loop-item
+                                add 1 to item amount of player's tool
+                    else:
+                        message "&cMax stack is 64!"
+        else:
+            message "&cThis is not Stackable!"
+
+command /builder [<offline player>]:
+    permission: is.headbuilder
+    trigger:
+        execute console command "/manuadd %offline player-arg% builder"
+
+command /sellhand:
+    permission: is.king
+    trigger:
+        #Price
+        set {lv1::sell} to 4
+        set {lv2::sell} to 5
+        set {lv3::sell} to 7 
+        set {lv4::sell} to 10
+        set {lv5::sell} to 15
+        set {lv6::sell} to 18
+        set {lv7::sell} to 23
+        set {lv8::sell} to 26
+
+        #Level
+        set {lv1::level} to 15
+        set {lv2::level} to 35
+        set {lv3::level} to 55
+        set {lv4::level} to 85
+        set {lv5::level} to 130
+        set {lv6::level} to 150
+        set {lv7::level} to 190
+        set {lv8::level} to 225
+
+        #Item Var
+        set {_i} to "%lore of player's held item%"
+        set {_item::*} to {_i} split by "||"
+        loop {_item::*}:
+            if "%{_item::%loop-index%}%" contains "&bLv ":
+                set {_slot} to loop-index
+                set {_slot} to {_slot} parsed as number
+                set {_requirement} to line {_slot} of lore of player's held item
+                replace every "&bLv " and "+" in {_requirement} with ""
+                set {_requirement} to {_requirement} parsed as number
+                loop 8 times:
+                    if {_requirement} is {lv%loop-value-2%::level}:
+                        set {_amount} to item amount of player's tool
+                        loop {_amount} times:
+                            subtract 1 from item amount of player's tool
+                            give {lv%loop-value-2%::sell} of iron nugget named "&7Silver Coin" to player
+                            add {lv%loop-value-2%::sell} to {_total}
+        message "&aTotal: &a%{_total}%"
+
+command /setline <number> <text>:
+    aliases: /sl
+    permission: admin.setline
+    trigger:
+        if targeted block is not a sign:
+            send "&7[&eSetLine&7] &cTarget block is not a sign!"
+            stop
+        set {_line} to arg-1
+        set {_newtext} to colored arg-2
+        if arg-2 is "clear":
+            set {_newtext} to ""
+        set line {_line} of targeted block to {_newtext}
+        send "&7[&eSetLine&7] Line &f%{_line}% &7changed to &f'%colored arg-2%&r&f'&7."
+
+command /shop [<text>]:
+    permission: is.lord
+    trigger:
+        if arg-1 is not set:
+            message "&e/shop Food &6To view Food shop."
+            message "&e/shop Potion &6To view Potion shop."
+            message "&e/shop Arrow &6To view Arrow shop."
+            message "&e/convert &6To view Coin Exchange."
+        if arg-1 is "Food" or "food":
+            open virtual chest with size 1 named "&aFood Shop" to player
+            shop(player,0,bread,"&a1x Bread",1,2,"Silver Coins",iron nugget,"&7Silver Coin",false,"")
+            shop(player,1,steak,"&a8x Steak",8,32,"Silver Coins",iron nugget,"&7Silver Coin",false,"")
+            shop(player,2,steak,"&a16x Steak",16,1,"Gold Coin", gold nugget,"&eGold Coin",false,"")
+        if arg-1 is "Potion" or "potion":
+            open virtual chest with size 1 named "&dPotion Shop" to player
+            shop(player,0,potions of health,"&a1x Heal I",1,32,"Silver Coins",iron nugget,"&7Silver Coin",true,"Heal_I")
+            shop(player,1,potions of strength,"&a1x Strength I (3:00)",1,1,"Gold Coin",gold nugget,"&eGold Coin",true,"Strength_I")
+        if arg-1 is "Arrow" or "arrow":
+            open virtual chest with size 1 named "&fArrow Shop" to player
+            shop(player,0,arrow,"&a1x Arrow",1,1,"Silver Coin",iron nugget,"&7Silver Coin",false,"")
+            shop(player,1,slowness tipped arrow,"&a1x Slowness (0:03)",1,32,"Silver Coins",iron nugget,"&7Silver Coin",true,"Arrow_Slowness_I")
+function shop(p: player, s: number, i: itemtype, n: text, a: number, price: number, l: text, coin: itemtype, cn: text, mm: boolean, mi: text):
+    format gui slot {_s} of {_p} with {_i} named {_n} with lore "&eCost: %{_price}% %{_l}%" to run:
+        if {_p}'s inventory contains {_price} of {_coin} named {_cn}:
+            if {_mm} is false:
+                add {_a} of {_i} to {_p}'s inventory
+            else:
+                execute console command "/mm i give -s %{_p}% %{_mi}% %{_a}%"
+            remove {_price} of {_coin} named {_cn} from {_p}'s inventory
+
+command /itemtype:
+    trigger:
+        broadcast "%player's held item%"
+
+command /faq [<text>]:
+    trigger:
+        if arg-1 is "skillpoints":
+            message "&6Skillpoints are used to upgrade your player attribute by right clicking &b&lMenu &6>> &a&lProfile &6there you will see that you can upgrade Defense/Strength/Speed."
+        if arg-1 is "gear":
+            message "&6Armor and weapon is dropped by bosses and its not 100%% of the time that they drop something. Some Drops has very low chances too..."
+        if arg-1 is "lv1":
+            message "&6To get to Lv1 you can go to /spawn and turn to your left and there should be a sign to teleport you to Level 1"
+        if arg-1 is "lv2":
+            message "&6To get to Lv2 You will need Level 25 and go the the obsidian portal on the other side of Lv1 and right click the teleportation sign and that will unlock Lv2 and THEN you can use your teleporter to tp there."
+        if arg-1 is "upgrade":
+            message "&6Hold whatever you want to upgrade (excluding starter item) and shift right click with it and there should be a menu popped up."
+        if arg-1 is "money":
+            message "&6Money is used to upgrade items you can find more about upgrade in /faq upgrade"
+        if arg-1 is "mining":
+            message "&6Mining is a major part of the game because it helps you obtain &eskillpoints, crate keys, and gem&6 faster than any other income! you can buy a pickaxe from the villager at /warp mine"
+        if arg-1 is "start":
+            message "&6First of all Welcome to LegendzRPG!! To start off you would need to go to Level 1 which you can use /faq lv1 to find more about it. There are many features here at LegendzRPG but you'll have to discover them all!"
+        if arg-1 is "gem":
+            message "&6Gems are used for buying buycraft items using ingame currency. do /gemshop to see whats on the menu."
+        if arg-1 is "pets":
+            message "&6Pets are the fastest way to gain money and there will be more to come for pets."
+        if arg-1 is not set:
+            message "&e/faq [skillpoints,gear,lv1,lv2,money,upgrade,pets,mining,start]"
+            message "&e/faq [gem,pets]"
