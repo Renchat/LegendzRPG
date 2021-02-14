@@ -1,0 +1,3 @@
+on command "abc":
+    wait 1 seconds
+    send player title "&e&lCome back! &6&l/Join &a&lLegendz&4&lRPG" for 9999 days

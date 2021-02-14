@@ -1,0 +1,270 @@
+on right click holding any helmet or player head:
+    player is sneaking
+    cancel event
+    execute player command "helmet"
+
+command /helmet:
+    trigger:
+        item amount of player's held item is 1
+        open virtual chest with size 1 named "&bEnchant" to player
+        player's held item is any helmet or player head:
+            set {_item} to lore of player's held item
+            set {_split::*} to {_item} split at "||"
+            loop {_split::*}:
+                if "%{_split::%loop-index%}%" contain "&bLv ":
+                    set {_slot} to loop-index
+                    set {_slot} to {_slot} parsed as number
+                    set {_requirement} to line {_slot} of lore of player's held item
+                    replace every "&bLv " and "+" in {_requirement} with ""
+                    set {_requirement} to {_requirement} parsed as number
+            set {_Armor} to {_requirement}^2 + ({_requirement}*50*level of protection of player's held item)
+            format gui slot 0 of player with diamond helmet named "&c&lProtection +1" with lore "&6Cost: &e$%{_Armor}%" and "&cMax: 10" to run:
+                item amount of player's held item is 1
+                if player's held item is any helmet or player head:
+                    if level of protection of player's held item is not 10:
+                        if player's balance is greater than {_Armor}:
+                            subtract {_Armor} from player's balance
+                            enchant the player's held item with "protection %level of protection of player's held item + 1%" parsed as enchantment type
+                            make player execute command "/helmet"
+                        else:
+                            message "&cYou need $%{_Armor}%."
+                            message "&cYou currently have %player's balance%"
+                    else:
+                        message "&cMax Protection"
+                else:
+                    message "&cYou need to be holding a helmet"
+
+on right click holding any chestplate:
+    player is sneaking
+    cancel event
+    execute player command "chestplate"
+
+command /chestplate:
+    trigger:
+        item amount of player's held item is 1
+        open virtual chest with size 1 named "&bEnchant" to player
+        player's held item is any chestplate:
+            set {_item} to lore of player's held item
+            set {_split::*} to {_item} split at "||"
+            loop {_split::*}:
+                if "%{_split::%loop-index%}%" contain "&bLv ":
+                    set {_slot} to loop-index
+                    set {_slot} to {_slot} parsed as number
+                    set {_requirement} to line {_slot} of lore of player's held item
+                    replace every "&bLv " and "+" in {_requirement} with ""
+                    set {_requirement} to {_requirement} parsed as number
+            if {_requirement} = 0:
+                stop
+            set {_Armor} to {_requirement}^2 + ({_requirement}*50*level of protection of player's held item)
+            format gui slot 0 of player with diamond chestplate named "&b&lProtection +1" with lore "&6Cost: &e$%{_Armor}%" and "&cMax: 10" to run:
+                item amount of player's held item is 1
+                if player's held item is any chestplate:
+                    if level of protection of player's held item is not 10:
+                        if player's balance is greater than {_Armor}:
+                            subtract {_Armor} from player's balance
+                            enchant the player's held item with "protection %level of protection of player's held item + 1%" parsed as enchantment type
+                            execute player command "chestplate"
+                        else:
+                            message "&cYou need $%{_Armor}%."
+                            message "&cYou currently have %player's balance%"
+                    else:
+                        message "&cMax Protection"
+                else:
+                    message "&cYou need to be holding a chestplate"
+
+on right click holding any leggings:
+    player is sneaking
+    cancel event
+    execute player command "leggings"
+
+command /leggings:
+    trigger:
+        item amount of player's held item is 1
+        open virtual chest with size 1 named "&bEnchant" to player
+        player's held item is any Leggings:
+            set {_item} to lore of player's held item
+            set {_split::*} to {_item} split at "||"
+            loop {_split::*}:
+                if "%{_split::%loop-index%}%" contain "&bLv ":
+                    set {_slot} to loop-index
+                    set {_slot} to {_slot} parsed as number
+                    set {_requirement} to line {_slot} of lore of player's held item
+                    replace every "&bLv " and "+" in {_requirement} with ""
+                    set {_requirement} to {_requirement} parsed as number
+            set {_Armor} to {_requirement}^2 + ({_requirement}*50*level of protection of player's held item)
+            format gui slot 0 of player with diamond leggings named "&b&lProtection +1" with lore "&6Cost: &e$%{_Armor}%" and "&cMax: 10" to run:
+                item amount of player's held item is 1
+                if player's held item is any leggings:
+                    if level of protection of player's held item is not 10:
+                        if player's balance is greater than {_Armor}:
+                            subtract {_Armor} from player's balance
+                            enchant the player's held item with "protection %level of protection of player's held item + 1%" parsed as enchantment type
+                            execute player command "leggings"
+                        else:
+                            message "&cYou need $%{_Armor}%."
+                            message "&cYou currently have %player's balance%"
+                    else:
+                        message "&cMax Protection"
+                else:
+                    message "&cYou need to be holding a leggings"
+
+on right click holding any boots:
+    player is sneaking
+    cancel event
+    execute player command "boots"
+
+command /boots:
+    trigger:
+        item amount of player's held item is 1
+        open virtual chest with size 1 named "&bEnchant" to player
+        player's held item is any boots:
+            set {_item} to lore of player's held item
+            set {_split::*} to {_item} split at "||"
+            loop {_split::*}:
+                if "%{_split::%loop-index%}%" contain "&bLv ":
+                    set {_slot} to loop-index
+                    set {_slot} to {_slot} parsed as number
+                    set {_requirement} to line {_slot} of lore of player's held item
+                    replace every "&bLv " and "+" in {_requirement} with ""
+                    set {_requirement} to {_requirement} parsed as number
+            set {_Armor} to {_requirement}^2 + ({_requirement}*50*level of protection of player's held item)
+            format gui slot 0 of player with diamond boots named "&b&lProtection +1" with lore "&6Cost: &e$%{_Armor}%" and "&cMax: 10" to run:
+                item amount of player's held item is 1
+                if player's held item is any boots:
+                    if level of protection of player's held item is not 10:
+                        if player's balance is greater than {_Armor}:
+                            subtract {_Armor} from player's balance
+                            enchant the player's held item with "protection %level of protection of player's held item + 1%" parsed as enchantment type
+                            execute player command "boots"
+                        else:
+                            message "&cYou need $%{_Armor}%."
+                            message "&cYou currently have %player's balance%"
+                    else:
+                        message "&cMax Protection"
+                else:
+                    message "&cYou need to be holding a boots"
+
+
+on right click holding any sword:
+    player is sneaking:
+        execute player command "sword"
+    
+command /sword:
+    trigger:
+        item amount of player's held item is 1
+        open virtual chest with size 1 named "&bEnchant" to player
+        player's held item is any sword:
+            set {_item} to lore of player's held item
+            set {_split::*} to {_item} split at "||"
+            loop {_split::*}:
+                if "%{_split::%loop-index%}%" contain "&bLv ":
+                    set {_slot} to loop-index
+                    set {_slot} to {_slot} parsed as number
+                    set {_requirement} to line {_slot} of lore of player's held item
+                    replace every "&bLv " and "+" in {_requirement} with ""
+                    set {_requirement} to {_requirement} parsed as number
+            if {_requirement} = 0:
+                stop
+            set {_Sharp} to {_requirement}^2 + ({_requirement}*50*level of sharpness of player's held item)
+            set {_looting} to {_requirement}^2 + ({_requirement}*150*level of looting of player's held item)
+            format gui slot 0 of player with diamond sword named "&c&lSharpness +1" with lore "&6Cost: &e$%{_Sharp}%" and "&cMax: 10" to run:
+                item amount of player's held item is 1
+                if player's held item is any sword:
+                    if level of sharpness of player's held item is not 10:
+                        if player's balance >= {_Sharp}:
+                            subtract {_Sharp} from player's balance
+                            enchant the player's held item with "sharpness %level of sharpness of player's held item + 1%" parsed as enchantment type
+                            execute player command "sword"
+                        else:
+                            message "&cYou need $%({_Sharp}-player's balance)% more to do that."
+                    else:
+                        message "&cMax Sharpness"
+                else:
+                    message "&cYou need to be holding a sword"
+            format gui slot 1 of player with magma cream named "&c&lLooting +1" with lore "&6Cost: &e$%{_looting}%", "&cMax: 20" and "&6Only Increase Core Droprate!" to run:
+                if player's held item is any sword:
+                    if level of looting of player's held item is not 20:
+                        if player's balance >= {_looting}:
+                            subtract {_looting} from player's balance
+                            enchant the player's held item with "looting %level of looting of player's held item + 1%" parsed as enchantment type
+                            execute player command "sword"
+                        else:
+                            message "&cYou need $%({_looting}-player's balance)% more to do that."
+                    else:
+                        message "&cMax Looting"
+                else:
+                    message "&cYou need to be holding a sword"
+
+on right click holding diamond pickaxe:
+    execute player command "pickaxe"
+
+command /pickaxe:
+    trigger:
+        item amount of player's held item is 1
+        open virtual chest with size 1 named "&bEnchant" to player
+        player's held item is diamond pickaxe:
+            set {_Eff} to 1000 + ((level of efficiency of player's tool*10)^3)
+            set {_Unb} to 2000 + (5000*level of unbreaking of player's tool)
+            set {_Luck} to 5000 + (10000*level of lure of player's tool)
+            format gui slot 0 of player with diamond pickaxe named "&b&lEfficiency +1" with lore "&6Cost: &e$%{_Eff}%" and "&cMax: 10" to run:
+                item amount of player's held item is 1
+                if player's held item is diamond pickaxe:
+                    if level of efficiency of player's tool is not 10:
+                        if player's balance >= {_Eff}:
+                            subtract {_Eff} from player's balance
+                            enchant the player's tool with "efficiency %level of efficiency of player's tool + 1%" parsed as enchantment type
+                            set line 1 of lore of player's tool to "&b&lEfficiency %level of efficiency of player's tool%"
+                            make player execute command "pickaxe"
+                        else:
+                            message "&cYou need $%{_Eff}%."
+                            message "&cYou currently have %player's balance%"
+                    else:
+                        message "&cMax Efficiency"
+                else:
+                    message "&cYou need to be holding a pickaxe"
+            format gui slot 1 of player with brick named "&6&lUnbreaking +1" with lore "&6Cost: &e$%{_Unb}%" and "&cMax: Unlimited" to run:
+                item amount of player's held item is 1
+                if player's held item is diamond pickaxe:
+                    if player's balance is greater than {_Unb}:
+                        subtract {_Unb} from player's balance
+                        enchant the player's tool with "unbreaking %level of unbreaking of player's tool + 1%" parsed as enchantment type
+                        set line 2 of lore of player's tool to "&6&lUnbreaking %level of unbreaking of player's tool%"
+                        make player execute command "pickaxe"
+                    else:
+                        message "&cYou need $%{_Unb}%."
+                        message "&cYou currently have %player's balance%"
+                else:
+                    message "&cYou need to be holding a pickaxe"
+            format gui slot 2 of player with sunflower named "&e&lLuck +1" with lore "&6Cost: &e$%{_Luck}%" and "&cMax: 100" to run:
+                item amount of player's held item is 1
+                if player's held item is diamond pickaxe:
+                    if level of Lure of player's tool is not 100:
+                        if player's balance >= {_Luck}:
+                            subtract {_Luck} from player's balance
+                            enchant the player's tool with "lure %level of Lure of player's tool + 1%" parsed as enchantment type
+                            set line 3 of lore of player's tool to "&e&lLuck %level of Lure of player's tool%"
+                            make player execute command "pickaxe"
+                        else:
+                            message "&cYou need $%{_Luck}%."
+                            message "&cYou currently have %player's balance%"
+                    else:
+                        message "&cMax Luck"
+                else:
+                    message "&cYou need to be holding a pickaxe"
+            format gui slot 3 of player with light blue stained glass pane named ""
+            format gui slot 4 of player with light blue stained glass pane named ""
+            format gui slot 5 of player with light blue stained glass pane named ""
+            format gui slot 6 of player with light blue stained glass pane named ""
+            format gui slot 7 of player with light blue stained glass pane named ""
+            format gui slot 8 of player with Anvil named "&8&lRepair" with lore "&6Cost: &e$1000" to run:
+                if player's balance >= 1000:
+                    subtract 1000 from player's balance
+                    repair player's tool
+                else:
+                    message "&cYou need $1000."
+                    message "&cYou currently have %player's balance%"
+
+command /upgrade:
+    permission: essentials.op
+    trigger:
+        add "{AttributeModifiers:[{AttributeName:""generic.attackDamage"",Name:""generic.attackDamage"",Amount:20,Operation:0,UUIDLeast:894654,UUIDMost:2872}]}" to nbt of player's tool

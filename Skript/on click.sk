@@ -1,0 +1,13 @@
+on rightclick holding slimeball:
+    name of event-item is "&a&lSkillpoint Reset Magical Ball"
+    remove event-item from player's inventory
+    delete {skillpoints::%player%::*}
+    delete {skillpoints::%player%}
+    set {skillpoints::%player%} to player's level
+    message "&6&l%{skillpoints::%player%}% &b&lSkill Points has been Returned to you"
+
+
+
+
+
+#------------------------------------------------------------Left Click----------------------------------------#

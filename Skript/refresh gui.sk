@@ -1,0 +1,652 @@
+command /refreshgui:
+    trigger:
+        #START
+        create a new gui with id "Boss Room" with virtual chest inventory with size 3 named "&c&lBoss Teleportation Room":
+            format gui slot 1 with oak door named "&c&lRoom 1":
+                execute console command "/warp Room1 %player%"
+            format gui slot 2 with oak door named "&c&lRoom 2":
+                execute console command "/warp Room2 %player%"
+            format gui slot 3 with oak door named "&c&lRoom 3":
+                execute console command "/warp Room3 %player%"
+            format gui slot 4 with oak door named "&c&lRoom 4":
+                execute console command "/warp Room4 %player%"
+            format gui slot 5 with oak door named "&c&lRoom 5":
+                execute console command "/warp Room5 %player%"
+            format gui slot 6 with oak door named "&c&lRoom 6":
+                execute console command "/warp Room6 %player%"
+            format gui slot 7 with oak door named "&c&lRoom 7":
+                execute console command "/warp Room7 %player%"
+            format gui slot 8 with oak door named "&c&lRoom 8":
+                execute console command "/warp Room8 %player%"
+        create a new gui with id "Skill" with virtual chest inventory with size 6 named "&bSkill":
+            format gui slot 16 with player's skull named "&a&lCurrency"
+            format gui slot 10 with player's skull named "&a&lStats"
+            format gui slot 25 with emerald named "&aGem: %{gem::%player's uuid%}%"
+            format gui slot 19 with diamond pickaxe named "&bMining Level: %{level::%player's uuid%}%"
+            format gui slot 34 with paper named "&e%player's balance%"
+            format gui slot 28 with experience bottle named "&bExp Level: %player's level%"
+            format gui slot 13 with book named "&a&lCurrent Skill Points: %{skillpoints::%player's uuid%}%"
+            format gui slot 31 with iron sword named "&c+1 Strength" with lore "&e&lCurrent amount of Strength: %{skillpoints::%player's uuid%::strength}%":
+                execute console command "/skills add %gui-player% strength"
+            format gui slot 32 with sugar named "&c+1 Speed" with lore "&e&lCurrent amount of Speed: %{skillpoints::%player's uuid%::speed}%":
+                execute console command "/skills add %gui-player% speed"
+            format gui slot 30 with iron chestplate named "&c+1 Defense" with lore "&e&lCurrent amount of Defense: %{skillpoints::%player's uuid%::defense}%":
+                execute console command "/skills add %gui-player% defense"
+
+        create a new gui with id "Achievements" with virtual chest inventory with size 6 named "&cSlaying &dAchievements":
+            format gui slot 53 with book and quill named "&8Next Page >>" with lore "&b&LMining":
+                open gui "Mining" to player
+        
+        #ACHIEVEMENT 1
+        
+            if {%player%::achievements::ZombieSlayer} is not set:
+                if {%player%::achievements::zombie} is less than 250:
+                    format gui slot 0 with red stained glass pane named "&c&lZombie Slayer [1]" with lore "&6Kill 250 Zombies", "&e+350 Mining Exp" and "&d%{%player%::achievements::zombie}%/250"
+                if {%player%::achievements::zombie} is not set:
+                    format gui slot 0 with red stained glass pane named "&c&lZombie Slayer [1]" with lore "&6Kill 250 Zombies", "&e+350 Mining Exp" and "&d%{%player%::achievements::zombie}%/250"
+                if {%player%::achievements::zombie} is greater than 249:
+                    format gui slot 0 with green stained glass pane named "&a&lZombie Slayer [1]" with lore "&6Kill 250 Zombies", "&e+350 Mining Exp" and "&d&lClaimable":
+                        if {%player%::achievements::ZombieSlayer} is not set:
+                            set {%player%::achievements::ZombieSlayer} to 1
+                            add 350 to {%player%::exp}
+                            message "&a&lAchievement Complete!"
+                            message "&6Reward: &e350 Mining Exp"
+                            make player execute command "/refreshgui"
+                            open gui "Achievements" to player
+            if {%player%::achievements::ZombieSlayer} is 1:
+                if {%player%::achievements::zombie} is less than 500:
+                    format gui slot 0 with red stained glass pane named "&c&lZombie Slayer [2]" with lore "&6Kill 500 Zombies", "&e+750 Mining Exp" and "&d%{%player%::achievements::zombie}%/500"
+                if {%player%::achievements::zombie} is greater than 499:
+                    format gui slot 0 with green stained glass pane named "&a&lZombie Slayer [2]" with lore "&6Kill 500 Zombies", "&e+750 Mining Exp" and "&d&lClaimable":
+                        if {%player%::achievements::ZombieSlayer} is 1:
+                            set {%player%::achievements::ZombieSlayer} to 2
+                            add 750 to {%player%::exp}
+                            message "&a&lAchievement Complete!"
+                            message "&6Reward: &e750 Mining Exp"
+                            make player execute command "/refreshgui"
+                            open gui "Achievements" to player
+            if {%player%::achievements::ZombieSlayer} is 2:
+                if {%player%::achievements::zombie} is less than 1000:
+                    format gui slot 0 with red stained glass pane named "&c&lZombie Slayer [3]" with lore "&6Kill 1000 Zombies", "&e+1250 Mining Exp" and "&d%{%player%::achievements::zombie}%/1000"
+                if {%player%::achievements::zombie} is greater than 999:
+                    format gui slot 0 with green stained glass pane named "&a&lZombie Slayer [3]" with lore "&6Kill 1000 Zombies", "&e+1250 Mining Exp" and "&d&lClaimable":
+                        if {%player%::achievements::ZombieSlayer} is 2:
+                            set {%player%::achievements::ZombieSlayer} to 3
+                            add 1250 to {%player%::exp}
+                            message "&a&lAchievement Complete!"
+                            message "&6Reward: &e1250 Mining Exp"
+                            broadcast "&a&l%player% &6&lHas Completed Zombie Slayer Achievement!"
+                            make player execute command "/refreshgui"
+                            open gui "Achievements" to player
+            if {%player%::achievements::ZombieSlayer} is 3:
+                format gui slot 0 with purple stained glass pane named "&d&lZombie Slayer" with lore "&a&lCompleted!" and "&6Total Zombies Killed: &c%{%player%::achievements::zombie}%"
+        
+        #ACHIEVEMENT 2
+
+            if {%player%::achievements::MasterLv1} is not set:
+                format gui slot 1 with red stained glass pane named "&c&lMaster Level 1 [1]" with lore "&6Kill 250 Zombies, 100 Husk and 10 Enhanced Zombie", "&e+1000 Mining Exp", "&d%{%player%::achievements::zombie}%/250", "&d%{%player%::achievements::husk}%/100" and "&d%{%player%::achievements::EnhancedZombie}%/10"
+                if {%player%::achievements::zombie} is greater than 249:
+                    if {%player%::achievements::husk} is greater than 99:
+                        if {%player%::achievements::EnhancedZombie} is greater than 9:
+                            format gui slot 1 with green stained glass pane named "&a&lMaster Level 1 [1]" with lore "&6Kill 250 Zombies, 100 Husk and 10 Enhanced Zombie", "&e+1000 Mining Exp" and "&d&lClaimable":
+                                if {%player%::achievements::MasterLv1} is not set:
+                                    set {%player%::achievements::MasterLv1} to 2
+                                    add 1000 to {%player%::exp}
+                                    message "&a&lAchievement Complete!"
+                                    message "&6Reward: &e1000 Mining Exp"
+                                    make player execute command "/refreshgui"
+                                    open gui "Achievements" to player
+            if {%player%::achievements::MasterLv1} is 1:
+                format gui slot 1 with red stained glass pane named "&c&lMaster Level 1 [2]" with lore "&6Kill 500 Zombies, 200 Husk and 20 Enhanced Zombie", "&e+2000 Mining Exp", "&d%{%player%::achievements::zombie}%/500", "&d%{%player%::achievements::husk}%/200" and "&d%{%player%::achievements::EnhancedZombie}%/20"
+                if {%player%::achievements::zombie} is greater than 499:
+                    if {%player%::achievements::husk} is greater than 199:
+                        if {%player%::achievements::EnhancedZombie} is greater than 19:
+                            format gui slot 1 with green stained glass pane named "&a&lMaster Level 1 [2]" with lore "&6Kill 500 Zombies, 200 Husk and 20 Enhanced Zombie", "&e+2000 Mining Exp" and "&d&lClaimable":
+                                if {%player%::achievements::MasterLv1} is 1:
+                                    set {%player%::achievements::MasterLv1} to 2
+                                    add 2000 to {%player%::exp}
+                                    message "&a&lAchievement Complete!"
+                                    message "&6Reward: &e2000 Mining Exp"
+                                    make player execute command "/refreshgui"
+                                    open gui "Achievements" to player
+            if {%player%::achievements::MasterLv1} is 2:
+                format gui slot 1 with red stained glass pane named "&c&lMaster Level 1 [3]" with lore "&6Kill 1000 Zombies, 400 Husk and 40 Enhanced Zombie", "&e+2000 Mining Exp", "&d%{%player%::achievements::zombie}%/1000", "&d%{%player%::achievements::husk}%/400" and "&d%{%player%::achievements::EnhancedZombie}%/40"
+                if {%player%::achievements::zombie} is greater than 999:
+                    if {%player%::achievements::husk} is greater than 399:
+                        if {%player%::achievements::EnhancedZombie} is greater than 39:
+                            format gui slot 1 with green stained glass pane named "&a&lMaster Level 1 [3]" with lore "&6Kill 1000 Zombies, 400 Husk and 40 Enhanced Zombie", "&e+4000 Mining Exp" and "&d&lClaimable":
+                                if {%player%::achievements::MasterLv1} is 2:
+                                    set {%player%::achievements::MasterLv1} to 3
+                                    add 4000 to {%player%::exp}
+                                    message "&a&lAchievement Complete!"
+                                    message "&6Reward: &e4000 Mining Exp"
+                                    broadcast "&a&l%player% &6&lHas Completed Master Level 1 Achievement!"
+                                    make player execute command "/refreshgui"
+                                    open gui "Achievements" to player
+            if {%player%::achievements::MasterLv1} is 3:
+                format gui slot 1 with purple stained glass pane named "&d&lZombie" with lore "&a&lCompleted!", "&6Total Zombies Killed: &c%{%player%::achievements::zombie}%", "&6Total Husk Killed: &c%{%player%::achievements::husk}%" and "&6Total Enhanced Zombie Killed: &c%{%player%::achievements::EnhancedZombie}%"
+
+        #Achievement 3
+
+            if {%player%::achievements::HuskSlayer} is not set:
+                if {%player%::achievements::husk} is less than 250:
+                    format gui slot 2 with red stained glass pane named "&c&lHusk Slayer [1]" with lore "&6Kill 250 Husks", "&e+450 Mining Exp" and "&d%{%player%::achievements::husk}%/250"
+                if {%player%::achievements::husk} is not set:
+                    format gui slot 2 with red stained glass pane named "&c&lHusk Slayer [1]" with lore "&6Kill 250 Husks", "&e+450 Mining Exp" and "&d%{%player%::achievements::husk}%/250"
+                if {%player%::achievements::husk} is greater than 249:
+                    format gui slot 2 with green stained glass pane named "&a&lHusk Slayer [1]" with lore "&6Kill 250 Husks", "&e+450 Mining Exp" and "&d&lClaimable":
+                        if {%player%::achievements::HuskSlayer} is not set:
+                            set {%player%::achievements::HuskSlayer} to 1
+                            add 350 to {%player%::exp}
+                            message "&a&lAchievement Complete!"
+                            message "&6Reward: &e450 Mining Exp"
+                            make player execute command "/refreshgui"
+                            open gui "Achievements" to player
+            if {%player%::achievements::HuskSlayer} is 1:
+                if {%player%::achievements::husk} is less than 500:
+                    format gui slot 2 with red stained glass pane named "&c&lHusk Slayer [2]" with lore "&6Kill 500 Husks", "&e+950 Mining Exp" and "&d%{%player%::achievements::husk}%/500"
+                if {%player%::achievements::husk} is greater than 499:
+                    format gui slot 2 with green stained glass pane named "&a&lHusk Slayer [2]" with lore "&6Kill 500 Husks", "&e+950 Mining Exp" and "&d&lClaimable":
+                        if {%player%::achievements::HuskSlayer} is 1:
+                            set {%player%::achievements::HuskSlayer} to 2
+                            add 950 to {%player%::exp}
+                            message "&a&lAchievement Complete!"
+                            message "&6Reward: &e950 Mining Exp"
+                            make player execute command "/refreshgui"
+                            open gui "Achievements" to player
+            if {%player%::achievements::HuskSlayer} is 2:
+                if {%player%::achievements::husk} is less than 1000:
+                    format gui slot 2 with red stained glass pane named "&c&lHusk Slayer [3]" with lore "&6Kill 1000 Husks", "&e+1550 Mining Exp" and "&d%{%player%::achievements::husk}%/1000"
+                if {%player%::achievements::husk} is greater than 999:
+                    format gui slot 2 with green stained glass pane named "&a&lHusk Slayer [3]" with lore "&6Kill 1000 Husks", "&e+1550 Mining Exp" and "&d&lClaimable":
+                        if {%player%::achievements::HuskSlayer} is 2:
+                            set {%player%::achievements::HuskSlayer} to 3
+                            add 1550 to {%player%::exp}
+                            message "&a&lAchievement Complete!"
+                            message "&6Reward: &e1550 Mining Exp"
+                            broadcast "&a&l%player% &6&lHas Completed Husk Slayer Achievement!"
+                            make player execute command "/refreshgui"
+                            open gui "Achievements" to player
+            if {%player%::achievements::HuskSlayer} is 3:
+                format gui slot 2 with purple stained glass pane named "&d&lHusk Slayer" with lore "&a&lCompleted!" and "&6Total Husks Killed: &c%{%player%::achievements::husk}%"
+        
+        #Achievement 4
+
+            if {%player%::achievements::StraySlayer} is not set:
+                if {%player%::achievements::Stray} is less than 250:
+                    format gui slot 3 with red stained glass pane named "&c&lStray Slayer [1]" with lore "&6Kill 250 Strays", "&e+550 Mining Exp" and "&d%{%player%::achievements::Stray}%/250"
+                if {%player%::achievements::Stray} is not set:
+                    format gui slot 3 with red stained glass pane named "&c&lStray Slayer [1]" with lore "&6Kill 250 Strays", "&e+550 Mining Exp" and "&d%{%player%::achievements::Stray}%/250"
+                if {%player%::achievements::Stray} is greater than 249:
+                    format gui slot 3 with green stained glass pane named "&a&lStray Slayer [1]" with lore "&6Kill 250 Strays", "&e+550 Mining Exp" and "&d&lClaimable":
+                        if {%player%::achievements::StraySlayer} is not set:
+                            set {%player%::achievements::StraySlayer} to 1
+                            add 550 to {%player%::exp}
+                            message "&a&lAchievement Complete!"
+                            message "&6Reward: &e550 Mining Exp"
+                            make player execute command "/refreshgui"
+                            open gui "Achievements" to player
+            if {%player%::achievements::StraySlayer} is 1:
+                if {%player%::achievements::Stray} is less than 500:
+                    format gui slot 3 with red stained glass pane named "&c&lStray Slayer [2]" with lore "&6Kill 500 Strays", "&e+1000 Mining Exp" and "&d%{%player%::achievements::Stray}%/500"
+                if {%player%::achievements::Stray} is greater than 499:
+                    format gui slot 3 with green stained glass pane named "&a&lStray Slayer [2]" with lore "&6Kill 500 Strays", "&e+1000 Mining Exp" and "&d&lClaimable":
+                        if {%player%::achievements::StraySlayer} is 1:
+                            set {%player%::achievements::StraySlayer} to 2
+                            add 1000 to {%player%::exp}
+                            message "&a&lAchievement Complete!"
+                            message "&6Reward: &e1000 Mining Exp"
+                            make player execute command "/refreshgui"
+                            open gui "Achievements" to player
+            if {%player%::achievements::StraySlayer} is 2:
+                if {%player%::achievements::Stray} is less than 1000:
+                    format gui slot 3 with red stained glass pane named "&c&lStray Slayer [3]" with lore "&6Kill 1000 Strays", "&e+1750 Mining Exp" and "&d%{%player%::achievements::Stray}%/1000"
+                if {%player%::achievements::Stray} is greater than 999:
+                    format gui slot 3 with green stained glass pane named "&a&lStray Slayer [3]" with lore "&6Kill 1000 Strays", "&e+1750 Mining Exp" and "&d&lClaimable":
+                        if {%player%::achievements::StraySlayer} is 2:
+                            set {%player%::achievements::StraySlayer} to 3
+                            add 1750 to {%player%::exp}
+                            message "&a&lAchievement Complete!"
+                            message "&6Reward: &e1750 Mining Exp"
+                            broadcast "&a&l%player% &6&lHas Completed Stray Slayer Achievement!"
+                            make player execute command "/refreshgui"
+                            open gui "Achievements" to player
+            if {%player%::achievements::StraySlayer} is 3:
+                format gui slot 3 with purple stained glass pane named "&d&lStray Slayer" with lore "&a&lCompleted!" and "&6Total Strays Killed: &c%{%player%::achievements::Stray}%"
+
+        #Achievement 5
+
+            if {%player%::achievements::MasterLv2} is not set:
+                format gui slot 4 with red stained glass pane named "&c&lMaster Level 2 [1]" with lore "&6Kill 250 Husk, 100 Stray and 10 Enhanced Husk", "&e+1750 Mining Exp", "&d%{%player%::achievements::husk}%/250", "&d%{%player%::achievements::Stray}%/100" and "&d%{%player%::achievements::EnhancedHusk}%/10"
+                if {%player%::achievements::husk} is greater than 249:
+                    if {%player%::achievements::Stray} is greater than 99:
+                        if {%player%::achievements::EnhancedHusk} is greater than 9:
+                            format gui slot 4 with green stained glass pane named "&a&lMaster Level 2 [1]" with lore "&6Kill 250 Husk, 100 Stray and 10 Enhanced Husk", "&e+1750 Mining Exp" and "&d&lClaimable":
+                                if {%player%::achievements::MasterLv2} is not set:
+                                    set {%player%::achievements::MasterLv2} to 2
+                                    add 1750 to {%player%::exp}
+                                    message "&a&lAchievement Complete!"
+                                    message "&6Reward: &e1750 Mining Exp"
+                                    make player execute command "/refreshgui"
+                                    open gui "Achievements" to player
+            if {%player%::achievements::MasterLv2} is 1:
+                format gui slot 4 with red stained glass pane named "&c&lMaster Level 2 [2]" with lore "&6Kill 500 Husk, 200 Stray and 20 Enhanced Husk", "&e+3000 Mining Exp", "&d%{%player%::achievements::husk}%/500", "&d%{%player%::achievements::Stray}%/200" and "&d%{%player%::achievements::EnhancedHusk}%/20"
+                if {%player%::achievements::husk} is greater than 499:
+                    if {%player%::achievements::Stray} is greater than 199:
+                        if {%player%::achievements::EnhancedHusk} is greater than 19:
+                            format gui slot 4 with green stained glass pane named "&a&lMaster Level 2 [2]" with lore "&6Kill 500 Husk, 200 Stray and 20 Enhanced Husk", "&e+3000 Mining Exp" and "&d&lClaimable":
+                                if {%player%::achievements::MasterLv2} is 1:
+                                    set {%player%::achievements::MasterLv2} to 2
+                                    add 3000 to {%player%::exp}
+                                    message "&a&lAchievement Complete!"
+                                    message "&6Reward: &e3000 Mining Exp"
+                                    make player execute command "/refreshgui"
+                                    open gui "Achievements" to player
+            if {%player%::achievements::MasterLv2} is 2:
+                format gui slot 4 with red stained glass pane named "&c&lMaster Level 2 [3]" with lore "&6Kill 1000 Husk, 400 Stray and 40 Enhanced Husk", "&e+4500 Mining Exp", "&d%{%player%::achievements::husk}%/1000", "&d%{%player%::achievements::Stray}%/400" and "&d%{%player%::achievements::EnhancedHusk}%/40"
+                if {%player%::achievements::husk} is greater than 999:
+                    if {%player%::achievements::Stray} is greater than 399:
+                        if {%player%::achievements::EnhancedHusk} is greater than 39:
+                            format gui slot 4 with green stained glass pane named "&a&lMaster Level 2 [3]" with lore "&6Kill 1000 Husk, 400 Stray and 40 Enhanced Husk", "&e+4500 Mining Exp" and "&d&lClaimable":
+                                if {%player%::achievements::MasterLv2} is 2:
+                                    set {%player%::achievements::MasterLv2} to 3
+                                    add 4500 to {%player%::exp}
+                                    message "&a&lAchievement Complete!"
+                                    message "&6Reward: &e4500 Mining Exp"
+                                    broadcast "&a&l%player% &6&lHas Completed Master Level 2 Achievement!"
+                                    make player execute command "/refreshgui"
+                                    open gui "Achievements" to player
+            if {%player%::achievements::MasterLv2} is 3:
+                format gui slot 4 with purple stained glass pane named "&d&lMaster Level 2" with lore "&a&lCompleted!", "&6Total Husk Killed: &c%{%player%::achievements::husk}%", "&6Total Stray Killed: &c%{%player%::achievements::Stray}%" and "&6Total Enhanced Husk Killed: &c%{%player%::achievements::EnhancedHusk}%"
+
+        #Achievement 6
+
+            if {%player%::achievements::WolfSlayer} is not set:
+                if {%player%::achievements::Wolf} is less than 250:
+                    format gui slot 5 with red stained glass pane named "&c&lWolf Slayer [1]" with lore "&6Kill 250 Wolfs", "&e+600 Mining Exp" and "&d%{%player%::achievements::Wolf}%/250"
+                if {%player%::achievements::Wolf} is not set:
+                    format gui slot 5 with red stained glass pane named "&c&lWolf Slayer [1]" with lore "&6Kill 250 Wolfs", "&e+600 Mining Exp" and "&d%{%player%::achievements::Wolf}%/250"
+                if {%player%::achievements::Wolf} is greater than 249:
+                    format gui slot 5 with green stained glass pane named "&a&lWolf Slayer [1]" with lore "&6Kill 250 Wolfs", "&e+600 Mining Exp" and "&d&lClaimable":
+                        if {%player%::achievements::WolfSlayer} is not set:
+                            set {%player%::achievements::WolfSlayer} to 1
+                            add 600 to {%player%::exp}
+                            message "&a&lAchievement Complete!"
+                            message "&6Reward: &e600 Mining Exp"
+                            make player execute command "/refreshgui"
+                            open gui "Achievements" to player
+            if {%player%::achievements::WolfSlayer} is 1:
+                if {%player%::achievements::Wolf} is less than 500:
+                    format gui slot 5 with red stained glass pane named "&c&lWolf Slayer [2]" with lore "&6Kill 500 Wolfs", "&e+1200 Mining Exp" and "&d%{%player%::achievements::Wolf}%/500"
+                if {%player%::achievements::Wolf} is greater than 499:
+                    format gui slot 5 with green stained glass pane named "&a&lWolf Slayer [2]" with lore "&6Kill 500 Wolfs", "&e+1200 Mining Exp" and "&d&lClaimable":
+                        if {%player%::achievements::WolfSlayer} is 1:
+                            set {%player%::achievements::WolfSlayer} to 2
+                            add 1200 to {%player%::exp}
+                            message "&a&lAchievement Complete!"
+                            message "&6Reward: &e1200 Mining Exp"
+                            make player execute command "/refreshgui"
+                            open gui "Achievements" to player
+            if {%player%::achievements::WolfSlayer} is 2:
+                if {%player%::achievements::Wolf} is less than 1000:
+                    format gui slot 5 with red stained glass pane named "&c&lWolf Slayer [3]" with lore "&6Kill 1000 Wolfs", "&e+2000 Mining Exp" and "&d%{%player%::achievements::Wolf}%/1000"
+                if {%player%::achievements::Wolf} is greater than 999:
+                    format gui slot 5 with green stained glass pane named "&a&lWolf Slayer [3]" with lore "&6Kill 1000 Wolfs", "&e+2000 Mining Exp" and "&d&lClaimable":
+                        if {%player%::achievements::WolfSlayer} is 2:
+                            set {%player%::achievements::WolfSlayer} to 3
+                            add 2000 to {%player%::exp}
+                            message "&a&lAchievement Complete!"
+                            message "&6Reward: &e2000 Mining Exp"
+                            broadcast "&a&l%player% &6&lHas Completed Wolf Slayer Achievement!"
+                            make player execute command "/refreshgui"
+                            open gui "Achievements" to player
+            if {%player%::achievements::WolfSlayer} is 3:
+                format gui slot 5 with purple stained glass pane named "&d&lWolf Slayer" with lore "&a&lCompleted!" and "&6Total Wolfs Killed: &c%{%player%::achievements::Wolf}%"
+
+        #Achievement 7
+
+            if {%player%::achievements::PolarBearSlayer} is not set:
+                if {%player%::achievements::PolarBear} is less than 250:
+                    format gui slot 6 with red stained glass pane named "&c&lPolarBear Slayer [1]" with lore "&6Kill 250 PolarBears", "&e+650 Mining Exp" and "&d%{%player%::achievements::PolarBear}%/250"
+                if {%player%::achievements::PolarBear} is not set:
+                    format gui slot 6 with red stained glass pane named "&c&lPolarBear Slayer [1]" with lore "&6Kill 250 PolarBears", "&e+650 Mining Exp" and "&d%{%player%::achievements::PolarBear}%/250"
+                if {%player%::achievements::PolarBear} is greater than 249:
+                    format gui slot 6 with green stained glass pane named "&a&lPolarBear Slayer [1]" with lore "&6Kill 250 PolarBears", "&e+650 Mining Exp" and "&d&lClaimable":
+                        if {%player%::achievements::PolarBearSlayer} is not set:
+                            set {%player%::achievements::PolarBearSlayer} to 1
+                            add 650 to {%player%::exp}
+                            message "&a&lAchievement Complete!"
+                            message "&6Reward: &e650 Mining Exp"
+                            make player execute command "/refreshgui"
+                            open gui "Achievements" to player
+            if {%player%::achievements::PolarBearSlayer} is 1:
+                if {%player%::achievements::PolarBear} is less than 500:
+                    format gui slot 6 with red stained glass pane named "&c&lPolarBear Slayer [2]" with lore "&6Kill 500 PolarBears", "&e+1500 Mining Exp" and "&d%{%player%::achievements::PolarBear}%/500"
+                if {%player%::achievements::PolarBear} is greater than 499:
+                    format gui slot 6 with green stained glass pane named "&a&lPolarBear Slayer [2]" with lore "&6Kill 500 PolarBears", "&e+1500 Mining Exp" and "&d&lClaimable":
+                        if {%player%::achievements::PolarBearSlayer} is 1:
+                            set {%player%::achievements::PolarBearSlayer} to 2
+                            add 1500 to {%player%::exp}
+                            message "&a&lAchievement Complete!"
+                            message "&6Reward: &e1500 Mining Exp"
+                            make player execute command "/refreshgui"
+                            open gui "Achievements" to player
+            if {%player%::achievements::PolarBearSlayer} is 2:
+                if {%player%::achievements::PolarBear} is less than 1000:
+                    format gui slot 6 with red stained glass pane named "&c&lPolarBear Slayer [3]" with lore "&6Kill 1000 PolarBears", "&e+2250 Mining Exp" and "&d%{%player%::achievements::PolarBear}%/1000"
+                if {%player%::achievements::PolarBear} is greater than 999:
+                    format gui slot 6 with green stained glass pane named "&a&lPolarBear Slayer [3]" with lore "&6Kill 1000 PolarBears", "&e+2250 Mining Exp" and "&d&lClaimable":
+                        if {%player%::achievements::PolarBearSlayer} is 2:
+                            set {%player%::achievements::PolarBearSlayer} to 3
+                            add 2250 to {%player%::exp}
+                            message "&a&lAchievement Complete!"
+                            message "&6Reward: &e2250 Mining Exp"
+                            broadcast "&a&l%player% &6&lHas Completed PolarBear Slayer Achievement!"
+                            make player execute command "/refreshgui"
+                            open gui "Achievements" to player
+            if {%player%::achievements::PolarBearSlayer} is 3:
+                format gui slot 6 with purple stained glass pane named "&d&lPolarBear Slayer" with lore "&a&lCompleted!" and "&6Total PolarBears Killed: &c%{%player%::achievements::PolarBear}%"
+
+        #Achievement 8
+
+            if {%player%::achievements::MasterLv3} is not set:
+                format gui slot 7 with red stained glass pane named "&c&lMaster Level 3 [1]" with lore "&6Kill 250 Wolf, 100 PolarBear and 10 Enhanced Stray", "&e+2250 Mining Exp", "&d%{%player%::achievements::Wolf}%/250", "&d%{%player%::achievements::PolarBear}%/100" and "&d%{%player%::achievements::EnhancedStray}%/10"
+                if {%player%::achievements::Wolf} is greater than 249:
+                    if {%player%::achievements::PolarBear} is greater than 99:
+                        if {%player%::achievements::EnhancedStray} is greater than 9:
+                            format gui slot 7 with green stained glass pane named "&a&lMaster Level 3 [1]" with lore "&6Kill 250 Wolf, 100 PolarBear and 10 Enhanced Stray", "&e+2250 Mining Exp" and "&d&lClaimable":
+                                if {%player%::achievements::MasterLv3} is not set:
+                                    set {%player%::achievements::MasterLv3} to 2
+                                    add 2250 to {%player%::exp}
+                                    message "&a&lAchievement Complete!"
+                                    message "&6Reward: &e2250 Mining Exp"
+                                    make player execute command "/refreshgui"
+                                    open gui "Achievements" to player
+            if {%player%::achievements::MasterLv3} is 1:
+                format gui slot 7 with red stained glass pane named "&c&lMaster Level 3 [2]" with lore "&6Kill 500 Wolf, 200 PolarBear and 20 Enhanced Stray", "&e+3500 Mining Exp", "&d%{%player%::achievements::Wolf}%/500", "&d%{%player%::achievements::PolarBear}%/200" and "&d%{%player%::achievements::EnhancedStray}%/20"
+                if {%player%::achievements::Wolf} is greater than 499:
+                    if {%player%::achievements::PolarBear} is greater than 199:
+                        if {%player%::achievements::EnhancedStray} is greater than 19:
+                            format gui slot 7 with green stained glass pane named "&a&lMaster Level 3 [2]" with lore "&6Kill 500 Wolf, 200 PolarBear and 20 Enhanced Stray", "&e+3500 Mining Exp" and "&d&lClaimable":
+                                if {%player%::achievements::MasterLv3} is 1:
+                                    set {%player%::achievements::MasterLv3} to 2
+                                    add 3500 to {%player%::exp}
+                                    message "&a&lAchievement Complete!"
+                                    message "&6Reward: &e3500 Mining Exp"
+                                    make player execute command "/refreshgui"
+                                    open gui "Achievements" to player
+            if {%player%::achievements::MasterLv3} is 2:
+                format gui slot 7 with red stained glass pane named "&c&lMaster Level 3 [3]" with lore "&6Kill 1000 Wolf, 400 PolarBear and 40 Enhanced Stray", "&e+5000 Mining Exp", "&d%{%player%::achievements::Wolf}%/1000", "&d%{%player%::achievements::PolarBear}%/400" and "&d%{%player%::achievements::EnhancedStray}%/40"
+                if {%player%::achievements::Wolf} is greater than 999:
+                    if {%player%::achievements::PolarBear} is greater than 399:
+                        if {%player%::achievements::EnhancedStray} is greater than 39:
+                            format gui slot 7 with green stained glass pane named "&a&lMaster Level 3 [3]" with lore "&6Kill 1000 Wolf, 400 PolarBear and 40 Enhanced Stray", "&e+5000 Mining Exp" and "&d&lClaimable":
+                                if {%player%::achievements::MasterLv3} is 2:
+                                    set {%player%::achievements::MasterLv3} to 3
+                                    add 5000 to {%player%::exp}
+                                    message "&a&lAchievement Complete!"
+                                    message "&6Reward: &e5000 Mining Exp"
+                                    broadcast "&a&l%player% &6&lHas Completed Master Level 3 Achievement!"
+                                    make player execute command "/refreshgui"
+                                    open gui "Achievements" to player
+            if {%player%::achievements::MasterLv3} is 3:
+                format gui slot 7 with purple stained glass pane named "&d&lMaster Level 3" with lore "&a&lCompleted!", "&6Total Wolf Killed: &c%{%player%::achievements::Wolf}%", "&6Total PolarBear Killed: &c%{%player%::achievements::PolarBear}%" and "&6Total Enhanced Stray Killed: &c%{%player%::achievements::EnhancedStray}%"
+    #MINING
+    
+        create a new gui with id "Mining" with virtual chest inventory with size 6 named "&bMining &dAchievements":
+            format gui slot 45 with book and quill named "&8<< Previous Page" with lore "&c&LSlaying":
+                open gui "Achievements" to player
+        
+            #ACHIEVEMENT 1
+
+            if {%player%::achievements::LowTeirMiner} is not set:
+                if {%player%::achievements::lapisOre} is less than 500:
+                    format gui slot 0 with red stained glass pane named "&c&lLow Tier Miner [1]" with lore "&6Mine 500 Lapis Ores", "&e+$10000" and "&d%{%player%::achievements::lapisOre}%/500"
+                if {%player%::achievements::lapisOre} is not set:
+                    format gui slot 0 with red stained glass pane named "&c&lLow Tier Miner [1]" with lore "&6Mine 500 Lapis Ores", "&e+$10000" and "&d%{%player%::achievements::lapisOre}%/500"
+                if {%player%::achievements::lapisOre} is greater than 499:
+                    format gui slot 0 with green stained glass pane named "&a&lLow Tier Miner [1]" with lore "&6Mine 500 Lapis Ores", "&e+$10000" and "&d&lClaimable":
+                        if {%player%::achievements::LowTeirMiner} is not set:
+                            set {%player%::achievements::LowTeirMiner} to 1
+                            add 10000 to player's balance
+                            message "&a&lAchievement Complete!"
+                            message "&6Reward: &e$10000"
+                            make player execute command "/refreshgui"
+                            open gui "Mining" to player
+            if {%player%::achievements::LowTeirMiner} is 1:
+                if {%player%::achievements::lapisOre} is less than 1500:
+                    format gui slot 0 with red stained glass pane named "&c&lLow Tier Miner [2]" with lore "&6Mine 1500 Lapis Ores", "&e+$20000" and "&d%{%player%::achievements::lapisOre}%/1500"
+                if {%player%::achievements::lapisOre} is greater than 1499:
+                    format gui slot 0 with green stained glass pane named "&a&lLow Tier Miner [2]" with lore "&6Mine 1500 Lapis Ores", "&e+$20000" and "&d&lClaimable":
+                        if {%player%::achievements::LowTeirMiner} is 1:
+                            set {%player%::achievements::LowTeirMiner} to 2
+                            add 20000 to player's balance
+                            message "&a&lAchievement Complete!"
+                            message "&6Reward: &e$20000"
+                            make player execute command "/refreshgui"
+                            open gui "Mining" to player
+            if {%player%::achievements::LowTeirMiner} is 2:
+                if {%player%::achievements::lapisOre} is less than 5000:
+                    format gui slot 0 with red stained glass pane named "&c&lLow Tier Miner [3]" with lore "&6Mine 5000 Lapis Ores", "&e+$30000" and "&d%{%player%::achievements::lapisOre}%/5000"
+                if {%player%::achievements::lapisOre} is greater than 4999:
+                    format gui slot 0 with green stained glass pane named "&a&lLow Tier Miner [3]" with lore "&6Mine 5000 Lapis Ores", "&e+$30000" and "&d&lClaimable":
+                        if {%player%::achievements::LowTeirMiner} is 2:
+                            set {%player%::achievements::LowTeirMiner} to 3
+                            add 30000 to player's balance
+                            message "&a&lAchievement Complete!"
+                            message "&6Reward: &e$30000"
+                            broadcast "&a&l%player% &6&lHas Completed Low Tier Miner Achievement!"
+                            make player execute command "/refreshgui"
+                            open gui "Mining" to player
+            if {%player%::achievements::LowTeirMiner} is 3:
+                format gui slot 0 with purple stained glass pane named "&d&lLow Tier Miner" with lore "&a&lCompleted!" and "&6Total Lapis Ore Mined: &c%{%player%::achievements::lapisOre}%"
+
+        #ACHIEVEMENT 2
+        
+            if {%player%::achievements::MidTeirMiner} is not set:
+                format gui slot 1 with red stained glass pane named "&c&lMid Tier Miner [1]" with lore "&6Mine 500 Lapis Blocks", "&e+$15000" and "&d%{%player%::achievements::lapisBlock}%/500"
+                if {%player%::achievements::lapisBlock} is greater than 499:
+                    format gui slot 1 with green stained glass pane named "&a&lMid Tier Miner [1]" with lore "&6Mine 500 Lapis Blocks", "&e+$15000" and "&d&lClaimable":
+                        if {%player%::achievements::MidTeirMiner} is not set:
+                            set {%player%::achievements::MidTeirMiner} to 1
+                            add 15000 to player's balance
+                            message "&a&lAchievement Complete!"
+                            message "&6Reward: &e$15000"
+                            make player execute command "/refreshgui"
+                            open gui "Mining" to player
+                if {%player%::achievements::MidTeirMiner} is 1:
+                    format gui slot 1 with red stained glass pane named "&c&lMid Tier Miner [2]" with lore "&6Mine 1500 Lapis Blocks", "&e+$25000" and "&d%{%player%::achievements::lapisBlock}%/1500"
+                    if {%player%::achievements::lapisBlock} is greater than 1499:
+                        format gui slot 1 with green stained glass pane named "&a&lMid Tier Miner [2]" with lore "&6Mine 1500 Lapis Blocks", "&e+$25000" and "&d&lClaimable":
+                            if {%player%::achievements::MidTeirMiner} is 1:
+                                set {%player%::achievements::MidTeirMiner} to 2
+                                add 25000 to player's balance
+                                message "&a&lAchievement Complete!"
+                                message "&6Reward: &e$25000"
+                                make player execute command "/refreshgui"
+                                open gui "Mining" to player
+                if {%player%::achievements::MidTeirMiner} is 2:
+                    format gui slot 1 with red stained glass pane named "&c&lMid Tier Miner [3]" with lore "&6Mine 5000 Lapis Blocks", "&e+$50000" and "&d%{%player%::achievements::lapisBlock}%/5000"
+                    if {%player%::achievements::lapisBlock} is greater than 4999:
+                        format gui slot 1 with green stained glass pane named "&a&lMid Tier Miner [3]" with lore "&6Mine 5000 Lapis Blocks", "&e+$50000" and "&d&lClaimable":
+                            if {%player%::achievements::MidTeirMiner} is 2:
+                                set {%player%::achievements::MidTeirMiner} to 3
+                                add 50000 to player's balance
+                                message "&a&lAchievement Complete!"
+                                message "&6Reward: &e$50000"
+                                broadcast "&a&l%player% &6&lHas Completed Mid Tier Miner Achievement!"
+                                make player execute command "/refreshgui"
+                                open gui "Mining" to player
+                if {%player%::achievements::MidTeirMiner} is 3:
+                    format gui slot 1 with purple stained glass pane named "&d&lMid Tier Miner" with lore "&a&lCompleted!" and "&6Total Lapis Block Mined: &c%{%player%::achievements::lapisBlock}%"
+    #End
+    #PICKAXE
+        create a new gui with id "Pickaxe" with virtual chest inventory with size 1 named "&dEnchant":
+            set {_Eff} to 10000 + (30000*level of efficiency of player's tool)
+            set {_Unb} to 3000 + (5000*level of unbreaking of player's tool)
+            set {_Luck} to 5000 + (10000*level of lure of player's tool)
+            format gui slot 0 with diamond pickaxe named "&b&lEfficiency +1" with lore "&6Cost: &e$%{_Eff}%" and "&cMax: 10":
+                if player's held item is diamond pickaxe:
+                    if level of efficiency of player's tool is not 10:
+                        if player's balance is greater than {_Eff}:
+                            subtract {_Eff} from player's balance
+                            enchant the player's tool with "efficiency %level of efficiency of player's tool + 1%" parsed as enchantment type
+                            set line 1 of lore of player's tool to "&b&lEfficiency %level of efficiency of player's tool%"
+                            make player execute command "/refreshgui"
+                            open gui "Pickaxe" to player
+                        else:
+                            message "&cYou need $%{_Eff}%."
+                            message "&cYou currently have %player's balance%"
+                    else:
+                        message "&cMax Efficiency"
+                else:
+                    message "&cYou need to be holding a pickaxe"
+            format gui slot 1 with brick named "&6&lUnbreaking +1" with lore "&6Cost: &e$%{_Unb}%" and "&cMax: Unlimited":
+                if player's held item is diamond pickaxe:
+                    if player's balance is greater than {_Unb}:
+                        subtract {_Unb} from player's balance
+                        enchant the player's tool with "unbreaking %level of unbreaking of player's tool + 1%" parsed as enchantment type
+                        set line 2 of lore of player's tool to "&6&lUnbreaking %level of unbreaking of player's tool%"
+                        make player execute command "/refreshgui"
+                        open gui "Pickaxe" to player
+                    else:
+                        message "&cYou need $%{_Unb}%."
+                        message "&cYou currently have %player's balance%"
+                else:
+                    message "&cYou need to be holding a pickaxe"
+            format gui slot 2 with sunflower named "&e&lLuck +1" with lore "&6Cost: &e$%{_Luck}%" and "&cMax: 100":
+                if player's held item is diamond pickaxe:
+                    if level of Lure of player's tool is not 100:
+                        if player's balance is greater than {_Luck}:
+                            subtract {_Luck} from player's balance
+                            enchant the player's tool with "lure %level of Lure of player's tool + 1%" parsed as enchantment type
+                            set line 3 of lore of player's tool to "&e&lLuck %level of Lure of player's tool%"
+                            make player execute command "/refreshgui"
+                            open gui "Pickaxe" to player
+                        else:
+                            message "&cYou need $%{_Luck}%."
+                            message "&cYou currently have %player's balance%"
+                    else:
+                        message "&cMax Luck"
+                else:
+                    message "&cYou need to be holding a pickaxe"
+            format gui slot 3 with light blue stained glass pane named ""
+            format gui slot 4 with light blue stained glass pane named ""
+            format gui slot 5 with light blue stained glass pane named ""
+            format gui slot 6 with light blue stained glass pane named ""
+            format gui slot 7 with light blue stained glass pane named ""
+            format gui slot 8 with Anvil named "&8&lRepair" with lore "&6Cost: &e$1000":
+                if player's balance is greater than 1000:
+                    subtract 1000 from player's balance
+                    repair player's tool
+                else:
+                    message "&cYou need $1000."
+                    message "&cYou currently have %player's balance%"
+    #Sword
+        create a new gui with id "Sword" with virtual chest inventory with size 1 named "&dEnchant":
+            set {_Sharp} to 10000 + (30000*level of sharpness of player's tool)
+            format gui slot 0 with diamond pickaxe named "&c&lSharpness +1" with lore "&6Cost: &e$%{_Sharp}%" and "&cMax: 10":
+                if level of sharpness of player's tool is not 10:
+                    if player's balance is greater than {_Sharp}:
+                        subtract {_Sharp} from player's balance
+                        enchant the player's tool with "sharpness %level of sharpness of player's tool + 1%" parsed as enchantment type
+                        make player execute command "/refreshgui"
+                        open gui "Sword" to player
+                    else:
+                        message "&cYou need $%{_Sharp}%."
+                        message "&cYou currently have %player's balance%"
+                else:
+                    message "&cMax Sharpness"
+    #PETS
+        create new gui with id "LowPet" with virtual chest inventory with size 1 named "&a&lLow Teir Pet Upgrade":
+            set {_MoneyMaking} to 1 + level of efficiency of player's tool
+            format gui slot 0 with paper named "&e&lMoneyMaking +1" with lore "&6Cost: &e%{_MoneyMaking}% Pet Food" and "&cMax: Unlimited":
+                if player's inventory contains {_MoneyMaking} of nether star named "&6&lPet Food":
+                    remove {_MoneyMaking} of nether star named "&6&lPet Food" from player's inventory
+                    enchant the player's tool with "efficiency %level of efficiency of player's tool + 1%" parsed as enchantment type
+                    set line 1 of lore of player's tool to "&e&lMoneyMaking %level of efficiency of player's tool%"
+                    make player execute command "/refreshgui"
+                    open gui "LowPet" to player
+                else:
+                    message "&cYou need %{_MoneyMaking}% Pet Food."
+    
+
+
+
+
+
+    #Upgrades
+        create a new gui with id "Helmet" with virtual chest inventory with size 1 named "&dEnchant":
+            player's held item is any helmet or player head
+            set {_Armor} to 10000 + (30000*level of protection of player's held item)
+
+            format gui slot 0 with diamond helmet named "&c&lProtection +1" with lore "&6Cost: &e$%{_Armor}%" and "&cMax: 10":
+                if player's held item is any helmet or player head:
+                    if level of protection of player's held item is not 10:
+                        if player's balance is greater than {_Armor}:
+                            subtract {_Armor} from player's balance
+                            enchant the player's held item with "protection %level of protection of player's held item + 1%" parsed as enchantment type
+                            make player execute command "/refreshgui"
+                            open gui "Helmet" to player
+                        else:
+                            message "&cYou need $%{_Armor}%."
+                            message "&cYou currently have %player's balance%"
+                    else:
+                        message "&cMax Protection"
+                else:
+                    message "&cYou need to be holding a helmet"
+        open gui "Helmet" to player
+        create a new gui with id "Chestplate" with virtual chest inventory with size 1 named "&dEnchant":
+            player's held item is any chestplate
+            set {_Armor} to 10000 + (30000*level of protection of player's held item)
+            format gui slot 0 with diamond chestplate named "&c&lSharpness +1" with lore "&6Cost: &e$%{_Armor}%" and "&cMax: 10":
+                if player's held item is any chestplate:
+                    if level of protection of player's held item is not 10:
+                        if player's balance is greater than {_Armor}:
+                            subtract {_Armor} from player's balance
+                            enchant the player's held item with "protection %level of protection of player's held item + 1%" parsed as enchantment type
+                            make player execute command "/refreshgui"
+                            open gui "Chestplate" to player
+                        else:
+                            message "&cYou need $%{_Armor}%."
+                            message "&cYou currently have %player's balance%"
+                    else:
+                        message "&cMax Protection"
+                else:
+                    message "&cYou need to be holding a chestplate"
+        create a new gui with id "Leggings" with virtual chest inventory with size 1 named "&dEnchant":
+            player's held item is any Leggings
+            set {_Armor} to 10000 + (30000*level of protection of player's held item)
+            format gui slot 0 with diamond leggings named "&c&lSharpness +1" with lore "&6Cost: &e$%{_Armor}%" and "&cMax: 10":
+                if player's held item is any leggings:
+                    if level of protection of player's held item is not 10:
+                        if player's balance is greater than {_Armor}:
+                            subtract {_Armor} from player's balance
+                            enchant the player's held item with "protection %level of protection of player's held item + 1%" parsed as enchantment type
+                            make player execute command "/refreshgui"
+                            open gui "Leggings" to player
+                        else:
+                            message "&cYou need $%{_Armor}%."
+                            message "&cYou currently have %player's balance%"
+                    else:
+                        message "&cMax Protection"
+                else:
+                    message "&cYou need to be holding a leggings"
+        create a new gui with id "Boots" with virtual chest inventory with size 1 named "&dEnchant":
+            player's held item is any boots
+            set {_Armor} to 10000 + (30000*level of protection of player's held item)
+            format gui slot 0 with diamond boots named "&b&lProtection +1" with lore "&6Cost: &e$%{_Armor}%" and "&cMax: 10":
+                if player's held item is any boots:
+                    if level of protection of player's held item is not 10:
+                        if player's balance is greater than {_Armor}:
+                            subtract {_Armor} from player's balance
+                            enchant the player's held item with "protection %level of protection of player's held item + 1%" parsed as enchantment type
+                            make player execute command "/refreshgui"
+                            open gui "Boots" to player
+                        else:
+                            message "&cYou need $%{_Armor}%."
+                            message "&cYou currently have %player's balance%"
+                    else:
+                        message "&cMax Protection"
+                else:
+                    message "&cYou need to be holding a boots"
