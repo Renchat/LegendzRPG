@@ -648,9 +648,11 @@ function shop(p: player, s: number, i: itemtype, n: text, a: number, price: numb
                 execute console command "/mm i give -s %{_p}% %{_mi}% %{_a}%"
             remove {_price} of {_coin} named {_cn} from {_p}'s inventory
 
-command /itemtype:
+command /warpafk:
+    permission: is.op
     trigger:
-        broadcast "%player's held item%"
+        loop all players in radius 1 around player:
+            execute loop-player command "/warp afk"
 
 command /faq [<text>]:
     trigger:

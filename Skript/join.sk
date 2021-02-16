@@ -9,7 +9,7 @@ on first join:
     wait 1 second
     execute console command "/warp City %player%"
     execute console command "/kit start %player%"
-    execute console command "/spawnpoint %player% -81,5,716"
+    execute console command "/spawnpoint %player% -81 5 716"
     wait 2 seconds
     if {booster::exp} = 1:
         set {booster::exp::time} to 60
@@ -26,6 +26,7 @@ on first join:
             broadcast "&4&lLegendz&a&lRPG &e&L>> &aPlayer %player% &aadded to first time login chain booster +0.05x to both booster EXP: %{booster::exp}%x &aMoney: %{booster::money}%x"
 on join:
     execute console command "/warp City %player%"
+    execute console command "/spawnpoint %player% -81 5 716"
     send title "" for 1 seconds
     if player has permission "is.op":
         execute player command "/gm 1 %player%"

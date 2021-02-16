@@ -1,3 +1,7 @@
+on death:
+    if display name of victim is "&6[10] &cHeavenly Guard":
+        boss(victim,136,attacker,59,29,level of looting of attacker's tool,"Heavenly_Core","Heavenly_Boots",3,"Heavenly_Head",3,"Heavenly_Legging",3,"Heavenly_Chestplate",3,"Heavenly_Sword",3,"Heavenly_Bow",3,"heavenlyguard")
+
 function boss(v:entity, e:number, a:player, m:number, coin:number, loot:number, core:text, r1:text, c1:number, r2:text, c2:number, r3:text, c3:number, r4:text, c4:number, r5:text, c5:number, r6:text, c6:number, i:text):
     death({_v})
     wait 5 ticks

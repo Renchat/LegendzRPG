@@ -335,6 +335,7 @@ on death:
         execute console command "/mm i give -s %attacker% Coin 26"
         add 53*{booster::money} to attacker's balance
         message "&a+$%53*{booster::money}%" to attacker
+        message "%{mostdamage::entity::%victim's uuid%::HDP}%" to attacker
         chance of (2+(0.05*level of looting of attacker's tool))%:
             execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% SpoodaMan_Core"
             message "&aReceived SpoodaMan Core From Most Damaging Player Reward" to attacker
@@ -367,10 +368,10 @@ on death:
         loop all players in radius 10 around victim:
             message "&c&l%{mostdamage::entity::%victim's uuid%::HDP}% Got Most Damaging Player Reward" to loop-player
         delete {mostdamage::entity::%victim's uuid%::HDP}
+        delete {mostdamage::entity::%victim's uuid%::*}
         delete {mostdamage::%victim%::*}
         add 1 to {achievements::%attacker's uuid%::spoodaman}
-    if display name of victim is "&6[10] &cHeavenly Guard":
-        boss(victim,136,attacker,59,29,level of looting of attacker's tool,"Heavenly_Core","Heavenly_Boots",3,"Heavenly_Head",3,"Heavenly_Legging",3,"Heavenly_Chestplate",3,"Heavenly_Sword",3,"Heavenly_Bow",3,"heavenlyguard")
+
 
 #MOBS
 on death:
@@ -433,7 +434,6 @@ function death(v: entity):
         message "&b%loop-value%&7: &e%{mostdamage::entity::%{_p}%::%loop-value%}% Damage" to all players in radius 10 around {_v}
         set {mostdamage::entity::%{_p}%::HDP} to loop-value
         if {_result} is 1:
-            delete {mostdamage::entity::%{_p}%::*}
             stop loop
 
 function mobs(p: player, v: entity, e: number, m: number, c: number, x: boolean, t: text, n: text):
@@ -456,4 +456,5 @@ function mobs(p: player, v: entity, e: number, m: number, c: number, x: boolean,
             give tripwire hook named {_t} to {_p}
             broadcast "&a%{_p}% &aReceived a Boss Room Key from killing %{_v}%"
 
-
+on death of player:
+    execute player command "/spawn"

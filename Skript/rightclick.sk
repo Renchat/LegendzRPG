@@ -1,7 +1,7 @@
 on click on sign:
     line 1 of targeted block is "&4&lLegendz&a&lRPG"
     if line 2 of targeted block is "&aSetSpawnPoint":
-        execute console command "/spawnpoint %player% -81,5,716"
+        execute console command "/spawnpoint %player% -81 5 716"
         message "&aDone"
     if line 2 of targeted block is "&6Tutorial":
         if line 3 of targeted block is "&bStart":
