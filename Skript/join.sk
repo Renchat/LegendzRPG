@@ -1,9 +1,5 @@
 on first join:
-    set {gem::%player's uuid%} to 0
-    set {level::%player's uuid%} to 0
-    set {skillpoints::%player's uuid%::strength} to 0
-    set {skillpoints::%player's uuid%::speed} to 0
-    set {skillpoints::%player's uuid%::defense} to 0
+    set {level::%player's uuid%} to 1
     add 1 to {totalplayer}
     broadcast "&b｡☆✼★━━★✼☆｡ &aWelcome &a%player% &c[&c%{totalplayer}%&c] &f｡&b☆✼★━━★✼☆｡"
     wait 1 second
@@ -24,14 +20,14 @@ on first join:
     if {booster::money} != 15:
         if {booster::exp} != 15:
             broadcast "&4&lLegendz&a&lRPG &e&L>> &aPlayer %player% &aadded to first time login chain booster +0.05x to both booster EXP: %{booster::exp}%x &aMoney: %{booster::money}%x"
-    set {_loc1} to location (-71, 7, 728.5)
+    set {_loc1} to location (-71, 4, 728.5)
     drawArc particle "redstone", center player, target {_loc1}, id "%player%", rainbowMode true, density 17, height 0, pitchMultiplier 8, visibleRange 30, displacementX 0, displacementY 1.25, displacementZ 0
 on join:
     execute console command "/warp City %player%"
     execute console command "/spawnpoint %player% -81 5 716"
     send title "" for 1 seconds
     if player has permission "is.op":
-        execute player command "/gm 1 %player%"
+        execute player command "/gm 1"
     while player is online:
         wait 3 seconds
         world is "RPG"

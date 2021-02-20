@@ -15,7 +15,103 @@ on right click:
             play 1 crit with speed 0 at the shot snowball        
             wait 1 tick
 
-on damage:
-    if projectile is a snowball:
-        if metadata "wand" of projectile is "2":
-            increase damage by 5
+
+function spellLocation(p: player, range: number = 30) :: location:
+    if distance between location of targeted entity of {_p} and location of {_p} is less than {_range} where [targeted entity of {_p} is alive]:
+        set {_loc} to location of block at target entity of {_p}
+    else:
+        loop blocks from the block above {_p} to the block {_range} in front of {_p}:
+            set {_loc} to location of block above loop-block 
+            if loop-block is solid:
+                stop loop
+    return {_loc}
+
+function PlS(s: string, v: number, p: number, l: location, f: players):
+    loop {_f::*}:
+        if loop-value's world isn't {_l}'s world:
+            remove loop-value from {_f::*}
+    play sound {_s} with volume {_v} and pitch {_p} at {_l} for {_f::*}
+
+function spellID(n: number, p: player, lore: text) :: boolean:
+    if {wands::OutOfUse} is true:
+        stop
+    if gamemode of {_p} isn't spectator:
+        if "%{wands::savedwands::%{_lore}%::savedSpells::%{wands::savedwands::%{_lore}%::spellIndex}%}%" parsed as number is {_n}:
+            if {wands::permission} is true:
+                if {_p} doesn't have permission "wands.use":
+                    send action bar "&cYou have insufficient permissions" to {_p}
+                    stop
+            return true
+
+function damageEffect(n: number, a: living entity, v: living entity, i: item):
+    set {_l} to {_a}'s tool
+    set {_a}'s tool to {_i}
+    make {_a} damage {_v} by {_n} * 2
+    delete velocity of {_v}
+    set {_a}'s tool to {_l}
+
+on left click:
+    if line 2 of lore of player's tool is "ok":
+        set {_loc} to spellLocation(player)
+        drawDot count 10, particle smokelarge, speed 0.08, XYZ 0.2, 0.2, 0.2, center {_loc}, visibleRange 320, keepFor 3 ticks
+        drawDot count 10, particle witchspell, speed 0.2, XYZ 0.6, 0.7, 0.6, center {_loc}, visibleRange 320, keepFor 5 ticks
+        PlS("entity.firework_rocket.blast", 4, 1, {_loc}, all players)
+        loop living entities in radius 3.2 around {_loc} where [input isn't player]:
+            damageEffect(4, player, loop-entity, tool of player)
+        wait 10 ticks
+        PlS("entity.firework_rocket.twinkle", 4, 1, {_loc}, all players)
+
+on left click:
+    if line 2 of lore of player's tool is "a":
+        darkPulseSounds(player)
+        set {_t} to player's tool
+        loop blocks from block above the player to the block above block 30 in front of the player:
+            set {_loc} to location of loop-block
+            if loop-block is solid:
+                stop loop
+            set {_int} to {_int} + 1
+            loop living entities in radius 2.2 around loop-block where [input isn't player]:
+                exit 2 loops
+            drawDot count 3, particle smokelarge, speed 0, XYZ 0.4, 0.4, 0.4, center location of loop-block, visibleRange 320
+            drawDot count 13, particle smoke, speed 0.1, XYZ 0.8, 0.8, 0.8, center location of loop-block, visibleRange 320
+            if {_int} > 2:
+                wait a tick
+                set {_int} to 0
+        PlS("entity.wither.hurt", 4, 1, {_loc}, all players)
+        create a fake explosion at {_loc}
+        drawDot count 0, particle explosionhuge, speed 0, XYZ 0, 0, 0, center {_loc}, visibleRange 320
+        loop living entities in radius 3 around {_loc} where [input isn't player]:
+            remove slowness and blindness from loop-entity
+            apply blindness 1 to loop-entity for 3 second
+            apply slowness 2 to loop-entity for 2 second
+            damageEffect(3.4, player, loop-entity, {_t})
+            push loop-entity (direction from block 2 under {_loc} to loop-entity) at speed 0.8
+
+function darkPulseSounds(p: player):
+    loop 8 times:
+        PlS("entity.ender_dragon.flap", 4, 1, location of {_p}, all players)
+        wait 2 ticks
+
+on left click:
+    if line 2 of lore of player's tool is "b":
+        set {_index} to  7
+        set {_loc} to location of block at the player
+        set {_t} to player's tool
+        loop living entities in radius 7 around {_loc} where [input isn't player]:
+            PlS("entity.bat.ambient", 2, 1, loop-entity, all players)
+            add loop-entity to {_effectLater::*}
+        loop {_index} times:
+            PlS("entity.ender_dragon.flap", 4, 1, {_loc}, all players)
+            set {_index} to {_index} - 1
+            loop blocks in radius {_index} around {_loc}:
+                if y-coordinate of loop-block is y-coordinate of {_loc}:
+                    if distance between location at loop-block and location of {_loc} is more than {_index} - 1:
+                        drawDot count 6, particle smokelarge, speed 0.08, XYZ 0.3, 0.3, 0.3, center location of loop-block, visibleRange 320
+                        drawDot count 8, particle enchantmenttable, speed 0.08, XYZ 0.3, 0.3, 0.3, center location of loop-block, visibleRange 320
+            wait 2 ticks
+        loop {_effectLater::*}:
+            set {_loc2} to location(loop-value's x-coordinate, player's y-coordinate, loop-value's z-coordinate, player's world)
+            damageEffect(3, player, loop-value, {_t})
+            create a fake explosion at loop-value
+            push loop-value (direction from {_loc} to loop-value) at speed 1
+            push loop-value upwards at speed 0.5

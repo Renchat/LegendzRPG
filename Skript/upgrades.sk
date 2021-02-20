@@ -256,7 +256,7 @@ command /pickaxe:
             format gui slot 5 of player with light blue stained glass pane named ""
             format gui slot 6 of player with light blue stained glass pane named ""
             format gui slot 7 of player with light blue stained glass pane named ""
-            format gui slot 8 of player with Anvil named "&8&lRepair" with lore "&6Cost: &e$1000" to run:
+            format gui slot 8 of player with Anvil named "&8&lRepair" with lore "&6Cost: &e$1000" and "&aKing Rank Gets Auto Repair" to run:
                 if player's balance >= 1000:
                     subtract 1000 from player's balance
                     repair player's tool
@@ -268,38 +268,39 @@ on right click holding end crystal:
     if name of player's held item is "&a&lLow Teir Pet":
         execute player command "/lowtierpet"
 
-command /lowtierpet
-    item amount of player's held item is 1
-    if name of player's held item is "&a&lLow Teir Pet":
-        open virtual chest with size 1 named "&aLow Tier Pet Upgrade" to player
-        if item amount of player's held item is 1:
-            set {_MoneyMaking} to 1 + level of efficiency of player's held item
-            format gui slot 0 of player with paper named "&e&lMoneyMaking +1" with lore "&6Cost: &e%{_MoneyMaking}% Pet Food" and "&cMax: 25" to run:
-                if name of player's held item is "&a&lLow Teir Pet":
-                    if player's inventory contains {_MoneyMaking} of nether star named "&6&lPet Food":
-                        if level of efficiency of player's held item <= 25:
-                            remove {_MoneyMaking} of nether star named "&6&lPet Food" from player's inventory
-                            set {_enchant} to level of efficiency of player's held item + 1
-                            enchant the player's held item with "efficiency %{_enchant}%" parsed as enchantment type
-                            set line 1 of lore of player's held item to "&e&lMoneyMaking %level of efficiency of player's held item%"
-                            make player execute command "/lowtierpet"
+command /lowtierpet:
+    trigger:
+        item amount of player's held item is 1
+        if name of player's held item is "&a&lLow Teir Pet":
+            open virtual chest with size 1 named "&aLow Tier Pet Upgrade" to player
+            if item amount of player's held item is 1:
+                set {_MoneyMaking} to 1 + level of efficiency of player's held item
+                format gui slot 0 of player with paper named "&e&lMoneyMaking +1" with lore "&6Cost: &e%{_MoneyMaking}% Pet Food" and "&cMax: 25" to run:
+                    if name of player's held item is "&a&lLow Teir Pet":
+                        if player's inventory contains {_MoneyMaking} of nether star named "&6&lPet Food":
+                            if level of efficiency of player's held item <= 24:
+                                remove {_MoneyMaking} of nether star named "&6&lPet Food" from player's inventory
+                                set {_enchant} to level of efficiency of player's held item + 1
+                                enchant the player's held item with "efficiency %{_enchant}%" parsed as enchantment type
+                                set line 1 of lore of player's held item to "&e&lMoneyMaking %level of efficiency of player's held item%"
+                                make player execute command "/lowtierpet"
+                            else:
+                                message "&cMax Moneymaking"
                         else:
-                            message "&cMax Moneymaking"
+                            message "&cYou need %{_MoneyMaking}% Pet Food."
                     else:
-                        message "&cYou need %{_MoneyMaking}% Pet Food."
-                else:
-                    message "&cYou need to be holding your pet."
-            format gui slot 8 with cooked beef named "&6&lRefill Hunger" with lore "&6Cost: &e1 Pet Food":
-                if name of player's held item is "&a&lLow Teir Pet":
-                    if player's inventory contains 1 of nether star named "&6&lPet Food":
-                        remove 1 nether star named "&6&lPet Food" from player's inventory
-                        set line 2 of lore of player's held item to "&6&lHunger: 100%%"
+                        message "&cYou need to be holding your pet."
+                format gui slot 8 of player with cooked beef named "&6&lRefill Hunger" with lore "&6Cost: &e1 Pet Food" and "&aLord Rank gets Auto Feed" to run:
+                    if name of player's held item is "&a&lLow Teir Pet":
+                        if player's inventory contains 1 of nether star named "&6&lPet Food":
+                            remove 1 nether star named "&6&lPet Food" from player's inventory
+                            set line 2 of lore of player's held item to "&6&lHunger: 100%%"
+                        else:
+                            message "&cYou need 1 Pet Food."
                     else:
-                        message "&cYou need 1 Pet Food."
-                else:
-                    message "&cYou need to be holding your pet."
-        else:
-            message "&cYou can only be holding 1 pet."
+                        message "&cYou need to be holding your pet."
+            else:
+                message "&cYou can only be holding 1 pet."
 
 command /upgrade:
     permission: essentials.op

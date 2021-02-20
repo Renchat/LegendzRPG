@@ -15,6 +15,7 @@ on death:
         #boss((victim),(exp),(attacker),(money),(coin),(level of looting of attacker's tool),("core"),("Boots"),(3),("Head"),(3),("Legging"),(3),("Chestplate"),(3),("Sword"),(3),("Bow"),(3),("mobname"))
         boss((victim),(250),(attacker),(500),(50),(level of looting of attacker's tool),("Dragon_Core"),("Dragon_Scales_Boots"),(3),("Dragons_Head"),(3),("Dragon_Scales_Legging"),(3),("Dragon_Scales_Chestplate"),(3),("Dragon_Fang"),(3),("Bow"),(0),("arsyg"))
         Broadcast "&5&lArsyg &a&lHas Been Defeated. Timer Reset &7(/boss)"
+        set {arsyg} to 600
         loop all players in radius 40 around victim:
             wait 20 seconds
             execute console command "/warp city %loop-player%"
@@ -33,37 +34,37 @@ on death:
 on death:
     #function mob(attacker, victim, exp, $, coin, true or false for boss keys, "name of boss key", achievement name)
     if name of victim is "&6[1] &eZombie":
-        mobs(attacker, victim, 4, 1, false, "", "zombie")
+        mobs(attacker, victim, 4, 1, false, "", "zombie", 40)
     if name of victim is "&6[2] &eHusk":
-        mobs(attacker, victim, 8, 3.5, false, "", "husk")
+        mobs(attacker, victim, 8, 3.5, false, "", "husk", 60)
     if name of victim is "&6[3] &eStray":
-        mobs(attacker, victim, 14, 4.5, false, "", "stray")
+        mobs(attacker, victim, 14, 4.5, false, "", "stray", 60)
         chance of 8%:
             execute console command "/mm i give -s %attacker% Sandstone_Bow"
     if name of victim is "&6[3] &eWolf":
-        mobs(attacker, victim, 16, 4.5, false, "", "wolf")
+        mobs(attacker, victim, 16, 4.5, false, "", "wolf", 100)
     if name of victim is "&6[4] &ePolar Bear":
-        mobs(attacker, victim, 21, 6, false, "", "polarbear")
+        mobs(attacker, victim, 21, 6, false, "", "polarbear", 100)
     if name of victim is "&6[4] &eRhinoBeetle":
-        mobs(attacker, victim, 26, 6, false, "", "rhinobeetle")
+        mobs(attacker, victim, 26, 6, false, "", "rhinobeetle", 130)
     if name of victim is "&6[5] &eSkeleton":
-        mobs(attacker, victim, 34, 8, false, "", "skeleton")
+        mobs(attacker, victim, 34, 8, false, "", "skeleton", 130)
     if name of victim is "&6[5] &eMiner Pillager":
-        mobs(attacker, victim, 41, 8, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "minerpillager")
+        mobs(attacker, victim, 41, 8, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "minerpillager", 165)
     if name of victim is "&6[6] &eMiner Zombie":
-        mobs(attacker, victim, 49, 10, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "minerzombie")
+        mobs(attacker, victim, 49, 10, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "minerzombie", 165)
     if name of victim is "&6[6] &eInfernal Pig":
-        mobs(attacker, victim, 58, 10, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "infernalpig")
+        mobs(attacker, victim, 58, 10, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "infernalpig", 200)
     if name of victim is "&6[7] &eImp":
-        mobs(attacker, victim, 68, 12, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "imp")
+        mobs(attacker, victim, 68, 12, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "imp", 200)
     if name of victim is "&6[7] &eSpider":
-        mobs(attacker, victim, 79, 12, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "spider")
+        mobs(attacker, victim, 79, 12, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "spider", 230)
     if name of victim is "&6[8] &eCave Spider":
-        mobs(attacker, victim, 91, 15, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "cavespider")
+        mobs(attacker, victim, 91, 15, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "cavespider", 230)
     if name of victim is "&6[8] &eAngel":
-        mobs(attacker, victim, 105, 15, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "angel")
+        mobs(attacker, victim, 105, 15, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "angel", 999)
     if name of victim is "&6[9] &ePhantom":
-        mobs(attacker, victim, 110, 19, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "phantom")
+        mobs(attacker, victim, 110, 19, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "phantom", 999)
 
 function death(v: entity):
     set {_p} to {_v}'s uuid
@@ -92,7 +93,7 @@ function death(v: entity):
         if {_result} is 1:
             stop loop
 
-function mobs(p: player, v: entity, e: number, m: number, x: boolean, t: text, n: text):
+function mobs(p: player, v: entity, e: number, m: number, x: boolean, t: text, n: text, maxlevel: number):
     set {_uuid} to {_p}'s uuid
     set {_mobuuid} to {_v}'s uuid
     add ({_m}*{booster::money}) to {_p}'s balance
@@ -101,19 +102,17 @@ function mobs(p: player, v: entity, e: number, m: number, x: boolean, t: text, n
     levelup({_p})
     send action bar "&6[&e%{level::%{_uuid}%}%&6] &aProgress: &e%{exp::%{_uuid}%}%/%{expforlvlup::%{_uuid}%}% &a+$%{_m}*{booster::money}%" to {_p}
     play sound "entity.experience_orb.pickup" at volume 0.3 to {_p}
-    execute console command "/mm i give -s %{_p}% Coin 1"
+    if {level::%{_uuid}%} < {_maxlevel}:
+        execute console command "/mm i give -s %{_p}% Coin 1"
+        chance of 0.45%:
+            add 1 to {gem::%{_uuid}%}
+            broadcast "&a%{_p}% &aReceived a Gem from killing %{_v}%"
+        if {_x} is true:
+            chance of 0.5%:
+                give tripwire hook named {_t} to {_p}
+                broadcast "&a%{_p}% &aReceived a Boss Room Key from killing %{_v}%"
     delete {mostdamage::%{_mobuuid}%::*}
     add 1 to {achievements::%{_uuid}%::%{_n}%}
-    chance of 0.45%:
-        add 1 to {gem::%{_uuid}%}
-        broadcast "&a%{_p}% &aReceived a Gem from killing %{_v}%"
-    if {_x} is true:
-        chance of 0.5%:
-            give tripwire hook named {_t} to {_p}
-            broadcast "&a%{_p}% &aReceived a Boss Room Key from killing %{_v}%"
-
-on death of player:
-    execute player command "/spawn"
 
 function boss(v:entity, e:number, a:player, m:number, coin:number, loot:number, core:text, r1:text, c1:number, r2:text, c2:number, r3:text, c3:number, r4:text, c4:number, r5:text, c5:number, r6:text, c6:number, i:text):
     death({_v})

@@ -2,31 +2,32 @@ on damage:
     world is "RPG"
     if attacker is a player:
         if victim is mob:
-            set {_item} to lore of attacker's tool
-            set {_split::*} to {_item} split at "||"
-            loop {_split::*}:
-                if "%{_split::%loop-index%}%" contain "&bLv ":
-                    set {_slot} to loop-index
-                    set {_slot} to {_slot} parsed as number
-                    set {_requirement} to line {_slot} of lore of attacker's tool
-                    replace every "&bLv " and "+" in {_requirement} with ""
-                    set {_requirement} to {_requirement} parsed as number
-                    if {_requirement} is greater than {level::%attacker's uuid%}:
-                        cancel event
-                        message "&cYour Level is too LOW" to attacker
-                        stop
-            if {skillpoints::%attacker's uuid%::strength} is not set:
-                set {skillpoints::%attacker's uuid%::strength} to 0
-            if {skillpoints::%attacker's uuid%::strength} is set:
-                set {skillpoints::%attacker's uuid%::finaldamage} to ({skillpoints::%attacker's uuid%::strength}/50)
-                add {skillpoints::%attacker's uuid%::finaldamage} to damage
-                set {skillpoints::%attacker's uuid%::damage} to ({skillpoints::%attacker's uuid%::finaldamage} + damage)
-                add (final damage*2) to {mostdamage::entity::%victim's uuid%::%attacker%}
-                bind hologram "&c- %final damage*2%" to victim for 1 second offset by 0, 3, 0.5
-                send action bar "%victim's name% &6| &a%victim's health*2 - final damage*2% &6HP left" to attacker
-            if {%attacker%::testdamage} is "1":
-                message "&aYou have done &c%final damage*2% damage" to attacker
-                message "&aEnemy has &c%victim's health*2 - final damage*2% &aHP left" to attacker
+            if event-projectile is not projectile:
+                set {_item} to lore of attacker's tool
+                set {_split::*} to {_item} split at "||"
+                loop {_split::*}:
+                    if "%{_split::%loop-index%}%" contain "&bLv ":
+                        set {_slot} to loop-index
+                        set {_slot} to {_slot} parsed as number
+                        set {_requirement} to line {_slot} of lore of attacker's tool
+                        replace every "&bLv " and "+" in {_requirement} with ""
+                        set {_requirement} to {_requirement} parsed as number
+                        if {_requirement} is greater than {level::%attacker's uuid%}:
+                            cancel event
+                            message "&cYour Level is too LOW" to attacker
+                            stop
+                if {skillpoints::%attacker's uuid%::strength} is not set:
+                    set {skillpoints::%attacker's uuid%::strength} to 0
+                if {skillpoints::%attacker's uuid%::strength} is set:
+                    set {skillpoints::%attacker's uuid%::finaldamage} to ({skillpoints::%attacker's uuid%::strength}/50)
+                    add {skillpoints::%attacker's uuid%::finaldamage} to damage
+                    set {skillpoints::%attacker's uuid%::damage} to ({skillpoints::%attacker's uuid%::finaldamage} + damage)
+                    add (final damage*2) to {mostdamage::entity::%victim's uuid%::%attacker%}
+                    bind hologram "&c- %final damage*2%" to victim for 1 second offset by 0, 3, 0.5
+                    send action bar "%victim's name% &6| &a%victim's health*2 - final damage*2% &6HP left" to attacker
+                if {%attacker%::testdamage} is "1":
+                    message "&aYou have done &c%final damage*2% damage" to attacker
+                    message "&aEnemy has &c%victim's health*2 - final damage*2% &aHP left" to attacker
 on damage of player:
     world is "RPG"
     set {_item} to lore of attacker's tool

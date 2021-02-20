@@ -68,7 +68,7 @@ on rightclick holding item frame:
 				execute console command "/skills add %player% magic"
 		format gui slot 14 of player with Enchanted book named "&e&lAchievements" to run:
 			open virtual chest with size 6 named "&bAcheivments" to player
-			ma(player), "zombie", 0, 475, false, "f", "f", "f", "f")
+			ma(player, "zombie", 0, 475, false, "f", "f", "f", "f")
 			ma(player, "husk", 2, 475, false, "f", "f", "f", "f")
 			ma(player, "stray", 3, 500, false, "f", "f", "f", "f")
 			ma(player, "wolf", 5, 600, false, "f", "f", "f", "f")

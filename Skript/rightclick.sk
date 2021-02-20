@@ -123,97 +123,95 @@ on rightclick holding bone:
     if name of player's held item is "&eGod's &fLimb":
         make player execute command "/smite"
 #Crates
-on rightclick:
-    player has permission "essentials.help"
+on right click:
     if event-block is emerald block:
-        if block under event-block is oak fence:
-            if player's held item is emerald named "&2&lEmerald Key":
-                remove 1 emerald named "&2&lEmerald Key" from player's inventory
-                if {_dropped} is not 1:
-                    chance of 1%:
-                        give 5 paper named "&5&l1.5x &5&lE&d&lX&5&lP Booster" to player
-                        broadcast "&a&l%player% &a&lGot 5x &5&l1.5x &5&lE&d&lX&5&lP Booster &aFrom Crate!"
-                        set {_dropped} to 1
-                if {_dropped} is not 1:
-                    chance of 1%:
-                        add 750 to {gem::%player's uuid%}
-                        message "&4&lLegendz&a&lRPG &e&l>> &a+750 Gem"
-                        set {_dropped} to 1
-                if {_dropped} is not 1:
-                    chance of 1%:
-                        give 5 paper named "&e&l1.5x Money Booster" to player
-                        broadcast "&a&l%player% &a&lGot 5x &e&l1.5x Money Booster &aFrom Crate!"
-                        set {_dropped} to 1
-                if {_dropped} is not 1:
-                    chance of 1%:
-                        give 1 slimeball named "&4&lReset Skillpoints" to player
-                        broadcast "&a&l%player% &a&lGot &4&lReset Skillpoints &aFrom Crate!"
-                        set {_dropped} to 1
-                if {_dropped} is not 1:
-                    chance of 1%:
-                        give 2 emerald named "&2&lEmerald Key" to player
-                        Broadcast "&a&l%player% &a&lGot 2 &2&lEmerald Key!"
-                        set {_dropped} to 1
-                if {_dropped} is not 1:
-                    chance of 3%:
-                        add 150000 to player's balance
-                        message "&4&lLegendz&a&lRPG &e&l>> &a+$150000"
-                        set {_dropped} to 1
-                if {_dropped} is not 1:
-                    chance of 5%:
-                        add 250 to {gem::%player's uuid%}
-                        message "&4&lLegendz&a&lRPG &e&l>> &a+250 Gem"
-                        set {_dropped} to 1
-                if {_dropped} is not 1:
-                    chance of 5%:
-                        give 1 emerald named "&2&lEmerald Key" to player
-                        message "&4&lLegendz&a&lRPG &e&l>> &aRetry"
-                        set {_dropped} to 1
-                if {_dropped} is not 1:
-                    chance of 10%:
-                        add 100000 to player's balance
-                        message "&4&lLegendz&a&lRPG &e&l>> &a+$100000"
-                        set {_dropped} to 1
-                if {_dropped} is not 1:
-                    chance of 15%:
-                        add 100 to {gem::%player's uuid%}
-                        message "&4&lLegendz&a&lRPG &e&l>> &a+100 Gem"
-                        set {_dropped} to 1
-                if {_dropped} is not 1:
-                    chance of 20%:
-                        add 50000 to player's balance
-                        message "&4&lLegendz&a&lRPG &e&l>> &a+$50000"
-                        set {_dropped} to 1
-                if {_dropped} is not 1:
-                    chance of 5%:
-                        execute console command "/lp user %player% permission set tag.milk"
-                        message "&4&lLegendz&a&lRPG &e&l>> &a+Milk Tag"
-                        set {_dropped} to 1
-                if {_dropped} is not 1:
-                    chance of 5%:
-                        execute console command "/lp user %player% permission set tag.speed"
-                        message "&4&lLegendz&a&lRPG &e&l>> &a+Speed Tag"
-                        set {_dropped} to 1
-                if {_dropped} is not 1:
-                    chance of 5%:
-                        execute console command "/lp user %player% permission set tag.muffin"
-                        message "&4&lLegendz&a&lRPG &e&l>> &a+Muffin Tag"
-                        set {_dropped} to 1
-                if {_dropped} is not 1:
-                    chance of 4%:
-                        execute console command "/lp user %player% permission set tag.frostlord"
-                        message "&4&lLegendz&a&lRPG &e&l>> &a+Frostlord Tag"
-                        set {_dropped} to 1
-                if {_dropped} is not 1:
-                    chance of 3%:
-                        execute console command "/lp user %player% permission set tag.overlord"
-                        message "&4&lLegendz&a&lRPG &e&l>> &a+Overlord Tag"
-                        set {_dropped} to 1
-                if {_dropped} is not 1:
+        if player's held item is emerald named "&2&lEmerald Key":
+            remove 1 emerald named "&2&lEmerald Key" from player's inventory
+            if {_dropped} is not 1:
+                chance of 1%:
+                    give 5 paper named "&5&l1.5x &5&lE&d&lX&5&lP Booster" to player
+                    broadcast "&a&l%player% &a&lGot 5x &5&l1.5x &5&lE&d&lX&5&lP Booster &aFrom Crate!"
+                    set {_dropped} to 1
+            if {_dropped} is not 1:
+                chance of 1%:
+                    add 750 to {gem::%player's uuid%}
+                    message "&4&lLegendz&a&lRPG &e&l>> &a+750 Gem"
+                    set {_dropped} to 1
+            if {_dropped} is not 1:
+                chance of 1%:
+                    give 5 paper named "&e&l1.5x Money Booster" to player
+                    broadcast "&a&l%player% &a&lGot 5x &e&l1.5x Money Booster &aFrom Crate!"
+                    set {_dropped} to 1
+            if {_dropped} is not 1:
+                chance of 1%:
+                    give 1 slimeball named "&4&lReset Skillpoints" to player
+                    broadcast "&a&l%player% &a&lGot &4&lReset Skillpoints &aFrom Crate!"
+                    set {_dropped} to 1
+            if {_dropped} is not 1:
+                chance of 1%:
+                    give 2 emerald named "&2&lEmerald Key" to player
+                    Broadcast "&a&l%player% &a&lGot 2 &2&lEmerald Key!"
+                    set {_dropped} to 1
+            if {_dropped} is not 1:
+                chance of 3%:
+                    add 150000 to player's balance
+                    message "&4&lLegendz&a&lRPG &e&l>> &a+$150000"
+                    set {_dropped} to 1
+            if {_dropped} is not 1:
+                chance of 5%:
+                    add 250 to {gem::%player's uuid%}
+                    message "&4&lLegendz&a&lRPG &e&l>> &a+250 Gem"
+                    set {_dropped} to 1
+            if {_dropped} is not 1:
+                chance of 5%:
                     give 1 emerald named "&2&lEmerald Key" to player
                     message "&4&lLegendz&a&lRPG &e&l>> &aRetry"
-            else:
-                message "&cHold a Emerald Key Please"
+                    set {_dropped} to 1
+            if {_dropped} is not 1:
+                chance of 10%:
+                    add 100000 to player's balance
+                    message "&4&lLegendz&a&lRPG &e&l>> &a+$100000"
+                    set {_dropped} to 1
+            if {_dropped} is not 1:
+                chance of 15%:
+                    add 100 to {gem::%player's uuid%}
+                    message "&4&lLegendz&a&lRPG &e&l>> &a+100 Gem"
+                    set {_dropped} to 1
+            if {_dropped} is not 1:
+                chance of 20%:
+                    add 50000 to player's balance
+                    message "&4&lLegendz&a&lRPG &e&l>> &a+$50000"
+                    set {_dropped} to 1
+            if {_dropped} is not 1:
+                chance of 5%:
+                    execute console command "/lp user %player% permission set tag.milk"
+                    message "&4&lLegendz&a&lRPG &e&l>> &a+Milk Tag"
+                    set {_dropped} to 1
+            if {_dropped} is not 1:
+                chance of 5%:
+                    execute console command "/lp user %player% permission set tag.speed"
+                    message "&4&lLegendz&a&lRPG &e&l>> &a+Speed Tag"
+                    set {_dropped} to 1
+            if {_dropped} is not 1:
+                chance of 5%:
+                    execute console command "/lp user %player% permission set tag.muffin"
+                    message "&4&lLegendz&a&lRPG &e&l>> &a+Muffin Tag"
+                    set {_dropped} to 1
+            if {_dropped} is not 1:
+                chance of 4%:
+                    execute console command "/lp user %player% permission set tag.frostlord"
+                    message "&4&lLegendz&a&lRPG &e&l>> &a+Frostlord Tag"
+                    set {_dropped} to 1
+            if {_dropped} is not 1:
+                chance of 3%:
+                    execute console command "/lp user %player% permission set tag.overlord"
+                    message "&4&lLegendz&a&lRPG &e&l>> &a+Overlord Tag"
+                    set {_dropped} to 1
+            if {_dropped} is not 1:
+                give 1 emerald named "&2&lEmerald Key" to player
+                message "&4&lLegendz&a&lRPG &e&l>> &aRetry"
+        else:
+            message "&cHold a Emerald Key Please"
 
 on rightclick holding nether star:
     if name of player's held item is "&aSword Token &7(Right Click)":

@@ -9,7 +9,7 @@ on block break:
             add 1 to {achievements::%player's uuid%::lapisore}
             send action bar "&6[&e%{level::%player's uuid%}%&6] &aProgress: &e%{exp::%player's uuid%}%/%{expforlvlup::%player's uuid%}% &a+$1" to player
             levelup(player)
-            set event-block to cobblestone
+            set event-block to bedrock
             cancel drops
             chance of 0.25%:
                 add 1 to {gem::%player's uuid%}
@@ -33,7 +33,7 @@ on block break:
             add 3 to player's balance
             add 1 to {achievements::%player's uuid%::lapisblock}
             send action bar "&6[&e%{level::%player's uuid%}%&6] &aProgress: &e%{exp::%player's uuid%}%/%{expforlvlup::%player's uuid%}% &a+$3" to player
-            set event-block to cobblestone
+            set event-block to bedrock
             cancel drops
             levelup(player)
             chance of 0.3%:
@@ -65,7 +65,7 @@ on block break:
             add 7 to player's balance
             add 1 to {achievements::%player's uuid%::redstoneore}
             send action bar "&6[&e%{level::%player's uuid%}%&6] &aProgress: &e%{exp::%player's uuid%}%/%{expforlvlup::%player's uuid%}% &a+$7" to player
-            set event-block to cobblestone
+            set event-block to bedrock
             levelup(player)
             cancel drops
             chance of 0.25%:
@@ -96,7 +96,7 @@ on block break:
             add 50 to player's balance
             add 1 to {achievements::%player's uuid%::redstoneblock}
             send action bar "&6[&e%{level::%player's uuid%}%&6] &aProgress: &e%{exp::%player's uuid%}%/%{expforlvlup::%player's uuid%}% &a+$50" to player
-            set event-block to cobblestone
+            set event-block to bedrock
             levelup(player)
             cancel drops
             chance of 0.25%:

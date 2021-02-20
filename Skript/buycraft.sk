@@ -46,9 +46,9 @@ command /buying [<number>] [<offline player>]:
             broadcast "&e☆✼★━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━★✼☆｡","&b&n&l%offline player-arg%&d&l Purchased &b&l1.5x Mining Boosters&7&l(5) &d&lFrom Buycraft GG!" and "&e｡☆✼★━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━★✼☆｡"
         if arg-1 is 13:
             give 5 paper named "&e&l1.5x Money Booster" to {_p}
-            broadcast "&e☆✼★━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━★✼☆｡","&b&n&l%offline player-arg%&d&l Purchased &e&l1.5x Money Boosters&7&l(5) &d&lFrom Buycraft GG!" and "&e｡☆✼★━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━★✼☆｡"
+            broadcast "&e☆✼★━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━★✼☆｡","&b&n&l%offline player-arg%&d&l Purchased &5&l1.5x &5&lE&d&lX&5&lP Boosters&7&l(5) &d&lFrom Buycraft GG!" and "&e｡☆✼★━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━★✼☆｡"
         if arg-1 is 14:
-            give 10 paper named "&b&l1.5x Mining Booster" to {_p}
+            give 10 paper named "&5&l1.5x &5&lE&d&lX&5&lP Booster" to {_p}
             broadcast "&e☆✼★━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━★✼☆｡","&b&n&l%offline player-arg%&d&l Purchased &b&l1.5x Mining Boosters&7&l(10) &d&lFrom Buycraft GG!" and "&e｡☆✼★━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━★✼☆｡"
         if arg-1 is 15:
             give 10 paper named "&e&l1.5x Money Booster" to {_p}
