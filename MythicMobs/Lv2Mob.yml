@@ -28,6 +28,7 @@ Lv2_Stray:
   DamageModifiers:
   - FALL 0
   - SUFFOCATION 9999
+  - MAGIC 0
 
 Lv2_Boss:
   Type: husk
@@ -67,3 +68,4 @@ Lv2_Boss:
   DamageModifiers:
   - FALL 0
   - SUFFOCATION 9999
+  - MAGIC 0

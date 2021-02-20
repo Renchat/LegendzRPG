@@ -88,6 +88,7 @@ Sandstone_Helmet:
 Husk_Core:
   Id: magma_cream
   data: 0
+  Model: 2
   Display: '&2Husk Core'
   Lore:
   - '&e&l+5% Speed'

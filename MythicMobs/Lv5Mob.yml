@@ -21,6 +21,7 @@ Lv5_MinerPillager:
   DamageModifiers:
   - FALL 0
   - SUFFOCATION 9999
+  - MAGIC 0
 
 Lv5_MinerZombie:
   Type: zombie
@@ -67,6 +68,7 @@ Lv5_Boss:
   DamageModifiers:
   - FALL 0
   - SUFFOCATION 9999
+  - MAGIC 0
   Options:
     AlwaysShowName: true
     MovementSpeed: 0.35
@@ -116,6 +118,7 @@ Lv5_DungeonBoss:
   DamageModifiers:
   - FALL 0
   - SUFFOCATION 9999
+  - MAGIC 0
   Options:
     AlwaysShowName: true
     MovementSpeed: 0.36

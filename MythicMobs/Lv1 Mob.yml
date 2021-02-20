@@ -18,6 +18,7 @@ Lv1_Zombie:
   DamageModifiers:
   - FALL 0
   - SUFFOCATION 9999
+  - MAGIC 0
   Modules:
     ThreatTable: true
   Options:
@@ -52,6 +53,7 @@ Lv1_Husk:
   DamageModifiers:
   - FALL 0
   - SUFFOCATION 9999
+  - MAGIC 0
   Options:
     AlwaysShowName: true
     MovementSpeed: 0.23
@@ -91,6 +93,7 @@ Lv1_Boss:
   DamageModifiers:
   - FALL 0
   - SUFFOCATION 9999
+  - MAGIC 0
   Options:
     AlwaysShowName: true
     MovementSpeed: 0.24

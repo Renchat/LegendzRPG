@@ -54,6 +54,7 @@ Lv3_PolarBear:
   DamageModifiers:
   - FALL 0
   - SUFFOCATION 9999
+  - MAGIC 0
 
 Lv3_Boss:
   Type: Stray
@@ -79,6 +80,7 @@ Lv3_Boss:
   DamageModifiers:
   - FALL 0
   - SUFFOCATION 9999
+  - MAGIC 0
   Options:
     AlwaysShowName: true
     MovementSpeed: 0.24

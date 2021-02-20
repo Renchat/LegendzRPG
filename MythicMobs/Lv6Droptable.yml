@@ -1,0 +1,11 @@
+Lv6BossDrops:
+  Conditions:
+  - playerwithin 40
+  Drops:
+  - Coin 7 1
+  - Demon_Head 1 0.05
+  - Sulfur_Boots 1 0.05
+  - Demonium_Broadsword 1 0.05
+  - Sulfur_Legging 1 0.05
+  - Sulfur_Chestplate 1 0.05
+  - Demon_Core 1 0.02

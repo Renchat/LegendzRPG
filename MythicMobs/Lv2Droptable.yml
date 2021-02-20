@@ -2,7 +2,7 @@ Lv2BossDrops:
   Conditions:
   - playerwithin 40
   Drops:
-  - Coin 9 1
+  - Coin 3 1
   - Sandstone_Helmet 1 0.05
   - Sandstone_Boots 1 0.05
   - Sandstone_Sword 1 0.05

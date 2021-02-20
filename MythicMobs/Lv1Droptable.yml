@@ -2,7 +2,7 @@ Lv1BossDrops:
   Conditions:
   - playerwithin 40
   Drops:
-  - Coin 5 1
+  - Coin 2 1
   - Skin_Cap 1 0.05
   - Skin_Boots 1 0.05
   - Rusty_Sword 1 0.05

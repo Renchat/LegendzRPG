@@ -93,6 +93,7 @@ Stray_Core:
   Id: magma_cream
   data: 0
   Display: '&2Stray Core' 
+  Model: 3
   Lore:
   - '&e&l+6% Speed'
   - '&c&l+2 Damage'

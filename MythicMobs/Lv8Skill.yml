@@ -1,6 +1,6 @@
 Hover:
   Conditions:
-  - heightbelow 50
+  - heightbelow 42
   Skills:
   - throw{vy=5;v=0} @self
   - leap{velocity=10} @target

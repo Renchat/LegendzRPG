@@ -19,6 +19,7 @@ Ancient_Long_Sword:
   Id: stone_sword
   data: 0
   Display: '&6Ancient Long Sword'
+  Model: 1
   Lore:
   - '&c&lDamage 12'
   - ''
@@ -91,6 +92,7 @@ Skeleton_Core:
   Id: magma_cream
   data: 0
   Display: '&2Skeleton Core' 
+  Model: 4
   Lore:
   - '&e&l+6% Speed'
   - '&c&l+2.5 Damage'

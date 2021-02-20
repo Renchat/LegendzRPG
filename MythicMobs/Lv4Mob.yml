@@ -23,6 +23,7 @@ Lv4_Skeleton:
   DamageModifiers:
   - FALL 0
   - SUFFOCATION 9999
+  - MAGIC 0
 
 Lv4_RhinoBeetle:
   Type: Silverfish
@@ -49,6 +50,7 @@ Lv4_RhinoBeetle:
   DamageModifiers:
   - FALL 0
   - SUFFOCATION 9999
+  - MAGIC 0
 
 Lv4_Boss:
   Type: wither_skeleton
@@ -75,6 +77,7 @@ Lv4_Boss:
   DamageModifiers:
   - FALL 0
   - SUFFOCATION 9999
+  - MAGIC 0
   Options:
     AlwaysShowName: true
     MovementSpeed: 0.25

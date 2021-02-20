@@ -59,6 +59,7 @@ Lv7_Boss:
   DamageModifiers:
   - FALL 0
   - SUFFOCATION 9999
+  - MAGIC 0
   Drops:
   - Lv7BossDrops
   Skills:

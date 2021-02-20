@@ -106,6 +106,7 @@ Rusty_Sword:
 Zombie_Core:
   Id: magma_cream
   data: 0
+  Model: 1
   Display: '&2Zombie Core'
   Lore:
   - '&e&l+5% Speed'

@@ -1,22 +1,46 @@
 Lv8_Angel:
   Type: vex
   Display: '&6[8] &eAngel'
-  Health: 80
-  Damage: 20
+  Health: 60
+  Damage: 18
   Faction: Mobs
   DamageModifiers:
   - FALL 
   - SUFFOCATION 9999
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    FollowRange: 100
+    ShowHealth: true
+    MaxCombatDistance: 200
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventRenaming: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    PreventSunburn: true
 Lv8_Phantom:
   Type: vex
   Display: '&6[9] &ePhantom'
   Health: 100
-  Damage: 25
+  Damage: 13
   Faction: Mobs
   Disguise: phantom
   DamageModifiers:
   - FALL 0
   - SUFFOCATION 9999
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    FollowRange: 100
+    ShowHealth: true
+    MaxCombatDistance: 200
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventRenaming: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    PreventSunburn: true
 Lv8_Boss:
   Type: vex
   Health: 130
@@ -41,10 +65,11 @@ Lv8_Boss:
   DamageModifiers:
   - FALL 0
   - SUFFOCATION 9999
+  - MAGIC 0
   Drops:
   - Lv8BossDrops
   Skills:
-  - shoot{d=20;v=1.5} @target ~onTimer:30
+  - shoot{d=16;v=1.25} @target ~onTimer:30
   - skill{s=Hover} ~onTimer:13
   Equipment:
   - Heavenly_Bow HAND

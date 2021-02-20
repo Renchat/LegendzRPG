@@ -2,7 +2,7 @@ Lv4BossDrops:
   Conditions:
   - playerwithin 40
   Drops:
-  - Coin 13 1
+  - Coin 5 1
   - Ancient_Skull 1 0.05
   - Bone_Boots 1 0.05
   - Ancient_Long_Sword 1 0.05

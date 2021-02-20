@@ -86,6 +86,7 @@ Silvery_Core:
   Id: magma_cream
   data: 0
   Display: '&2Silvery Core'
+  Model: 5
   Lore:
   - '&e&l+7% Speed'
   - '&c&l+3 Damage'

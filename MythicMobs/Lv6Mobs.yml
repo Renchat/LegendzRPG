@@ -1,8 +1,8 @@
 Lv6_InfernalPig:
   Type: PIG_ZOMBIE
   Display: '&6[6] &eInfernal Pig'
-  Health: 60
-  Damage: 10
+  Health: 45
+  Damage: 6
   Faction: Mobs
   Equipment:
    - gold_sword HAND
@@ -26,19 +26,20 @@ Lv6_InfernalPig:
   DamageModifiers:
   - FALL 0
   - SUFFOCATION 9999
+  - MAGIC 0
 
 Lv6_Imp:
   Type: vex
   Display: '&6[7] &eImp'
-  Health: 30
-  Damage: 15
+  Health: 25
+  Damage: 10
   Faction: Mobs
   Equipment:
    - diamond_sword HAND
    - shield OFFHAND
   Options:
     AlwaysShowName: true
-    MovementSpeed: 0.24
+    MovementSpeed: 0.21
     MaxCombatDistance: 999
     PreventOtherDrops: true
     PreventItemPickup: true
@@ -46,12 +47,16 @@ Lv6_Imp:
     PreventJockeyMounts: true
     PreventRandomEquipment: true
     PreventSunburn: true
+  DamageModifiers:
+  - FALL 0
+  - SUFFOCATION 9999
+  - MAGIC 0
 
 Lv6_Boss:
   Type: wither_skeleton
   Display: '&6[8] &cDemon'
-  Health: 150
-  Damage: 15
+  Health: 120
+  Damage: 13
   Faction: Mobs
   Equipment:
   - Demonium_Broadsword HAND
@@ -59,14 +64,17 @@ Lv6_Boss:
   - Sulfur_Chestplate CHEST
   - Sulfur_Legging LEGS
   - Sulfur_Boots FEET
+  Drops:
+  - Lv6BossDrops
   DamageModifiers:
   - FALL 0
   - SUFFOCATION 9999
+  - MAGIC 0
   Skills:
-  - skill{s=Homer} @target ~onTimer:100
+  - skill{s=Homer} @target ~onTimer:120
   Options:
     AlwaysShowName: true
-    MovementSpeed: 0.25
+    MovementSpeed: 0.24
     MaxCombatDistance: 999
     PreventOtherDrops: true
     PreventItemPickup: true
