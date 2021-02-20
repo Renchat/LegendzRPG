@@ -1,5 +1,7 @@
 every 2 minutes:
     broadcast "&dNew Player can gain 0.05x Extra booster for everyone (/booster)"
+    wait 3 minutes
+    broadcast "&dDaily Lord Rank Giveaway in /discord!"
 
 
 every 1 second:
@@ -79,7 +81,7 @@ every 10 second:
     set line 8 of loop-player's scoreboard to "&7Bal: &b%loop-player's balance%"
     set line 7 of loop-player's scoreboard to "&7Level: &6%{level::%loop-player's uuid%}% &7Gem: &a%{gem::%loop-player's uuid%}%"
     set line 6 of loop-player's scoreboard to "&cStrength&7: &c%{skillpoints::%loop-player's uuid%::strength}% &bSpeed&7: &b%{skillpoints::%loop-player's uuid%::speed}%"
-    set line 5 of loop-player's scoreboard to "&6Defense&7: &6%{skillpoints::%loop-player's uuid%::defense}% &dMagic&7: &dN/A"
+    set line 5 of loop-player's scoreboard to "&6Defense&7: &6%{skillpoints::%loop-player's uuid%::defense}% &dMagic&7: &d%{skillpoints::%loop-player's uuid%::magic}%"
     set line 4 of loop-player's scoreboard to "&5E&dX&5P&7: &d%{booster::exp}%x &c%{booster::exp::time}% Min"
     set line 3 of loop-player's scoreboard to "&eMoney&7: &e%{booster::money}%x &c%{booster::money::time}% Min"
     set line 2 of loop-player's scoreboard to "&eLegendzRPG.minehut.gg"

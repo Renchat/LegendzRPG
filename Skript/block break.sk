@@ -3,11 +3,11 @@ on block break:
     player doesn't have permission "skript.blockbreak"
     if event-block is lapis ore:
         if block below event-block is bedrock:
-            set {_miningexp} to (3 + (0.1*{level::%player's uuid%})) * {booster::exp}
+            set {_miningexp} to (0.5 + (0.05*{level::%player's uuid%})) * {booster::exp}
             add {_miningexp} to {exp::%player's uuid%}
-            add 5 to player's balance
+            add 1 to player's balance
             add 1 to {achievements::%player's uuid%::lapisore}
-            send action bar "&6[&e%{level::%player's uuid%}%&6] &aProgress: &e%{exp::%player's uuid%}%/%{expforlvlup::%player's uuid%}% &a+$5" to player
+            send action bar "&6[&e%{level::%player's uuid%}%&6] &aProgress: &e%{exp::%player's uuid%}%/%{expforlvlup::%player's uuid%}% &a+$1" to player
             levelup(player)
             set event-block to cobblestone
             cancel drops
@@ -28,11 +28,11 @@ on block break:
                 set event-block to lapis ore
     if event-block is lapis block:
         if block below event-block is bedrock:
-            set {_miningexp} to (6 + (0.3*{level::%player's uuid%})) * {booster::exp}
+            set {_miningexp} to (3 + (0.1*{level::%player's uuid%})) * {booster::exp}
             add {_miningexp} to {exp::%player's uuid%}
-            add 10 to player's balance
+            add 3 to player's balance
             add 1 to {achievements::%player's uuid%::lapisblock}
-            send action bar "&6[&e%{level::%player's uuid%}%&6] &aProgress: &e%{exp::%player's uuid%}%/%{expforlvlup::%player's uuid%}% &a+$10" to player
+            send action bar "&6[&e%{level::%player's uuid%}%&6] &aProgress: &e%{exp::%player's uuid%}%/%{expforlvlup::%player's uuid%}% &a+$3" to player
             set event-block to cobblestone
             cancel drops
             levelup(player)
@@ -60,11 +60,11 @@ on block break:
             message "&cYou can't break this block."
     if event-block is redstone ore:
         if block below event-block is bedrock:
-            set {_miningexp} to (12 + (0.6*{level::%player's uuid%})) *{booster::exp}
+            set {_miningexp} to (8 + (0.3*{level::%player's uuid%})) *{booster::exp}
             add {_miningexp} to {exp::%player's uuid%}
-            add 20 to player's balance
+            add 7 to player's balance
             add 1 to {achievements::%player's uuid%::redstoneore}
-            send action bar "&6[&e%{level::%player's uuid%}%&6] &aProgress: &e%{exp::%player's uuid%}%/%{expforlvlup::%player's uuid%}% &a+$20" to player
+            send action bar "&6[&e%{level::%player's uuid%}%&6] &aProgress: &e%{exp::%player's uuid%}%/%{expforlvlup::%player's uuid%}% &a+$7" to player
             set event-block to cobblestone
             levelup(player)
             cancel drops
@@ -91,7 +91,7 @@ on block break:
             message "&cYou can't break this block."
     if event-block is redstone block:
         if block below event-block is bedrock:
-            set {_miningexp} to (30 + (2.5*{level::%player's uuid%})) * {booster::exp}
+            set {_miningexp} to (20 + (0.8*{level::%player's uuid%})) * {booster::exp}
             add {_miningexp} to {exp::%player's uuid%}
             add 50 to player's balance
             add 1 to {achievements::%player's uuid%::redstoneblock}
@@ -102,25 +102,25 @@ on block break:
             chance of 0.25%:
                 add 1 to {gem::%player's uuid%}
                 message "&a&l+1 Gem"
-            chance of 20%:
+            chance of 25%:
                 give coal named "&8Coal Key" to player
                 set {_dropped} to 1
             if {_dropped} is not 1:
                 chance of 10%:
                     give iron ingot named "&7Silver Key" to player
                     set {_dropped} to 1
-                if {_dropped} is not 1:
-                    chance of 5%:
-                        give gold ingot named "&eGold Key" to player
-                        set {_dropped} to 1
-                    if {_dropped} is not 1:
-                        chance of 1%:
-                            give diamond named "&bDiamond Key" to player
-                            set {_dropped} to 1
-                        if {_dropped} is not 1:
-                            chance of 0.01%:
-                                give emerald named "&2&lEmerald Key" to player
-                                broadcast "&a&l%player% &a&lGot a &2&lEmerald Key &a&lFrom Mining!"
+            if {_dropped} is not 1:
+                chance of 5%:
+                    give gold ingot named "&eGold Key" to player
+                    set {_dropped} to 1
+            if {_dropped} is not 1:
+                chance of 1%:
+                    give diamond named "&bDiamond Key" to player
+                    set {_dropped} to 1
+            if {_dropped} is not 1:
+                chance of 0.01%:
+                    give emerald named "&2&lEmerald Key" to player
+                    broadcast "&a&l%player% &a&lGot a &2&lEmerald Key &a&lFrom Mining!"
             wait 3 seconds
             chance of (0 + (0.05*level of Lure of player's tool))%:
                 set event-block to redstone block
@@ -143,8 +143,8 @@ on block break:
             set {_a} to random integer between 1 and 3
             add {_a} to {gem::%player's uuid%}
             send action bar "&a+%{_a}% Gem" to player
-            set event-block to cobblestone
-            chance of 1%:
+            set event-block to bedrock
+            chance of 3%:
                 execute console command "/mm m spawn Gem_Golem 1 RPG,-362,4,5"
                 broadcast "&d&l%player% has summoned the Gem Golem &7(/warp event)"
             wait 5 minutes

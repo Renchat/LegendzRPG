@@ -5,52 +5,21 @@ on click on sign:
         message "&aDone"
     if line 2 of targeted block is "&6Tutorial":
         if line 3 of targeted block is "&bStart":
-            message , "&6Welcome to &4&lLegendz&a&lRPG! &6To start your adventure, you'll need to complete this tutorial. I know tutorials are hella boring and such but this is to help my staff team lighten their work. Follow this path to start the tutorial. Don't forget to exchange your starter token to the villager!" and 
+            message "&6Welcome to &4&lLegendz&a&lRPG! &6To start your adventure, you'll need to complete this tutorial. I know tutorials are hella boring and such but this is to help my staff team lighten their work. Follow this path to start the tutorial. Don't forget to exchange your starter token to the villager!"
         if line 3 of targeted block is "&bGenerator":
-            message , "&6This is how a normal Generator would look like but bedrock will change due to different tier of generator. generators give money every &b3 seconds &6your next to them and they will also have a chance to give &aGem&6! &aGems &6are used to get &cbuycraft&6 item through &cingame efforts&6." and 
+            message "&6This is how a normal Generator would look like but bedrock will change due to different tier of generator. generators give money every &b3 seconds &6your next to them and they will also have a chance to give &aGem&6! &aGems &6are used to get &cbuycraft&6 item through &cingame efforts&6."
         if line 3 of targeted block is "&bExit":
             execute console command "/warp City %player%"
             execute console command "/spawnpoint %player%"
             wait 2 seconds
-            message "&6Welcome to the main city. There are many intresting things here and I don't wanna explain them all so you just can look around and see what u can find. &eGo to the Big Tree and you will be able to go start killing some mobs if your that &cblood thirsty&6." and 
+            message "&6Welcome to the main city. There are many intresting things here and I don't wanna explain them all so you just can look around and see what u can find. &eGo to the Big Tree and you will be able to go start killing some mobs if your that &cblood thirsty&6."
         if line 3 of targeted block is "&bMining":
             if line 4 of targeted block is "":
-                message "&6Our server is not only RPG but a big part is about &8Mining&6! Mining will gain you &aSkillpoints &6and also &eCrate Keys&6! There are different tier of ores and they all have their own value, the tiers of ores are sorted from &dright as lowest tier to left as highest tier&6. Ores will give &emore exp the more you level up&6. &aPickaxes are upgradable (right click to upgrade) &6but they are quiet expensive. &eHoney Block is a event mining block that will not appear in normal mining&6. &cRedstone Block &6will give High Amount of Exp AND Crate Keys!" and 
+                message "&6Our server is not only RPG but a big part is about &8Mining&6! Mining will gain you &aSkillpoints &6and also &eCrate Keys&6! There are different tier of ores and they all have their own value, the tiers of ores are sorted from &dright as lowest tier to left as highest tier&6. Ores will give &emore exp the more you level up&6. &aPickaxes are upgradable (right click to upgrade) &6but they are quiet expensive. &eHoney Block is a event mining block that will not appear in normal mining&6. &cRedstone Block &6will give High Amount of Exp AND Crate Keys!"
         if line 3 of targeted block is "&bAFK Chamber":
-            message , "&6A place for afk while you get money... The money you get is based on this math: 0.5 + (0.03*Level) = Money you're getting. Simple." and 
+            message "&6A place for afk while you get money... The money you get is based on this math: 0.5 + (0.03*Level) = Money you're getting. Simple."
         if line 3 of targeted block is "&bBoss Room":
-            message , "&6Tell all your friends/clan members to come to a suspific room and you can use your key to teleport them to a Boss Room by right clicking the bedrock with the key!" and 
-    if line 2 of targeted block is "&6FAQ":
-        if line 3 of targeted block is "&bHow To Get":
-            if line 4 of targeted block is "&dSkillpoints":
-                message "&6Skillpoints are used to upgrade your player attribute by right clicking &b&lMenu &6>> &a&lProfile &6there you will see that you can upgrade Defense/Strength/Speed although Defense and Strength is only 0.05 increase (this is to make sure players don't use fist and 1 shot zombies." 
-            if line 4 of targeted block is "&dArmor/Weapon":
-                message "&6Armor and weapon is dropped by bosses and its not 100%% of the time that they drop something. Some Drops has very low chances too..."
-            if line 4 of targeted block is "&dTo Lv1":
-                message "&6To get to Lv1 you can either right click your &b&lMenu &6>> &d&lTeleportation &6>> &a&lLevels &6and then click on the level that you want to go OR go to the big tree and there will be a teleportation sign." and 
-            if line 4 of targeted block is "&dTo Lv2":
-                message "&6To get to Lv2 You will need Level 25 and go the the obsidian portal on the other side of Lv1 and right click the teleportation sign and that will unlock Lv2 and THEN you can use your teleporter to tp there." and 
-        if line 3 of targeted block is "&bHow To Upgrade":
-            if line 4 of targeted block is "&dPickaxe":
-                message "&6To upgrade your pickaxe, first you can right click while holding your pickaxe to see how much they cost and such." and 
-            if line 4 of targeted block is "&dSword":
-                message "&6To upgrade your sword, first you can shift right click while holding your sword to see how much they cost and such." and 
-        if line 3 of targeted block is "&bUse Of...":
-            if line 4 of targeted block is "&dMoney":
-                message "&6Money is used to upgrade your pickaxe which can be purchased at /warp mine and is traded in the villager Bob the Miner." and 
-            if line 4 of targeted block is "&dPets":
-                message "&6Pets can be purchased in /gemshop and u need to upgrade moneymoking to earn money from pet by having him in your inventory but you'll need to also feed him because he will get hungry and if you dont feed him, hunger goes below 0%% pet disappears Note: only 1 pet each player!" and 
-            if line 4 of targeted block is "&dMining":
-                message "&6Mining is a major part of the game because it helps you obtain &eskillpoints, crate keys, and gem&6 faster than any other income!" and 
-        if line 3 of targeted block is "&bHow To Buy":
-            if line 4 of targeted block is "&dArmor/Weapon":
-                message "&6You can buy Level 1 and 2 Armor/Weapon behind the spawn tree, there is a small house but level 3+, you will need to find them! Note: Some levels dont have Merchants." and 
-            if line 4 of targeted block is "&dPickaxe":
-                message "&6You can buy Pickaxe at /warp mine and there is a villager that you can trade in 2 stack of Silver Coins for a pickaxe!" and 
-            if line 4 of targeted block is "&dBuycraft Items":
-                message "&6Game is not about Pay 2 Win and the way how we make the game not Pay 2 Win is by using &e/gemshop&6, most of the buycraft items can be purchased at /gemshop." and 
-        if line 3 of targeted block is "&bHow To Start":
-            message "&6First of all Welcome to LegendzRPG!! To start off you would need to go to Level 1 which you can click on How To Get To Level 1 faq sign. There are many features here at LegendzRPG but you'll have to discover them all!" and 
+            message "&6Tell all your friends/clan members to come to a suspific room and you can use your key to teleport them to a Boss Room by right clicking the bedrock with the key!"
     if line 2 of targeted block is "&6Teleportation":
         if line 3 of targeted block is "&bLevel 1":
             if {level::%player's uuid%} >= 40:
@@ -58,6 +27,7 @@ on click on sign:
             else:
                 execute console command "/warp Lv1 %player%"
                 execute console command "/lp user %player% permission set essentials.warps.lv1"
+                stopeffect "%player%"
         if line 3 of targeted block is "&bLevel 2":
             if {level::%player's uuid%} is greater than or equal to 25:
                 if {level::%player's uuid%} is less than 60:
@@ -159,24 +129,20 @@ on rightclick:
         if block under event-block is oak fence:
             if player's held item is emerald named "&2&lEmerald Key":
                 remove 1 emerald named "&2&lEmerald Key" from player's inventory
-                chance of 1%:
-                    execute console command "/mm i give -s %player% Event_Token"
-                    message "&4&lLegendz&a&lRPG &e&l>> &aReceived Event Token"
-                    set {_dropped} to 1
                 if {_dropped} is not 1:
                     chance of 1%:
-                        give 1 paper named "&5&l1.5x &5&lE&d&lX&5&lP Booster" to player
-                        broadcast "&a&l%player% &a&lGot &5&l1.5x &5&lE&d&lX&5&lP Booster &aFrom Crate!"
+                        give 5 paper named "&5&l1.5x &5&lE&d&lX&5&lP Booster" to player
+                        broadcast "&a&l%player% &a&lGot 5x &5&l1.5x &5&lE&d&lX&5&lP Booster &aFrom Crate!"
                         set {_dropped} to 1
                 if {_dropped} is not 1:
                     chance of 1%:
-                        add 100 to {gem::%player's uuid%}
-                        message "&4&lLegendz&a&lRPG &e&l>> &a+100 Gem"
+                        add 750 to {gem::%player's uuid%}
+                        message "&4&lLegendz&a&lRPG &e&l>> &a+750 Gem"
                         set {_dropped} to 1
                 if {_dropped} is not 1:
                     chance of 1%:
-                        give 1 paper named "&e&l1.5x Money Booster" to player
-                        broadcast "&a&l%player% &a&lGot &e&l1.5x Money Booster &aFrom Crate!"
+                        give 5 paper named "&e&l1.5x Money Booster" to player
+                        broadcast "&a&l%player% &a&lGot 5x &e&l1.5x Money Booster &aFrom Crate!"
                         set {_dropped} to 1
                 if {_dropped} is not 1:
                     chance of 1%:
@@ -190,33 +156,33 @@ on rightclick:
                         set {_dropped} to 1
                 if {_dropped} is not 1:
                     chance of 3%:
-                        add 50000 to player's balance
-                        message "&4&lLegendz&a&lRPG &e&l>> &a+$50000"
+                        add 150000 to player's balance
+                        message "&4&lLegendz&a&lRPG &e&l>> &a+$150000"
                         set {_dropped} to 1
                 if {_dropped} is not 1:
                     chance of 5%:
-                        add 40 to {gem::%player's uuid%}
-                        message "&4&lLegendz&a&lRPG &e&l>> &a+40 Gem"
+                        add 250 to {gem::%player's uuid%}
+                        message "&4&lLegendz&a&lRPG &e&l>> &a+250 Gem"
                         set {_dropped} to 1
                 if {_dropped} is not 1:
                     chance of 5%:
                         give 1 emerald named "&2&lEmerald Key" to player
-                        message "&4&lLegendz&a&lRPG &e&l>> &a+Emerald Key"
+                        message "&4&lLegendz&a&lRPG &e&l>> &aRetry"
                         set {_dropped} to 1
                 if {_dropped} is not 1:
                     chance of 10%:
-                        add 20000 to player's balance
-                        message "&4&lLegendz&a&lRPG &e&l>> &a+$20000"
+                        add 100000 to player's balance
+                        message "&4&lLegendz&a&lRPG &e&l>> &a+$100000"
                         set {_dropped} to 1
                 if {_dropped} is not 1:
                     chance of 15%:
-                        add 20 to {gem::%player's uuid%}
-                        message "&4&lLegendz&a&lRPG &e&l>> &a+20 Gem"
+                        add 100 to {gem::%player's uuid%}
+                        message "&4&lLegendz&a&lRPG &e&l>> &a+100 Gem"
                         set {_dropped} to 1
                 if {_dropped} is not 1:
                     chance of 20%:
-                        add 10000 to player's balance
-                        message "&4&lLegendz&a&lRPG &e&l>> &a+$10000"
+                        add 50000 to player's balance
+                        message "&4&lLegendz&a&lRPG &e&l>> &a+$50000"
                         set {_dropped} to 1
                 if {_dropped} is not 1:
                     chance of 5%:
@@ -245,33 +211,9 @@ on rightclick:
                         set {_dropped} to 1
                 if {_dropped} is not 1:
                     give 1 emerald named "&2&lEmerald Key" to player
-                    message "&4&lLegendz&a&lRPG &e&l>> &a+Emerald Key"
+                    message "&4&lLegendz&a&lRPG &e&l>> &aRetry"
             else:
                 message "&cHold a Emerald Key Please"
-    if event-block is iron block:
-        if block under event-block is oak fence:
-            if player's held item is iron ingot named "&fIron Key":
-                remove 1 iron ingot named "&fIron Key" from player's inventory
-                chance of 80%:
-                    give diamond to player
-                    stop
-                chance of 80%:
-                    give gold ingot to player
-                    stop
-            else:
-                message "&cHold a Iron Key Please"
-    if event-block is Gold block:
-        if block under event-block is oak fence:
-            if player's held item is gold ingot named "&eGold Key":
-                remove 1 gold ingot named "&8Gold Key" from player's inventory
-                chance of 80%:
-                    give diamond to player
-                    stop
-                chance of 80%:
-                    give gold ingot to player
-                    stop
-            else:
-                message "&cHold a Gold Key Please"
 
 on rightclick holding nether star:
     if name of player's held item is "&aSword Token &7(Right Click)":
@@ -331,60 +273,6 @@ on click holding tripwire hook:
         remove 1 tripwire hook named "&6&l[&c&l15&6&l] &c&lBoss Room Key" from player's inventory
         loop all players in radius 5 around player:
             execute console command "/warp Boss3 %loop-player%"
-
-on right click holding end crystal:
-    if name of player's held item is "&a&lLow Teir Pet":
-        create new gui with id "LowPet" with virtual chest inventory with size 1 named "&a&lLow Teir Pet Upgrade":
-            set {_MoneyMaking} to 1 + level of efficiency of player's held item
-            format gui slot 0 with paper named "&e&lMoneyMaking +1" with lore "&6Cost: &e%{_MoneyMaking}% Pet Food" and "&cMax: Unlimited":
-                if name of player's held item is "&a&lLow Teir Pet":
-                    if player's inventory contains {_MoneyMaking} of nether star named "&6&lPet Food":
-                        remove {_MoneyMaking} of nether star named "&6&lPet Food" from player's inventory
-                        set {_enchant} to level of efficiency of player's held item + 1
-                        enchant the player's held item with "efficiency %{_enchant}%" parsed as enchantment type
-                        set line 1 of lore of player's held item to "&e&lMoneyMaking %level of efficiency of player's held item%"
-                        make player execute command "/refreshgui"
-                        open gui "LowPet" to player
-                    else:
-                        message "&cYou need %{_MoneyMaking}% Pet Food."
-                else:
-                    message "&cYou need to be holding your pet."
-            format gui slot 8 with cooked beef named "&6&lRefill Hunger" with lore "&6Cost: &e1 Pet Food":
-                if name of player's held item is "&a&lLow Teir Pet":
-                    if player's inventory contains 1 of nether star named "&6&lPet Food":
-                        remove 1 nether star named "&6&lPet Food" from player's inventory
-                        set line 2 of lore of player's held item to "&6&lHunger: 100%%"
-                    else:
-                        message "&cYou need %{_MoneyMaking}% Pet Food."
-                else:
-                    message "&cYou need to be holding your pet."
-        open gui "LowPet" to player
-    if name of player's held item is "&a&lLow Teir Pet":
-        create new gui with id "LowPet" with virtual chest inventory with size 1 named "&a&lLow Teir Pet Upgrade":
-            set {_MoneyMaking} to 1 + level of efficiency of player's held item
-            format gui slot 0 with paper named "&e&lMoneyMaking +1" with lore "&6Cost: &e%{_MoneyMaking}% Pet Food" and "&cMax: Unlimited":
-                if name of player's held item is "&a&lLow Teir Pet":
-                    if player's inventory contains {_MoneyMaking} of nether star named "&6&lPet Food":
-                        remove {_MoneyMaking} of nether star named "&6&lPet Food" from player's inventory
-                        set {_enchant} to level of efficiency of player's held item + 1
-                        enchant the player's held item with "efficiency %{_enchant}%" parsed as enchantment type
-                        set line 1 of lore of player's held item to "&e&lMoneyMaking %level of efficiency of player's held item%"
-                        make player execute command "/refreshgui"
-                        open gui "LowPet" to player
-                    else:
-                        message "&cYou need %{_MoneyMaking}% Pet Food."
-                else:
-                    message "&cYou need to be holding your pet."
-            format gui slot 8 with cooked beef named "&6&lRefill Hunger" with lore "&6Cost: &e1 Pet Food":
-                if name of player's held item is "&a&lLow Teir Pet":
-                    if player's inventory contains 1 of nether star named "&6&lPet Food":
-                        remove 1 nether star named "&6&lPet Food" from player's inventory
-                        set line 2 of lore of player's held item to "&6&lHunger: 100%%"
-                    else:
-                        message "&cYou need %{_MoneyMaking}% Pet Food."
-                else:
-                    message "&cYou need to be holding your pet."
-        open gui "LowPet" to player
             
 on right click on item frame:
     player doesn't have permission "essentials.op"
@@ -405,6 +293,13 @@ on right click holding emerald:
     name of player's tool is "&a&l+1 Gem &7(Right Click)"
     add 1 to {gem::%player's uuid%}
     remove 1 emerald named "&a&l+1 Gem &7(Right Click)" from player's inventory
+on right click holding potion:
+    if name of player's tool is "&cHeal I":
+        heal player by 1
+        remove 1 potion of health named "&cHeal I" from player's inventory
+    if name of player's tool is "&cHeal II":
+        heal player by 2
+        remove 1 potion of health named "&cHeal II" from player's inventory
 
 
 
@@ -413,13 +308,12 @@ on right click holding emerald:
 on leftclick:
     if event-block is emerald block:
         create new gui with id "Crate" with virtual chest inventory with size 3 named "&2Emerald Crate":
-            format gui slot 0 with sunflower named "&6&lEvent Token" with lore "&a&l1%%"
-            format gui slot 1 with paper named "&e$10000" with lore "&a&l20%%"
-            format gui slot 2 with paper named "&e$20000" with lore "&a&l10%%"
-            format gui slot 3 with paper named "&e$50000" with lore "&a&l3%%"
-            format gui slot 4 with emerald named "&a20 Gem" with lore "&a&l15%%"
-            format gui slot 5 with emerald named "&a40 Gem" with lore "&a&l5%%"
-            format gui slot 6 with emerald named "&a100 Gem" with lore "&a&l1%%"
+            format gui slot 1 with paper named "&e$50000" with lore "&a&l20%%"
+            format gui slot 2 with paper named "&e$100000" with lore "&a&l10%%"
+            format gui slot 3 with paper named "&e$150000" with lore "&a&l3%%"
+            format gui slot 4 with emerald named "&a100 Gem" with lore "&a&l15%%"
+            format gui slot 5 with emerald named "&a250 Gem" with lore "&a&l5%%"
+            format gui slot 6 with emerald named "&a750 Gem" with lore "&a&l1%%"
             format gui slot 7 with emerald named "&2&lEmerald Key" with lore "&a&l35%%"
             format gui slot 8 with nametag named "&aMilk Tag" with lore "&a&l5%%"
             format gui slot 9 with nametag named "&aSpeed Tag" with lore "&a&l5%%"
@@ -427,8 +321,8 @@ on leftclick:
             format gui slot 11 with nametag named "&aFrostlord Tag" with lore "&a&l4%%"
             format gui slot 12 with nametag named "&aOverlord Tag" with lore "&a&l3%%"
             format gui slot 14 with nametag named "&a&l2x &2&lEmerald Key" with lore "&a&l1%%"
-            format next gui slot with paper named "&5&l1.5x &5&lE&d&lX&5&lP Booster" with lore "&a&l1%%"
-            format next gui slot with paper named "&b&l1.5x Money Booster" with lore "&a&l1%%"
+            format next gui slot with paper named "&a&l5x &5&l1.5x &5&lE&d&lX&5&lP Booster" with lore "&a&l1%%"
+            format next gui slot with paper named "&a&l5x &b&l1.5x Money Booster" with lore "&a&l1%%"
             format next gui slot with slimeball named "&4&lReset Skillpoints" with lore "&a&l1%%"
         open last gui to player
 

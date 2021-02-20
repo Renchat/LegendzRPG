@@ -230,16 +230,16 @@ command /convert:
                 else:
                     message "&cYou need 1 &eGold Bar&c."
             
-            format gui slot 18 with iron nugget named "&664 Silver Coin >> $100":
+            format gui slot 18 with iron nugget named "&664 Silver Coin >> $3500":
                 if player have 64 iron nugget named "&7Silver Coin":
                     remove 64 iron nugget named "&7Silver Coin" from player's inventory
-                    add 100 to player's balance
+                    add 3500 to player's balance
                 else:
                     message "&cYou need 64 &7Silver Coin&c."
-            format gui slot 19 with gold nugget named "&664 Gold Coin >> $6400":
+            format gui slot 19 with gold nugget named "&664 Gold Coin >> $224000":
                 if player have 64 gold nugget named "&eGold Coin":
                     remove 64 gold Nugget named "&eGold Coin" from player's inventory
-                    add 6400 to player's balance
+                    add 224000 to player's balance
                 else:
                     message "&cYou need 64 &eGold Coin&c."
         open gui "Convert" to player
@@ -272,8 +272,9 @@ command /reset [<offline player>] [<text>]:
             add {_result} to {skillpoints::%offline player-arg's uuid%}
             send "&aSkillpoints Fixed" to offline player-arg
         if arg-2 is "skillpoints":
+            add ({skillpoints::%offline player-arg's uuid%::strength} + {skillpoints::%offline player-arg's uuid%::speed} + {skillpoints::%offline player-arg's uuid%::defense}) to {skillpoints::%offline player-arg's uuid%}
+            wait 2 ticks
             set {skillpoints::%offline player-arg's uuid%::*} to 0
-            set {skillpoints::%offline player-arg's uuid%} to {level::%offline player-arg's uuid%}
             message "&4&l%player% &6Has Reset ALL of your Skillpoints" to offline player-arg
         if arg-2 is "gem":
             set {gem::%offline player-arg's uuid%} to 0
@@ -417,7 +418,7 @@ command /add [<text>] [<number>] [<offline player>]:
                         message "&4&l[Staff] &6%player% &aAdded %{_amount}% &ato %offline player-arg%'s %arg-1%&a." to loop-player
         else if arg-1 is "skillpoints":
             set {_amount} to arg-2
-            add {_amount} to {skillpoints::%player's uuid%}
+            add {_amount} to {skillpoints::%offline player-arg's uuid%}
             loop all players:
                 if loop-player has permission "essentials.op":
                     message "&4&l[Staff] &6%player% &aAdded %{_amount}% &ato Player's %arg-1%&a." to loop-player
@@ -628,13 +629,12 @@ command /shop [<text>]:
             message "&e/convert &6To view Coin Exchange."
         if arg-1 is "Food" or "food":
             open virtual chest with size 1 named "&aFood Shop" to player
-            shop(player,0,bread,"&a1x Bread",1,2,"Silver Coins",iron nugget,"&7Silver Coin",false,"")
-            shop(player,1,steak,"&a8x Steak",8,32,"Silver Coins",iron nugget,"&7Silver Coin",false,"")
-            shop(player,2,steak,"&a16x Steak",16,1,"Gold Coin", gold nugget,"&eGold Coin",false,"")
+            shop(player,0,golden apple,"&a1x Golden Apple",1,1,"Gold Coin",gold nugget,"&eGold Coin",false,"")
         if arg-1 is "Potion" or "potion":
             open virtual chest with size 1 named "&dPotion Shop" to player
-            shop(player,0,potions of health,"&a1x Heal I",1,32,"Silver Coins",iron nugget,"&7Silver Coin",true,"Heal_I")
+            shop(player,0,potions of health,"&a1x Heal I",1,4,"Silver Coins",iron nugget,"&7Silver Coin",false,"")
             shop(player,1,potions of strength,"&a1x Strength I (3:00)",1,1,"Gold Coin",gold nugget,"&eGold Coin",true,"Strength_I")
+
         if arg-1 is "Arrow" or "arrow":
             open virtual chest with size 1 named "&fArrow Shop" to player
             shop(player,0,arrow,"&a1x Arrow",1,1,"Silver Coin",iron nugget,"&7Silver Coin",false,"")
@@ -679,3 +679,112 @@ command /faq [<text>]:
         if arg-1 is not set:
             message "&e/faq [skillpoints,gear,lv1,lv2,money,upgrade,pets,mining,start]"
             message "&e/faq [gem,pets]"
+
+command /fixwarp:
+    trigger:
+        if {level::%player's uuid%} >= 0:
+            if {level::%player's uuid%} <= 40:
+                execute console command "/lp user %player% permission set essentials.warps.lv1"
+                message "&aAdded /warp Lv1"
+        if {level::%player's uuid%} >= 25:
+            if {level::%player's uuid%} <= 60:
+                execute console command "/lp user %player% permission set essentials.warps.lv2"
+                message "&aAdded /warp Lv2"
+        if {level::%player's uuid%} >= 40:
+            if {level::%player's uuid%} <= 100:
+                execute console command "/lp user %player% permission set essentials.warps.lv3"
+                message "&aAdded /warp Lv3"
+                execute console command "/lp user %player% permission unset essentials.warps.lv1"
+        if {level::%player's uuid%} >= 60:
+            if {level::%player's uuid%} <= 130:
+                execute console command "/lp user %player% permission set essentials.warps.lv4"
+                message "&aAdded /warp Lv4"
+                execute console command "/lp user %player% permission unset essentials.warps.lv2"
+                execute console command "/lp user %player% permission unset essentials.warps.lv1"
+        if {level::%player's uuid%} >= 100:
+            if {level::%player's uuid%} <= 165:
+                execute console command "/lp user %player% permission set essentials.warps.lv5"
+                message "&aAdded /warp Lv5"
+                execute console command "/lp user %player% permission unset essentials.warps.lv3"
+                execute console command "/lp user %player% permission unset essentials.warps.lv2"
+                execute console command "/lp user %player% permission unset essentials.warps.lv1"
+        if {level::%player's uuid%} >= 130:
+            if {level::%player's uuid%} <= 200:
+                execute console command "/lp user %player% permission set essentials.warps.lv6"
+                message "&aAdded /warp Lv6"
+                execute console command "/lp user %player% permission unset essentials.warps.lv4"
+                execute console command "/lp user %player% permission unset essentials.warps.lv3"
+                execute console command "/lp user %player% permission unset essentials.warps.lv2"
+                execute console command "/lp user %player% permission unset essentials.warps.lv1"
+        if {level::%player's uuid%} >= 165:
+            if {level::%player's uuid%} <= 230:
+                execute console command "/lp user %player% permission set essentials.warps.lv7"
+                message "&aAdded /warp Lv7"
+                execute console command "/lp user %player% permission unset essentials.warps.lv5"
+                execute console command "/lp user %player% permission unset essentials.warps.lv4"
+                execute console command "/lp user %player% permission unset essentials.warps.lv3"
+                execute console command "/lp user %player% permission unset essentials.warps.lv2"
+                execute console command "/lp user %player% permission unset essentials.warps.lv1"
+        if {level::%player's uuid%} >= 200:
+            execute console command "/lp user %player% permission set essentials.warps.lv8"
+            message "&aAdded /warp Lv8"
+            execute console command "/lp user %player% permission unset essentials.warps.lv6"
+            execute console command "/lp user %player% permission unset essentials.warps.lv5"
+            execute console command "/lp user %player% permission unset essentials.warps.lv4"
+            execute console command "/lp user %player% permission unset essentials.warps.lv3"
+            execute console command "/lp user %player% permission unset essentials.warps.lv2"
+            execute console command "/lp user %player% permission unset essentials.warps.lv1"
+
+command /lordperk:
+    permission: has.lordperk
+    trigger:
+        if player doesn't have permission "used.lordperk":
+            execute console command "/eco give %player% 10000"
+            add 10 to {level::%player's uuid%}
+            add 15 to {skillpoints::%player's uuid%}
+            give slime ball named "&4&lReset Skillpoints" to player
+            add 250 to {gem::%player's uuid%}
+            Broadcast "&6&l%player% Redeemed /lordperk (Buycraft) +10 level,+250 gem,+5 skillpoints,+10k"
+            execute console command "/lp user %player% permission set used.lordperk"
+            execute player command "/fixwarp"
+command /kingperk:
+    permission: has.kingperk
+    trigger:
+        if player doesn't have permission "used.kingperk":
+            execute console command "/eco give %player% 50000"
+            add 25 to {level::%player's uuid%}
+            add 35 to {skillpoints::%player's uuid%}
+            give 2 slime ball named "&4&lReset Skillpoints" to player
+            add 1000 to {gem::%player's uuid%}
+            Broadcast "&e&l%player% Redeemed /kingperk (Buycraft) +25 level,+1000 gem,+10 skillpoints,+50k"
+            execute console command "/lp user %player% permission set used.kingperk"
+            execute player command "/fixwarp"
+
+command /demigodperk:
+    permission: has.demigodperk
+    trigger:
+        if player doesn't have permission "used.demigodperk":
+            execute console command "/eco give %player% 150000"
+            add 50 to {level::%player's uuid%}
+            add 75 to {skillpoints::%player's uuid%}
+            give 2 slime ball named "&4&lReset Skillpoints" to player
+            add 5000 to {gem::%player's uuid%}
+            Broadcast "&e&l%player% Redeemed /kingperk (Buycraft) +50 level,+5000 gem,+25 skillpoints,+150k"
+            execute console command "/lp user %player% permission set used.demigodperk"
+            execute player command "/fixwarp"
+
+command /mutechat:
+    permission: is.helper
+    trigger:
+        if {mutechat} is not set:
+            set {mutechat} to 1
+            loop 30 times:
+                broadcast " "
+        else:
+            delete {mutechat}
+
+on chat:
+    if {mutechat} is 1:
+        if player doesn't have permission "is.staff":
+            message "&cChat is muted"
+            cancel event

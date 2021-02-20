@@ -1,413 +1,69 @@
 #BOSSES
 on death:
     if name of victim is "&6[3] &cEnhanced Zombie":
-        death(victim)
-        wait 5 ticks
-        set {_exp} to 15 * {booster::exp}
-        add {_exp} to {exp::%attacker's uuid%}
-        levelup(attacker)
-        send action bar "&6[&e%{level::%attacker's uuid%}%&6] &aProgress: &e%{exp::%attacker's uuid%}%/%{expforlvlup::%attacker's uuid%}%" to attacker
-        play sound "entity.experience_orb.pickup" at volume 0.3 to {mostdamage::entity::%victim's uuid%::HDP}
-        execute console command "/mm i give -s %attacker% Coin 5"
-        chance of (1.5+(0.05*level of looting of attacker's tool))%:
-            execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Zombie_Core"
-            message "&aReceived Zombie Core From Most Damaging Player Reward" to attacker
-            set {_dropped} to 1
-        if {_dropped} is not 1:
-            chance of 7%:
-                execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Skin_Boots"
-                message "&aReceived Skin Boots From Most Damaging Player Reward" to attacker
-                set {_dropped} to 1
-            if {_dropped} is not 1:
-                chance of 7%:
-                    execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Skin_Cap"
-                    message "&aReceived Skin Cap From Most Damaging Player Reward" to attacker
-                    set {_dropped} to 1
-                if {_dropped} is not 1:
-                    chance of 7%:
-                        execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Skin_Legging"
-                        message "&aReceived Skin Legging From Most Damaging Player Reward" to attacker
-                        set {_dropped} to 1
-                    if {_dropped} is not 1:
-                        chance of 7%:
-                            execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Rusty_Sword"
-                            message "&aReceived Rusty Sword From Most Damaging Player Reward" to attacker
-                            set {_dropped} to 1
-        loop all players in radius 10 around victim:
-            message "&c&l%{mostdamage::entity::%victim's uuid%::HDP}% Got Most Damaging Player Reward" to loop-player
-        delete {mostdamage::entity::%victim's uuid%::HDP}
-        delete {mostdamage::%victim%::*}
-        add 1 to {achievements::%attacker's uuid%::enhancedzombie}
+        boss((victim),(15),(attacker),(10),(2),(level of looting of attacker's tool),("Zombie_Core"),("Skin_Boots"),(3),("Skin_Cap"),(3),("Skin_Legging"),(3),("Chestplate"),(0),("Rusty_Sword"),(3),("Bow"),(0),("enhancedzombie"))
     if name of victim is "&6[4] &cEnhanced Husk":
-        death(victim)
-        wait 5 ticks
-        set {_exp} to 25 * {booster::exp}
-        add {_exp} to {exp::%attacker's uuid%}
-        levelup(attacker)
-        send action bar "&6[&e%{level::%attacker's uuid%}%&6] &aProgress: &e%{exp::%attacker's uuid%}%/%{expforlvlup::%attacker's uuid%}%" to attacker
-        play sound "entity.experience_orb.pickup" at volume 0.3 to {mostdamage::entity::%victim's uuid%::HDP}
-        execute console command "/mm i give -s %attacker% Coin 9"
-        add 15*{booster::money} to attacker's balance
-        message "&a+$%15*{booster::money}%" to attacker
-        chance of (1.5+(0.05*level of looting of attacker's tool))%:
-            execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Husk_Core"
-            message "&aReceived Husk Core From Most Damaging Player Reward" to attacker
-            set {_dropped} to 1
-        if {_dropped} is not 1:
-            chance of 7%:
-                execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Sandstone_Boots"
-                message "&aReceived Sandstone Boots From Most Damaging Player Reward" to attacker
-                set {_dropped} to 1
-            if {_dropped} is not 1:
-                chance of 7%:
-                    execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Sandstone_Helmet"
-                    message "&aReceived Sandstone Cap From Most Damaging Player Reward" to attacker
-                    set {_dropped} to 1
-                if {_dropped} is not 1:
-                    chance of 7%:
-                        execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Sandstone_Legging"
-                        message "&aReceived Sandstone Legging From Most Damaging Player Reward" to attacker
-                        set {_dropped} to 1
-                    if {_dropped} is not 1:
-                        chance of 7%:
-                            execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Sandstone_Chestplate"
-                            message "&aReceived Sandstone Legging From Most Damaging Player Reward" to attacker
-                            set {_dropped} to 1
-                        if {_dropped} is not 1:
-                            chance of 7%:
-                                execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Sandstone_Sword"
-                                message "&aReceived Sandstone Sword From Most Damaging Player Reward" to attacker
-                                set {_dropped} to 1
-        loop all players in radius 10 around victim:
-            message "&c&l%{mostdamage::entity::%victim's uuid%::HDP}% Got Most Damaging Player Reward" to loop-player
-        delete {mostdamage::entity::%victim's uuid%::HDP}
-        delete {mostdamage::%victim%::*}
-        add 1 to {achievements::%attacker's uuid%::enhancedhusk}
+        boss((victim),(25),(attacker),(15),(3),(level of looting of attacker's tool),("Husk_Core"),("Sandstone_Boots"),(3),("Sandstone_Helmet"),(3),("Sandstone_Legging"),(3),("Sandstone_Chestplate"),(3),("Sandstone_Sword"),(3),("Bow"),(0),("enhancedhusk"))
     if name of victim is "&6[5] &cEnhanced Stray":
-        death(victim)
-        wait 5 ticks
-        set {_exp} to 34 * {booster::exp}
-        add {_exp} to {exp::%attacker's uuid%}
-        levelup(attacker)
-        send action bar "&6[&e%{level::%attacker's uuid%}%&6] &aProgress: &e%{exp::%attacker's uuid%}%/%{expforlvlup::%attacker's uuid%}%" to attacker
-        play sound "entity.experience_orb.pickup" at volume 0.3 to {mostdamage::entity::%victim's uuid%::HDP}
-        execute console command "/mm i give -s %attacker% Coin 13"
-        add 25*{booster::money} to attacker's balance
-        message "&a+$%25*{booster::money}%" to attacker
-        chance of 0.05%:
-            execute console command "/ie give trueice %{mostdamage::entity::%victim's uuid%::HDP}% 1"
-            message "&aReceived True Ice From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-        chance of (1.5+(0.05*level of looting of attacker's tool))%:
-            execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Stray_Core"
-            message "&aReceived Stray Core From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-            set {_dropped} to 1
-        if {_dropped} is not 1:
-            chance of 6%:
-                execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Icy_Boots"
-                message "&aReceived Icy Boots From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-                set {_dropped} to 1
-            if {_dropped} is not 1:
-                chance of 6%:
-                    execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Icy_Helmet"
-                    message "&aReceived Icy Helmet From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-                    set {_dropped} to 1
-                if {_dropped} is not 1:
-                    chance of 6%:
-                        execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Icy_Legging"
-                        message "&aReceived Icy Legging From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-                        set {_dropped} to 1
-                    if {_dropped} is not 1:
-                        chance of 6%:
-                            execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Icy_Chestplate"
-                            message "&aReceived Icy Chestplate From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-                            set {_dropped} to 1
-                        if {_dropped} is not 1:
-                            chance of 6%:
-                                execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Icy_Sword"
-                                message "&aReceive Icy Sword From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-                                set {_dropped} to 1
-                            if {_dropped} is not 1:
-                                chance of 6%:
-                                    execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Icy_Bow"
-                                    message "&aReceive Icy Bow From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-                                    set {_dropped} to 1
-        loop all players in radius 10 around victim:
-            message "&c&l%{mostdamage::entity::%victim's uuid%::HDP}% Got Most Damaging Player Reward" to loop-player
-        delete {mostdamage::entity::%victim's uuid%::HDP}
-        delete {mostdamage::%victim%::*}
-        add 1 to {achievements::%attacker's uuid%::enhancedstray}
+        boss((victim),(34),(attacker),(25),(4),(level of looting of attacker's tool),("Stray_Core"),("Icy_Boots"),(3),("Icy_Helmet"),(3),("Icy_Legging"),(3),("Icy_Chestplate"),(3),("Icy_Sword"),(3),("Icy_Bow"),(3),("enhancedstray"))
     if name of victim is "&6[6] &cAncient Skeleton":
-        death(victim)
-        wait 5 ticks
-        set {_exp} to 46 * {booster::exp}
-        add {_exp} to {exp::%attacker's uuid%}
-        levelup(attacker)
-        send action bar "&6[&e%{level::%attacker's uuid%}%&6] &aProgress: &e%{exp::%attacker's uuid%}%/%{expforlvlup::%attacker's uuid%}%" to attacker
-        play sound "entity.experience_orb.pickup" at volume 0.3 to {mostdamage::entity::%victim's uuid%::HDP}
-        execute console command "/mm i give -s %attacker% Coin 16"
-        add 43*{booster::money} to attacker's balance
-        message "&a+$%43*{booster::money}%" to attacker
-        chance of (1.5+(0.05*level of looting of attacker's tool))%:
-            execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Skeleton_Core"
-            message "&aReceived Skeleton Core From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-            set {_dropped} to 1
-        if {_dropped} is not 1:
-            chance of 6%:
-                execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Bone_Boots"
-                message "&aReceived Bone Boots From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-                set {_dropped} to 1
-            if {_dropped} is not 1:
-                chance of 6%:
-                    execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Ancient_Skull"
-                    message "&aReceived Ancient Skull From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-                    set {_dropped} to 1
-                if {_dropped} is not 1:
-                    chance of 6%:
-                        execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Bone_Legging"
-                        message "&aReceived Bone Legging From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-                        set {_dropped} to 1
-                    if {_dropped} is not 1:
-                        chance of 6%:
-                            execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Bone_Chestplate"
-                            message "&aReceived Bone Chestplate From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-                            set {_dropped} to 1
-                        if {_dropped} is not 1:
-                            chance of 6%:
-                                execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Ancient_Long_Sword"
-                                message "&aReceive Ancient Long Sword From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-                                set {_dropped} to 1
-        loop all players in radius 10 around victim:
-            message "&c&l%{mostdamage::entity::%victim's uuid%::HDP}% Got Most Damaging Player Reward" to loop-player
-        delete {mostdamage::entity::%victim's uuid%::HDP}
-        delete {mostdamage::%victim%::*}
-        add 1 to {achievements::%attacker's uuid%::ancientskeleton}
+        boss((victim),(46),(attacker),(43),(5),(level of looting of attacker's tool),("Skeleton_Core"),("Bone_Boots"),(3),("Ancient_Skull"),(3),("Bone_Legging"),(3),("Bone_Chestplate"),(3),("Acient_Long_Sword"),(3),("Bow"),(0),("ancientskeleton"))
     if name of victim is "&6[7] &cSilvery":
-        death(victim)
-        wait 5 ticks
-        set {_exp} to 53 * {booster::exp}
-        add {_exp} to {exp::%attacker's uuid%}
-        levelup(attacker)
-        send action bar "&6[&e%{level::%attacker's uuid%}%&6] &aProgress: &e%{exp::%attacker's uuid%}%/%{expforlvlup::%attacker's uuid%}%" to attacker
-        play sound "entity.experience_orb.pickup" at volume 0.3 to {mostdamage::entity::%victim's uuid%::HDP}
-        execute console command "/mm i give -s %attacker's uuid% Coin 19"
-        add 43*{booster::money} to {mostdamage::entity::%victim's uuid%::HDP}'s balance
-        message "&a+$%43*{booster::money}%" to {mostdamage::entity::%victim's uuid%::HDP}
-        chance of (1.5+(0.05*level of looting of attacker's tool))%:
-            execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Silvery_Core"
-            message "&aReceived Silvery Core From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-            set {_dropped} to 1
-        if {_dropped} is not 1:
-            chance of 6%:
-                execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Miner_Boots"
-                message "&aReceived Miner Boots From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-                set {_dropped} to 1
-            if {_dropped} is not 1:
-                chance of 6%:
-                    execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Miner_Helmet"
-                    message "&aReceived Miner Helmet From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-                    set {_dropped} to 1
-                if {_dropped} is not 1:
-                    chance of 6%:
-                        execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Miner_Legging"
-                        message "&aReceived Miner Leggings From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-                        set {_dropped} to 1
-                    if {_dropped} is not 1:
-                        chance of 6%:
-                            execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Miner_Chestplate"
-                            message "&aReceived Miner Chestplate From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-                            set {_dropped} to 1
-                        if {_dropped} is not 1:
-                            chance of 6%:
-                                execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Miner_Pickaxe"
-                                message "&aReceive Miner Pickaxe From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-                                set {_dropped} to 1
-        loop all players in radius 10 around victim:
-            message "&c&l%{mostdamage::entity::%victim's uuid%::HDP}% Got Most Damaging Player Reward" to loop-player
-        delete {mostdamage::entity::%victim's uuid%::HDP}
-        delete {mostdamage::%victim%::*}
-        add 1 to {achievements::%attacker's uuid%::silvery}
+        #boss((victim),(exp),(attacker),(money),(coin),(level of looting of attacker's tool),("core"),("Boots"),(3),("Head"),(3),("Legging"),(3),("Chestplate"),(3),("Sword"),(3),("Bow"),(3),("mobname"))
+        boss((victim),(53),(attacker),(43),(6),(level of looting of attacker's tool),("Silvery_Core"),("Miner_Boots"),(3),("Miner_Helmet"),(3),("Miner_Legging"),(3),("Miner_Chestplate"),(3),("Miner_Pickaxe"),(3),("Bow"),(0),("silvery"))
     if name of victim is "&6[&d&lDungeon&6] &5&lArsyg":
-        death(victim)
-        wait 5 ticks
-        set {_exp} to 250 * {booster::exp}
-        add {_exp} to {exp::%attacker's uuid%}
-        levelup(attacker)
-        send action bar "&6[&e%{level::%attacker's uuid%}%&6] &aProgress: &e%{exp::%attacker's uuid%}%/%{expforlvlup::%attacker's uuid%}%" to attacker
-        play sound "entity.experience_orb.pickup" at volume 0.3 to {mostdamage::entity::%victim's uuid%::HDP}
-        execute console command "/mm i give -s %attacker% Coin 100"
-        add 500*{booster::money} to attacker's balance
-        message "&a+$%500*{booster::money}%" to attacker
-        broadcast "&a&l%{mostdamage::entity::%victim's uuid%::HDP}% Has Defeated %victim's name%&a&l!"
-        set {Arsyg} to 600
-        chance of 2%:
-            give 1 paper named "&aTrue Icy Helmet &6Recipe" to {mostdamage::entity::%victim's uuid%::HDP}
-            message "&aReceived True Icy Helmet Recipe From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-        chance of (1+(0.05*level of looting of attacker's held item))%:
-            execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Dragon_Core"
-            message "&aReceived Dragon Core From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-            set {_dropped} to 1
-        if {_dropped} is not 1:
-            chance of 3%:
-                execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Dragon_Scales_Boots"
-                message "&aReceived Dragon Scales Boots From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-                set {_dropped} to 1
-            if {_dropped} is not 1:
-                chance of 3%:
-                    execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Dragons_Head"
-                    message "&aReceived Dragon Head From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-                    set {_dropped} to 1
-                if {_dropped} is not 1:
-                    chance of 3%:
-                        execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Dragon_Scales_Legging"
-                        message "&aReceived Dragon Scales Leggings From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-                        set {_dropped} to 1
-                    if {_dropped} is not 1:
-                        chance of 3%:
-                            execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Dragon_Scales_Chestplate"
-                            message "&aReceived Dragon Scales Chestplate From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-                            set {_dropped} to 1
-                        if {_dropped} is not 1:
-                            chance of 3%:
-                                execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Dragon_Fang"
-                                message "&aReceive Dragon Fang From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-                                set {_dropped} to 1
-        loop all players in radius 20 around victim:
-            message "&c&l%{mostdamage::entity::%victim's uuid%::HDP}% Got Most Damaging Player Reward" to loop-player
+        #boss((victim),(exp),(attacker),(money),(coin),(level of looting of attacker's tool),("core"),("Boots"),(3),("Head"),(3),("Legging"),(3),("Chestplate"),(3),("Sword"),(3),("Bow"),(3),("mobname"))
+        boss((victim),(250),(attacker),(500),(50),(level of looting of attacker's tool),("Dragon_Core"),("Dragon_Scales_Boots"),(3),("Dragons_Head"),(3),("Dragon_Scales_Legging"),(3),("Dragon_Scales_Chestplate"),(3),("Dragon_Fang"),(3),("Bow"),(0),("arsyg"))
+        Broadcast "&5&lArsyg &a&lHas Been Defeated. Timer Reset &7(/boss)"
+        loop all players in radius 40 around victim:
             wait 20 seconds
             execute console command "/warp city %loop-player%"
             message "&c&lBEGONE INTRUDERS!" to loop-player
-        delete {mostdamage::entity::%victim's uuid%::HDP}
-        delete {mostdamage::%victim%::*}
-        add 1 to {achievements::%attacker's uuid%::arsyg}
     if name of victim is "&6[8] &cDemon":
-        death(victim)
-        wait 5 ticks
-        set {_exp} to 79 * {booster::exp}
-        add {_exp} to {exp::%attacker's uuid%}
-        levelup(attacker)
-        send action bar "&6[&e%{level::%attacker's uuid%}%&6] &aProgress: &e%{exp::%attacker's uuid%}%/%{expforlvlup::%attacker's uuid%}%" to attacker
-        play sound "entity.experience_orb.pickup" at volume 0.3 to {mostdamage::entity::%victim's uuid%::HDP}
-        execute console command "/mm i give -s %attacker% Coin 23"
-        add 46*{booster::money} to {mostdamage::entity::%victim's uuid%::HDP}'s balance
-        message "&a+$%46*{booster::money}%" to {mostdamage::entity::%victim's uuid%::HDP}
-        chance of (2+(0.05*level of looting of attacker's tool))%:
-            execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Demon_Core"
-            message "&aReceived Demon Core From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-            set {_dropped} to 1
-        if {_dropped} is not 1:
-            chance of 3%:
-                execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Sulfur_Boots"
-                message "&aReceived Sulfur Boots From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-                set {_dropped} to 1
-            if {_dropped} is not 1:
-                chance of 3%:
-                    execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Demon_Head"
-                    message "&aReceived Demon Head From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-                    set {_dropped} to 1
-                if {_dropped} is not 1:
-                    chance of 3%:
-                        execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Sulfur_Legging"
-                        message "&aReceived Surfur Leggings From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-                        set {_dropped} to 1
-                    if {_dropped} is not 1:
-                        chance of 3%:
-                            execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Sulfur_Chestplate"
-                            message "&aReceived Sulfur Chestplate From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-                            set {_dropped} to 1
-                        if {_dropped} is not 1:
-                            chance of 3%:
-                                execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Demonium_Broadsword"
-                                message "&aReceive Demonium Broadsword From Most Damaging Player Reward" to {mostdamage::entity::%victim's uuid%::HDP}
-                                set {_dropped} to 1
-        loop all players in radius 10 around victim:
-            message "&c&l%{mostdamage::entity::%victim's uuid%::HDP}% Got Most Damaging Player Reward" to loop-player
-        delete {mostdamage::entity::%victim's uuid%::HDP}
-        delete {mostdamage::%victim%::*}
-        add 1 to {achievements::%attacker's uuid%::demon}
+        #boss((victim),(exp),(attacker),(money),(coin),(level of looting of attacker's tool),("core"),("Boots"),(3),("Head"),(3),("Legging"),(3),("Chestplate"),(3),("Sword"),(3),("Bow"),(3),("mobname"))
+        boss((victim),(79),(attacker),(46),(7),(level of looting of attacker's tool),("Demon_Core"),("Sulfur_Boots"),(3),("Demon_Head"),(3),("Sulfur_Legging"),(3),("Sulfur_Chestplate"),(3),("Demonium_Broadsword"),(3),("Bow"),(0),("demon"))
     if display name of victim is "&6[9] &cSpoodaman":
-        death(victim)
-        wait 5 ticks
-        set {_exp} to 99 * {booster::exp}
-        add {_exp} to {exp::%attacker's uuid%}
-        levelup(attacker)
-        send action bar "&6[&e%{level::%attacker's uuid%}%&6] &aProgress: &e%{exp::%attacker's uuid%}%/%{expforlvlup::%attacker's uuid%}%" to attacker
-        play sound "entity.experience_orb.pickup" at volume 0.3 to {mostdamage::entity::%victim's uuid%::HDP}
-        execute console command "/mm i give -s %attacker% Coin 26"
-        add 53*{booster::money} to attacker's balance
-        message "&a+$%53*{booster::money}%" to attacker
-        message "%{mostdamage::entity::%victim's uuid%::HDP}%" to attacker
-        chance of (2+(0.05*level of looting of attacker's tool))%:
-            execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% SpoodaMan_Core"
-            message "&aReceived SpoodaMan Core From Most Damaging Player Reward" to attacker
-            set {_dropped} to 1
-        if {_dropped} is not 1:
-            chance of 3%:
-                execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Spider_Boots"
-                message "&aReceived Spider Boots From Most Damaging Player Reward" to attacker
-                set {_dropped} to 1
-            if {_dropped} is not 1:
-                chance of 3%:
-                    execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% SpoodaMan_Head"
-                    message "&aReceived SpoodaMan Head From Most Damaging Player Reward" to attacker
-                    set {_dropped} to 1
-                if {_dropped} is not 1:
-                    chance of 3%:
-                        execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Spider_Legging"
-                        message "&aReceived Spider Leggings From Most Damaging Player Reward" to attacker
-                        set {_dropped} to 1
-                    if {_dropped} is not 1:
-                        chance of 3%:
-                            execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Spider_Chestplate"
-                            message "&aReceived Spider Chestplate From Most Damaging Player Reward" to attacker
-                            set {_dropped} to 1
-                        if {_dropped} is not 1:
-                            chance of 3%:
-                                execute console command "/mm i give -s %{mostdamage::entity::%victim's uuid%::HDP}% Venomous_Blade"
-                                message "&aReceive Venoumous Blade From Most Damaging Player Reward" to attacker
-                                set {_dropped} to 1
-        loop all players in radius 10 around victim:
-            message "&c&l%{mostdamage::entity::%victim's uuid%::HDP}% Got Most Damaging Player Reward" to loop-player
-        delete {mostdamage::entity::%victim's uuid%::HDP}
-        delete {mostdamage::entity::%victim's uuid%::*}
-        delete {mostdamage::%victim%::*}
-        add 1 to {achievements::%attacker's uuid%::spoodaman}
+        #boss((victim),(exp),(attacker),(money),(coin),(level of looting of attacker's tool),("core"),("Boots"),(3),("Head"),(3),("Legging"),(3),("Chestplate"),(3),("Sword"),(3),("Bow"),(3),("mobname"))
+        boss((victim),(99),(attacker),(53),(8),(level of looting of attacker's tool),("SpoodaMan_Core"),("Spider_Boots"),(3),("SpoodaMan_Head"),(3),("Spider_Legging"),(3),("Spider_Chestplate"),(3),("Venomous_Blade"),(3),("Heavenly_Bow"),(0),("spoodaman"))
+    if display name of victim is "&6[10] &cHeavenly Guard":
+        boss((victim),(136),(attacker),(59),(9),(level of looting of attacker's tool),("Heavenly_Core"),("Heavenly_Boots"),(3),("Heavenly_Head"),(3),("Heavenly_Legging"),(3),("Heavenly_Chestplate"),(3),("Heavenly_Sword"),(3),("Heavenly_Bow"),(3),("heavenlyguard"))
 
 
 #MOBS
 on death:
     #function mob(attacker, victim, exp, $, coin, true or false for boss keys, "name of boss key", achievement name)
     if name of victim is "&6[1] &eZombie":
-        mobs(attacker, victim, 3, 1, 1, false, "", "zombie")
+        mobs(attacker, victim, 4, 1, false, "", "zombie")
     if name of victim is "&6[2] &eHusk":
-        mobs(attacker, victim, 7, 3.5, 2, false, "", "husk")
+        mobs(attacker, victim, 8, 3.5, false, "", "husk")
     if name of victim is "&6[3] &eStray":
-        mobs(attacker, victim, 13, 4.5, 3, false, "", "stray")
+        mobs(attacker, victim, 14, 4.5, false, "", "stray")
         chance of 8%:
             execute console command "/mm i give -s %attacker% Sandstone_Bow"
     if name of victim is "&6[3] &eWolf":
-        mobs(attacker, victim, 15, 4.5, 3, false, "", "wolf")
+        mobs(attacker, victim, 16, 4.5, false, "", "wolf")
     if name of victim is "&6[4] &ePolar Bear":
-        mobs(attacker, victim, 20, 6, 4, false, "", "polarbear")
+        mobs(attacker, victim, 21, 6, false, "", "polarbear")
     if name of victim is "&6[4] &eRhinoBeetle":
-        mobs(attacker, victim, 25, 6, 4, false, "", "rhinobeetle")
+        mobs(attacker, victim, 26, 6, false, "", "rhinobeetle")
     if name of victim is "&6[5] &eSkeleton":
-        mobs(attacker, victim, 33, 8, 5, false, "", "skeleton")
+        mobs(attacker, victim, 34, 8, false, "", "skeleton")
     if name of victim is "&6[5] &eMiner Pillager":
-        mobs(attacker, victim, 40, 8, 5, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "minerpillager")
+        mobs(attacker, victim, 41, 8, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "minerpillager")
     if name of victim is "&6[6] &eMiner Zombie":
-        mobs(attacker, victim, 48, 10, 6, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "minerzombie")
+        mobs(attacker, victim, 49, 10, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "minerzombie")
     if name of victim is "&6[6] &eInfernal Pig":
-        mobs(attacker, victim, 57, 10, 6, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "infernalpig")
+        mobs(attacker, victim, 58, 10, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "infernalpig")
     if name of victim is "&6[7] &eImp":
-        mobs(attacker, victim, 67, 12, 7, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "imp")
+        mobs(attacker, victim, 68, 12, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "imp")
     if name of victim is "&6[7] &eSpider":
-        mobs(attacker, victim, 78, 12, 7, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "spider")
+        mobs(attacker, victim, 79, 12, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "spider")
     if name of victim is "&6[8] &eCave Spider":
-        mobs(attacker, victim, 90, 15, 8, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "cavespider")
+        mobs(attacker, victim, 91, 15, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "cavespider")
     if name of victim is "&6[8] &eAngel":
-        mobs(attacker, victim, 100, 15, 8, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "angel")
+        mobs(attacker, victim, 105, 15, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "angel")
     if name of victim is "&6[9] &ePhantom":
-        mobs(attacker, victim, 110, 19, 9, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "phantom")
+        mobs(attacker, victim, 110, 19, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "phantom")
 
 function death(v: entity):
     set {_p} to {_v}'s uuid
@@ -436,7 +92,7 @@ function death(v: entity):
         if {_result} is 1:
             stop loop
 
-function mobs(p: player, v: entity, e: number, m: number, c: number, x: boolean, t: text, n: text):
+function mobs(p: player, v: entity, e: number, m: number, x: boolean, t: text, n: text):
     set {_uuid} to {_p}'s uuid
     set {_mobuuid} to {_v}'s uuid
     add ({_m}*{booster::money}) to {_p}'s balance
@@ -445,7 +101,7 @@ function mobs(p: player, v: entity, e: number, m: number, c: number, x: boolean,
     levelup({_p})
     send action bar "&6[&e%{level::%{_uuid}%}%&6] &aProgress: &e%{exp::%{_uuid}%}%/%{expforlvlup::%{_uuid}%}% &a+$%{_m}*{booster::money}%" to {_p}
     play sound "entity.experience_orb.pickup" at volume 0.3 to {_p}
-    execute console command "/mm i give -s %{_p}% Coin %{_c}%"
+    execute console command "/mm i give -s %{_p}% Coin 1"
     delete {mostdamage::%{_mobuuid}%::*}
     add 1 to {achievements::%{_uuid}%::%{_n}%}
     chance of 0.45%:
@@ -458,3 +114,55 @@ function mobs(p: player, v: entity, e: number, m: number, c: number, x: boolean,
 
 on death of player:
     execute player command "/spawn"
+
+function boss(v:entity, e:number, a:player, m:number, coin:number, loot:number, core:text, r1:text, c1:number, r2:text, c2:number, r3:text, c3:number, r4:text, c4:number, r5:text, c5:number, r6:text, c6:number, i:text):
+    death({_v})
+    wait 5 ticks
+    set {_uuid} to {_a}'s uuid
+    set {_bossuuid} to {_v}'s uuid
+    set {_exp} to {_e} * {booster::exp}
+    add {_exp} to {exp::%{_uuid}%}
+    levelup({_a})
+    send action bar "&6[&e%{level::%{_uuid}%}%&6] &aProgress: &e%{exp::%{_uuid}%}%/%{expforlvlup::%{_uuid}%}%" to {_a}
+    play sound "entity.experience_orb.pickup" at volume 0.3 to {mostdamage::entity::%{_bossuuid}%::HDP}
+    execute console command "/mm i give -s %{_a}% Coin %{_coin}%"
+    add {_m}*{booster::money} to {_a}'s balance
+    message "&a+$%{_m}*{booster::money}%" to {_a}
+    chance of (1.75+(0.05*{_loot}))%:
+        execute console command "/mm i give -s %{mostdamage::entity::%{_bossuuid}%::HDP}% %{_core}%"
+        message "&aReceived %{_core}% From Most Damaging Player Reward" to {_a}
+        set {_dropped} to 1
+    if {_dropped} is not 1:
+        chance of {_c1}%:
+            execute console command "/mm i give -s %{mostdamage::entity::%{_bossuuid}%::HDP}% %{_r1}%"
+            message "&aReceived %{_r1}% From Most Damaging Player Reward" to {_a}
+            set {_dropped} to 1
+    if {_dropped} is not 1:
+        chance of {_c2}%:
+            execute console command "/mm i give -s %{mostdamage::entity::%{_bossuuid}%::HDP}% %{_r2}%"
+            message "&aReceived %{_r2}% From Most Damaging Player Reward" to {_a}
+            set {_dropped} to 1
+    if {_dropped} is not 1:
+        chance of {_c3}%:
+            execute console command "/mm i give -s %{mostdamage::entity::%{_bossuuid}%::HDP}% %{_r3}%"
+            message "&aReceived %{_r3}% From Most Damaging Player Reward" to {_a}
+            set {_dropped} to 1
+    if {_dropped} is not 1:
+        chance of {_c4}%:
+            execute console command "/mm i give -s %{mostdamage::entity::%{_bossuuid}%::HDP}% %{_r4}%"
+            message "&aReceived %{_r4}% From Most Damaging Player Reward" to {_a}
+            set {_dropped} to 1
+    if {_dropped} is not 1:
+        chance of {_c5}%:
+            execute console command "/mm i give -s %{mostdamage::entity::%{_bossuuid}%::HDP}% %{_r5}%"
+            message "&aReceive %{_r5}% From Most Damaging Player Reward" to {_a}
+            set {_dropped} to 1
+    if {_dropped} is not 1:
+        chance of {_c6}%:
+            execute console command "/mm i give -s %{mostdamage::entity::%{_bossuuid}%::HDP}% %{_r6}%"
+            message "&aReceive %{_r6}% From Most Damaging Player Reward" to {_a}
+            set {_dropped} to 1
+    loop all players in radius 10 around {_v}:
+        message "&c&l%{mostdamage::entity::%{_bossuuid}%::HDP}% Got Most Damaging Player Reward" to loop-player
+    delete {mostdamage::entity::%{_bossuuid}%::HDP}
+    add 1 to {achievements::%{_uuid}%::%{_i}%}

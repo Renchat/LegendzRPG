@@ -5,12 +5,18 @@ command /buying [<number>] [<offline player>]:
         if arg-1 is 1:
             broadcast "&e☆✼★━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━★✼☆｡","&a&n&l%offline player-arg%&d&l Purchased &6&lLord &d&lFrom Buycraft GG!" and "&e｡☆✼★━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━★✼☆｡"
             execute console command "/lp user %offline player-arg% parent add lord"
+            execute console command "/lp user %offline player-arg% permission set has.lordperk"
         if arg-1 is 2:
             broadcast "&e☆✼★━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━★✼☆｡","&6&n&l%offline player-arg%&d&l Purchased &e&lKing &d&lFrom Buycraft GG!" and "&e｡☆✼★━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━★✼☆｡"
             execute console command "/lp user %offline player-arg% parent add king"
+            execute console command "/lp user %offline player-arg% permission set has.lordperk"
+            execute console command "/lp user %offline player-arg% permission set has.kingperk"
         if arg-1 is 3:
             broadcast "&e☆✼★━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━★✼☆｡","&b&n&l%offline player-arg%&d&l Purchased &8&lD&7&le&8&lm&7&li&e&lG&f&lo&e&ld &d&lFrom Buycraft GG!" and "&e｡☆✼★━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━★✼☆｡"
             execute console command "/lp user %offline player-arg% parent add demigod"
+            execute console command "/lp user %offline player-arg% permission set has.lordperk"
+            execute console command "/lp user %offline player-arg% permission set has.kingperk"
+            execute console command "/lp user %offline player-arg% permission set has.demigodperk"
         if arg-1 is 4:
             execute console command "/lp user %offline player-arg% permission set tag.clan"
             broadcast "&e☆✼★━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━★✼☆｡","&b&n&l%offline player-arg%&d&l Purchased &a&lClan Tag &d&lFrom Buycraft GG!" and "&e｡☆✼★━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━★✼☆｡"

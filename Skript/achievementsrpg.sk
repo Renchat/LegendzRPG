@@ -55,9 +55,8 @@ on rightclick holding item frame:
 			format gui slot 16 of player with player's skull named "&a&lCurrency"
 			format gui slot 10 of player with player's skull named "&a&lStats"
 			format gui slot 25 of player with emerald named "&aGem: %{gem::%player's uuid%}%"
-			format gui slot 19 of player with diamond pickaxe named "&bMining Level: %{level::%player's uuid%}%"
+			format gui slot 19 of player with experience bottle named "&bMining Level: %{level::%player's uuid%}%"
 			format gui slot 34 of player with paper named "&e%player's balance%"
-			format gui slot 28 of player with experience bottle named "&bExp Level: %player's level%"
 			format gui slot 13 of player with book named "&a&lCurrent Skill Points: %{skillpoints::%player's uuid%}%"
 			format gui slot 31 of player with iron sword named "&c+1 Strength" with lore "&e&lCurrent amount of Strength: %{skillpoints::%player's uuid%::strength}%" to run:
 				execute console command "/skills add %player% strength"
@@ -65,9 +64,11 @@ on rightclick holding item frame:
 				execute console command "/skills add %player% speed"
 			format gui slot 30 of player with iron chestplate named "&c+1 Defense" with lore "&e&lCurrent amount of Defense: %{skillpoints::%player's uuid%::defense}%" to run:
 				execute console command "/skills add %player% defense"
+			format gui slot 40 of player with enchanted book named "&d+1 Magic" with lore "&e&lCurrent amount of Magic: %{skillpoints::%player's uuid%::magic}%" to run:
+				execute console command "/skills add %player% magic"
 		format gui slot 14 of player with Enchanted book named "&e&lAchievements" to run:
 			open virtual chest with size 6 named "&bAcheivments" to player
-			ma(player, "zombie", 0, 475, false, "f", "f", "f", "f")
+			ma(player), "zombie", 0, 475, false, "f", "f", "f", "f")
 			ma(player, "husk", 2, 475, false, "f", "f", "f", "f")
 			ma(player, "stray", 3, 500, false, "f", "f", "f", "f")
 			ma(player, "wolf", 5, 600, false, "f", "f", "f", "f")
@@ -151,11 +152,11 @@ function miningAchievement(p: player, t: text, s: number, m: number):
 	set {_h} to {_m}*2^{achievements::%{_q}%::%{_t}%miner}
 	set {_u} to {achievements::%{_q}%::%{_t}%miner}+1
 	if {achievements::%{_q}%::%{_t}%} >= {_o}:
-		format gui slot {_s} of {_p} with green stained glass pane named "&a&l%{_t}% Miner [%{_u}%]" with lore "&6Kill %{_o}% %{_t}%s", "&e+%{_h}% Exp" and "&d&lClaimable" to run:
+		format gui slot {_s} of {_p} with green stained glass pane named "&a&l%{_t}% Miner [%{_u}%]" with lore "&6Break %{_o}% %{_t}%s", "&e+%{_h}% Exp" and "&d&lClaimable" to run:
 			add {_h} to {exp::%{_q}%}
 			add 1 to {achievements::%{_q}%::%{_t}%miner}
 			send "&a&lAchievement Complete!" to {_p}
 			send "&6Reward: &e%{_h}% Exp" to {_p}
 			miningAchievement({_p}, {_t}, {_s}, {_m})
 	else:
-		format gui slot {_s} of {_p} with red stained glass pane named "&c&l%{_t}% Miner [%{_u}%]" with lore "&6Kill %{_o}% %{_t}%s", "&e+%{_h}% Exp" and "&d%{achievements::%{_q}%::%{_t}%}%/%{_o}%"
+		format gui slot {_s} of {_p} with red stained glass pane named "&c&l%{_t}% Miner [%{_u}%]" with lore "&6Break %{_o}% %{_t}%s", "&e+%{_h}% Exp" and "&d%{achievements::%{_q}%::%{_t}%}%/%{_o}%"

@@ -24,6 +24,8 @@ on first join:
     if {booster::money} != 15:
         if {booster::exp} != 15:
             broadcast "&4&lLegendz&a&lRPG &e&L>> &aPlayer %player% &aadded to first time login chain booster +0.05x to both booster EXP: %{booster::exp}%x &aMoney: %{booster::money}%x"
+    set {_loc1} to location (-71, 7, 728.5)
+    drawArc particle "redstone", center player, target {_loc1}, id "%player%", rainbowMode true, density 17, height 0, pitchMultiplier 8, visibleRange 30, displacementX 0, displacementY 1.25, displacementZ 0
 on join:
     execute console command "/warp City %player%"
     execute console command "/spawnpoint %player% -81 5 716"
@@ -180,3 +182,6 @@ on join:
                     message "&cYour Level is too LOW" to player
                     stop loop
         set player's walk speed to (0.2 + ({skillpoints::%player's uuid%::speed}*0.004))
+
+on hunger meter change:
+    cancel event

@@ -1,8 +1,8 @@
 command /gemshop:
     trigger:
         open virtual chest with size 2 named "Gem Shop" to player
-        format gui slot 0 of player with paper named "&6&lLord &7(Right Click)" with lore "&a&l150 Gems" to run:
-            if {gem::%player's uuid%} >= 150:
+        format gui slot 0 of player with paper named "&6&lLord &7(Right Click)" with lore "&a&l500 Gems" to run:
+            if {gem::%player's uuid%} >= 500:
                 subtract 150 from {gem::%player's uuid%}
                 give paper named "&6&lLord &7(Right Click)" to player
                 loop all players:
@@ -10,8 +10,8 @@ command /gemshop:
                         message "&4[Staff] &a%player% &aPurchased Lord Rank" to loop-player
             else:
                 message "&cNot enough Gem"
-        format gui slot 1 of player with paper named "&e&lKing &7(Right Click)" with lore "&a&l750 Gems" to run:
-            if {gem::%player's uuid%} >= 750:
+        format gui slot 1 of player with paper named "&e&lKing &7(Right Click)" with lore "&a&l3000 Gems" to run:
+            if {gem::%player's uuid%} >= 3000:
                 subtract 750 from {gem::%player's uuid%}
                 give paper named "&e&lKing &7(Right Click)" to player
                 loop all players:

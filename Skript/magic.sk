@@ -1,0 +1,21 @@
+on right click:
+    player is holding a stick named "&7Peasant's &fWand":
+        if {cooldown::%player%} is not set:
+            set {cooldown::%player%} to now
+        else:
+            if difference between {cooldown::%player%} and now < 1 second:
+                send "&cNot enough power" to player
+                stop
+            else:
+                send "&bSpell Casted" to player
+                set {cooldown::%player%} to now
+        shoot snowball at speed 5
+        set metadata value "wand" of shot snowball to "2"
+        while shot snowball is alive:
+            play 1 crit with speed 0 at the shot snowball        
+            wait 1 tick
+
+on damage:
+    if projectile is a snowball:
+        if metadata "wand" of projectile is "2":
+            increase damage by 5

@@ -70,6 +70,7 @@ command /cf [<text>] [<number>] [<text>]:
             message "&e/cf gem <amount> <Heads/Tails>"
             message "&e/cf money <amount> <Heads/Tails>"
             message "{@prefix} &6%{cf::%player's uuid%::time}% &6Online Minutes left till Coinflip Refill"
+            message "&6&l%{cf::%player's uuid%}% Coinflip left"
         if arg-1 is "refill":
             player has permission "essentials.op"
             add 999 to {cf::%player's uuid%} 
