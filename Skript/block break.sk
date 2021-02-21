@@ -24,7 +24,7 @@ on block break:
             chance of (10 + (0.9*level of Lure of player's tool))%:
                 set event-block to lapis block
                 stop
-            if event-block is cobblestone:
+            if event-block is bedrock:
                 set event-block to lapis ore
     if event-block is lapis block:
         if block below event-block is bedrock:
@@ -43,15 +43,15 @@ on block break:
             chance of (0 + (0.05*level of Lure of player's tool))%:
                 set event-block to redstone block
                 stop
-            if event-block is cobblestone:
+            if event-block is bedrock:
                 chance of (3 + (0.25*level of Lure of player's tool))%:
                     set event-block to redstone ore
                     stop
-                if event-block is cobblestone:
+                if event-block is bedrock:
                     chance of (10 + (0.9*level of Lure of player's tool))%:
                         set event-block to lapis block
                         stop
-                    if event-block is cobblestone:
+                    if event-block is bedrock:
                         set event-block to lapis ore
             
             
@@ -75,15 +75,15 @@ on block break:
             chance of (0 + (0.04125*level of Lure of player's tool))%:
                 set event-block to redstone block
                 stop
-            if event-block is cobblestone:
+            if event-block is bedrock:
                 chance of (3 + (0.2375*level of Lure of player's tool))%:
                     set event-block to redstone ore
                     stop
-                if event-block is cobblestone:
+                if event-block is bedrock:
                     chance of (10 + (0.9*level of Lure of player's tool))%:
                         set event-block to lapis block
                         stop
-                    if event-block is cobblestone:
+                    if event-block is bedrock:
                         set event-block to lapis ore
             
         else:
@@ -102,38 +102,37 @@ on block break:
             chance of 0.25%:
                 add 1 to {gem::%player's uuid%}
                 message "&a&l+1 Gem"
-            chance of 25%:
-                give coal named "&8Coal Key" to player
-                set {_dropped} to 1
             if {_dropped} is not 1:
-                chance of 10%:
-                    give iron ingot named "&7Silver Key" to player
+                chance of 0.01%:
+                    give emerald named "&2&lEmerald Key" to player
+                    broadcast "&a&l%player% &a&lGot a &2&lEmerald Key &a&lFrom Mining!"
+            if {_dropped} is not 1:
+                chance of 1%:
+                    give diamond named "&bDiamond Key" to player
                     set {_dropped} to 1
             if {_dropped} is not 1:
                 chance of 5%:
                     give gold ingot named "&eGold Key" to player
                     set {_dropped} to 1
             if {_dropped} is not 1:
-                chance of 1%:
-                    give diamond named "&bDiamond Key" to player
+                chance of 10%:
+                    give iron ingot named "&7Silver Key" to player
                     set {_dropped} to 1
-            if {_dropped} is not 1:
-                chance of 0.01%:
-                    give emerald named "&2&lEmerald Key" to player
-                    broadcast "&a&l%player% &a&lGot a &2&lEmerald Key &a&lFrom Mining!"
+            give coal named "&8Coal Key" to player
+            set {_dropped} to 1
             wait 3 seconds
             chance of (0 + (0.05*level of Lure of player's tool))%:
                 set event-block to redstone block
                 stop
-            if event-block is cobblestone:
+            if event-block is bedrock:
                 chance of (3 + (0.25*level of Lure of player's tool))%:
                     set event-block to redstone ore
                     stop
-                if event-block is cobblestone:
+                if event-block is bedrock:
                     chance of (10 + (0.9*level of Lure of player's tool))%:
                         set event-block to lapis block
                         stop
-                    if event-block is cobblestone:
+                    if event-block is bedrock:
                         set event-block to lapis ore
         else:
             cancel event

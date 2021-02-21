@@ -16,18 +16,26 @@ on damage:
                             cancel event
                             message "&cYour Level is too LOW" to attacker
                             stop
-                if {skillpoints::%attacker's uuid%::strength} is not set:
-                    set {skillpoints::%attacker's uuid%::strength} to 0
-                if {skillpoints::%attacker's uuid%::strength} is set:
-                    set {skillpoints::%attacker's uuid%::finaldamage} to ({skillpoints::%attacker's uuid%::strength}/50)
-                    add {skillpoints::%attacker's uuid%::finaldamage} to damage
-                    set {skillpoints::%attacker's uuid%::damage} to ({skillpoints::%attacker's uuid%::finaldamage} + damage)
+                if name of attacker's tool is not "&bMagic Wand":
+                    if {skillpoints::%attacker's uuid%::strength} is not set:
+                        set {skillpoints::%attacker's uuid%::strength} to 0
+                    if {skillpoints::%attacker's uuid%::strength} is set:
+                        set {skillpoints::%attacker's uuid%::finaldamage} to ({skillpoints::%attacker's uuid%::strength}/100)
+                        add {skillpoints::%attacker's uuid%::finaldamage} to damage
+                        set {skillpoints::%attacker's uuid%::damage} to ({skillpoints::%attacker's uuid%::finaldamage} + damage)
+                        add (final damage*2) to {mostdamage::entity::%victim's uuid%::%attacker%}
+                        bind hologram "&c- %final damage*2%" to victim for 1 second offset by 0, 3, 0.5
+                        send action bar "%victim's name% &6| &a%victim's health*2 - final damage*2% &6HP left" to attacker
+                    if {%attacker%::testdamage} is "1":
+                        message "&aYou have done &c%final damage*2% damage" to attacker
+                        message "&aEnemy has &c%victim's health*2 - final damage*2% &aHP left" to attacker
+                else:
                     add (final damage*2) to {mostdamage::entity::%victim's uuid%::%attacker%}
                     bind hologram "&c- %final damage*2%" to victim for 1 second offset by 0, 3, 0.5
                     send action bar "%victim's name% &6| &a%victim's health*2 - final damage*2% &6HP left" to attacker
-                if {%attacker%::testdamage} is "1":
-                    message "&aYou have done &c%final damage*2% damage" to attacker
-                    message "&aEnemy has &c%victim's health*2 - final damage*2% &aHP left" to attacker
+                    if {%attacker%::testdamage} is "1":
+                        message "&aYou have done &c%final damage*2% damage" to attacker
+                        message "&aEnemy has &c%victim's health*2 - final damage*2% &aHP left" to attacker
 on damage of player:
     world is "RPG"
     set {_item} to lore of attacker's tool
@@ -44,17 +52,21 @@ on damage of player:
                 message "&cYour Level is too LOW" to attacker
                 stop
     if attacker is mob:
-        set {skillpoints::%victim%::finaldefense} to ({skillpoints::%victim's uuid%::defense}/110)
+        set {skillpoints::%victim%::finaldefense} to ({skillpoints::%victim's uuid%::defense}/100)
         subtract {skillpoints::%victim%::finaldefense} from damage
+        add ({skillpoints::%victim's uuid%::magic}/150) to damage
     if attacker is player:
         set {_l} to ({level::%victim's uuid%} - {level::%attacker's uuid%})
         if {_l} <= -25:
+            message "&cRange of PvP is 25 levels" to attacker
             cancel event
         if {_l} >= 25:
+            message "&cRange of PvP is 25 levels" to attacker
             cancel event
         if {skillpoints::%attacker's uuid%::strength} is set:
-            set {skillpoints::%attacker's uuid%::finaldamage} to ({skillpoints::%attacker's uuid%::strength}/80 - {skillpoints::%victim%::defense}/80)
+            set {skillpoints::%attacker's uuid%::finaldamage} to ({skillpoints::%attacker's uuid%::strength}/100 - {skillpoints::%victim%::defense}/100)
             add {skillpoints::%attacker's uuid%::finaldamage} to damage
+            add ({skillpoints::%victim's uuid%::magic}/150) to damage
             set {skillpoints::%attacker's uuid%::damage} to ({skillpoints::%attacker's uuid%::finaldamage} + damage)
             add final damage to {mostdamage::%victim%::%attacker%}
             send action bar "%victim's name% &6| &a%victim's health*2 - final damage% &6HP left" to attacker

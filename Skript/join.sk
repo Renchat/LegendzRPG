@@ -26,6 +26,7 @@ on join:
     execute console command "/warp City %player%"
     execute console command "/spawnpoint %player% -81 5 716"
     send title "" for 1 seconds
+    execute player command "/fixwarp"
     if player has permission "is.op":
         execute player command "/gm 1"
     while player is online:
@@ -177,7 +178,19 @@ on join:
                     set player's offhand tool to air
                     message "&cYour Level is too LOW" to player
                     stop loop
-        set player's walk speed to (0.2 + ({skillpoints::%player's uuid%::speed}*0.004))
+        set player's walk speed to (0.2 + ({skillpoints::%player's uuid%::speed}*0.004) - ({skillpoints::%player's uuid%::defense}*0.00001))
+
+on join:
+    while player is online:
+        if {skillpoints::%player's uuid%::magic} is not set:
+            set {_manaRegen} to 0.005
+            if level of player is less than 50:
+                increase level progress of player by {_manaRegen}
+        if {skillpoints::%player's uuid%::magic} is set:
+            set {_manaRegen} to (0.005 + (0.001*{skillpoints::%player's uuid%::magic}))
+            if level of player is less than (50 + (2*{skillpoints::%player's uuid%::magic})):
+                increase level progress of player by {_manaRegen}
+        wait 1 tick
 
 on hunger meter change:
     cancel event

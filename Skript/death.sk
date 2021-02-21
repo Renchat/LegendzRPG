@@ -1,19 +1,19 @@
 #BOSSES
 on death:
     if name of victim is "&6[3] &cEnhanced Zombie":
-        boss((victim),(15),(attacker),(10),(2),(level of looting of attacker's tool),("Zombie_Core"),("Skin_Boots"),(3),("Skin_Cap"),(3),("Skin_Legging"),(3),("Chestplate"),(0),("Rusty_Sword"),(3),("Bow"),(0),("enhancedzombie"))
+        boss((victim),(15),(attacker),(10),(2),(level of looting of attacker's tool),("Zombie_Core"),("Skin_Boots"),(3),("Skin_Cap"),(3),("Skin_Legging"),(3),("Chestplate"),(0),("Rusty_Sword"),(3),("Bow"),(0),("enhancedzombie"), (40))
     if name of victim is "&6[4] &cEnhanced Husk":
-        boss((victim),(25),(attacker),(15),(3),(level of looting of attacker's tool),("Husk_Core"),("Sandstone_Boots"),(3),("Sandstone_Helmet"),(3),("Sandstone_Legging"),(3),("Sandstone_Chestplate"),(3),("Sandstone_Sword"),(3),("Bow"),(0),("enhancedhusk"))
+        boss((victim),(25),(attacker),(15),(3),(level of looting of attacker's tool),("Husk_Core"),("Sandstone_Boots"),(3),("Sandstone_Helmet"),(3),("Sandstone_Legging"),(3),("Sandstone_Chestplate"),(3),("Sandstone_Sword"),(3),("Bow"),(0),("enhancedhusk"), (60))
     if name of victim is "&6[5] &cEnhanced Stray":
-        boss((victim),(34),(attacker),(25),(4),(level of looting of attacker's tool),("Stray_Core"),("Icy_Boots"),(3),("Icy_Helmet"),(3),("Icy_Legging"),(3),("Icy_Chestplate"),(3),("Icy_Sword"),(3),("Icy_Bow"),(3),("enhancedstray"))
+        boss((victim),(34),(attacker),(25),(4),(level of looting of attacker's tool),("Stray_Core"),("Icy_Boots"),(3),("Icy_Helmet"),(3),("Icy_Legging"),(3),("Icy_Chestplate"),(3),("Icy_Sword"),(3),("Icy_Bow"),(3),("enhancedstray"), (100))
     if name of victim is "&6[6] &cAncient Skeleton":
-        boss((victim),(46),(attacker),(43),(5),(level of looting of attacker's tool),("Skeleton_Core"),("Bone_Boots"),(3),("Ancient_Skull"),(3),("Bone_Legging"),(3),("Bone_Chestplate"),(3),("Acient_Long_Sword"),(3),("Bow"),(0),("ancientskeleton"))
+        boss((victim),(46),(attacker),(43),(5),(level of looting of attacker's tool),("Skeleton_Core"),("Bone_Boots"),(3),("Ancient_Skull"),(3),("Bone_Legging"),(3),("Bone_Chestplate"),(3),("Acient_Long_Sword"),(3),("Bow"),(0),("ancientskeleton"), (130))
     if name of victim is "&6[7] &cSilvery":
         #boss((victim),(exp),(attacker),(money),(coin),(level of looting of attacker's tool),("core"),("Boots"),(3),("Head"),(3),("Legging"),(3),("Chestplate"),(3),("Sword"),(3),("Bow"),(3),("mobname"))
-        boss((victim),(53),(attacker),(43),(6),(level of looting of attacker's tool),("Silvery_Core"),("Miner_Boots"),(3),("Miner_Helmet"),(3),("Miner_Legging"),(3),("Miner_Chestplate"),(3),("Miner_Pickaxe"),(3),("Bow"),(0),("silvery"))
+        boss((victim),(53),(attacker),(43),(6),(level of looting of attacker's tool),("Silvery_Core"),("Miner_Boots"),(3),("Miner_Helmet"),(3),("Miner_Legging"),(3),("Miner_Chestplate"),(3),("Miner_Pickaxe"),(3),("Bow"),(0),("silvery"), (165))
     if name of victim is "&6[&d&lDungeon&6] &5&lArsyg":
         #boss((victim),(exp),(attacker),(money),(coin),(level of looting of attacker's tool),("core"),("Boots"),(3),("Head"),(3),("Legging"),(3),("Chestplate"),(3),("Sword"),(3),("Bow"),(3),("mobname"))
-        boss((victim),(250),(attacker),(500),(50),(level of looting of attacker's tool),("Dragon_Core"),("Dragon_Scales_Boots"),(3),("Dragons_Head"),(3),("Dragon_Scales_Legging"),(3),("Dragon_Scales_Chestplate"),(3),("Dragon_Fang"),(3),("Bow"),(0),("arsyg"))
+        boss((victim),(250),(attacker),(500),(50),(level of looting of attacker's tool),("Dragon_Core"),("Dragon_Scales_Boots"),(3),("Dragons_Head"),(3),("Dragon_Scales_Legging"),(3),("Dragon_Scales_Chestplate"),(3),("Dragon_Fang"),(3),("Bow"),(0),("arsyg"), (9999))
         Broadcast "&5&lArsyg &a&lHas Been Defeated. Timer Reset &7(/boss)"
         set {arsyg} to 600
         loop all players in radius 40 around victim:
@@ -22,12 +22,12 @@ on death:
             message "&c&lBEGONE INTRUDERS!" to loop-player
     if name of victim is "&6[8] &cDemon":
         #boss((victim),(exp),(attacker),(money),(coin),(level of looting of attacker's tool),("core"),("Boots"),(3),("Head"),(3),("Legging"),(3),("Chestplate"),(3),("Sword"),(3),("Bow"),(3),("mobname"))
-        boss((victim),(79),(attacker),(46),(7),(level of looting of attacker's tool),("Demon_Core"),("Sulfur_Boots"),(3),("Demon_Head"),(3),("Sulfur_Legging"),(3),("Sulfur_Chestplate"),(3),("Demonium_Broadsword"),(3),("Bow"),(0),("demon"))
+        boss((victim),(79),(attacker),(46),(7),(level of looting of attacker's tool),("Demon_Core"),("Sulfur_Boots"),(3),("Demon_Head"),(3),("Sulfur_Legging"),(3),("Sulfur_Chestplate"),(3),("Demonium_Broadsword"),(3),("Bow"),(0),("demon"), (200))
     if display name of victim is "&6[9] &cSpoodaman":
         #boss((victim),(exp),(attacker),(money),(coin),(level of looting of attacker's tool),("core"),("Boots"),(3),("Head"),(3),("Legging"),(3),("Chestplate"),(3),("Sword"),(3),("Bow"),(3),("mobname"))
-        boss((victim),(99),(attacker),(53),(8),(level of looting of attacker's tool),("SpoodaMan_Core"),("Spider_Boots"),(3),("SpoodaMan_Head"),(3),("Spider_Legging"),(3),("Spider_Chestplate"),(3),("Venomous_Blade"),(3),("Heavenly_Bow"),(0),("spoodaman"))
+        boss((victim),(99),(attacker),(53),(8),(level of looting of attacker's tool),("SpoodaMan_Core"),("Spider_Boots"),(3),("SpoodaMan_Head"),(3),("Spider_Legging"),(3),("Spider_Chestplate"),(3),("Venomous_Blade"),(3),("Heavenly_Bow"),(0),("spoodaman"), (230))
     if display name of victim is "&6[10] &cHeavenly Guard":
-        boss((victim),(136),(attacker),(59),(9),(level of looting of attacker's tool),("Heavenly_Core"),("Heavenly_Boots"),(3),("Heavenly_Head"),(3),("Heavenly_Legging"),(3),("Heavenly_Chestplate"),(3),("Heavenly_Sword"),(3),("Heavenly_Bow"),(3),("heavenlyguard"))
+        boss((victim),(136),(attacker),(59),(9),(level of looting of attacker's tool),("Heavenly_Core"),("Heavenly_Boots"),(3),("Heavenly_Head"),(3),("Heavenly_Legging"),(3),("Heavenly_Chestplate"),(3),("Heavenly_Sword"),(3),("Heavenly_Bow"),(3),("heavenlyguard"), (9999))
 
 
 #MOBS
@@ -114,7 +114,7 @@ function mobs(p: player, v: entity, e: number, m: number, x: boolean, t: text, n
     delete {mostdamage::%{_mobuuid}%::*}
     add 1 to {achievements::%{_uuid}%::%{_n}%}
 
-function boss(v:entity, e:number, a:player, m:number, coin:number, loot:number, core:text, r1:text, c1:number, r2:text, c2:number, r3:text, c3:number, r4:text, c4:number, r5:text, c5:number, r6:text, c6:number, i:text):
+function boss(v:entity, e:number, a:player, m:number, coin:number, loot:number, core:text, r1:text, c1:number, r2:text, c2:number, r3:text, c3:number, r4:text, c4:number, r5:text, c5:number, r6:text, c6:number, i:text, maxlevel:number):
     death({_v})
     wait 5 ticks
     set {_uuid} to {_a}'s uuid
@@ -124,13 +124,14 @@ function boss(v:entity, e:number, a:player, m:number, coin:number, loot:number, 
     levelup({_a})
     send action bar "&6[&e%{level::%{_uuid}%}%&6] &aProgress: &e%{exp::%{_uuid}%}%/%{expforlvlup::%{_uuid}%}%" to {_a}
     play sound "entity.experience_orb.pickup" at volume 0.3 to {mostdamage::entity::%{_bossuuid}%::HDP}
-    execute console command "/mm i give -s %{_a}% Coin %{_coin}%"
     add {_m}*{booster::money} to {_a}'s balance
     message "&a+$%{_m}*{booster::money}%" to {_a}
-    chance of (1.75+(0.05*{_loot}))%:
-        execute console command "/mm i give -s %{mostdamage::entity::%{_bossuuid}%::HDP}% %{_core}%"
-        message "&aReceived %{_core}% From Most Damaging Player Reward" to {_a}
-        set {_dropped} to 1
+    if {level::%{_uuid}%} > {_maxlevel}:
+        chance of (1.75+(0.3*{_loot}))%:
+            execute console command "/mm i give -s %{mostdamage::entity::%{_bossuuid}%::HDP}% %{_core}%"
+            message "&aReceived %{_core}% From Most Damaging Player Reward" to {_a}
+            set {_dropped} to 1
+        execute console command "/mm i give -s %{_a}% Coin %{_coin}%"
     if {_dropped} is not 1:
         chance of {_c1}%:
             execute console command "/mm i give -s %{mostdamage::entity::%{_bossuuid}%::HDP}% %{_r1}%"

@@ -22,78 +22,50 @@ on click on sign:
             message "&6Tell all your friends/clan members to come to a suspific room and you can use your key to teleport them to a Boss Room by right clicking the bedrock with the key!"
     if line 2 of targeted block is "&6Teleportation":
         if line 3 of targeted block is "&bLevel 1":
-            if {level::%player's uuid%} >= 40:
-                message "&cYour Level is too high."
-            else:
-                execute console command "/warp Lv1 %player%"
-                execute console command "/lp user %player% permission set essentials.warps.lv1"
-                stopeffect "%player%"
+            execute console command "/warp Lv1 %player%"
+            execute console command "/lp user %player% permission set essentials.warps.lv1"
+            stopeffect "%player%"
         if line 3 of targeted block is "&bLevel 2":
             if {level::%player's uuid%} is greater than or equal to 25:
-                if {level::%player's uuid%} is less than 60:
-                    execute console command "/warp Lv2 %player%"
-                    execute console command "/lp user %player% permission set essentials.warps.lv2"
-                else:
-                    message "&cYour Level is too high."
+                execute console command "/warp Lv2 %player%"
+                execute console command "/lp user %player% permission set essentials.warps.lv2"
             else:
                 message "&eYou don't have enough levels."
         if line 3 of targeted block is "&bLevel 3":
             if {level::%player's uuid%} is greater than or equal to 40:
-                if {level::%player's uuid%} is less than 100:
-                    execute console command "/warp Lv3 %player%"
-                    execute console command "/lp user %player% permission set essentials.warps.lv3"
-                    execute console command "/lp user %player% permission unset essentials.warps.lv1"
-                else:
-                    message "&cYour level is too high."
+                execute console command "/warp Lv3 %player%"
+                execute console command "/lp user %player% permission set essentials.warps.lv3"
             else:
                 message "&eYou don't have enough levels."
         if line 3 of targeted block is "&bLevel 4":
             if {level::%player's uuid%} is greater than or equal to 60:
-                if {level::%player's uuid%} is less than 130:
-                    execute console command "/warp lv4 %player%"
-                    execute console command "/lp user %player% permission set essentials.warps.lv4"
-                    execute console command "/lp user %player% permission unset essentials.warps.lv2"
-                else:
-                    message "&cYour level is too high."
+                execute console command "/warp lv4 %player%"
+                execute console command "/lp user %player% permission set essentials.warps.lv4"
             else:
                 message "&eYou don't have enough levels."
         if line 3 of targeted block is "&bLevel 5":
             if {level::%player's uuid%} is greater than or equal to 100:
-                if {level::%player's uuid%} is less than 165:
-                    execute console command "/warp lv5 %player%"
-                    execute console command "/lp user %player% permission set essentials.warps.lv5"
-                    execute console command "/lp user %player% permission unset essentials.warps.lv3"
-                    execute console command "/lp user %player% permission unset essentials.warps.lv2"
-                    execute console command "/lp user %player% permission unset essentials.warps.lv1"
-                else:
-                    message "&cYour level is too high."
+                execute console command "/warp lv5 %player%"
+                execute console command "/lp user %player% permission set essentials.warps.lv5"
             else:
                 message "&eYou don't have enough levels."
         if line 3 of targeted block is "&bLevel 6":
             if {level::%player's uuid%} is greater than or equal to 130:
-                if {level::%player's uuid%} is less than 200:
-                    execute console command "/warp lv6 %player%"
-                    message "&7[&eUNLOCKER&7] &6/Warp Lv6"
-                    execute console command "/lp user %player% permission set essentials.warps.lv6"
-                    execute console command "/lp user %player% permission unset essentials.warps.lv4"
-                else:
-                    message "&cYour level is too high."
+                execute console command "/warp lv6 %player%"
+                execute console command "/lp user %player% permission set essentials.warps.lv6"
             else:
                 message "&eYou don't have enough levels."
         if line 3 of targeted block is "&bLevel 7":
             if {level::%player's uuid%} is greater than or equal to 165:
-                if {level::%player's uuid%} is less than 230:
-                    execute console command "/warp lv7 %player%"
-                    execute console command "/lp user %player% permission set essentials.warps.lv7"
-                    execute console command "/lp user %player% permission unset essentials.warps.lv5"
-            if {level::%player's uuid%} is less than 165:
+                execute console command "/warp lv7 %player%"
+                execute console command "/lp user %player% permission set essentials.warps.lv7"
+            else:
                 message "&eYou don't have enough levels."
         if line 3 of targeted block is "&bLevel 8":
             if {level::%player's uuid%} is greater than or equal to 200:
                 execute console command "/warp lv8 %player%"
                 execute console command "/lp user %player% permission set essentials.warps.lv8"
-                execute console command "/lp user %player% permission unset essentials.warps.lv6"
-            if {level::%player's uuid%} is less than 200:
+            else:
                 message "&eYou don't have enough levels."
         if line 3 of targeted block is "&bTutorial":
             execute console command "/warp tutorial %player%"
@@ -220,6 +192,12 @@ on rightclick holding nether star:
     if name of player's held item is "&aChestplate Token &7(Right Click)":
         execute console command "/mm i give -s %player% Starter_Chestplate"
         remove 1 nether star named "&aChestplate Token &7(Right Click)" from player's inventory
+    if name of player's held item is "&aPickaxe Token &7(Right Click)":
+        execute console command "/mm i give -s %player% Starter_Pickaxe"
+        remove 1 nether star named "&aPickaxe Token &7(Right Click)" from player's inventory
+    if name of player's held item is "&aMagic Wand &7(Right Click)":
+        execute console command "/mm i give -s %player% Starter_Wand"
+        remove 1 nether star named "&aMagic Wand &7(Right Click)" from player's inventory
 on rightclick holding slimeball:
     if name of player's held item is "&dFix Skillpoints":
         execute console command "/reset %player% fixSkillpoints"
@@ -298,7 +276,36 @@ on right click holding potion:
     if name of player's tool is "&cHeal II":
         heal player by 2
         remove 1 potion of health named "&cHeal II" from player's inventory
-
+#Salvage
+on right click:
+    if location of event-block is location (-88.5, 5.5, 735.5):
+        cancel event
+        open virtual dropper named "&a&lSalvage" to player
+        format gui slot 0,1,2,3,5,6,7 and 8 of player with blue glass pane named "&cMove salvagable items to middle"
+        while name of player's current inventory is "&a&lSalvage":
+            wait 2 tick
+            if slot 4 of current inventory of player is not air:
+                set {_i} to "%lore of slot 4 of player's current inventory%"
+                set {_item::*} to {_i} split by "||"
+                loop {_item::*}:
+                    if "%{_item::%loop-index%}%" contains "&bLv ":
+                        set {_slot} to loop-index
+                        set {_slot} to {_slot} parsed as number
+                        set {_requirement} to line {_slot} of lore of slot 4 of player's current inventory
+                        replace every "&bLv " and "+" in {_requirement} with ""
+                        set {_requirement} to {_requirement} parsed as number
+                        loop 8 times:
+                            if {_requirement} is {lv%loop-value-2%::level}:
+                                set {_amount} to item amount of slot 4 of player's current inventory
+                                loop {_amount} times:
+                                    subtract 1 from item amount of slot 4 of player's current inventory
+                                    give {lv%loop-value-2%::sell} of iron nugget named "&7Silver Coin" to player
+                                    add {lv%loop-value-2%::sell} to {_total}
+                                    set {_ok} to 1
+                if {_ok} is not set:
+                    message "&cNot salvagable."
+                    give player slot 4 of player's current inventory
+                    set slot 4 of current inventory of player to air
 
 
 #Left clicks

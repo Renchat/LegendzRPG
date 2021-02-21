@@ -21,24 +21,25 @@ command /skills [<text>] [<player>] [<text>]:
                 add 1 to {skillpoints::%player-arg's uuid%::strength}
                 subtract 1 from {skillpoints::%player-arg's uuid%}
                 message "&cStrength &6Leveled Up!" to player-arg
-                make player-arg execute command "/refreshgui"
-                open gui "Skill" to player-arg
+                make player-arg execute command "/profile"
             if arg-3 is "speed":
                 if {skillpoints::%player-arg's uuid%::speed} is not 50:
                     add 1 to {skillpoints::%player-arg's uuid%::speed}
                     subtract 1 from {skillpoints::%player-arg's uuid%}
                     message "&bSpeed &6Leveled Up!" to player-arg
-                    make player-arg execute command "/refreshgui"
-                    open gui "Skill" to player-arg
+                    make player-arg execute command "/profile"
                 else:
                     message "&c&lMax Speed" to player-arg
             if arg-3 is "defense":
                 add 1 to {skillpoints::%player-arg's uuid%::defense}
                 subtract 1 from {skillpoints::%player-arg's uuid%}
                 message "&eDefense &6Leveled Up!" to player-arg
-                make player-arg execute command "/refreshgui"
-                open gui "Skill" to player-arg
-
+                make player-arg execute command "/profile"
+            if arg-3 is "magic":
+                add 1 to {skillpoints::%player-arg's uuid%::magic}
+                subtract 1 from {skillpoints::%player-arg's uuid%}
+                message "&dMagic &6Leveled Up!" to player-arg
+                make player-arg execute command "/profile"
         else:
             message "You dont have enough Skill Points" to player-arg
 
@@ -173,13 +174,13 @@ command /stats [<offline player>]:
             message "&6-&ePlayer %offline player-arg% &eInformation&6-"
             message "&aSkillpoints&7: &6%{skillpoints::%offline player-arg's uuid%}% &aGem&7: &6%{gem::%offline player-arg's uuid%}% &eMoney&7: &6%offline player-arg's balance%"
             message "&cStrength&7: &c%{skillpoints::%offline player-arg's uuid%::strength}% &bSpeed&7: &b%{skillpoints::%offline player-arg's uuid%::speed}% &6Defense&7: &6%{skillpoints::%offline player-arg's uuid%::defense}%"
-            message "&bLevel&7: &6%{level::%offline player-arg's uuid%}%"
+            message "&bLevel&7: &6%{level::%offline player-arg's uuid%}% &dMagic&7: &d%{skillpoints::%offline player-arg's uuid%}%"
             message "&e/armor %offline player-arg% &eTo See Armor/Weapon"
         else:
             message "&6-&ePlayer %player% &eInformation&6-"
             message "&aSkillpoints&7: &6%{skillpoints::%player's uuid%}% &aGem&7: &6%{gem::%player's uuid%}% &eMoney&7: &6%player's balance%"
             message "&cStrength&7: &c%{skillpoints::%player's uuid%::strength}% &bSpeed&7: &b%{skillpoints::%player's uuid%::speed}% &6Defense&7: &6%{skillpoints::%player's uuid%::defense}%"
-            message "&bLevel&7: &6%{level::%player's uuid%}%"
+            message "&bLevel&7: &6%{level::%player's uuid%}% &dMagic&7: &d%{skillpoints::%player's uuid%}%"
 
 command /armor <offline player>:
     permission: essentials.help
@@ -266,13 +267,13 @@ command /reset [<offline player>] [<text>]:
             send "&e/reset (Player) level"
             send "&e/reset (Player) achievements"
         if arg-2 is "fixSkillpoints":
-            set {_total} to {skillpoints::%offline player-arg's uuid%::strength} + {skillpoints::%offline player-arg's uuid%::speed} + {skillpoints::%offline player-arg's uuid%::defense} + {skillpoints::%offline player-arg's uuid%}
+            set {_total} to {skillpoints::%offline player-arg's uuid%::strength} + {skillpoints::%offline player-arg's uuid%::speed} + {skillpoints::%offline player-arg's uuid%::defense} + {skillpoints::%offline player-arg's uuid%} + {skillpoints::%offline player-arg's uuid%::magic}
             set {_receive} to {level::%offline player-arg's uuid%} 
             set {_result} to {_receive} - {_total}
             add {_result} to {skillpoints::%offline player-arg's uuid%}
             send "&aSkillpoints Fixed" to offline player-arg
         if arg-2 is "skillpoints":
-            add ({skillpoints::%offline player-arg's uuid%::strength} + {skillpoints::%offline player-arg's uuid%::speed} + {skillpoints::%offline player-arg's uuid%::defense}) to {skillpoints::%offline player-arg's uuid%}
+            add ({skillpoints::%offline player-arg's uuid%::strength} + {skillpoints::%offline player-arg's uuid%::speed} + {skillpoints::%offline player-arg's uuid%::defense} + {skillpoints::%offline player-arg's uuid%} + {skillpoints::%offline player-arg's uuid%::magic}) to {skillpoints::%offline player-arg's uuid%}
             wait 2 ticks
             set {skillpoints::%offline player-arg's uuid%::*} to 0
             message "&4&l%player% &6Has Reset ALL of your Skillpoints" to offline player-arg
@@ -513,7 +514,7 @@ command /boss:
     permission: essentials.help
     trigger:
         set {_prefix} to "&6[&d&lDungeon&6]"
-        send "&e☆✼★━━━━━━━━━━━━━━━━━━━Boss Spawn Timer━━━━━━━━━━━━━━━━━━━★✼☆｡"
+        send "&e☆✼★━━━━━━━━━━━━━━━━━Boss Spawn Timer━━━━━━━━━━━━━━━━━★✼☆｡"
         send "%{_prefix}% &5&lArsyg &6%{Arsyg}% &6Seconds Left"
 
 command /customtag [<text>]:
@@ -587,23 +588,32 @@ command /sellhand:
         set {lv8::level} to 225
 
         #Item Var
-        set {_i} to "%lore of player's held item%"
-        set {_item::*} to {_i} split by "||"
-        loop {_item::*}:
-            if "%{_item::%loop-index%}%" contains "&bLv ":
-                set {_slot} to loop-index
-                set {_slot} to {_slot} parsed as number
-                set {_requirement} to line {_slot} of lore of player's held item
-                replace every "&bLv " and "+" in {_requirement} with ""
-                set {_requirement} to {_requirement} parsed as number
-                loop 8 times:
-                    if {_requirement} is {lv%loop-value-2%::level}:
-                        set {_amount} to item amount of player's tool
-                        loop {_amount} times:
-                            subtract 1 from item amount of player's tool
-                            give {lv%loop-value-2%::sell} of iron nugget named "&7Silver Coin" to player
-                            add {lv%loop-value-2%::sell} to {_total}
-        message "&aTotal: &a%{_total}%"
+        open virtual dropper named "&a&lSalvage" to player
+        format gui slot 0,1,2,3,5,6,7 and 8 of player with blue glass pane named "&cMove salvagable items to middle"
+        while name of player's current inventory is "&a&lSalvage":
+            wait 2 tick
+            if slot 4 of current inventory of player is not air:
+                set {_i} to "%lore of slot 4 of player's current inventory%"
+                set {_item::*} to {_i} split by "||"
+                loop {_item::*}:
+                    if "%{_item::%loop-index%}%" contains "&bLv ":
+                        set {_slot} to loop-index
+                        set {_slot} to {_slot} parsed as number
+                        set {_requirement} to line {_slot} of lore of slot 4 of player's current inventory
+                        replace every "&bLv " and "+" in {_requirement} with ""
+                        set {_requirement} to {_requirement} parsed as number
+                        loop 8 times:
+                            if {_requirement} is {lv%loop-value-2%::level}:
+                                set {_amount} to item amount of slot 4 of player's current inventory
+                                loop {_amount} times:
+                                    subtract 1 from item amount of slot 4 of player's current inventory
+                                    give {lv%loop-value-2%::sell} of iron nugget named "&7Silver Coin" to player
+                                    add {lv%loop-value-2%::sell} to {_total}
+                                    set {_ok} to 1
+                if {_ok} is not set:
+                    message "&cNot salvagable."
+                    give player slot 4 of player's current inventory
+                    set slot 4 of current inventory of player to air
 
 command /setline <number> <text>:
     aliases: /sl
@@ -632,13 +642,13 @@ command /shop [<text>]:
             shop(player,0,golden apple,"&a1x Golden Apple",1,1,"Gold Coin",gold nugget,"&eGold Coin",false,"")
         if arg-1 is "Potion" or "potion":
             open virtual chest with size 1 named "&dPotion Shop" to player
-            shop(player,0,potions of health,"&a1x Heal I",1,4,"Silver Coins",iron nugget,"&7Silver Coin",false,"")
+            shop(player,0,potions of health,"&a1x Heal I",1,4,"Silver Coins",iron nugget,"&7Silver Coin",true,"Heal_I")
             shop(player,1,potions of strength,"&a1x Strength I (3:00)",1,1,"Gold Coin",gold nugget,"&eGold Coin",true,"Strength_I")
-
+            shop(player,2,potions of regeneration, "&a1x Regen I (0:45)", 1,32,"Silver Coins", iron nugget, "&7Silver Coin",true,"Regeneration_I")
+            shop(player,3,potions of health,"&a1x Heal II",1,10,"Silver Coins",iron nugget,"&7Silver Coin",true,"Heal_II")
         if arg-1 is "Arrow" or "arrow":
             open virtual chest with size 1 named "&fArrow Shop" to player
             shop(player,0,arrow,"&a1x Arrow",1,1,"Silver Coin",iron nugget,"&7Silver Coin",false,"")
-            shop(player,1,slowness tipped arrow,"&a1x Slowness (0:03)",1,32,"Silver Coins",iron nugget,"&7Silver Coin",true,"Arrow_Slowness_I")
 function shop(p: player, s: number, i: itemtype, n: text, a: number, price: number, l: text, coin: itemtype, cn: text, mm: boolean, mi: text):
     format gui slot {_s} of {_p} with {_i} named {_n} with lore "&eCost: %{_price}% %{_l}%" to run:
         if {_p}'s inventory contains {_price} of {_coin} named {_cn}:
@@ -683,57 +693,31 @@ command /faq [<text>]:
 command /fixwarp:
     trigger:
         if {level::%player's uuid%} >= 0:
-            if {level::%player's uuid%} <= 40:
-                execute console command "/lp user %player% permission set essentials.warps.lv1"
-                message "&aAdded /warp Lv1"
+            execute console command "/lp user %player% permission set essentials.warps.lv1"
+            message "&aAdded /warp Lv1"
         if {level::%player's uuid%} >= 25:
-            if {level::%player's uuid%} <= 60:
-                execute console command "/lp user %player% permission set essentials.warps.lv2"
-                message "&aAdded /warp Lv2"
+            execute console command "/lp user %player% permission set essentials.warps.lv2"
+            message "&aAdded /warp Lv2"
         if {level::%player's uuid%} >= 40:
-            if {level::%player's uuid%} <= 100:
-                execute console command "/lp user %player% permission set essentials.warps.lv3"
-                message "&aAdded /warp Lv3"
-                execute console command "/lp user %player% permission unset essentials.warps.lv1"
+            execute console command "/lp user %player% permission set essentials.warps.lv3"
+            message "&aAdded /warp Lv3"
         if {level::%player's uuid%} >= 60:
-            if {level::%player's uuid%} <= 130:
-                execute console command "/lp user %player% permission set essentials.warps.lv4"
-                message "&aAdded /warp Lv4"
-                execute console command "/lp user %player% permission unset essentials.warps.lv2"
-                execute console command "/lp user %player% permission unset essentials.warps.lv1"
+            execute console command "/lp user %player% permission set essentials.warps.lv4"
+            message "&aAdded /warp Lv4"
         if {level::%player's uuid%} >= 100:
-            if {level::%player's uuid%} <= 165:
-                execute console command "/lp user %player% permission set essentials.warps.lv5"
-                message "&aAdded /warp Lv5"
-                execute console command "/lp user %player% permission unset essentials.warps.lv3"
-                execute console command "/lp user %player% permission unset essentials.warps.lv2"
-                execute console command "/lp user %player% permission unset essentials.warps.lv1"
+            execute console command "/lp user %player% permission set essentials.warps.lv5"
+            message "&aAdded /warp Lv5"
         if {level::%player's uuid%} >= 130:
-            if {level::%player's uuid%} <= 200:
-                execute console command "/lp user %player% permission set essentials.warps.lv6"
-                message "&aAdded /warp Lv6"
-                execute console command "/lp user %player% permission unset essentials.warps.lv4"
-                execute console command "/lp user %player% permission unset essentials.warps.lv3"
-                execute console command "/lp user %player% permission unset essentials.warps.lv2"
-                execute console command "/lp user %player% permission unset essentials.warps.lv1"
+            execute console command "/lp user %player% permission set essentials.warps.lv6"
+            message "&aAdded /warp Lv6"
         if {level::%player's uuid%} >= 165:
-            if {level::%player's uuid%} <= 230:
-                execute console command "/lp user %player% permission set essentials.warps.lv7"
-                message "&aAdded /warp Lv7"
-                execute console command "/lp user %player% permission unset essentials.warps.lv5"
-                execute console command "/lp user %player% permission unset essentials.warps.lv4"
-                execute console command "/lp user %player% permission unset essentials.warps.lv3"
-                execute console command "/lp user %player% permission unset essentials.warps.lv2"
-                execute console command "/lp user %player% permission unset essentials.warps.lv1"
+            execute console command "/lp user %player% permission set essentials.warps.lv7"
+            message "&aAdded /warp Lv7"
         if {level::%player's uuid%} >= 200:
             execute console command "/lp user %player% permission set essentials.warps.lv8"
             message "&aAdded /warp Lv8"
-            execute console command "/lp user %player% permission unset essentials.warps.lv6"
-            execute console command "/lp user %player% permission unset essentials.warps.lv5"
-            execute console command "/lp user %player% permission unset essentials.warps.lv4"
-            execute console command "/lp user %player% permission unset essentials.warps.lv3"
-            execute console command "/lp user %player% permission unset essentials.warps.lv2"
-            execute console command "/lp user %player% permission unset essentials.warps.lv1"
+        loop 50 times:
+            message " "
 
 command /lordperk:
     permission: has.lordperk
