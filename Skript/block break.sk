@@ -6,7 +6,7 @@ on block break:
             set {_miningexp} to (0.5 + (0.05*{level::%player's uuid%})) * {booster::exp}
             add {_miningexp} to {exp::%player's uuid%}
             add 1 to player's balance
-            add 1 to {achievements::%player's uuid%::lapisore}
+            add 1 to {achievements::lapisore::%player's uuid%}
             send action bar "&6[&e%{level::%player's uuid%}%&6] &aProgress: &e%{exp::%player's uuid%}%/%{expforlvlup::%player's uuid%}% &a+$1" to player
             levelup(player)
             set event-block to bedrock
@@ -31,7 +31,7 @@ on block break:
             set {_miningexp} to (3 + (0.1*{level::%player's uuid%})) * {booster::exp}
             add {_miningexp} to {exp::%player's uuid%}
             add 3 to player's balance
-            add 1 to {achievements::%player's uuid%::lapisblock}
+            add 1 to {achievements::lapisblock::%player's uuid%}
             send action bar "&6[&e%{level::%player's uuid%}%&6] &aProgress: &e%{exp::%player's uuid%}%/%{expforlvlup::%player's uuid%}% &a+$3" to player
             set event-block to bedrock
             cancel drops
@@ -63,7 +63,7 @@ on block break:
             set {_miningexp} to (8 + (0.3*{level::%player's uuid%})) *{booster::exp}
             add {_miningexp} to {exp::%player's uuid%}
             add 7 to player's balance
-            add 1 to {achievements::%player's uuid%::redstoneore}
+            add 1 to {achievements::redstoneore::%player's uuid%}
             send action bar "&6[&e%{level::%player's uuid%}%&6] &aProgress: &e%{exp::%player's uuid%}%/%{expforlvlup::%player's uuid%}% &a+$7" to player
             set event-block to bedrock
             levelup(player)
@@ -94,32 +94,28 @@ on block break:
             set {_miningexp} to (20 + (0.8*{level::%player's uuid%})) * {booster::exp}
             add {_miningexp} to {exp::%player's uuid%}
             add 50 to player's balance
-            add 1 to {achievements::%player's uuid%::redstoneblock}
+            add 1 to {achievements::redstoneblock::%player's uuid%}
             send action bar "&6[&e%{level::%player's uuid%}%&6] &aProgress: &e%{exp::%player's uuid%}%/%{expforlvlup::%player's uuid%}% &a+$50" to player
             set event-block to bedrock
             levelup(player)
             cancel drops
+            set {_random} to random integer between 1 and 10000
             chance of 0.25%:
                 add 1 to {gem::%player's uuid%}
                 message "&a&l+1 Gem"
-            if {_dropped} is not 1:
-                chance of 0.01%:
-                    give emerald named "&2&lEmerald Key" to player
-                    broadcast "&a&l%player% &a&lGot a &2&lEmerald Key &a&lFrom Mining!"
-            if {_dropped} is not 1:
-                chance of 1%:
-                    give diamond named "&bDiamond Key" to player
-                    set {_dropped} to 1
-            if {_dropped} is not 1:
-                chance of 5%:
-                    give gold ingot named "&eGold Key" to player
-                    set {_dropped} to 1
-            if {_dropped} is not 1:
-                chance of 10%:
-                    give iron ingot named "&7Silver Key" to player
-                    set {_dropped} to 1
+            if {_random} is 1:
+                give emerald named "&2&lEmerald Key" to player
+                broadcast "&a&l%player% &a&lGot a &2&lEmerald Key &a&lFrom Mining! &7(1/10000) Chance"
+            if {_random} is between 2 and 101:
+                give diamond named "&bDiamond Key" to player
+                message "&dReceived &bDiamond Key &7(100/10000) Chance"
+            if {_random} is between 102 and 601:
+                give gold ingot named "&eGold Key" to player
+                message "&dReceived &eGold Key &7(500/10000) Chance"
+            if {_random} is between 602 and 1601:
+                give iron ingot named "&7Silver Key" to player
+                message "&dReceived &7Silver Key &7(1000/10000) Chance"
             give coal named "&8Coal Key" to player
-            set {_dropped} to 1
             wait 3 seconds
             chance of (0 + (0.05*level of Lure of player's tool))%:
                 set event-block to redstone block
@@ -157,7 +153,7 @@ on block break:
 
 function levelup(p: player):
     set {_uuid} to {_p}'s uuid
-    set {expforlvlup::%{_uuid}%} to 50 + ({level::%{_uuid}%}^1.95)
+    set {expforlvlup::%{_uuid}%} to 50 + ({level::%{_uuid}%}^1.98)
     if {exp::%{_uuid}%} is greater than {expforlvlup::%{_uuid}%}:
         add 1 to {level::%{_uuid}%}
         subtract {expforlvlup::%{_uuid}%} from {exp::%{_uuid}%}

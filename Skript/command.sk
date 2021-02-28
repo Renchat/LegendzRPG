@@ -114,55 +114,64 @@ command /suffix <player> <text>:
                 message "&c[CUCKED] &6u dont have this tag go buy it at /buy" to player-arg
         if arg-2 is "AlphaTester":
             if player-arg has permission "tag.alphatester":
-                execute console command "/lp user %player-arg% meta addsuffix "" &8[&4&lA&c&lL&6&lPH&e&lA &a&lT&2&lE&a&lS&2&lT&a&lE&2&lR&8]"""
+                execute console command "/lp user %player-arg% meta removesuffix 1"
+                execute console command "/lp user %player-arg% meta addsuffix 1 "" &8[&4&lA&c&lL&6&lPH&e&lA &a&lT&2&lE&a&lS&2&lT&a&lE&2&lR&8]"""
                 broadcast "&c%player-arg%&e's Tag has been set to &8[&4&lA&c&lL&6&lPH&e&lA &a&lT&2&lE&a&lS&2&lT&a&lE&2&lR&8]"
             else:
                 message "&c[CUCKED] &6u dont have this tag go buy it at /buy" to player-arg
         if arg-2 is "Genie":
             if player-arg has permission "tag.genie":
-                execute console command "/lp user %player-arg% meta addsuffix "" &8[&d&lG&e&le&d&ln&e&li&d&le&8]"""
+                execute console command "/lp user %player-arg% meta removesuffix 1"
+                execute console command "/lp user %player-arg% meta addsuffix 1 "" &8[&d&lG&e&le&d&ln&e&li&d&le&8]"""
                 broadcast "&c%player-arg%&e's Tag has been set to &8[&d&lG&e&le&d&ln&e&li&d&le&8]"
             else:
                 message "&c[CUCKED] &6u dont have this tag go buy it at /buy" to player-arg
         if arg-2 is "Overlord":
             if player-arg has permission "tag.overlord":
-                execute console command "/lp user %player-arg% meta addsuffix "" &8[&4&lO&c&lv&4&le&c&lr&4&ll&c&lo&4&lr&c&ld&8]"""
+                execute console command "/lp user %player-arg% meta removesuffix 1"
+                execute console command "/lp user %player-arg% meta addsuffix 1 "" &8[&4&lO&c&lv&4&le&c&lr&4&ll&c&lo&4&lr&c&ld&8]"""
                 broadcast "&c%player-arg%&e's Tag has been set to &8[&4&lO&c&lv&4&le&c&lr&4&ll&c&lo&4&lr&c&ld&8]"
             else:
                 message "&c[CUCKED] &6u dont have this tag go buy it at /buy" to player-arg
         if arg-2 is "Frostlord":
             if player-arg has permission "tag.frostlord":
-                execute console command "/lp user %player-arg% meta addsuffix "" &8[&f&lF&b&lr&f&lo&b&ls&f&lt&b&ll&f&lo&b&lr&f&ld&8]"""
+                execute console command "/lp user %player-arg% meta removesuffix 1"
+                execute console command "/lp user %player-arg% meta addsuffix 1 "" &8[&f&lF&b&lr&f&lo&b&ls&f&lt&b&ll&f&lo&b&lr&f&ld&8]"""
                 broadcast "&c%player-arg%&e's Tag has been set to &8[&f&lF&b&lr&f&lo&b&ls&f&lt&b&ll&f&lo&b&lr&f&ld&8]"
             else:
                 message "&c[CUCKED] &6u dont have this tag go buy it at /buy" to player-arg
         if arg-2 is "Warlord":
             if player-arg has permission "tag.warlord":
-                execute console command "/lp user %player-arg% meta addsuffix "" &8[&6&lW&7&la&6&lr&7&ll&6&lo&7&lr&6&ld&8]"""
+                execute console command "/lp user %player-arg% meta removesuffix 1"
+                execute console command "/lp user %player-arg% meta addsuffix 1 "" &8[&6&lW&7&la&6&lr&7&ll&6&lo&7&lr&6&ld&8]"""
                 broadcast "&7%player-arg%&e's Tag has been set to &8[&6&lW&7&la&6&lr&7&ll&6&lo&7&lr&6&ld&8]"
             else:
                 message "&c[CUCKED] &6u dont have this tag go buy it at /buy" to player-arg
         if arg-2 is "Samurai":
             if player-arg has permission "tag.samurai":
-                execute console command "/lp user %player-arg% meta addsuffix "" &8[&7&lS&c&la&7&lm&c&lu&7&lr&c&la&7&li&8]"""
+                execute console command "/lp user %player-arg% meta removesuffix 1"
+                execute console command "/lp user %player-arg% meta addsuffix 1 "" &8[&7&lS&c&la&7&lm&c&lu&7&lr&c&la&7&li&8]"""
                 broadcast "&7%player-arg%&e's Tag has been set to &8[&7&lS&c&la&7&lm&c&lu&7&lr&c&la&7&li&8]"
             else:
                 message "&c[CUCKED] &6u dont have this tag go buy it at /buy" to player-arg
         if arg-2 is "Endlord":
             if player-arg has permission "tag.endlord":
+                execute console command "/lp user %player-arg% meta removesuffix 1"
                 execute console command "/lp user %player-arg% meta addsuffix 1 "" &8[&0&lE&5&ln&0&ld&5&ll&0&lo&5&lr&0&ld&8]"""
                 broadcast "&7%player-arg%&e's Tag has been set to &8[&0&lE&5&ln&0&ld&5&ll&0&lo&5&lr&0&ld&8]"
             else:
                 message "&c[CUCKED] &6u dont have this tag go buy it at /buy" to player-arg
         if arg-2 is "Firelord":
             if player-arg has permission "tag.firelord":
-                execute console command "/lp user %player-arg% meta addsuffix ' &8[&4&lF&6&li&4&lr&6&le&4&ll&6&lo&4&lr&6&ld&8]'"
+                execute console command "/lp user %player-arg% meta removesuffix 1"
+                execute console command "/lp user %player-arg% meta addsuffix 1 "" &8[&4&lF&6&li&4&lr&6&le&4&ll&6&lo&4&lr&6&ld&8]"""
                 broadcast "&7%player-arg%&e's Tag has been set to &8[&4&lF&6&li&4&lr&6&le&4&ll&6&lo&4&lr&6&ld&8]"
             else:
                 message "&c[CUCKED] &6u dont have this tag go buy it at /buy" to player-arg
         if arg-2 is "Eventlord":
             if player-arg has permission "tag.eventlord":
-                execute console command "/lp user %player-arg% meta addsuffix "" &8[&6&lEventlord&8]"""
+                execute console command "/lp user %player-arg% meta removesuffix 1"
+                execute console command "/lp user %player-arg% meta addsuffix 1 "" &8[&6&lEventlord&8]"""
                 broadcast "&7%player-arg%&e's Tag has been set to &8[&6&lEventlord&8]"
             else:
                 message "&c[CUCKED] &6Obtainable by winning 3 Event (3 Event Token)" to player-arg
@@ -310,10 +319,9 @@ command /cmds [<text>]:
         if arg-1 is "lord":
             message "&d｡☆✼★━━━━━━━━━━━━━━━&6&lLord &b&lRank Perms&d━━━━━━━━━━━━━━━★✼☆｡"
             message "&e/convert &6Converts lower currency to higher currency."
-            message "&e/trails &6Fancy Trails (without wing)."
+            message "&e/shop &6Look Into Shop Anytime You Want!"
         if arg-1 is "king":
             message "&d｡☆✼★━━━━━━━━━━━━━━━&e&lKing &b&lRank Perms&d━━━━━━━━━━━━━━━★✼☆｡"
-            message "&e/trails &6Fancy Trails and Wings!"
             message "&e/stack &6Stacks Boss Drop."
             message "&e/sellhand &6Sells Boss Drop In Your Hand, Used with /stack."
         if arg-1 is "demigod":
@@ -633,22 +641,54 @@ command /shop [<text>]:
     permission: is.lord
     trigger:
         if arg-1 is not set:
-            message "&e/shop Food &6To view Food shop."
-            message "&e/shop Potion &6To view Potion shop."
-            message "&e/shop Arrow &6To view Arrow shop."
-            message "&e/convert &6To view Coin Exchange."
-        if arg-1 is "Food" or "food":
+            open virtual chest with size 1 named "&aShop" to player
+            format gui slot 0 of player with bread named "&aFood" to run:
+                execute player command "/shop food"
+            format gui slot 1 of player with water bottle named "&dPotion" to run:
+                execute player command "/shop potion"
+            format gui slot 2 of player with arrow named "&fArrow" to run:
+                execute player command "/shop arrow"
+            format gui slot 3 of player with gold nugget named "&6Convert" to run:
+                execute player command "/convert"
+            format gui slot 4 of player with tripwire hook named "&6Key Exchange" to run:
+                execute player command "/shop key"
+        if arg-1 is "food":
             open virtual chest with size 1 named "&aFood Shop" to player
             shop(player,0,golden apple,"&a1x Golden Apple",1,1,"Gold Coin",gold nugget,"&eGold Coin",false,"")
-        if arg-1 is "Potion" or "potion":
+            format gui slot 8 of player with barrier named "&cBack" to run:
+                execute player command "/shop"
+        if arg-1 is "potion":
             open virtual chest with size 1 named "&dPotion Shop" to player
             shop(player,0,potions of health,"&a1x Heal I",1,4,"Silver Coins",iron nugget,"&7Silver Coin",true,"Heal_I")
             shop(player,1,potions of strength,"&a1x Strength I (3:00)",1,1,"Gold Coin",gold nugget,"&eGold Coin",true,"Strength_I")
             shop(player,2,potions of regeneration, "&a1x Regen I (0:45)", 1,32,"Silver Coins", iron nugget, "&7Silver Coin",true,"Regeneration_I")
             shop(player,3,potions of health,"&a1x Heal II",1,10,"Silver Coins",iron nugget,"&7Silver Coin",true,"Heal_II")
-        if arg-1 is "Arrow" or "arrow":
+            format gui slot 8 of player with barrier named "&cBack" to run:
+                execute player command "/shop"
+        if arg-1 is "arrow":
             open virtual chest with size 1 named "&fArrow Shop" to player
             shop(player,0,arrow,"&a1x Arrow",1,1,"Silver Coin",iron nugget,"&7Silver Coin",false,"")
+            format gui slot 8 of player with barrier named "&cBack" to run:
+                execute player command "/shop"
+        if arg-1 is "key":
+            open virtual chest with size 1 named "&6Key Exchange" to player
+            format gui slot 0 of player with iron ingot named "&810x Coal Key &6>> &7Silver Key" to run:
+                if player have 10 coal named "&8Coal Key":
+                    remove 10 coal named "&8Coal Key" from player's inventory
+                    give 1 iron ingot named "&7Silver Key" to player
+            format gui slot 1 of player with gold ingot named "&710x Silver Key &6>> &eGold Key" to run:
+                if player have 10 iron ingot named "&7Silver Key":
+                    remove 10 iron ingot named "&7Silver Key" from player's inventory
+                    give 1 gold ingot named "&eGold Key" to player
+            format gui slot 2 of player with diamond named "&e10x Gold Key &6>> &bDiamond Key" to run:
+                if player have 10 gold ingot named "&eGold Key":
+                    remove 10 gold ingot named "&eGold Key" from player's inventory
+                    give 1 diamond named "&bDiamond Key" to player
+            format gui slot 3 of player with emerald named "&b5x Diamond Key &6>> &2&lEmerald Key" to run:
+                if player have 5 diamond named "&bDiamond Key":
+                    remove 5 diamond named "&bDiamond Key" from player's inventory
+                    give 1 emerald named "&2&lEmerald Key" to player
+
 function shop(p: player, s: number, i: itemtype, n: text, a: number, price: number, l: text, coin: itemtype, cn: text, mm: boolean, mi: text):
     format gui slot {_s} of {_p} with {_i} named {_n} with lore "&eCost: %{_price}% %{_l}%" to run:
         if {_p}'s inventory contains {_price} of {_coin} named {_cn}:
@@ -772,3 +812,29 @@ on chat:
         if player doesn't have permission "is.staff":
             message "&cChat is muted"
             cancel event
+
+command /keyall:
+    permission: is.op
+    trigger:
+        loop all players:
+            give 1 emerald named "&2&lEmerald Key" to loop-player
+
+on command "/sk reload":
+    broadcast "&4&lLegendz&a&LRPG &e&L>> &c&lReloading Skript..."
+
+command /calculation [<text>]:
+    trigger:
+        if arg-1 is not set:
+            message "&6/calculation damage"
+            message "&6/calculation droprate"
+        if arg-1 is "damage":
+            message "&cMelee Damage: initial damage + ((strength/110)*(initial damage/2))"
+            message "&cTake Damage: initial damage - ((defense/80) + (magic/150))"
+            message "&cMagic Damage: initial damage + (initial damage/2*({magic/100)"
+        if arg-1 is "droprate":
+            message "&a*Last HIT* Normal Mob Loot: 7%% DR"
+            message "&a*Last HIT* Red Named Mob Loot: 15%% DR"
+            message "&a*Most Damage* Red Named Mob Core: 1.75%% DR"
+            message "&aKey: 0.75%% DR"
+            message "&aGem: 0.45%% DR"
+

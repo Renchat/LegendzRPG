@@ -6,7 +6,7 @@ command /gemshop:
                 subtract 500 from {gem::%player's uuid%}
                 give paper named "&6&lLord &7(Right Click)" to player
                 loop all players:
-                    if player has permission "essentials.op":
+                    if loop-player has permission "essentials.op":
                         message "&4[Staff] &a%player% &aPurchased Lord Rank" to loop-player
             else:
                 message "&cNot enough Gem"
@@ -15,7 +15,7 @@ command /gemshop:
                 subtract 3000 from {gem::%player's uuid%}
                 give paper named "&e&lKing &7(Right Click)" to player
                 loop all players:
-                    if player has permission "essentials.op":
+                    if loop-player has permission "essentials.op":
                         message "&4[Staff] &a%player% &aPurchased King Rank" to loop-player
             else:
                 message "&cNot enough Gem"
@@ -24,7 +24,7 @@ command /gemshop:
                 subtract 10000 from {gem::%player's uuid%}
                 give paper named "&8&lD&7&le&8&lm&7&li&e&lG&f&lo&e&ld &7(Right Click)" to player
                 loop all players:
-                    if player has permission "essentials.op":
+                    if loop-player has permission "essentials.op":
                         message "&4[Staff] &a%player% &aPurchased Demigod Rank" to loop-player
             else:
                 message "&cNot enough Gem"
@@ -33,7 +33,7 @@ command /gemshop:
                 subtract 50 from {gem::%player's uuid%}
                 give end crystal named "&a&lLow Teir Pet" with hidden enchantments to player
                 loop all players:
-                    if player has permission "essentials.op":
+                    if loop-player has permission "essentials.op":
                         message "&4[Staff] &a%player% &aPurchased Low Teir Pet" to loop-player
             else:
                 message "&cNot enough Gem"
@@ -43,6 +43,17 @@ command /gemshop:
                 give nether star named "&6&lPet Food" to player
             else:
                 message "&cNot enough Gem"
+        format gui slot 5 of player with emerald named "&2&lEmerald Key" with lore "&a&l150 Gems" to run:
+            if {gem::%player's uuid%} >= 150:
+                subtract 150 from {gem::%player's uuid%}
+                give emerald named "&2&lEmerald Key" to player
+                loop all players:
+                    if loop-player has permission "essentials.op":
+                        message "&4[Staff] &a%player% &aPurchased Emerald Key" to loop-player
+            else:
+                message "&cNot enough Gem"
+
+
         set {_s} to 10
         loop {weekly::*}:
             add 1 to {_n}
@@ -61,9 +72,6 @@ command /gemshop:
                         if {_price} < {gem::%player's uuid%}:
                             subtract {_price} from {gem::%player's uuid%}
                             give {_t} to player
-                            loop all players:
-                                if player has permission "essentials.op":
-                                    message "&4[Staff] &a%player% &aPurchased Low Teir Pet" to loop-player
                         else:
                             message "&c Not enough Gem"
             add 1 to {_s}

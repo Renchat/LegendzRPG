@@ -1,86 +1,199 @@
 on right click:
     name of player's tool is "&bMagic Wand":
         player is not sneaking
-        open virtual chest with size 1 named "&bSpells" to player
-        format gui slot 0 of player with enchanted book named "&bBasic Attack I" with lore "&dMagic&7: &d0+", "&c1 Mana Per Use" and "&cDamage: 5" to run:
-            set {wand::%player's uuid%} to 1
-        format gui slot 1,2,3,4,5,6,7 and 8 of player with barrier named "&cComing Soon"
+        open virtual chest with size 1 named "&bSelect Spells" to player
+        #selectSpell(player,"magic",slot,mps,dmg,range,cd,radius)
+        selectSpell(player,"basic",0,1,2,2,0,0.2)
+        selectSpell(player,"teleport",1,5,0,5,5,0)
+
+function selectSpell(p:player,magic:text,slot:number,sMPS:number,sDMG:number,sRange:number,sCD:number,sRadius:number):
+	loop 5 times:
+		set {_req} to 25*(loop-value - 1)
+		if {_p} has permission "magic.%{_magic}%.%loop-value%":
+			if {_magic} is "basic":
+				set {_name} to "&bBasic Attack Tier %loop-value%"
+				set {_dmg} to 5 + ({_sDMG}*(loop-value - 1))
+				set {_mps} to 1 + ({_sMPS}*(loop-value - 1))
+				set {_range} to 12 + ({_sRange}*(loop-value - 1))
+				set {_radius} to 2 + ({_sRadius}*(loop-value -1))
+				set {_CD} to 0.5 - ({_sCD}*(loop-value - 1))
+			if {_magic} is "teleport":
+				set {_name} to "&5Teleportation Tier %loop-value%"
+				set {_dmg} to 0 + ({_sDMG}*(loop-value -1))
+				set {_mps} to 25 + ({_sMPS}*(loop-value -1))
+				set {_range} to 30 + ({_sRange}*(loop-value -1))
+				set {_radius} to 1 + ({_sRadius}*(loop-value -1))
+				set {_CD} to 30 - ({_sCD}*(loop-value -1))
+			set {_line1} to "&dMagic&7: &d%{_req}%+ &cDMG&7: &c%{_dmg}%"
+			set {_line2} to "&4Radius&7: &4%{_radius}% &6Range&7: &6%{_range}%"
+			set {_line3} to "&eCD&7: &e%{_CD}% &bMPS&7: &b%{_mps}%"
+			set {_n} to loop-value
+			format gui slot {_slot} of {_p} with enchanted book named "%{_name}%" with lore {_line1},{_line2} and {_line3} to run:
+				if {_p} has permission "magic.%{_magic}%.%{_n}%":
+					set {wand::%{_magic}%::%player's uuid%} to {_n}
+					set {wand::using::%player's uuid%} to {_magic}
+					message "&aNow Using %{_name}% &aMagic" to {_p}
 
 on left click:
     name of player's tool is "&bMagic Wand":
-        if {wand::%player's uuid%} is 1:
-            if Cooldown(player, 0.5) is true:
-                if player's level >= 1:
-                    set {wand::cooldown::%player's uuid%} to now
-                    subtract 1 from player's level
-                    set {_loc} to spellLocation(player)
-                    drawDot count 10, particle smokelarge, speed 0.08, XYZ 0.2, 0.2, 0.2, center {_loc}, visibleRange 320, keepFor 3 ticks
-                    drawDot count 10, particle witchspell, speed 0.2, XYZ 0.6, 0.7, 0.6, center {_loc}, visibleRange 320, keepFor 5 ticks
-                    PlS("entity.firework_rocket.blast", 4, 1, {_loc}, all players)
-                    loop living entities in radius 2 around {_loc} where [input isn't player]:
-                        damageEffect((2.5), (player), (loop-entity), (tool of player))
-                    wait 10 ticks
-                    PlS(("entity.firework_rocket.twinkle"), (4), (1), ({_loc}), (all players))
-                else:
-                    send action bar "&c&lNot Enough Mana" to player
-        if {wand::%player's uuid%} is 2:
-            if Cooldown(player, 0.5) is true:
-                if player's level >= 1:
-                    set {wand::cooldown::%player's uuid%} to now
-                    subtract 1 from player's level
-                    loop blocks from block above the player to the block above block 15 in front of the player:
-                        set {_loc} to location of loop-block
-                        if loop-block is solid:
-                            stop loop
-                        set {_int} to {_int} + 1
-                        loop living entities in radius 1.2 around loop-block where [input isn't player]:
-                            exit 2 loops
-                        drawDot count 1, particle critmagic, speed 0.1, XYZ 0, 0, 0, center location of loop-block, visibleRange 320
-                        if {_int} > 2:
-                            wait a tick
-                            set {_int} to 0
-                    PlS("entity.bee.hurt", 4, 1, {_loc}, all players)
-                    drawDot count 3, particle snowball, speed 0, XYZ 0.1, 0.1, 0.1, center {_loc}, visibleRange 320
-                    loop living entities in radius 3 around {_loc} where [input isn't player]:
-                        damageEffect(3.4, player, loop-entity, {_t})
-        if {wand::%player's uuid%} is 3:
-            if Cooldown(player, 0.5) is true:
-                if player's level >= 1:
-                    set {wand::cooldown::%player's uuid%} to now
-                    subtract 1 from player's level
-                    loop blocks from block above the player to the block above block 15 in front of the player:
-                        set {_loc} to location of loop-block
-                        if loop-block is solid:
-                            stop loop
-                        set {_int} to {_int} + 1
-                        loop living entities in radius 1.2 around loop-block where [input isn't player]:
-                            exit 2 loops
-                        drawDot count 1, particle smokelarge, speed 0, XYZ 0.4, 0.4, 0.4, center location of loop-block, visibleRange 320
-                        drawDot count 13, particle smoke, speed 0.1, XYZ 0.8, 0.8, 0.8, center location of loop-block, visibleRange 320
-                        if {_int} > 2:
-                            wait a tick
-                            set {_int} to 0
-                    create a fake explosion at {_loc}
-                    drawDot count 10, particle lava, speed 0, XYZ 1, 1, 1, center {_loc}, visibleRange 320
-                    drawDot count 10, particle flame, speed 0, XYZ 1, 1, 1, center {_loc}, visibleRange 320
-                    drawDot count 10, particle lavadrip, speed 0, XYZ 1, 1, 1, center {_loc}, visibleRange 320
-                    loop living entities in radius 3 around {_loc} where [input isn't player]:
-                        damageEffect(3.4, player, loop-entity, {_t})
+        if {wand::using::%player's uuid%} is "basic":
+            if {wand::basic::%player's uuid%} is 1:
+                if Cooldown(player, 0.5, "basic") is true:
+                    if player's level >= 1:
+                        set {wand::cooldown::basic::%player's uuid%} to now
+                        subtract 1 from player's level
+                        set {_t} to player's tool
+                        loop blocks from block above the player to the block above block 12 in front of the player:
+                            set {_loc} to location of loop-block
+                            if loop-block is solid:
+                                stop loop
+                            loop living entities in radius 1.5 around loop-block where [input isn't player]:
+                                exit 2 loops
+                            drawDot count 1, particle critmagic, speed 0.1, XYZ 0, 0, 0, center location of loop-block, visibleRange 320
+                        PlS("entity.bee.hurt", 4, 1, {_loc}, all players)
+                        drawDot count 3, particle snowball, speed 0, XYZ 0.1, 0.1, 0.1, center {_loc}, visibleRange 320
+                        loop living entities in radius 2 around {_loc} where [input isn't player]:
+                            damageEffect(2.5, player, loop-entity, {_t})
+                    else:
+                        send action bar "&cNot Enough Mana" to player
+            if {wand::basic::%player's uuid%} is 2:
+                if Cooldown(player, 0.5, "basic") is true:
+                    if player's level >= 1:
+                        set {wand::cooldown::basic::%player's uuid%} to now
+                        subtract 1 from player's level
+                        set {_t} to player's tool
+                        loop blocks from block above the player to the block above block 12 in front of the player:
+                            set {_loc} to location of loop-block
+                            if loop-block is solid:
+                                stop loop
+                            loop living entities in radius 1.7 around loop-block where [input isn't player]:
+                                exit 2 loops
+                            drawDot count 1, particle , speed 0.1, XYZ 0, 0, 0, center location of loop-block, visibleRange 320
+                        PlS("entity.bee.hurt", 4, 1, {_loc}, all players)
+                        drawDot count 3, particle snowball, speed 0, XYZ 0.1, 0.1, 0.1, center {_loc}, visibleRange 320
+                        loop living entities in radius 2.2 around {_loc} where [input isn't player]:
+                            damageEffect(3.5, player, loop-entity, {_t})
+                    else:
+                        send action bar "&cNot Enough Mana" to player
+            if {wand::basic::%player's uuid%} is 4:
+                if Cooldown(player, 0.5, "basic") is true:
+                    if player's level >= 4:
+                        set {wand::cooldown::basic::%player's uuid%} to now
+                        subtract 4 from player's level
+                        loop blocks from block above the player to the block above block 12 in front of the player:
+                            set {_loc} to location of loop-block
+                            if loop-block is solid:
+                                stop loop
+                            set {_int} to {_int} + 1
+                            loop living entities in radius 1.5 around loop-block where [input isn't player]:
+                                exit 2 loops
+                            drawDot count 1, particle smokelarge, speed 0, XYZ 0.4, 0.4, 0.4, center location of loop-block, visibleRange 320
+                            drawDot count 13, particle smoke, speed 0.1, XYZ 0.8, 0.8, 0.8, center location of loop-block, visibleRange 320
+                            if {_int} > 2:
+                                wait a tick
+                                set {_int} to 0
+                        create a fake explosion at {_loc}
+                        drawDot count 10, particle lava, speed 0, XYZ 1, 1, 1, center {_loc}, visibleRange 320
+                        drawDot count 10, particle flame, speed 0, XYZ 1, 1, 1, center {_loc}, visibleRange 320
+                        drawDot count 10, particle lavadrip, speed 0, XYZ 1, 1, 1, center {_loc}, visibleRange 320
+                        loop living entities in radius 3 around {_loc} where [input isn't player]:
+                            damageEffect(3.4, player, loop-entity, {_t})
+            if {wand::basic::%player's uuid%} is 5:
+                if Cooldown(player, 0.5, "basic") is true:
+                    if player's level >= 5:
+                        set {wand::cooldown::basic::%player's uuid%} to now
+                        subtract 5 from player's level
+                        set {_loc} to spellLocation(player,20)
+                        drawDot count 10, particle smokelarge, speed 0.08, XYZ 0.2, 0.2, 0.2, center {_loc}, visibleRange 320, keepFor 3 ticks
+                        drawDot count 10, particle witchspell, speed 0.2, XYZ 0.6, 0.7, 0.6, center {_loc}, visibleRange 320, keepFor 5 ticks
+                        PlS("entity.firework_rocket.blast", 4, 1, {_loc}, all players)
+                        loop living entities in radius 2 around {_loc} where [input isn't player]:
+                            damageEffect((7.5), (player), (loop-entity), (tool of player))
+                        wait 10 ticks
+                        PlS(("entity.firework_rocket.twinkle"), (4), (1), ({_loc}), (all players))
+                    else:
+                        send action bar "&c&lNot Enough Mana" to player
+        if {wand::using::%player's uuid%} is "teleport":
+            if {wand::teleport::%player's uuid%} is 1:
+                if Cooldown(player,30, "teleport") is true:
+                    if player's level >= 25:
+                        set {wand::cooldown::teleport::%player's uuid%} to now
+                        subtract 25 from player's level
+                        set {_loc} to spellLocation(player,30)
+                        drawWarpRings style 1, particle "redstone", RGB 80, 255, 255, center location of block at player, id "%player%", rainbowMode false, scan false, height 2, radius 2, ringCount 40, ringDensity 20, visibleRange 32, pulseDelay 2
+                        wait 1 seconds
+                        stopeffect "%player%"
+                        teleport player to {_loc}
+                        drawWarpRings style 2, particle "redstone", RGB 255, 255, 80, center location of block at player, id "%player%", rainbowMode false, scan false, height 2, radius 2, ringCount 40, ringDensity 20, visibleRange 32, pulseDelay 2
+                        wait 2 seconds
+                        stopeffect "%player%"
+            if {wand::teleport::%player's uuid%} is 2:
+                if Cooldown(player,25, "teleport") is true:
+                    if player's level >= 30:
+                        set {wand::cooldown::teleport::%player's uuid%} to now
+                        subtract 30 from player's level
+                        set {_loc} to spellLocation(player,35)
+                        drawWarpRings style 1, particle "redstone", RGB 80, 80, 255, center location of block at player, id "%player%", rainbowMode false, scan false, height 2, radius 2, ringCount 40, ringDensity 20, visibleRange 32, pulseDelay 2
+                        wait 1 seconds
+                        stopeffect "%player%"
+                        teleport player to {_loc}
+                        drawWarpRings style 2, particle "redstone", RGB 255, 80, 80, center location of block at player, id "%player%", rainbowMode false, scan false, height 2, radius 2, ringCount 40, ringDensity 20, visibleRange 32, pulseDelay 2
+                        wait 2 seconds
+                        stopeffect "%player%"
+            if {wand::teleport::%player's uuid%} is 3:
+                if Cooldown(player,20, "teleport") is true:
+                    if player's level >= 35:
+                        set {wand::cooldown::teleport::%player's uuid%} to now
+                        subtract 35 from player's level
+                        set {_loc} to spellLocation(player,40)
+                        drawWarpRings style 1, particle "redstone", RGB 80, 160, 255, center location of block at player, id "%player%", rainbowMode false, scan false, height 2, radius 2, ringCount 40, ringDensity 20, visibleRange 32, pulseDelay 2
+                        wait 1 seconds
+                        stopeffect "%player%"
+                        teleport player to {_loc}
+                        drawWarpRings style 2, particle "redstone", RGB 255, 160, 80, center location of block at player, id "%player%", rainbowMode false, scan false, height 2, radius 2, ringCount 40, ringDensity 20, visibleRange 32, pulseDelay 2
+                        wait 2 seconds
+                        stopeffect "%player%"
+            if {wand::teleport::%player's uuid%} is 4:
+                if Cooldown(player,15, "teleport") is true:
+                    if player's level >= 40:
+                        set {wand::cooldown::teleport::%player's uuid%} to now
+                        subtract 40 from player's level
+                        set {_loc} to spellLocation(player,45)
+                        drawWarpRings style 1, particle "redstone", RGB 80, 160, 255, center location of block at player, id "%player%", rainbowMode false, scan false, height 2, radius 2, ringCount 40, ringDensity 20, visibleRange 32, pulseDelay 2
+                        wait 1 seconds
+                        stopeffect "%player%"
+                        teleport player to {_loc}
+                        drawWarpRings style 2, particle "redstone", RGB 255, 160, 80, center location of block at player, id "%player%", rainbowMode false, scan false, height 2, radius 2, ringCount 40, ringDensity 20, visibleRange 32, pulseDelay 2
+                        wait 2 seconds
+                        stopeffect "%player%"
+            if {wand::teleport::%player's uuid%} is 4:
+                if Cooldown(player,10, "teleport") is true:
+                    if player's level >= 45:
+                        set {wand::cooldown::teleport::%player's uuid%} to now
+                        subtract 45 from player's level
+                        set {_loc} to spellLocation(player,50)
+                        drawWarpRings style 1, particle "redstone", RGB 80, 160, 255, center location of block at player, id "%player%", rainbowMode false, scan false, height 2, radius 2, ringCount 40, ringDensity 20, visibleRange 32, pulseDelay 2
+                        teleport player to {_loc}
+                        stopeffect "%player%"
+                        drawWarpRings style 1, particle "redstone", RGB 128, 0, 128, center location of block at player, id "%player%", rainbowMode false, scan false, height 2, radius 2, ringCount 40, ringDensity 20, visibleRange 32, pulseDelay 2
+                        drawWarpRings style 2, particle "redstone", RGB 0, 0, 0, center location of block at player, id "%player%", rainbowMode false, scan false, height 2, radius 2, ringCount 40, ringDensity 20, visibleRange 32, pulseDelay 2
+                        wait 4 seconds
+                        stopeffect "%player%"
 
 
-function Cooldown(p: player, cooldown: number) :: boolean:
+function Cooldown(p: player, cooldown: number, magic:text) :: boolean:
     set {_uuid} to {_p}'s uuid
-    if {wand::cooldown::%{_uuid}%} is not set:
-        set {wand::cooldown::%{_uuid}%} to now
+    if {wand::cooldown::%{_magic}%::%{_uuid}%} is not set:
+        set {wand::cooldown::%{_magic}%::%{_uuid}%} to now
         return true
     else:
-        if difference between {wand::cooldown::%{_uuid}%} and now < ("%{_cooldown}% seconds" parsed as timespan):
+        if difference between {wand::cooldown::%{_magic}%::%{_uuid}%} and now < ("%{_cooldown}% seconds" parsed as timespan):
             send action bar "&cCooldown" to {_p}
             return false
         else:
             return true
 
-function spellLocation(p: player, range: number = 15) :: location:
+function spellLocation(p: player, range: number) :: location:
     if distance between location of targeted entity of {_p} and location of {_p} is less than {_range} where [targeted entity of {_p} is alive]:
         set {_loc} to location of block at target entity of {_p}
     else:
@@ -111,7 +224,7 @@ function damageEffect(n: number, a: living entity, v: living entity, i: item):
     set {_l} to {_a}'s tool
     set {_a}'s tool to {_i}
     set {_uuid} to {_a}'s uuid
-    set {_n} to {_n} + ({skillpoints::%{_uuid}%::magic}/100)
+    set {_n} to {_n} + ({_n}/2*({skillpoints::%{_uuid}%::magic}/100))
     make {_a} damage {_v} by {_n} * 2
     delete velocity of {_v}
     set {_a}'s tool to {_l}

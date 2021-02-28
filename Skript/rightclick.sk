@@ -99,89 +99,55 @@ on right click:
     if event-block is emerald block:
         if player's held item is emerald named "&2&lEmerald Key":
             remove 1 emerald named "&2&lEmerald Key" from player's inventory
-            if {_dropped} is not 1:
-                chance of 1%:
-                    give 5 paper named "&5&l1.5x &5&lE&d&lX&5&lP Booster" to player
-                    broadcast "&a&l%player% &a&lGot 5x &5&l1.5x &5&lE&d&lX&5&lP Booster &aFrom Crate!"
-                    set {_dropped} to 1
-            if {_dropped} is not 1:
-                chance of 1%:
-                    add 750 to {gem::%player's uuid%}
-                    message "&4&lLegendz&a&lRPG &e&l>> &a+750 Gem"
-                    set {_dropped} to 1
-            if {_dropped} is not 1:
-                chance of 1%:
-                    give 5 paper named "&e&l1.5x Money Booster" to player
-                    broadcast "&a&l%player% &a&lGot 5x &e&l1.5x Money Booster &aFrom Crate!"
-                    set {_dropped} to 1
-            if {_dropped} is not 1:
-                chance of 1%:
-                    give 1 slimeball named "&4&lReset Skillpoints" to player
-                    broadcast "&a&l%player% &a&lGot &4&lReset Skillpoints &aFrom Crate!"
-                    set {_dropped} to 1
-            if {_dropped} is not 1:
-                chance of 1%:
-                    give 2 emerald named "&2&lEmerald Key" to player
-                    Broadcast "&a&l%player% &a&lGot 2 &2&lEmerald Key!"
-                    set {_dropped} to 1
-            if {_dropped} is not 1:
-                chance of 3%:
-                    add 150000 to player's balance
-                    message "&4&lLegendz&a&lRPG &e&l>> &a+$150000"
-                    set {_dropped} to 1
-            if {_dropped} is not 1:
-                chance of 5%:
-                    add 250 to {gem::%player's uuid%}
-                    message "&4&lLegendz&a&lRPG &e&l>> &a+250 Gem"
-                    set {_dropped} to 1
-            if {_dropped} is not 1:
-                chance of 5%:
-                    give 1 emerald named "&2&lEmerald Key" to player
-                    message "&4&lLegendz&a&lRPG &e&l>> &aRetry"
-                    set {_dropped} to 1
-            if {_dropped} is not 1:
-                chance of 10%:
-                    add 100000 to player's balance
-                    message "&4&lLegendz&a&lRPG &e&l>> &a+$100000"
-                    set {_dropped} to 1
-            if {_dropped} is not 1:
-                chance of 15%:
-                    add 100 to {gem::%player's uuid%}
-                    message "&4&lLegendz&a&lRPG &e&l>> &a+100 Gem"
-                    set {_dropped} to 1
-            if {_dropped} is not 1:
-                chance of 20%:
-                    add 50000 to player's balance
-                    message "&4&lLegendz&a&lRPG &e&l>> &a+$50000"
-                    set {_dropped} to 1
-            if {_dropped} is not 1:
-                chance of 5%:
-                    execute console command "/lp user %player% permission set tag.milk"
-                    message "&4&lLegendz&a&lRPG &e&l>> &a+Milk Tag"
-                    set {_dropped} to 1
-            if {_dropped} is not 1:
-                chance of 5%:
-                    execute console command "/lp user %player% permission set tag.speed"
-                    message "&4&lLegendz&a&lRPG &e&l>> &a+Speed Tag"
-                    set {_dropped} to 1
-            if {_dropped} is not 1:
-                chance of 5%:
-                    execute console command "/lp user %player% permission set tag.muffin"
-                    message "&4&lLegendz&a&lRPG &e&l>> &a+Muffin Tag"
-                    set {_dropped} to 1
-            if {_dropped} is not 1:
-                chance of 4%:
-                    execute console command "/lp user %player% permission set tag.frostlord"
-                    message "&4&lLegendz&a&lRPG &e&l>> &a+Frostlord Tag"
-                    set {_dropped} to 1
-            if {_dropped} is not 1:
-                chance of 3%:
-                    execute console command "/lp user %player% permission set tag.overlord"
-                    message "&4&lLegendz&a&lRPG &e&l>> &a+Overlord Tag"
-                    set {_dropped} to 1
-            if {_dropped} is not 1:
+            set {_random} to random integer between 1 to 85
+            if {_random} is 1:
+                give 5 paper named "&5&l1.5x &5&lE&d&lX&5&lP Booster" to player
+                broadcast "&a&l%player% &a&lGot 5x &5&l1.5x &5&lE&d&lX&5&lP Booster &aFrom Crate!"
+            if {_random} is 2:
+                add 750 to {gem::%player's uuid%}
+                message "&4&lLegendz&a&lRPG &e&l>> &a+750 Gem"
+            if {_random} is 3:
+                give 5 paper named "&e&l1.5x Money Booster" to player
+                broadcast "&a&l%player% &a&lGot 5x &e&l1.5x Money Booster &aFrom Crate!"
+            if {_random} is 4:
+                give 1 slimeball named "&4&lReset Skillpoints" to player
+                broadcast "&a&l%player% &a&lGot &4&lReset Skillpoints &aFrom Crate!"
+            if {_random} is 5:
+                give 2 emerald named "&2&lEmerald Key" to player
+                Broadcast "&a&l%player% &a&lGot 2 &2&lEmerald Key!"
+            if {_random} is between 6 and 8:
+                add 150000 to player's balance
+                message "&4&lLegendz&a&lRPG &e&l>> &a+$150000"
+            if {_random} is between 9 and 13:
+                add 250 to {gem::%player's uuid%}
+                message "&4&lLegendz&a&lRPG &e&l>> &a+250 Gem"        
+            if {_random} is between 14 and 18:
                 give 1 emerald named "&2&lEmerald Key" to player
                 message "&4&lLegendz&a&lRPG &e&l>> &aRetry"
+            if {_random} is between 19 and 28:
+                add 100000 to player's balance
+                message "&4&lLegendz&a&lRPG &e&l>> &a+$100000" 
+            if {_random} is between 29 and 43:
+                add 100 to {gem::%player's uuid%}
+                message "&4&lLegendz&a&lRPG &e&l>> &a+100 Gem"
+            if {_random} is between 44 and 63:
+                add 50000 to player's balance
+                message "&4&lLegendz&a&lRPG &e&l>> &a+$50000"
+            if {_random} is between 64 and 68:
+                execute console command "/lp user %player% permission set tag.milk"
+                message "&4&lLegendz&a&lRPG &e&l>> &a+Milk Tag"
+            if {_random} is between 69 and 73:
+                execute console command "/lp user %player% permission set tag.speed"
+                message "&4&lLegendz&a&lRPG &e&l>> &a+Speed Tag"
+            if {_random} is between 74 and 78:
+                execute console command "/lp user %player% permission set tag.muffin"
+                message "&4&lLegendz&a&lRPG &e&l>> &a+Muffin Tag"
+            if {_random} is between 79 and 82:
+                execute console command "/lp user %player% permission set tag.frostlord"
+                message "&4&lLegendz&a&lRPG &e&l>> &a+Frostlord Tag"
+            if {_random} is between 83 and 85:
+                execute console command "/lp user %player% permission set tag.overlord"
+                message "&4&lLegendz&a&lRPG &e&l>> &a+Overlord Tag"
         else:
             message "&cHold a Emerald Key Please"
 
@@ -294,42 +260,154 @@ on right click:
                         set {_requirement} to line {_slot} of lore of slot 4 of player's current inventory
                         replace every "&bLv " and "+" in {_requirement} with ""
                         set {_requirement} to {_requirement} parsed as number
-                        loop 8 times:
-                            if {_requirement} is {lv%loop-value-2%::level}:
-                                set {_amount} to item amount of slot 4 of player's current inventory
-                                loop {_amount} times:
-                                    subtract 1 from item amount of slot 4 of player's current inventory
-                                    give {lv%loop-value-2%::sell} of iron nugget named "&7Silver Coin" to player
-                                    add {lv%loop-value-2%::sell} to {_total}
-                                    set {_ok} to 1
+                        set {_amount} to item amount of slot 4 of player's current inventory
+                        loop {_amount} times:
+                            subtract 1 from item amount of slot 4 of player's current inventory
+                            give ({_requirement}/5) of iron nugget named "&7Silver Coin" to player
+                            set {_ok} to 1
                 if {_ok} is not set:
                     message "&cNot salvagable."
                     give player slot 4 of player's current inventory
                     set slot 4 of current inventory of player to air
 
+on right click:
+    if location of event-block is location (-85.5, 5.5, 743.5):
+        cancel event
+        if player doesn't have permission "is.op":
+            message "&4&lWorking In Progress"
+        else:
+            remove 1 enchanted book named "&b&lS&3&lp&b&le&3&ll&b&ll &3&lK&b&le&l&3&ly" from player's inventory
+            set {_random} to random integer between 1 to 4
+            if {_random} is 1:
+                give 1 book named "&cStrength Spell" to player
+                message "&4&lLegendz&a&lRPG &e&l>> &a+ &cStrength Spell"
+            if {_random} is 2:
+                give 1 book named "&6Defense Spell" to player
+                message "&4&lLegendz&a&lRPG &e&l>> &a+ &6Defense Spell"
+            if {_random} is 3:
+                give 1 book named "&bSpeed Spell" to player
+                message "&4&lLegendz&a&lRPG &e&l>> &a+ &bSpeed Spell"
+            if {_random} is 4:
+                give 1 book named "&dMagic Spell" to player
+                message "&4&lLegendz&a&lRPG &e&l>> &a+ &dMagic Spell"
+
+on click:
+    if location of event-block is location (-89.5, 6.5, 728.5):
+        cancel event
+        execute player command "/ah"
+
+on click:
+    if name of targeted entity is "&b&lShop":
+        open virtual chest with size 1 named "&aShop" to player
+        format gui slot 0 of player with bread named "&aFood" to run:
+            open virtual chest with size 1 named "&aFood Shop" to player
+            shop(player,0,golden apple,"&a1x Golden Apple",1,1,"Gold Coin",gold nugget,"&eGold Coin",false,"")
+        format gui slot 1 of player with water bottle named "&dPotion" to run:
+            open virtual chest with size 1 named "&dPotion Shop" to player
+            shop(player,0,potions of health,"&a1x Heal I",1,4,"Silver Coins",iron nugget,"&7Silver Coin",true,"Heal_I")
+            shop(player,1,potions of strength,"&a1x Strength I (3:00)",1,1,"Gold Coin",gold nugget,"&eGold Coin",true,"Strength_I")
+            shop(player,2,potions of regeneration, "&a1x Regen I (0:45)", 1,32,"Silver Coins", iron nugget, "&7Silver Coin",true,"Regeneration_I")
+            shop(player,3,potions of health,"&a1x Heal II",1,10,"Silver Coins",iron nugget,"&7Silver Coin",true,"Heal_II")
+        format gui slot 2 of player with arrow named "&fArrow" to run:
+            open virtual chest with size 1 named "&fArrow Shop" to player
+            shop(player,0,arrow,"&a1x Arrow",1,1,"Silver Coin",iron nugget,"&7Silver Coin",false,"")
+        format gui slot 3 of player with gold nugget named "&6Convert" to run:
+            open virtual chest with size 3 named "&6Convert" to player
+            format gui slot 0 of player with iron nugget named "&664 Silver Coin >> 1 Gold Coin" to run:
+                if player have 64 iron nugget named "&7Silver Coin":
+                    remove 64 iron nugget named "&7Silver Coin" from player's inventory
+                    give 1 gold nugget named "&eGold Coin" to player
+                else:
+                    message "&cYou need 64 &7Silver Coin&c."
+            format gui slot 1 of player with gold nugget named "&664 Gold Coin >> 1 Gold Bar" to run:
+                if player have 64 gold nugget named "&eGold Coin":
+                    remove 64 gold nugget named "&eGold Coin" from player's inventory
+                    give 1 gold ingot named "&eGold Bar" to player
+                else:
+                    message "&cYou need 64 &eGold Coin&c."
+            format gui slot 2 of player with light blue stained glass pane named ""
+            format gui slot 3 of player with light blue stained glass pane named ""
+            format gui slot 4 of player with light blue stained glass pane named ""
+            format gui slot 5 of player with light blue stained glass pane named ""
+            format gui slot 6 of player with light blue stained glass pane named ""
+            format gui slot 7 of player with light blue stained glass pane named ""
+            format gui slot 8 of player with light blue stained glass pane named ""
+            format gui slot 9 of player with iron nugget named "&664 Silver Coin << 1 Gold Coin" to run:
+                if player have 1 gold nugget named "&eGold Coin":
+                    remove 1 gold nugget named "&eGold Coin" from player's inventory
+                    give 64 iron nugget named "&7Silver Coin" to player
+                else:
+                    message "&cYou need 1 &eGold Coin&c."
+            format gui slot 10 of player with gold nugget named "&664 Gold Coin << 1 Gold Bar" to run:
+                if player have 1 gold ingot named "&eGold Bar":
+                    remove 1 gold ingot named "&eGold Bar" from player's inventory
+                    give 64 gold nugget named "&eGold Coin" to player
+                else:
+                    message "&cYou need 1 &eGold Bar&c."
+            
+            format gui slot 18 of player with iron nugget named "&664 Silver Coin >> $3500" to run:
+                if player have 64 iron nugget named "&7Silver Coin":
+                    remove 64 iron nugget named "&7Silver Coin" from player's inventory
+                    add 3500 to player's balance
+                else:
+                    message "&cYou need 64 &7Silver Coin&c."
+            format gui slot 19 of player with gold nugget named "&664 Gold Coin >> $224000" to run:
+                if player have 64 gold nugget named "&eGold Coin":
+                    remove 64 gold Nugget named "&eGold Coin" from player's inventory
+                    add 224000 to player's balance
+                else:
+                    message "&cYou need 64 &eGold Coin&c."
+        format gui slot 4 of player with tripwire hooks named "&6Key Exchange" to run:
+            open virtual chest with size 1 named "&6Key Exchange" to player
+            format gui slot 0 of player with iron ingot named "&810x Coal Key &6>> &7Silver Key" to run:
+                if player have 10 coal named "&8Coal Key":
+                    remove 10 coal named "&8Coal Key" from player's inventory
+                    give 1 iron ingot named "&7Silver Key" to player
+            format gui slot 1 of player with gold ingot named "&710x Silver Key &6>> &eGold Key" to run:
+                if player have 10 iron ingot named "&7Silver Key":
+                    remove 10 iron ingot named "&7Silver Key" from player's inventory
+                    give 1 gold ingot named "&eGold Key" to player
+            format gui slot 2 of player with diamond named "&e10x Gold Key &6>> &bDiamond Key" to run:
+                if player have 10 gold ingot named "&eGold Key":
+                    remove 10 gold ingot named "&eGold Key" from player's inventory
+                    give 1 diamond named "&bDiamond Key" to player
+            format gui slot 3 of player with emerald named "&b5x Diamond Key &6>> &2&lEmerald Key" to run:
+                if player have 5 diamond named "&bDiamond Key":
+                    remove 5 diamond named "&bDiamond Key" from player's inventory
+                    give 1 emerald named "&2&lEmerald Key" to player
+
+
+
 
 #Left clicks
 
 on leftclick:
-    if event-block is emerald block:
-        create new gui with id "Crate" with virtual chest inventory with size 3 named "&2Emerald Crate":
-            format gui slot 1 with paper named "&e$50000" with lore "&a&l20%%"
-            format gui slot 2 with paper named "&e$100000" with lore "&a&l10%%"
-            format gui slot 3 with paper named "&e$150000" with lore "&a&l3%%"
-            format gui slot 4 with emerald named "&a100 Gem" with lore "&a&l15%%"
-            format gui slot 5 with emerald named "&a250 Gem" with lore "&a&l5%%"
-            format gui slot 6 with emerald named "&a750 Gem" with lore "&a&l1%%"
-            format gui slot 7 with emerald named "&2&lEmerald Key" with lore "&a&l35%%"
-            format gui slot 8 with nametag named "&aMilk Tag" with lore "&a&l5%%"
-            format gui slot 9 with nametag named "&aSpeed Tag" with lore "&a&l5%%"
-            format gui slot 10 with nametag named "&aMuffin Tag" with lore "&a&l5%%"
-            format gui slot 11 with nametag named "&aFrostlord Tag" with lore "&a&l4%%"
-            format gui slot 12 with nametag named "&aOverlord Tag" with lore "&a&l3%%"
-            format gui slot 14 with nametag named "&a&l2x &2&lEmerald Key" with lore "&a&l1%%"
-            format next gui slot with paper named "&a&l5x &5&l1.5x &5&lE&d&lX&5&lP Booster" with lore "&a&l1%%"
-            format next gui slot with paper named "&a&l5x &b&l1.5x Money Booster" with lore "&a&l1%%"
-            format next gui slot with slimeball named "&4&lReset Skillpoints" with lore "&a&l1%%"
-        open last gui to player
+    if location of event-block is location (-87.5, 5.5, 740.5):
+        open virtual chest with size 3 named "&2Emerald Crate" to player
+        format gui slot 1 of player with paper named "&e$50000" with lore "&a&l20/85"
+        format gui slot 2 of player with paper named "&e$100000" with lore "&a&l10/85"
+        format gui slot 3 of player with paper named "&e$150000" with lore "&a&l3/85"
+        format gui slot 4 of player with emerald named "&a100 Gem" with lore "&a&l15/85"
+        format gui slot 5 of player with emerald named "&a250 Gem" with lore "&a&l5/85"
+        format gui slot 6 of player with emerald named "&a750 Gem" with lore "&a&l1/85"
+        format gui slot 7 of player with emerald named "&aRetry" with lore "&a&l5/85"
+        format gui slot 8 of player with nametag named "&aMilk Tag" with lore "&a&l5/85"
+        format gui slot 9 of player with nametag named "&aSpeed Tag" with lore "&a&l5/85"
+        format gui slot 10 of player with nametag named "&aMuffin Tag" with lore "&a&l5/85"
+        format gui slot 11 of player with nametag named "&aFrostlord Tag" with lore "&a&l4/85"
+        format gui slot 12 of player with nametag named "&aOverlord Tag" with lore "&a&l3/85"
+        format gui slot 13 of player with nametag named "&a&l2x &2&lEmerald Key" with lore "&a&l1/85"
+        format gui slot 14 of player with paper named "&a&l5x &5&l1.5x &5&lE&d&lX&5&lP Booster" with lore "&a&l1/85"
+        format gui slot 15 of player with paper named "&a&l5x &b&l1.5x Money Booster" with lore "&a&l1/85"
+        format gui slot 0 of player with slimeball named "&4&lReset Skillpoints" with lore "&a&l1/85"
+
+on leftclick:
+    if location of event-block is location (-85.5, 5.5, 743.5):
+        open virtual chest with size 1 named "&bSpell Crate" to player
+        format gui slot 0 of player with book named "&cStrength Spell" with lore "&a&l25%%"
+        format gui slot 1 of player with book named "&6Defense Spell" with lore "&a&l25%%"
+        format gui slot 2 of player with book named "&bSpeed Spell" with lore "&a&l25%%"
+        format gui slot 3 of player with book named "&dMagic Spell" with lore "&a&l25%%"
 
 on damage:
     attacker doesn't have permission "essentials.op"

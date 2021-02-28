@@ -34,6 +34,7 @@ every 1 minutes:
                     add 1 to {cf::%loop-offline player's uuid%}
                     if loop-offline player has permission "is.demigod":
                         add 2 to {cf::%loop-offline player's uuid%}
+    
 
 command /leaderboardupdate:
     trigger:
@@ -75,13 +76,25 @@ command /leaderboardupdate:
 every 15 minutes:
     execute console command "/leaderboardupdate"
 
-every 10 second:
-  loop all players:
-    set title of loop-player's scoreboard to "&4&lLegendz&a&lRPG"
-    set line 8 of loop-player's scoreboard to "&7Bal: &b%loop-player's balance%"
-    set line 7 of loop-player's scoreboard to "&7Level: &6%{level::%loop-player's uuid%}% &7Gem: &a%{gem::%loop-player's uuid%}%"
-    set line 6 of loop-player's scoreboard to "&cStrength&7: &c%{skillpoints::%loop-player's uuid%::strength}% &bSpeed&7: &b%{skillpoints::%loop-player's uuid%::speed}%"
-    set line 5 of loop-player's scoreboard to "&6Defense&7: &6%{skillpoints::%loop-player's uuid%::defense}% &dMagic&7: &d%{skillpoints::%loop-player's uuid%::magic}%"
-    set line 4 of loop-player's scoreboard to "&5E&dX&5P&7: &d%{booster::exp}%x &c%{booster::exp::time}% Min"
-    set line 3 of loop-player's scoreboard to "&eMoney&7: &e%{booster::money}%x &c%{booster::money::time}% Min"
-    set line 2 of loop-player's scoreboard to "&eLegendzRPG.minehut.gg"
+on join:
+  set title of player's scoreboard to "&4&lLegendz&a&lRPG"
+  while player is online:
+    wait 1 second
+    set line 15 of player's scoreboard to ""
+    set line 14 of player's scoreboard to "<##1ccc12> %player%:"
+    set line 13 of player's scoreboard to "  &6Balance: &e%player's balance%"
+    set line 12 of player's scoreboard to "  &2Gem: &a%{gem::%player's uuid%}%"
+    set line 11 of player's scoreboard to "  &5Level: &d%{level::%player's uuid%}%"
+    set {_xp} to xpBar("%{exp::%player's uuid%}%/%{expforlvlup::%player's uuid%}%", {exp::%player's uuid%}/{expforlvlup::%player's uuid%})
+    set line 10 of player's scoreboard to "  &5Exp: &d[&a%{exp::%player's uuid%}%&8/&a%{expforlvlup::%player's uuid%}%&d]"
+    set line 9 of player's scoreboard to ""
+    set line 8 of player's scoreboard to "<##1ccc12> Boosters:"
+    set line 7 of player's scoreboard to "  &7Exp: &a%{booster::exp}%x &c%{booster::exp::time}% Min"
+    set line 6 of player's scoreboard to "  &7Money: &a%{booster::money}%x &c%{booster::money::time}% Min"
+    set line 5 of player's scoreboard to ""
+    set line 4 of player's scoreboard to "&eLegendzRPG.minehut.gg"
+
+
+function xpBar(s:string, percentage: number) :: string:
+  replace first floor(length of {_s} * {_percentage}) characters of {_s} with "&a%first floor(length of {_s} * {_percentage}) characters of {_s}%&7" in {_s}
+  return {_s}

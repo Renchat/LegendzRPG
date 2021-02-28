@@ -92,68 +92,68 @@ on rightclick holding item frame:
         format gui slot 16 of player with barrier named "&cComing Soon"
 function ma(p: player, t: text, s: number, m: number, b: boolean, d: text, v: text, g: text, boss: text):
     set {_q} to {_p}'s uuid
-    if {achievements::%{_q}%::%{_t}%} is not set:
-        set {achievements::%{_q}%::%{_t}%} to 0
-    if {achievements::%{_q}%::%{_t}%slayer} is not set:
-        set {achievements::%{_q}%::%{_t}%slayer} to 0
+    if {achievements::%{_t}%::%{_q}%} is not set:
+        set {achievements::%{_t}%::%{_q}%} to 0
+    if {achievements::%{_t}%slayer::%{_q}%} is not set:
+        set {achievements::%{_t}%slayer::%{_q}%} to 0
     if {_b} is false:
-        set {_o} to 250*2^{achievements::%{_q}%::%{_t}%slayer}
-        set {_h} to {_m}*2^{achievements::%{_q}%::%{_t}%slayer}
-        set {_u} to {achievements::%{_q}%::%{_t}%slayer}+1
-        if {achievements::%{_q}%::%{_t}%} >= {_o}:
+        set {_o} to 250*2^{achievements::%{_t}%slayer::%{_q}%}
+        set {_h} to {_m}*2^{achievements::%{_t}%slayer::%{_q}%}
+        set {_u} to {achievements::%{_t}%slayer::%{_q}%}+1
+        if {achievements::%{_t}%::%{_q}%} >= {_o}:
             format gui slot {_s} of {_p} with green stained glass pane named "&a&l%{_t}% Slayer [%{_u}%]" with lore "&6Kill %{_o}% %{_t}%s", "&e+%{_h}% Exp" and "&d&lClaimable" to run:
                 add {_h} to {exp::%{_q}%}
-                add 1 to {achievements::%{_q}%::%{_t}%slayer}
+                add 1 to {achievements::%{_t}%slayer::%{_q}%}
                 send "&a&lAchievement Complete!" to {_p}
                 send "&6Reward: &e%{_h}% Exp" to {_p}
                 ma({_p}, {_t}, {_s}, {_m}, {_b}, {_d}, {_v}, {_g}, {_boss})
         else:
-            format gui slot {_s} of {_p} with red stained glass pane named "&c&l%{_t}% Slayer [%{_u}%]" with lore "&6Kill %{_o}% %{_t}%s", "&e+%{_h}% Exp" and "&d%{achievements::%{_q}%::%{_t}%}%/%{_o}%"
+            format gui slot {_s} of {_p} with red stained glass pane named "&c&l%{_t}% Slayer [%{_u}%]" with lore "&6Kill %{_o}% %{_t}%s", "&e+%{_h}% Exp" and "&d%{achievements::%{_t}%::%{_q}%}%/%{_o}%"
     else:
-        if {achievements::%{_q}%::masterlv%{_g}%} is not set:
-            set {achievements::%{_q}%::masterlv%{_g}%} to 1
-        set {_h} to {_m}*2^{achievements::%{_q}%::masterlv%{_g}%}
-        set {_o} to 250*2^{achievements::%{_q}%::masterlv%{_g}%}
-        set {_o2} to 100*2^{achievements::%{_q}%::masterlv%{_g}%}
-        set {_o3} to 10*2^{achievements::%{_q}%::masterlv%{_g}%}
-        set {_u} to {achievements::%{_q}%::masterlv%{_g}%}+1
-        if {achievements::%{_q}%::%{_d}%} is not set:
-            set {achievements::%{_q}%::%{_d}%} to 0
-        if {achievements::%{_q}%::%{_v}%} is not set:
-            set {achievements::%{_q}%::%{_v}%} to 0
-        if {achievements::%{_q}%::%{_boss}%} is not set:
-            set {achievements::%{_q}%::%{_boss}%} to 0
-        if {achievements::%{_q}%::%{_t}%} >= {_o}:
-            if {achievements::%{_q}%::%{_d}%} >= {_o2}:
-                if {achievements::%{_q}%::%{_boss}%} >= {_o3}:
+        if {achievements::masterlv%{_g}%::%{_q}%} is not set:
+            set {achievements::masterlv%{_g}%::%{_q}%} to 1
+        set {_h} to {_m}*2^{achievements::masterlv%{_g}%::%{_q}%}
+        set {_o} to 250*2^{achievements::masterlv%{_g}%::%{_q}%}
+        set {_o2} to 100*2^{achievements::masterlv%{_g}%::%{_q}%}
+        set {_o3} to 10*2^{achievements::masterlv%{_g}%::%{_q}%}
+        set {_u} to {achievements::masterlv%{_g}%::%{_q}%}
+        if {achievements::%{_d}%::%{_q}%} is not set:
+            set {achievements::%{_d}%::%{_q}%} to 0
+        if {achievements::%{_v}%::%{_q}%} is not set:
+            set {achievements::%{_v}%::%{_q}%} to 0
+        if {achievements::%{_boss}%::%{_q}%} is not set:
+            set {achievements::%{_boss}%::%{_q}%} to 0
+        if {achievements::%{_t}%::%{_q}%} >= {_o}:
+            if {achievements::%{_d}%::%{_q}%} >= {_o2}:
+                if {achievements::%{_boss}%::%{_q}%} >= {_o3}:
                     format gui slot {_s} of {_p} with green stained glass pane named "&a&lMaster Level %{_g}% [%{_u}%]" with lore "&6Kill %{_o}% %{_t}%, %{_o2}% %{_d}%, and %{_o3}% %{_boss}%", "&e+%{_h}% Exp" and "&d&lClaimable" to run:
                         add {_h} to {exp::%{_q}%}
-                        add 1 to {achievements::%{_q}%::masterlv%{_g}%}
+                        add 1 to {achievements::masterlv%{_g}%::%{_q}%}
                         send "&a&lAchievement Complete!" to {_p}
                         send "&6Reward: &e%{_h}% Exp" to {_p}
                         ma({_p}, {_t}, {_s}, {_m}, {_b}, {_d}, {_v}, {_g}, {_boss})
                 else:
-                    format gui slot {_s} of {_p} with red stained glass pane named "&c&lMaster Level %{_g}% [%{_u}%]" with lore "&6Kill %{_o}% %{_t}%, %{_o2}% %{_d}%, and %{_o3}% %{_boss}%", "&e+%{_h}% Exp", "&d%{achievements::%{_q}%::%{_t}%}%/%{_o}%", "&d%{achievements::%{_q}%::%{_d}%}%/%{_o2}%" and "&d%{achievements::%{_q}%::%{_boss}%}%/%{_o3}%"
+                    format gui slot {_s} of {_p} with red stained glass pane named "&c&lMaster Level %{_g}% [%{_u}%]" with lore "&6Kill %{_o}% %{_t}%, %{_o2}% %{_d}%, and %{_o3}% %{_boss}%", "&e+%{_h}% Exp", "&d%{achievements::%{_t}%::%{_q}%}%/%{_o}%", "&d%{achievements::%{_d}%::%{_q}%}%/%{_o2}%" and "&d%{achievements::%{_boss}%::%{_q}%}%/%{_o3}%"
             else:
-                format gui slot {_s} of {_p} with red stained glass pane named "&c&lMaster Level %{_g}% [%{_u}%]" with lore "&6Kill %{_o}% %{_t}%, %{_o2}% %{_d}%, and %{_o3}% %{_boss}%", "&e+%{_h}% Exp", "&d%{achievements::%{_q}%::%{_t}%}%/%{_o}%", "&d%{achievements::%{_q}%::%{_d}%}%/%{_o2}%" and "&d%{achievements::%{_q}%::%{_boss}%}%/%{_o3}%"
+                format gui slot {_s} of {_p} with red stained glass pane named "&c&lMaster Level %{_g}% [%{_u}%]" with lore "&6Kill %{_o}% %{_t}%, %{_o2}% %{_d}%, and %{_o3}% %{_boss}%", "&e+%{_h}% Exp", "&d%{achievements::%{_t}%::%{_q}%}%/%{_o}%", "&d%{achievements::%{_d}%::%{_q}%}%/%{_o2}%" and "&d%{achievements::%{_boss}%::%{_q}%}%/%{_o3}%"
         else:
-            format gui slot {_s} of {_p} with red stained glass pane named "&c&lMaster Level %{_g}% [%{_u}%]" with lore "&6Kill %{_o}% %{_t}%, %{_o2}% %{_d}%, and %{_o3}% %{_boss}%", "&e+%{_h}% Exp", "&d%{achievements::%{_q}%::%{_t}%}%/%{_o}%", "&d%{achievements::%{_q}%::%{_d}%}%/%{_o2}%" and "&d%{achievements::%{_q}%::%{_boss}%}%/%{_o3}%"
+            format gui slot {_s} of {_p} with red stained glass pane named "&c&lMaster Level %{_g}% [%{_u}%]" with lore "&6Kill %{_o}% %{_t}%, %{_o2}% %{_d}%, and %{_o3}% %{_boss}%", "&e+%{_h}% Exp", "&d%{achievements::%{_t}%::%{_q}%}%/%{_o}%", "&d%{achievements::%{_d}%::%{_q}%}%/%{_o2}%" and "&d%{achievements::%{_boss}%::%{_q}%}%/%{_o3}%"
 
 function miningAchievement(p: player, t: text, s: number, m: number):
     set {_q} to {_p}'s uuid
-    if {achievements::%{_q}%::%{_t}%} is not set:
-        set {achievements::%{_q}%::%{_t}%} to 0
-    if {achievements::%{_q}%::%{_t}%miner} is not set:
-        set {achievements::%{_q}%::%{_t}%miner} to 0
-    set {_o} to 250*2^{achievements::%{_q}%::%{_t}%miner}
-    set {_h} to {_m}*2^{achievements::%{_q}%::%{_t}%miner}
-    set {_u} to {achievements::%{_q}%::%{_t}%miner}+1
-    if {achievements::%{_q}%::%{_t}%} >= {_o}:
+    if {achievements::%{_t}%::%{_q}%} is not set:
+        set {achievements::%{_t}%::%{_q}%} to 0
+    if {achievements::%{_t}%miner::%{_q}%} is not set:
+        set {achievements::%{_t}%miner::%{_q}%} to 0
+    set {_o} to 250*2^{achievements::%{_t}%miner::%{_q}%}
+    set {_h} to {_m}*2^{achievements::%{_t}%miner::%{_q}%}
+    set {_u} to {achievements::%{_t}%miner::%{_q}%}+1
+    if {achievements::%{_t}%::%{_q}%} >= {_o}:
         format gui slot {_s} of {_p} with green stained glass pane named "&a&l%{_t}% Miner [%{_u}%]" with lore "&6Break %{_o}% %{_t}%s", "&e+%{_h}% Exp" and "&d&lClaimable" to run:
             add {_h} to {exp::%{_q}%}
-            add 1 to {achievements::%{_q}%::%{_t}%miner}
+            add 1 to {achievements::%{_t}%miner::%{_q}%}
             send "&a&lAchievement Complete!" to {_p}
             send "&6Reward: &e%{_h}% Exp" to {_p}
             miningAchievement({_p}, {_t}, {_s}, {_m})
     else:
-        format gui slot {_s} of {_p} with red stained glass pane named "&c&l%{_t}% Miner [%{_u}%]" with lore "&6Break %{_o}% %{_t}%s", "&e+%{_h}% Exp" and "&d%{achievements::%{_q}%::%{_t}%}%/%{_o}%"
+        format gui slot {_s} of {_p} with red stained glass pane named "&c&l%{_t}% Miner [%{_u}%]" with lore "&6Break %{_o}% %{_t}%s", "&e+%{_h}% Exp" and "&d%{achievements::%{_t}%::%{_q}%}%/%{_o}%"

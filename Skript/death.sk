@@ -1,70 +1,38 @@
-#BOSSES
-on death:
-    if name of victim is "&6[3] &cEnhanced Zombie":
-        boss((victim),(15),(attacker),(10),(2),(level of looting of attacker's tool),("Zombie_Core"),("Skin_Boots"),(3),("Skin_Cap"),(3),("Skin_Legging"),(3),("Chestplate"),(0),("Rusty_Sword"),(3),("Bow"),(0),("enhancedzombie"), (40))
-    if name of victim is "&6[4] &cEnhanced Husk":
-        boss((victim),(25),(attacker),(15),(3),(level of looting of attacker's tool),("Husk_Core"),("Sandstone_Boots"),(3),("Sandstone_Helmet"),(3),("Sandstone_Legging"),(3),("Sandstone_Chestplate"),(3),("Sandstone_Sword"),(3),("Bow"),(0),("enhancedhusk"), (60))
-    if name of victim is "&6[5] &cEnhanced Stray":
-        boss((victim),(34),(attacker),(25),(4),(level of looting of attacker's tool),("Stray_Core"),("Icy_Boots"),(3),("Icy_Helmet"),(3),("Icy_Legging"),(3),("Icy_Chestplate"),(3),("Icy_Sword"),(3),("Icy_Bow"),(3),("enhancedstray"), (100))
-    if name of victim is "&6[6] &cAncient Skeleton":
-        boss((victim),(46),(attacker),(43),(5),(level of looting of attacker's tool),("Skeleton_Core"),("Bone_Boots"),(3),("Ancient_Skull"),(3),("Bone_Legging"),(3),("Bone_Chestplate"),(3),("Acient_Long_Sword"),(3),("Bow"),(0),("ancientskeleton"), (130))
-    if name of victim is "&6[7] &cSilvery":
-        #boss((victim),(exp),(attacker),(money),(coin),(level of looting of attacker's tool),("core"),("Boots"),(3),("Head"),(3),("Legging"),(3),("Chestplate"),(3),("Sword"),(3),("Bow"),(3),("mobname"))
-        boss((victim),(53),(attacker),(43),(6),(level of looting of attacker's tool),("Silvery_Core"),("Miner_Boots"),(3),("Miner_Helmet"),(3),("Miner_Legging"),(3),("Miner_Chestplate"),(3),("Miner_Pickaxe"),(3),("Bow"),(0),("silvery"), (165))
-    if name of victim is "&6[&d&lDungeon&6] &5&lArsyg":
-        #boss((victim),(exp),(attacker),(money),(coin),(level of looting of attacker's tool),("core"),("Boots"),(3),("Head"),(3),("Legging"),(3),("Chestplate"),(3),("Sword"),(3),("Bow"),(3),("mobname"))
-        boss((victim),(250),(attacker),(500),(50),(level of looting of attacker's tool),("Dragon_Core"),("Dragon_Scales_Boots"),(3),("Dragons_Head"),(3),("Dragon_Scales_Legging"),(3),("Dragon_Scales_Chestplate"),(3),("Dragon_Fang"),(3),("Bow"),(0),("arsyg"), (9999))
-        Broadcast "&5&lArsyg &a&lHas Been Defeated. Timer Reset &7(/boss)"
-        set {arsyg} to 600
-        loop all players in radius 40 around victim:
-            wait 20 seconds
-            execute console command "/warp city %loop-player%"
-            message "&c&lBEGONE INTRUDERS!" to loop-player
-    if name of victim is "&6[8] &cDemon":
-        #boss((victim),(exp),(attacker),(money),(coin),(level of looting of attacker's tool),("core"),("Boots"),(3),("Head"),(3),("Legging"),(3),("Chestplate"),(3),("Sword"),(3),("Bow"),(3),("mobname"))
-        boss((victim),(79),(attacker),(46),(7),(level of looting of attacker's tool),("Demon_Core"),("Sulfur_Boots"),(3),("Demon_Head"),(3),("Sulfur_Legging"),(3),("Sulfur_Chestplate"),(3),("Demonium_Broadsword"),(3),("Bow"),(0),("demon"), (200))
-    if display name of victim is "&6[9] &cSpoodaman":
-        #boss((victim),(exp),(attacker),(money),(coin),(level of looting of attacker's tool),("core"),("Boots"),(3),("Head"),(3),("Legging"),(3),("Chestplate"),(3),("Sword"),(3),("Bow"),(3),("mobname"))
-        boss((victim),(99),(attacker),(53),(8),(level of looting of attacker's tool),("SpoodaMan_Core"),("Spider_Boots"),(3),("SpoodaMan_Head"),(3),("Spider_Legging"),(3),("Spider_Chestplate"),(3),("Venomous_Blade"),(3),("Heavenly_Bow"),(0),("spoodaman"), (230))
-    if display name of victim is "&6[10] &cHeavenly Guard":
-        boss((victim),(136),(attacker),(59),(9),(level of looting of attacker's tool),("Heavenly_Core"),("Heavenly_Boots"),(3),("Heavenly_Head"),(3),("Heavenly_Legging"),(3),("Heavenly_Chestplate"),(3),("Heavenly_Sword"),(3),("Heavenly_Bow"),(3),("heavenlyguard"), (9999))
-
-
 #MOBS
 on death:
     #function mob(attacker, victim, exp, $, coin, true or false for boss keys, "name of boss key", achievement name)
     if name of victim is "&6[1] &eZombie":
-        mobs(attacker, victim, 4, 1, false, "", "zombie", 40)
+        mobs(attacker, victim, 4, 1, false, "", "zombie", 40, "Lv1_")
     if name of victim is "&6[2] &eHusk":
-        mobs(attacker, victim, 8, 3.5, false, "", "husk", 60)
+        mobs(attacker, victim, 8, 3.5, false, "", "husk", 60, "Lv1_")
     if name of victim is "&6[3] &eStray":
-        mobs(attacker, victim, 14, 4.5, false, "", "stray", 60)
+        mobs(attacker, victim, 14, 4.5, false, "", "stray", 60, "Lv2_")
         chance of 8%:
             execute console command "/mm i give -s %attacker% Sandstone_Bow"
     if name of victim is "&6[3] &eWolf":
-        mobs(attacker, victim, 16, 4.5, false, "", "wolf", 100)
+        mobs(attacker, victim, 16, 4.5, false, "", "wolf", 100, "Lv3_")
     if name of victim is "&6[4] &ePolar Bear":
-        mobs(attacker, victim, 21, 6, false, "", "polarbear", 100)
+        mobs(attacker, victim, 21, 6, false, "", "polarbear", 100, "Lv3_")
     if name of victim is "&6[4] &eRhinoBeetle":
-        mobs(attacker, victim, 26, 6, false, "", "rhinobeetle", 130)
+        mobs(attacker, victim, 26, 6, false, "", "rhinobeetle", 130, "Lv4_")
     if name of victim is "&6[5] &eSkeleton":
-        mobs(attacker, victim, 34, 8, false, "", "skeleton", 130)
+        mobs(attacker, victim, 34, 8, false, "", "skeleton", 130, "Lv4_")
     if name of victim is "&6[5] &eMiner Pillager":
-        mobs(attacker, victim, 41, 8, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "minerpillager", 165)
+        mobs(attacker, victim, 41, 8, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "minerpillager", 165, "Lv5_")
     if name of victim is "&6[6] &eMiner Zombie":
-        mobs(attacker, victim, 49, 10, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "minerzombie", 165)
+        mobs(attacker, victim, 49, 10, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "minerzombie", 165, "Lv5_")
     if name of victim is "&6[6] &eInfernal Pig":
-        mobs(attacker, victim, 58, 10, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "infernalpig", 200)
+        mobs(attacker, victim, 58, 10, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "infernalpig", 200, "Lv6_")
     if name of victim is "&6[7] &eImp":
-        mobs(attacker, victim, 68, 12, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "imp", 200)
+        mobs(attacker, victim, 68, 12, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "imp", 200, "Lv6_")
     if name of victim is "&6[7] &eSpider":
-        mobs(attacker, victim, 79, 12, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "spider", 230)
+        mobs(attacker, victim, 79, 12, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "spider", 999, "Lv7_")
     if name of victim is "&6[8] &eCave Spider":
-        mobs(attacker, victim, 91, 15, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "cavespider", 230)
+        mobs(attacker, victim, 91, 15, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "cavespider", 999, "Lv7_")
     if name of victim is "&6[8] &eAngel":
-        mobs(attacker, victim, 105, 15, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "angel", 999)
+        mobs(attacker, victim, 105, 15, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "angel", 999, "Lv8_")
     if name of victim is "&6[9] &ePhantom":
-        mobs(attacker, victim, 110, 19, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "phantom", 999)
+        mobs(attacker, victim, 110, 19, true, "&6&l[&c&l5&6&l] &c&lBoss Room Key", "phantom", 999, "Lv8_")
 
 function death(v: entity):
     set {_p} to {_v}'s uuid
@@ -89,11 +57,11 @@ function death(v: entity):
         add 1 to {_result}
         message "&m&0------------&l&cHighest Damage&m&0------------" to all players in radius 10 around {_v}
         message "&b%loop-value%&7: &e%{mostdamage::entity::%{_p}%::%loop-value%}% Damage" to all players in radius 10 around {_v}
-        set {mostdamage::entity::%{_p}%::HDP} to loop-value
+        set {mostdamage::entity::%{_p}%::HDP} to loop-value parsed as player
         if {_result} is 1:
             stop loop
 
-function mobs(p: player, v: entity, e: number, m: number, x: boolean, t: text, n: text, maxlevel: number):
+function mobs(p: player, v: entity, e: number, m: number, x: boolean, t: text, n: text, maxlevel: number, l: text):
     set {_uuid} to {_p}'s uuid
     set {_mobuuid} to {_v}'s uuid
     add ({_m}*{booster::money}) to {_p}'s balance
@@ -108,14 +76,26 @@ function mobs(p: player, v: entity, e: number, m: number, x: boolean, t: text, n
             add 1 to {gem::%{_uuid}%}
             broadcast "&a%{_p}% &aReceived a Gem from killing %{_v}%"
         if {_x} is true:
-            chance of 0.5%:
+            chance of 0.75%:
                 give tripwire hook named {_t} to {_p}
                 broadcast "&a%{_p}% &aReceived a Boss Room Key from killing %{_v}%"
-    delete {mostdamage::%{_mobuuid}%::*}
-    add 1 to {achievements::%{_uuid}%::%{_n}%}
+    set {_RNG} to RNG(1,100)
+    if {_RNG} is between 1 and 7: #5% drop rate
+        set {_RNG} to RNG(1,5)
+        if {_RNG} is 1:
+            mobdrop(({_p}),({_v}),(false),("%{_l}%Sword"))
+        if {_RNG} is 2:
+            mobdrop(({_p}),({_v}),(false),("%{_l}%Helmet"))
+        if {_RNG} is 3:
+            mobdrop(({_p}),({_v}),(false),("%{_l}%Chestplate"))
+        if {_RNG} is 4:
+            mobdrop(({_p}),({_v}),(false),("%{_l}%Legging"))
+        if {_RNG} is 5:
+            mobdrop(({_p}),({_v}),(false),("%{_l}%Boots"))
+    delete {mostdamage::entity::%{_mobuuid}%::*}
+    add 1 to {achievements::%{_n}%::%{_uuid}%}
 
-function boss(v:entity, e:number, a:player, m:number, coin:number, loot:number, core:text, r1:text, c1:number, r2:text, c2:number, r3:text, c3:number, r4:text, c4:number, r5:text, c5:number, r6:text, c6:number, i:text, maxlevel:number):
-    death({_v})
+function bosses(v:entity, e:number, a:player, m:number, maxlevel:number, l:text):
     wait 5 ticks
     set {_uuid} to {_a}'s uuid
     set {_bossuuid} to {_v}'s uuid
@@ -126,43 +106,347 @@ function boss(v:entity, e:number, a:player, m:number, coin:number, loot:number, 
     play sound "entity.experience_orb.pickup" at volume 0.3 to {mostdamage::entity::%{_bossuuid}%::HDP}
     add {_m}*{booster::money} to {_a}'s balance
     message "&a+$%{_m}*{booster::money}%" to {_a}
-    if {level::%{_uuid}%} > {_maxlevel}:
-        chance of (1.75+(0.3*{_loot}))%:
-            execute console command "/mm i give -s %{mostdamage::entity::%{_bossuuid}%::HDP}% %{_core}%"
-            message "&aReceived %{_core}% From Most Damaging Player Reward" to {_a}
-            set {_dropped} to 1
-        execute console command "/mm i give -s %{_a}% Coin %{_coin}%"
-    if {_dropped} is not 1:
-        chance of {_c1}%:
-            execute console command "/mm i give -s %{mostdamage::entity::%{_bossuuid}%::HDP}% %{_r1}%"
-            message "&aReceived %{_r1}% From Most Damaging Player Reward" to {_a}
-            set {_dropped} to 1
-    if {_dropped} is not 1:
-        chance of {_c2}%:
-            execute console command "/mm i give -s %{mostdamage::entity::%{_bossuuid}%::HDP}% %{_r2}%"
-            message "&aReceived %{_r2}% From Most Damaging Player Reward" to {_a}
-            set {_dropped} to 1
-    if {_dropped} is not 1:
-        chance of {_c3}%:
-            execute console command "/mm i give -s %{mostdamage::entity::%{_bossuuid}%::HDP}% %{_r3}%"
-            message "&aReceived %{_r3}% From Most Damaging Player Reward" to {_a}
-            set {_dropped} to 1
-    if {_dropped} is not 1:
-        chance of {_c4}%:
-            execute console command "/mm i give -s %{mostdamage::entity::%{_bossuuid}%::HDP}% %{_r4}%"
-            message "&aReceived %{_r4}% From Most Damaging Player Reward" to {_a}
-            set {_dropped} to 1
-    if {_dropped} is not 1:
-        chance of {_c5}%:
-            execute console command "/mm i give -s %{mostdamage::entity::%{_bossuuid}%::HDP}% %{_r5}%"
-            message "&aReceive %{_r5}% From Most Damaging Player Reward" to {_a}
-            set {_dropped} to 1
-    if {_dropped} is not 1:
-        chance of {_c6}%:
-            execute console command "/mm i give -s %{mostdamage::entity::%{_bossuuid}%::HDP}% %{_r6}%"
-            message "&aReceive %{_r6}% From Most Damaging Player Reward" to {_a}
-            set {_dropped} to 1
-    loop all players in radius 10 around {_v}:
-        message "&c&l%{mostdamage::entity::%{_bossuuid}%::HDP}% Got Most Damaging Player Reward" to loop-player
-    delete {mostdamage::entity::%{_bossuuid}%::HDP}
-    add 1 to {achievements::%{_uuid}%::%{_i}%}
+    if {level::%{_uuid}%} < {_maxlevel}:
+        chance of 1.75%:
+            execute console command "/mm i give -s %{mostdamage::entity::%{_bossuuid}%::HDP}% %{_l}%Core"
+            message "&aReceived Core From Most Damaging Player Reward" to {_a}
+        execute console command "/mm i give -s %{_p}% Coin %{_coin}%"
+
+function mobdrop(p:player, v:entity, b:boolean, reward:text):
+    set {_uuid} to {_p}'s uuid
+    set {_mobuuid} to {_v}'s uuid
+    if {_b} is true:
+        execute console command "/mm i give -s %{mostdamage::entity::%{_mobuuid}%::HDP}% %{_reward}%"
+        message "&aReceived &6%{_reward}% &afrom most damage reward." to {mostdamage::entity::%{_mobuuid}%::HDP}
+    if {_b} is false:
+        execute console command "/mm i give -s %{_p}% %{_reward}%"
+        message "&aRecieved &6%{_reward}% &afrom last hit reward." to {_p}
+        
+on death:
+    set {_mobsuuid} to victim's uuid
+    set {_uuid} to attacker's uuid
+    if name of victim is "&6[3] &cEnhanced Zombie":
+        death(victim)
+        set {_l} to "Lv1Boss_"
+        set {_i} to "enhancedzombie"
+        wait 5 ticks
+        bosses((victim),(15),(attacker),(10),(40),("%{_l}%"))
+        set {_RNG} to RNG(1,100)
+        if {_RNG} is between 1 and 20: #20% drop rate
+            set {_RNG} to RNG(1,4)
+            if {_RNG} is 1:
+                mobdrop((attacker),(victim),(true),("%{_l}%Sword"))
+            if {_RNG} is 2:
+                mobdrop((attacker),(victim),(true),("%{_l}%Helmet"))
+            if {_RNG} is 3:
+                mobdrop((attacker),(victim),(true),("%{_l}%Legging"))
+            if {_RNG} is 4:
+                mobdrop((attacker),(victim),(true),("%{_l}%Boots"))
+        wait 1 tick
+        set {_RNG} to RNG(1,100)
+        if {_RNG} is between 1 and 15: #20% droprate
+            set {_RNG} to RNG(1,4)
+            if {_RNG} is 1:
+                mobdrop((attacker),(victim),(false),("%{_l}%Sword"))
+            if {_RNG} is 2:
+                mobdrop((attacker),(victim),(false),("%{_l}%Helmet"))
+            if {_RNG} is 3:
+                mobdrop((attacker),(victim),(false),("%{_l}%Legging"))
+            if {_RNG} is 4:
+                mobdrop((attacker),(victim),(false),("%{_l}%Boots"))
+    if name of victim is "&6[4] &cEnhanced Husk":
+        death(victim)
+        set {_l} to "Lv2Boss_"
+        set {_i} to "enhancedhusk"
+        wait 5 ticks
+        bosses((victim),(25),(attacker),(15),(60),("%{_l}%"))
+        set {_RNG} to RNG(1,100)
+        if {_RNG} is between 1 and 20: #25% drop rate
+            set {_RNG} to RNG(1,5)
+            if {_RNG} is 1:
+                mobdrop((attacker),(victim),(true),("%{_l}%Sword"))
+            if {_RNG} is 2:
+                mobdrop((attacker),(victim),(true),("%{_l}%Helmet"))
+            if {_RNG} is 3:
+                mobdrop((attacker),(victim),(true),("%{_l}%Chestplate"))
+            if {_RNG} is 4:
+                mobdrop((attacker),(victim),(true),("%{_l}%Legging"))
+            if {_RNG} is 5:
+                mobdrop((attacker),(victim),(true),("%{_l}%Boots"))
+        set {_RNG} to RNG(1,100)
+        if {_RNG} is between 1 and 15: #20% droprate
+            set {_RNG} to RNG(1,5)
+            if {_RNG} is 1:
+                mobdrop((attacker),(victim),(false),("%{_l}%Sword"))
+            if {_RNG} is 2:
+                mobdrop((attacker),(victim),(false),("%{_l}%Helmet"))
+            if {_RNG} is 3:
+                mobdrop((attacker),(victim),(false),("%{_l}%Chestplate"))
+            if {_RNG} is 4:
+                mobdrop((attacker),(victim),(false),("%{_l}%Legging"))
+            if {_RNG} is 5:
+                mobdrop((attacker),(victim),(false),("%{_l}%Boots"))
+    if name of victim is "&6[5] &cEnhanced Stray":
+        death(victim)
+        set {_l} to "Lv3Boss_"
+        set {_i} to "enhancedstray"
+        wait 5 ticks
+        bosses((victim),(34),(attacker),(25),(100),("%{_l}%"))
+        set {_RNG} to RNG(1,100)
+        if {_RNG} is between 1 and 20: #20% drop rate
+            set {_RNG} to RNG(1,6)
+            if {_RNG} is 1:
+                mobdrop((attacker),(victim),(true),("%{_l}%Sword"))
+            if {_RNG} is 2:
+                mobdrop((attacker),(victim),(true),("%{_l}%Helmet"))
+            if {_RNG} is 3:
+                mobdrop((attacker),(victim),(true),("%{_l}%Chestplate"))
+            if {_RNG} is 4:
+                mobdrop((attacker),(victim),(true),("%{_l}%Legging"))
+            if {_RNG} is 5:
+                mobdrop((attacker),(victim),(true),("%{_l}%Boots"))
+            if {_RNG} is 6:
+                mobdrop((attacker),(victim),(true),("%{_l}%Bow"))
+        set {_RNG} to RNG(1,100)
+        wait 1 tick
+        if {_RNG} is between 1 and 15: #15% droprate
+            set {_RNG} to RNG(1,6)
+            if {_RNG} is 1:
+                mobdrop((attacker),(victim),(false),("%{_l}%Sword"))
+            if {_RNG} is 2:
+                mobdrop((attacker),(victim),(false),("%{_l}%Helmet"))
+            if {_RNG} is 3:
+                mobdrop((attacker),(victim),(false),("%{_l}%Chestplate"))
+            if {_RNG} is 4:
+                mobdrop((attacker),(victim),(false),("%{_l}%Legging"))
+            if {_RNG} is 5:
+                mobdrop((attacker),(victim),(false),("%{_l}%Boots"))
+            if {_RNG} is 6:
+                mobdrop((attacker),(victim),(true),("%{_l}%Bow"))
+    if name of victim is "&6[6] &cAncient Skeleton":
+        death(victim)
+        set {_l} to "Lv4Boss_"
+        set {_i} to "ancientskeleton"
+        wait 5 ticks
+        bosses((victim),(46),(attacker),(43),(130),("%{_l}%"))
+        set {_RNG} to RNG(1,100)
+        if {_RNG} is between 1 and 20: #20% drop rate
+            set {_RNG} to RNG(1,5)
+            if {_RNG} is 1:
+                mobdrop((attacker),(victim),(true),("%{_l}%Sword"))
+            if {_RNG} is 2:
+                mobdrop((attacker),(victim),(true),("%{_l}%Helmet"))
+            if {_RNG} is 3:
+                mobdrop((attacker),(victim),(true),("%{_l}%Chestplate"))
+            if {_RNG} is 4:
+                mobdrop((attacker),(victim),(true),("%{_l}%Legging"))
+            if {_RNG} is 5:
+                mobdrop((attacker),(victim),(true),("%{_l}%Boots"))
+        set {_RNG} to RNG(1,100)
+        wait 1 tick
+        if {_RNG} is between 1 and 15: #15% droprate
+            set {_RNG} to RNG(1,5)
+            if {_RNG} is 1:
+                mobdrop((attacker),(victim),(false),("%{_l}%Sword"))
+            if {_RNG} is 2:
+                mobdrop((attacker),(victim),(false),("%{_l}%Helmet"))
+            if {_RNG} is 3:
+                mobdrop((attacker),(victim),(false),("%{_l}%Chestplate"))
+            if {_RNG} is 4:
+                mobdrop((attacker),(victim),(false),("%{_l}%Legging"))
+            if {_RNG} is 5:
+                mobdrop((attacker),(victim),(false),("%{_l}%Boots"))
+    if name of victim is "&6[7] &cSilvery":
+        death(victim)
+        set {_l} to "Lv5Boss_"
+        set {_i} to "silvery"
+        wait 5 ticks
+        bosses((victim),(53),(attacker),(50),(165),("%{_l}%"))
+        set {_RNG} to RNG(1,100)
+        if {_RNG} is between 1 and 20: #20% drop rate
+            set {_RNG} to RNG(1,5)
+            if {_RNG} is 1:
+                mobdrop((attacker),(victim),(true),("%{_l}%Sword"))
+            if {_RNG} is 2:
+                mobdrop((attacker),(victim),(true),("%{_l}%Helmet"))
+            if {_RNG} is 3:
+                mobdrop((attacker),(victim),(true),("%{_l}%Chestplate"))
+            if {_RNG} is 4:
+                mobdrop((attacker),(victim),(true),("%{_l}%Legging"))
+            if {_RNG} is 5:
+                mobdrop((attacker),(victim),(true),("%{_l}%Boots"))
+        wait 1 ticks
+        set {_RNG} to RNG(1,100)
+        if {_RNG} is between 1 and 15: #15% droprate
+            set {_RNG} to RNG(1,5)
+            if {_RNG} is 1:
+                mobdrop((attacker),(victim),(false),("%{_l}%Sword"))
+            if {_RNG} is 2:
+                mobdrop((attacker),(victim),(false),("%{_l}%Helmet"))
+            if {_RNG} is 3:
+                mobdrop((attacker),(victim),(false),("%{_l}%Chestplate"))
+            if {_RNG} is 4:
+                mobdrop((attacker),(victim),(false),("%{_l}%Legging"))
+            if {_RNG} is 5:
+                mobdrop((attacker),(victim),(false),("%{_l}%Boots"))
+    if name of victim is "&6[8] &cDemon":
+        death(victim)
+        set {_l} to "Lv6Boss_"
+        set {_i} to "demon"
+        wait 5 ticks
+        bosses((victim),(79),(attacker),(59),(200),("%{_l}%"))
+        set {_RNG} to RNG(1,100)
+        if {_RNG} is between 1 and 20: #20% drop rate
+            set {_RNG} to RNG(1,5)
+            if {_RNG} is 1:
+                mobdrop((attacker),(victim),(true),("%{_l}%Sword"))
+            if {_RNG} is 2:
+                mobdrop((attacker),(victim),(true),("%{_l}%Helmet"))
+            if {_RNG} is 3:
+                mobdrop((attacker),(victim),(true),("%{_l}%Chestplate"))
+            if {_RNG} is 4:
+                mobdrop((attacker),(victim),(true),("%{_l}%Legging"))
+            if {_RNG} is 5:
+                mobdrop((attacker),(victim),(true),("%{_l}%Boots"))
+        wait 1 ticks
+        set {_RNG} to RNG(1,100)
+        if {_RNG} is between 1 and 15: #15% droprate
+            set {_RNG} to RNG(1,5)
+            if {_RNG} is 1:
+                mobdrop((attacker),(victim),(false),("%{_l}%Sword"))
+            if {_RNG} is 2:
+                mobdrop((attacker),(victim),(false),("%{_l}%Helmet"))
+            if {_RNG} is 3:
+                mobdrop((attacker),(victim),(false),("%{_l}%Chestplate"))
+            if {_RNG} is 4:
+                mobdrop((attacker),(victim),(false),("%{_l}%Legging"))
+            if {_RNG} is 5:
+                mobdrop((attacker),(victim),(false),("%{_l}%Boots"))
+    if name of victim is "&6[9] &cSpoodaman":
+        death(victim)
+        set {_l} to "Lv7Boss_"
+        set {_i} to "spoodaman"
+        wait 5 ticks
+        bosses((victim),(99),(attacker),(70),(9999),("%{_l}%"))
+        set {_RNG} to RNG(1,100)
+        if {_RNG} is between 1 and 20: #20% drop rate
+            set {_RNG} to RNG(1,5)
+            if {_RNG} is 1:
+                mobdrop((attacker),(victim),(true),("%{_l}%Sword"))
+            if {_RNG} is 2:
+                mobdrop((attacker),(victim),(true),("%{_l}%Helmet"))
+            if {_RNG} is 3:
+                mobdrop((attacker),(victim),(true),("%{_l}%Chestplate"))
+            if {_RNG} is 4:
+                mobdrop((attacker),(victim),(true),("%{_l}%Legging"))
+            if {_RNG} is 5:
+                mobdrop((attacker),(victim),(true),("%{_l}%Boots"))
+        wait 1 ticks
+        set {_RNG} to RNG(1,100)
+        if {_RNG} is between 1 and 15: #15% droprate
+            set {_RNG} to RNG(1,5)
+            if {_RNG} is 1:
+                mobdrop((attacker),(victim),(false),("%{_l}%Sword"))
+            if {_RNG} is 2:
+                mobdrop((attacker),(victim),(false),("%{_l}%Helmet"))
+            if {_RNG} is 3:
+                mobdrop((attacker),(victim),(false),("%{_l}%Chestplate"))
+            if {_RNG} is 4:
+                mobdrop((attacker),(victim),(false),("%{_l}%Legging"))
+            if {_RNG} is 5:
+                mobdrop((attacker),(victim),(false),("%{_l}%Boots"))
+    if name of victim is "&6[10] &cHeavenly Guard":
+        death(victim)
+        set {_l} to "Lv8Boss_"
+        set {_i} to "heavenlyguard"
+        wait 5 ticks
+        bosses((victim),(136),(attacker),(80),(99999),("%{_l}%"))
+        set {_RNG} to RNG(1,100)
+        if {_RNG} is between 1 and 20: #20% drop rate
+            set {_RNG} to RNG(1,5)
+            if {_RNG} is 1:
+                mobdrop((attacker),(victim),(true),("%{_l}%Sword"))
+            if {_RNG} is 2:
+                mobdrop((attacker),(victim),(true),("%{_l}%Helmet"))
+            if {_RNG} is 3:
+                mobdrop((attacker),(victim),(true),("%{_l}%Chestplate"))
+            if {_RNG} is 4:
+                mobdrop((attacker),(victim),(true),("%{_l}%Legging"))
+            if {_RNG} is 5:
+                mobdrop((attacker),(victim),(true),("%{_l}%Boots"))
+        wait 1 ticks
+        set {_RNG} to RNG(1,100)
+        if {_RNG} is between 1 and 15: #15% droprate
+            set {_RNG} to RNG(1,5)
+            if {_RNG} is 1:
+                mobdrop((attacker),(victim),(false),("%{_l}%Sword"))
+            if {_RNG} is 2:
+                mobdrop((attacker),(victim),(false),("%{_l}%Helmet"))
+            if {_RNG} is 3:
+                mobdrop((attacker),(victim),(false),("%{_l}%Chestplate"))
+            if {_RNG} is 4:
+                mobdrop((attacker),(victim),(false),("%{_l}%Legging"))
+            if {_RNG} is 5:
+                mobdrop((attacker),(victim),(false),("%{_l}%Boots"))
+            if {_RNG} is 6:
+                mobdrop((attacker),(victim),(false),("%{_l}%Bow"))
+    if name of victim is "&6[&d&lDungeon&6] &5&lArsyg":
+        death(victim)
+        set {_l} to "Lv5DungeonBoss_"
+        set {_i} to "arsyg"
+        wait 5 ticks
+        bosses((victim),(200),(attacker),(150),(99999),("%{_l}%"))
+        set {_RNG} to RNG(1,100)
+        if {_RNG} is between 1 and 10: #20% drop rate
+            set {_RNG} to RNG(1,5)
+            if {_RNG} is 1:
+                mobdrop((attacker),(victim),(true),("%{_l}%Sword"))
+            if {_RNG} is 2:
+                mobdrop((attacker),(victim),(true),("%{_l}%Helmet"))
+            if {_RNG} is 3:
+                mobdrop((attacker),(victim),(true),("%{_l}%Chestplate"))
+            if {_RNG} is 4:
+                mobdrop((attacker),(victim),(true),("%{_l}%Legging"))
+            if {_RNG} is 5:
+                mobdrop((attacker),(victim),(true),("%{_l}%Boots"))
+        wait 1 ticks
+        set {_RNG} to RNG(1,100)
+        if {_RNG} is between 1 and 7: #15% droprate
+            set {_RNG} to RNG(1,5)
+            if {_RNG} is 1:
+                mobdrop((attacker),(victim),(false),("%{_l}%Sword"))
+            if {_RNG} is 2:
+                mobdrop((attacker),(victim),(false),("%{_l}%Helmet"))
+            if {_RNG} is 3:
+                mobdrop((attacker),(victim),(false),("%{_l}%Chestplate"))
+            if {_RNG} is 4:
+                mobdrop((attacker),(victim),(false),("%{_l}%Legging"))
+            if {_RNG} is 5:
+                mobdrop((attacker),(victim),(false),("%{_l}%Boots"))
+            if {_RNG} is 6:
+                mobdrop((attacker),(victim),(false),("%{_l}%Bow"))
+        Broadcast "&5&lArsyg &a&lHas Been Defeated. Timer Reset &7(/boss)"
+        set {arsyg} to 600
+        loop all players in radius 40 around victim:
+            wait 20 seconds
+            execute console command "/warp city %loop-player%"
+            message "&c&lBEGONE INTRUDERS!" to loop-player
+    if {_i} is set:
+        add 1 to {achievements::%{_i}%::%{_uuid}%}
+    delete {mostdamage::entity::%{_mobsuuid}%::*}
+
+
+    # if {level::%{_uuid}%} < {_maxlevel}:
+    #     chance of (1.75+(0.3*{_loot}))%:
+    #         execute console command "/mm i give -s %{mostdamage::entity::%{_bossuuid}%::HDP}% %{_core}%"
+    #         message "&aReceived %{_core}% From Most Damaging Player Reward" to {_a}
+    #     execute console command "/mm i give -s %{_p}% Coin %{_coin}%"
+
+function RNG(a:number,b:number) :: number:
+    set {_random} to random integer between {_a} to {_b}
+    return {_random}
+
+#loop all players in radius 10 around {_v}:
+    #     message "&c&l%{mostdamage::entity::%{_bossuuid}%::HDP}% Got Most Damaging Player Reward" to loop-player
+    # delete {mostdamage::entity::%{_bossuuid}%::HDP}
+    # add 1 to {achievements::%{_i}%::%{_uuid}%}
